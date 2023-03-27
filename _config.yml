@@ -2,6 +2,9 @@ gist:
   noscript: false
 remote_theme: pages-themes/tactile@v0.2.0
 
+title: [FreeCAD Developers Handbook]
+description: [A handbook about FreeCAD development]
+
 # Where things are
 source              : [your repo's top level directory]
 destination         : ./_site
