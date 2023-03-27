@@ -2,9 +2,15 @@
 
 text
 
-### [Style Book](./stylebook/index.md) covers guidelines for visual elements in the FreeCAD Application.
+### [Roadmap](./roadmap/index.md)
+Describes the broad objectives for FreeCAD Development
+
+### [Style Book](./stylebook/index.md)
+covers guidelines for visual elements in the FreeCAD Application.
 
 
-### [Code Formatting Guide](./codeformatting/index.md) covers the C++ and Python code formatting guidelines
+### [Code Formatting Guide](./codeformatting/index.md)
+covers the C++ and Python code formatting guidelines
 
-### [Maintainers Guide](./maintainersguide/indes.md) gives guidelines to maintainers about code reviews and merge procedures.
+### [Maintainers Guide](./maintainersguide/indes.md)
+gives guidelines to maintainers about code reviews and merge procedures.
