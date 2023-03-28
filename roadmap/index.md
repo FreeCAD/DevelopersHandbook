@@ -9,12 +9,9 @@ layout: default
 
 {{page.description}}
 
-
 # Development Roadmap 1.0
 
 This document describes several high-level objectives for the FreeCAD project.  Rather than being a laundry list of development tasks, it focuses on a small set of strategic initiatives that, if achieved, will move FreeCAD closer to an ideal future state.  Of course, people may, _and probably will_ argue about _which_ future state FreeCAD should pursue.  For the purposes of this document we assume the following: 
-
-
 
 1. We want FreeCAD to have a healthy development community where new features are regularly added, bugs are quickly resolved, and performance is maintained.
 2. We want a large and diverse community of people using FreeCAD to do real work, including commercial, academic, and hobby pursuits.
@@ -24,7 +21,6 @@ This document describes several high-level objectives for the FreeCAD project.  
 6. We want the software to be well-designed to support a variety of use-cases including scripted operation.
 7. We want a stable and well-designed API to allow FreeCAD to be included in other workflows and tools.
 
-
 ## Why build a roadmap?
 
 Technical discussions often become contentious because the decisions made have real consequences.  Well-meaning people may disagree because they have differing priorities or goals.  
@@ -32,8 +28,6 @@ Technical discussions often become contentious because the decisions made have r
 A well-designed roadmap is beneficial because it _first_ focuses on the priorities and then encourages technical decision-making in context.  
 
 A good roadmap will be useful to many different kinds of people:
-
-
 
 1. Developers will be able to make better decisions about which features should be addressed first and which bugs are worth fixing.
 2. Maintainers can prioritize PR code-review and merge activity.
@@ -44,8 +38,6 @@ A good roadmap will be useful to many different kinds of people:
 7. Ondsel and other commercial partners can plan their product offerings effectively.
 8. GSoC and other mentors will be able to define projects that are consistent with the general project direction.
 9. Other Open-Source projects can identify opportunities for partnership and co-development.
-
-
 
 ## Why Now?
 
@@ -74,7 +66,6 @@ The roadmap is, in a sense, a living document.  It should be frequently reviewed
 
 This roadmap outlines broad strategic objectives. Code contributions from developers will always be evaluated on their merits but are more likely to receive timely attention and be successfully merged if they are consistent with the stated objectives of this roadmap.
 
-
 ## Objective: Model stability
 
 Robust, stable models are a necessary precursor to widespread adoption of FreeCAD.  Some types of breakage are the unavoidable result of poor design practices by the user but FreeCAD must commit itself to reducing or eliminating as many causes of breakage as possible. Focus areas include:
@@ -91,20 +82,15 @@ Robust, stable models are a necessary precursor to widespread adoption of FreeCA
 
 Assembly is a core feature of modern CAD systems.  Without an integrated assembly capability, users are forced to use one of several add-on options.  With competing alternatives available, collaboration and interoperability is negatively affected.  Adoption of an assembly workbench should consider, at a minimum, a base set of features including
 
-
-
 1. An assembly data format.  A data standard for the representation of assembly information in the FreeCAD document.  The standard should be well thought-out and usable both by the integrated solution as well as add-on options.
 2. A license-compatible solver or the option to include a solver at a later date
 3. A minimum set of features to satisfy the 80+% of requirements of typical users
-
 
 ## Objective: Flatten the learning curve
 
 CAD is hard.  These are complicated and powerful tools and the user should be expected to invest appropriate time to learn to use them well.  However, UI/UX inconsistency makes the learning process more difficult than it need be.  The FreeCAD community must pursue a program of UI normalization to make learning FreeCAD easier.  
 
 The first step in this process is to stop making things worse by accepting UI submissions that are poorly designed or implemented.  Focus areas:
-
-
 
 1. Creation of a UI/UX ‘style book’.  This would be a guidebook for developers to follow when creating core and add-on functionality.  The style book would also be useful when evaluating new submissions that affect user experience.  Eventually, the style book standards can be used to ‘score’ existing workbenches and identify opportunities for improvement. 
 2. A ‘first run’ wizard to familiarize the user with essential customizations and features.
@@ -122,8 +108,6 @@ The first step in this process is to stop making things worse by accepting UI su
 
 FreeCAD has an addon manager to allow the user to add niche features.  This provides two important functions.  First, it allows the core application to remain leaner and avoid bloat. Second, it allows for competing solutions early on.  Our approach to addons, however, has been somewhat undisciplined.  As a result, the quality of addons is very uneven.  Some are excellent and behave light native parts of the application.  Others feel and behave inconsistently.  Still others are completely broken or unmaintained.  If we want the addon capability to serve both purposes, additional development is needed.  Focus areas include:
 
-
-
 1. Improve the Addon Manager workbench to make it easier for users to find good well-maintained addons.  Maybe a ‘Featured’ section if addon workbench has a responsive maintainer, minimum open bugs.   Maybe a user review?  Without some status, we could end up with lots of cruft polluting the the manager.
 2. Establish standards for addons to meet to achieve a ‘recommended’ or ‘featured’ status. Featured Addons should 
     1. Have an engaged maintainer
@@ -133,17 +117,15 @@ FreeCAD has an addon manager to allow the user to add niche features.  This prov
     5. Support unit schema
     6. Install and function cleanly with only the addon manager.
 3. Improve Scriptability
-    7. Improved editor / support external editor
-    8. Native debugger
-    9. Improved API
+    1. Improved editor / support external editor
+    2. Native debugger
+    3. Improved API
 
 ## Objective:  Have the best documentation possible
 
 Documentation has become as important as the FreeCAD application itself. Good documentation can offer a bridge to new users and smooth the learning curve. It can make all the difference between an application that is hard to use and one that is easy to learn.
 
 The FreeCAD documentation is generally in a very good state already. But it could, and should, go much further.  Focus areas include
-
-
 
 1. Low-friction to revision through the browser
 2. Git-trackable
@@ -156,26 +138,22 @@ The FreeCAD documentation is generally in a very good state already. But it coul
 
 We want the FreeCAD application to be both efficient and attractive.  We want it to integrate well with the rest of the desktop experience, to be responsive and to be delightful to use. Focus areas include:
 
-
-
 1. User customization 
     1. themes
 2. Modern UI concepts
-    2. Eg “pie menu”
-    3. Context menus
-    4. Ribbon Bar
+    1. Eg “pie menu”
+    2. Context menus
+    3. Ribbon Bar
 3. Efficient use of screen area
-    5. Transparency
-    6. Multi-screen support
+    1. Transparency
+    2. Multi-screen support
 4. Enhanced visualizaton
-    7. Shadows
-    8. Simplified ray tracing and rendering
+    1. Shadows
+    2. Simplified ray tracing and rendering
 
 ## Objective: Streamlined workflow
 
 Performing common and repetitive tasks should be as effortless as possible.  FreeCAD developers should commit themselves to building efficient workflows throughout the application.  This means minimizing clicks and unnecessary dialogs.  It means adding dedicated tools for routine functions rather than relying on generalized tools that may require more steps. It means anticipating and giving the user efficient access to information when and where they need it.  Focus areas include:
-
-
 
 1. Better and consistent measuring tools
 2. Improve sketcher : 
@@ -188,11 +166,11 @@ Performing common and repetitive tasks should be as effortless as possible.  Fre
 4. Uniform selection modes
 5. Uniform approach to user parameters
 6. Simplified access to commonly needed data
-    2. Volume
-    3. Mass
-    4. Moment
-    5. Center of Gravity
-    6. Surface area
+    1. Volume
+    2. Mass
+    3. Moment
+    4. Center of Gravity
+    5. Surface area
 7. Text alignment tool
 
 ## Objective: Lower Barriers to Entry

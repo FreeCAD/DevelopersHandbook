@@ -1,7 +1,5 @@
 # <img src="images/freecad.svg" style="zoom:50%;" /> FreeCAD Developers Guide
 
-text
-
 ### [Roadmap](./roadmap/index.md)
 Describes the broad objectives for FreeCAD Development
 
