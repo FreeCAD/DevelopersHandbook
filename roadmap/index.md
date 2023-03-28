@@ -16,10 +16,10 @@ This document describes several high-level objectives for the FreeCAD project.  
 
 
 
-1. We want FreeCAD to have a robust development community where new features are regularly added, bugs are quickly resolved, and performance is maintained.
-2. We want a vibrant community of people using FreeCAD to do real work, including commercial, academic, and hobby pursuits.
-3. We want the code-base to be maintainable, understandable, and testable
-4. We want the user interface to be beautiful, intuitive, and efficient
+1. We want FreeCAD to have a healthy development community where new features are regularly added, bugs are quickly resolved, and performance is maintained.
+2. We want a large and diverse community of people using FreeCAD to do real work, including commercial, academic, and hobby pursuits.
+3. We want the code-base to be maintainable, understandable, and testable.
+4. We want the user interface to be beautiful, intuitive, and efficient.
 5. We want high-quality and relevant documentation. 
 6. We want the software to be well-designed to support a variety of use-cases including scripted operation.
 7. We want a stable and well-designed API to allow FreeCAD to be included in other workflows and tools.
@@ -35,14 +35,16 @@ A good roadmap will be useful to many different kinds of people:
 
 
 
-1. Developers will be able to make decisions about which features should be addressed first and which bugs are worth fixing.
+1. Developers will be able to make better decisions about which features should be addressed first and which bugs are worth fixing.
 2. Maintainers can prioritize PR code-review and merge activity.
-3. Non-developer Contributors can prepare better documentation, support users more effectively, and advocate for appropriate changes.
-4. The [FreeCAD Project Association](https://fpa.freecad.org) (FPA) can allocate resources to encourage key development efforts, plan events, and raise funds. They can encourage sponsors appropriately and push back on sponsors with goals that are not consistent with project goals.
-5. Content Creators can build curricula, prepare tutorials, and aid with educating users about new features.
-6. [Ondsel](https://ondsel.com) and other commercial partners can plan their product offerings effectively.
-7. Google Summer of Code (GSoC) and other mentors will be able to define projects that are consistent with project direction.
-8. Other Open-Source projects can identify opportunities for partnership and co-development.
+3. New contributors can get a sense of where and how their efforts would be most useful.
+4. Non-developer Contributors can prepare better documentation, support users more effectively, and advocate for appropriate changes.
+5. The FPA can allocate resources to encourage key development efforts, plan events, and raise funds. They can encourage sponsors appropriately and push back on sponsors with goals that are not consistent with project goals.
+6. Content Creators can build curriculum, prepare tutorials, and aid with educating users about new features.
+7. Ondsel and other commercial partners can plan their product offerings effectively.
+8. GSoC and other mentors will be able to define projects that are consistent with the general project direction.
+9. Other Open-Source projects can identify opportunities for partnership and co-development.
+
 
 
 ## Why Now?
@@ -66,11 +68,7 @@ Universities, trade-schools, and online educators have shown interest in teachin
 
 ## Who gets to write/change it?
 
-The roadmap is a living document.  It should be frequently reviewed and revised. The FPA is the steward of the document itself and takes the lead on drafting and revising its content.  The FPA actively seeks input from stakeholders including core-developers, founders, partners, industry experts, as well as harnessing the wisdom of the greater FreeCAD community. 
-
-
-# 
-
+The roadmap is, in a sense, a living document.  It should be frequently reviewed and revised. The FPA is the steward of the document itself and takes the lead on drafting and revising its content, but it should reflect the will of the whole FreeCAD community.  The FPA actively seeks input from the community members and other stakeholders, partners and industry experts. 
 
 # Roadmap
 
@@ -81,11 +79,10 @@ This roadmap outlines broad strategic objectives. Code contributions from develo
 
 Robust, stable models are a necessary precursor to widespread adoption of FreeCAD.  Some types of breakage are the unavoidable result of poor design practices by the user but FreeCAD must commit itself to reducing or eliminating as many causes of breakage as possible. Focus areas include:
 
+1. Toponaming Resolution and Optimization
+2. Reduction of sketcher solver errors
+3. UI/UX features that promote better modeling practices and avoid brittleness.
 
-
-1. Topological naming resolution and optimization
-2. Reduction of sketcher solver errors 
-3. UI/UX features that promote better modeling practices and avoid brittleness
     1. Make good practices easier
     2. Remove / replace tools that allow unstable results
 4. Improved stability around linked documents
