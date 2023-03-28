@@ -38,10 +38,10 @@ A good roadmap will be useful to many different kinds of people:
 1. Developers will be able to make decisions about which features should be addressed first and which bugs are worth fixing.
 2. Maintainers can prioritize PR code-review and merge activity.
 3. Non-developer Contributors can prepare better documentation, support users more effectively, and advocate for appropriate changes.
-4. The FPA can allocate resources to encourage key development efforts, plan events, and raise funds. They can encourage sponsors appropriately and push back on sponsors with goals that are not consistent with project goals.
-5. Content Creators can build curriculum, prepare tutorials, and aid with educating users about new features
-6. Ondsel and other commercial partners can plan their product offerings effectively
-7. GSoC and other mentors will be able to define projects that are consistent with project direction
+4. The [FreeCAD Project Association](https://fpa.freecad.org) (FPA) can allocate resources to encourage key development efforts, plan events, and raise funds. They can encourage sponsors appropriately and push back on sponsors with goals that are not consistent with project goals.
+5. Content Creators can build curricula, prepare tutorials, and aid with educating users about new features.
+6. [Ondsel](https://ondsel.com) and other commercial partners can plan their product offerings effectively.
+7. Google Summer of Code (GSoC) and other mentors will be able to define projects that are consistent with project direction.
 8. Other Open-Source projects can identify opportunities for partnership and co-development.
 
 
@@ -66,7 +66,7 @@ Universities, trade-schools, and online educators have shown interest in teachin
 
 ## Who gets to write/change it?
 
-The roadmap is, in a sense, a living document.  It should be frequently reviewed and revised. The FPA is the steward of the document itself and takes the lead on drafting and revising its content.  The FPA actively seeks input from stakeholders including core-developers, founders, partners, industry experts, as well as harnessing the wisdom of the greater FreeCAD community. 
+The roadmap is a living document.  It should be frequently reviewed and revised. The FPA is the steward of the document itself and takes the lead on drafting and revising its content.  The FPA actively seeks input from stakeholders including core-developers, founders, partners, industry experts, as well as harnessing the wisdom of the greater FreeCAD community. 
 
 
 # 
@@ -83,21 +83,21 @@ Robust, stable models are a necessary precursor to widespread adoption of FreeCA
 
 
 
-1. Toponaming Resolution and Optimization
+1. Topological naming resolution and optimization
 2. Reduction of sketcher solver errors 
-3. UI/UX features that promote better modeling practices and avoid brittleness.
+3. UI/UX features that promote better modeling practices and avoid brittleness
     1. Make good practices easier
     2. Remove / replace tools that allow unstable results
-4. Improved stability around linked documents. 
+4. Improved stability around linked documents
 
-Objective:  Assembly
+## Objective:  Assembly
 
 Assembly is a core feature of modern CAD systems.  Without an integrated assembly capability, users are forced to use one of several add-on options.  With competing alternatives available, collaboration and interoperability is negatively affected.  Adoption of an assembly workbench should consider, at a minimum, a base set of features including
 
 
 
 1. An assembly data format.  A data standard for the representation of assembly information in the FreeCAD document.  The standard should be well thought-out and usable both by the integrated solution as well as add-on options.
-2. A license compatible solver or the option to include a solver at a later date
+2. A license-compatible solver or the option to include a solver at a later date
 3. A minimum set of features to satisfy the 80+% of requirements of typical users
 
 
@@ -109,25 +109,25 @@ The first step in this process is to stop making things worse by accepting UI su
 
 
 
-1. Creation of a UI/UX ‘style book’.  This would be a guidebook for developers to follow when creating core and add-on functionality.  The style book would also be useful when evaluating new submissions that affect user experience.  Eventually, the style book standards can be used to ‘score’ existing workbenches and identify opportunity for improvement. 
+1. Creation of a UI/UX ‘style book’.  This would be a guidebook for developers to follow when creating core and add-on functionality.  The style book would also be useful when evaluating new submissions that affect user experience.  Eventually, the style book standards can be used to ‘score’ existing workbenches and identify opportunities for improvement. 
 2. A ‘first run’ wizard to familiarize the user with essential customizations and features.
 3. Reduce confusing UI elements
     1. Eliminate redundant tools
-    2. Suppress infrequently used workbenches
+    2. Suppress infrequently-used workbenches
     3. Consolidate settings, preferences, and other customization tools
     4. Make toolbar placement more predictable and stable
 4. Toolbar placement consistency
 5. Make tasks fail safe.  Tasks should always be in transactions and ‘undo’ cleanly. Red errors in the console are unacceptable for normal workflow.
-6. Normalize the user of terminology
+6. Normalize the use of terminology
 7. Improve support for materials and implement consistently across all workbenches
 
-Objective:  Seamless Extensibility
+## Objective:  Seamless Extensibility
 
 FreeCAD has an addon manager to allow the user to add niche features.  This provides two important functions.  First, it allows the core application to remain leaner and avoid bloat. Second, it allows for competing solutions early on.  Our approach to addons, however, has been somewhat undisciplined.  As a result, the quality of addons is very uneven.  Some are excellent and behave light native parts of the application.  Others feel and behave inconsistently.  Still others are completely broken or unmaintained.  If we want the addon capability to serve both purposes, additional development is needed.  Focus areas include:
 
 
 
-1. Improve the add-on workbench to make it easier for users to find good well-maintained addons.  Maybe a ‘Featured’ section if addon workbench has a responsive maintainer, minimum open bugs.   Maybe a user review?  Without some status, we could end up with lots of cruft polluting the the manager.
+1. Improve the Addon Manager workbench to make it easier for users to find good well-maintained addons.  Maybe a ‘Featured’ section if addon workbench has a responsive maintainer, minimum open bugs.   Maybe a user review?  Without some status, we could end up with lots of cruft polluting the the manager.
 2. Establish standards for addons to meet to achieve a ‘recommended’ or ‘featured’ status. Featured Addons should 
     1. Have an engaged maintainer
     2. Have minimal high priority open issues tickets
@@ -140,22 +140,22 @@ FreeCAD has an addon manager to allow the user to add niche features.  This prov
     8. Native debugger
     9. Improved API
 
-Objective:  Have the best documentation possible
+## Objective:  Have the best documentation possible
 
-Documentation has become as important as the FreeCAD application itself. A good documentation can offer a bridge to new users and smoothen the learning curve. It can make all the difference between an application that is hard to use and one that is easy to learn.
+Documentation has become as important as the FreeCAD application itself. Good documentation can offer a bridge to new users and smooth the learning curve. It can make all the difference between an application that is hard to use and one that is easy to learn.
 
-The FreeCAD documentation is generally in very good state already. But it could, and should, go much further.  Focus areas include
+The FreeCAD documentation is generally in a very good state already. But it could, and should, go much further.  Focus areas include
 
 
 
-1. Low-friction to revised through the browser
+1. Low-friction to revision through the browser
 2. Git-trackable
 3. Versions of the documentation that match software versions
 4. Good translation support
 5. Support for off-line readers
 6. Natural integration of Developer / API documentation
 
-Objective: UI modernization and beautification
+## Objective: UI modernization and beautification
 
 We want the FreeCAD application to be both efficient and attractive.  We want it to integrate well with the rest of the desktop experience, to be responsive and to be delightful to use. Focus areas include:
 
@@ -174,7 +174,7 @@ We want the FreeCAD application to be both efficient and attractive.  We want it
     7. Shadows
     8. Simplified ray tracing and rendering
 
-Objective: Streamlined workflow
+## Objective: Streamlined workflow
 
 Performing common and repetitive tasks should be as effortless as possible.  FreeCAD developers should commit themselves to building efficient workflows throughout the application.  This means minimizing clicks and unnecessary dialogs.  It means adding dedicated tools for routine functions rather than relying on generalized tools that may require more steps. It means anticipating and giving the user efficient access to information when and where they need it.  Focus areas include:
 
@@ -187,7 +187,7 @@ Performing common and repetitive tasks should be as effortless as possible.  Fre
         2. Circular pattern
         3. Usable rectangular array.
         4. Constrain contextually.
-3. Seamless Copy paste of geometries/sketches
+3. Seamless copy-paste of geometries/sketches
 4. Uniform selection modes
 5. Uniform approach to user parameters
 6. Simplified access to commonly needed data
@@ -198,20 +198,14 @@ Performing common and repetitive tasks should be as effortless as possible.  Fre
     6. Surface area
 7. Text alignment tool
 
-#### Lower Barriers to Entry
+## Objective: Lower Barriers to Entry
 
-FreeCAD has an enormous number of functions and for a new user, there is no obvious way
-
-to use just a task oriented subset.  It should be possible for new users to access a
-
-subset of FreeCAD functionality, say on the level of a TinkerCAD.  As they gain
-
-experience, they can use additional functions.
+FreeCAD has an enormous number of functions and for a new user, there is no obvious way to use just a task oriented subset.  It should be possible for new users to access a subset of FreeCAD functionality, say on the level of a TinkerCAD.  As they gain experience, they can use additional functions.
 
 FreeCAD has a major terminology problem for new users.  We have a Part workbench that doesn't make Parts and a Part Design workbench that isn't used to design Parts.  We have Pads and Extrudes, Pockets and Cuts, Fuses and Unions, etc.  We have a Part container and a Group container(?) but no core functions to populate a container (ex a core assembly function)..
 
 Forum comment regarding nomenclature: [https://forum.freecad.org/viewtopic.php?p=669869#p669869](https://forum.freecad.org/viewtopic.php?p=669869#p669869)
 
-#### Prevent Shooting Yourself in the Foot
+## Objective: Prevent Shooting Yourself in the Foot
 
 FreeCAD allows users to do things that are known to build fragile models, such as building features based on variable foundations (ex Sketches on Faces, Dimensions based on drawing lines).  We even have icons and commands for doing this.  FreeCAD should prevent "dangerous" actions, convert them behind the scenes to safe actions or at least provide a warning about unsafe practices.
