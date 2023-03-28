@@ -12,5 +12,5 @@ covers guidelines for visual elements in the FreeCAD Application.
 ### [Code Formatting Guide](./codeformatting/index.md)
 covers the C++ and Python code formatting guidelines
 
-### [Maintainers Guide](./maintainersguide/indes.md)
+### [Maintainers Guide](./maintainersguide/index.md)
 gives guidelines to maintainers about code reviews and merge procedures.
