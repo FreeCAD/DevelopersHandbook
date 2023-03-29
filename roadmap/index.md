@@ -101,7 +101,7 @@ The first step in this process is to stop making things worse by accepting UI su
     4. Make toolbar placement more predictable and stable
 4. Toolbar placement consistency
 5. Make tasks fail safe.  Tasks should always be in transactions and ‘undo’ cleanly. Red errors in the console are unacceptable for normal workflow.
-6. Normalize the use of terminology
+6. Normalize the use of terminology both within FreeCAD and, when possible, with external standards.
 7. Improve support for materials and implement consistently across all workbenches
 
 ## Objective:  Seamless Extensibility
