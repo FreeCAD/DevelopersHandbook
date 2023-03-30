@@ -3,6 +3,15 @@
 The full FreeCAD source tree has many other branches, but most Contributors will
 only need to deal with these:
 
+<div class="mermaid">
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+</div>
+
+
 ```mermaid
 graph LR
     A[src] --- B[App: Documents, DocumentObjects, EventPropagation]
