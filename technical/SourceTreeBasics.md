@@ -19,6 +19,14 @@ pie title Pets adopted by volunteers
   "Rats" : 35
 @endmermaid
 
+<div class="mermaid">
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+</div>
+
 ```mermaid
 graph LR
     A[src] --- B[App: Documents, DocumentObjects, EventPropagation]
@@ -32,3 +40,5 @@ graph LR
     E --- I["..."]
     end
 ```
+
+## Any change in web page?
