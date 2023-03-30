@@ -12,3 +12,6 @@ covers the C++ and Python code formatting guidelines
 
 ### [Maintainers Guide](./maintainersguide/index.md)
 gives guidelines to maintainers about code reviews and merge procedures.
+
+### [Technical Guide](./technical/index.md)
+a guide for developers
