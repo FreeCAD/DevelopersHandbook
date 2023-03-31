@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="150mm"
+   height="105mm"
+   viewBox="128 3 291.61765 205.33333"
+   version="1.1"
+   id="svg117"
+   sodipodi:docname="TheApplicationModule.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata123">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs121" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1373"
+     id="namedview119"
+     showgrid="false"
+     units="mm"
+     inkscape:zoom="1.4678075"
+     inkscape:cx="283.46457"
+     inkscape:cy="212.05096"
+     inkscape:window-x="0"
+     inkscape:window-y="40"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg117" />
+  <g
+     id="Background"
+     transform="matrix(0.42839907,0,0,0.36153872,76.476018,8.4830532)">
+    <g
+       id="g10">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="453.27499"
+         y="43"
+         width="93.449997"
+         height="54"
+         rx="0"
+         ry="0"
+         id="rect2" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="500"
+         y="65.881104"
+         id="text8">
+        <tspan
+           x="500"
+           y="65.881104"
+           id="tspan4">Application</tspan>
+        <tspan
+           x="500"
+           y="81.881104"
+           id="tspan6">Module</tspan>
+      </text>
+    </g>
+    <g
+       id="g18">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="339.22501"
+         y="232"
+         width="43.549999"
+         height="38"
+         rx="0"
+         ry="0"
+         id="rect12" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="361"
+         y="254.881"
+         id="text16">
+        <tspan
+           x="361"
+           y="254.881"
+           id="tspan14">Gui</tspan>
+      </text>
+    </g>
+    <g
+       id="g26">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="639.52502"
+         y="232"
+         width="46.950001"
+         height="38"
+         rx="0"
+         ry="0"
+         id="rect20" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="663"
+         y="254.881"
+         id="text24">
+        <tspan
+           x="663"
+           y="254.881"
+           id="tspan22">App</tspan>
+      </text>
+    </g>
+    <g
+       id="g34">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="157.7"
+         y="322"
+         width="94.400002"
+         height="38"
+         rx="0"
+         ry="0"
+         id="rect28" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="204.89999"
+         y="344.88101"
+         id="text32">
+        <tspan
+           x="204.89999"
+           y="344.88101"
+           id="tspan30">Commands</tspan>
+      </text>
+    </g>
+    <g
+       id="g44">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="182.7"
+         y="399.5"
+         width="69.400002"
+         height="54"
+         rx="0"
+         ry="0"
+         id="rect36" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="217.39999"
+         y="422.38101"
+         id="text42">
+        <tspan
+           x="217.39999"
+           y="422.38101"
+           id="tspan38">Task</tspan>
+        <tspan
+           x="217.39999"
+           y="438.38101"
+           id="tspan40">Dialogs</tspan>
+      </text>
+    </g>
+    <g
+       id="g52">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="129.89999"
+         y="492"
+         width="122.2"
+         height="38"
+         rx="0"
+         ry="0"
+         id="rect46" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="191"
+         y="514.88098"
+         id="text50">
+        <tspan
+           x="191"
+           y="514.88098"
+           id="tspan48">Viewproviders</tspan>
+      </text>
+    </g>
+    <g
+       id="g60">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="711.52502"
+         y="322"
+         width="76.949997"
+         height="38"
+         rx="0"
+         ry="0"
+         id="rect54" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="750"
+         y="344.88101"
+         id="text58">
+        <tspan
+           x="750"
+           y="344.88101"
+           id="tspan56">Features</tspan>
+      </text>
+    </g>
+    <g
+       id="g66">
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="500,97 500,163.995 361,163.995 361,221.254 "
+         id="polyline62" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="361,221.254 366,218.754 361,228.754 356,218.754 "
+         id="polygon64" />
+    </g>
+    <g
+       id="g72">
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="500,97 500,164.5 663,164.5 663,222.264 "
+         id="polyline68" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="663,222.264 668,219.764 663,229.764 658,219.764 "
+         id="polygon70" />
+    </g>
+    <g
+       id="g78">
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="338.219,251 295.16,251 295.16,341 261.836,341 "
+         id="polyline74" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="261.836,341 264.336,346 254.336,341 264.336,336 "
+         id="polygon76" />
+    </g>
+    <g
+       id="g84">
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="338.219,251 295.16,251 295.16,426.5 261.836,426.5 "
+         id="polyline80" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="261.836,426.5 264.336,431.5 254.336,426.5 264.336,421.5 "
+         id="polygon82" />
+    </g>
+    <g
+       id="g90">
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="338.219,251 295.664,251 295.664,511 262.844,511 "
+         id="polyline86" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="262.844,511 265.344,516 255.344,511 265.344,506 "
+         id="polygon88" />
+    </g>
+    <g
+       id="g96">
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="663,270 663,341 701.789,341 "
+         id="polyline92" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="701.789,341 699.289,336 709.289,341 699.289,346 "
+         id="polygon94" />
+    </g>
+    <text
+       font-size="16.9331"
+       style="font-style:normal;font-weight:normal;font-size:16.93309975px;font-family:sans-serif;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       x="403.47699"
+       y="18.75"
+       id="text100">
+      <tspan
+         x="403.47699"
+         y="18.75"
+         id="tspan98">The Application Module</tspan>
+    </text>
+    <g
+       id="g108">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         x="711.52502"
+         y="421.25"
+         width="70.050003"
+         height="38"
+         rx="0"
+         ry="0"
+         id="rect102" />
+      <text
+         font-size="12.7998"
+         style="font-style:normal;font-weight:normal;font-size:12.79979992px;font-family:sans-serif;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="746.54999"
+         y="444.13101"
+         id="text106">
+        <tspan
+           x="746.54999"
+           y="444.13101"
+           id="tspan104">Utilities</tspan>
+      </text>
+    </g>
+    <g
+       id="g114">
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="663,270 663,440.25 701.789,440.25 "
+         id="polyline110" />
+      <polygon
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-opacity:1"
+         points="701.789,440.25 699.289,435.25 709.289,440.25 699.289,445.25 "
+         id="polygon112" />
+    </g>
+  </g>
+</svg>

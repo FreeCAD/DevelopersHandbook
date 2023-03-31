@@ -5,10 +5,17 @@ description:
 layout: default
 mermaid: true
 -—
-# Partial View of the FreeCAD Source Tree
+# {{page.title}}
+
+{{page.description}}
+
+{{page.mermaid}}
 
 The full FreeCAD source tree has many other branches, but most Contributors will
 only need to deal with these:
+
+
+![The FreeCAD Source Tree](./SourceTreeBasics.svg)
 
 
 ```mermaid
