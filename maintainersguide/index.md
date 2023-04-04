@@ -26,9 +26,17 @@ Anyone who wishes to participate in the code review process may do so, but all p
 2. Does the code compile on all platforms?
 3. Does the code pass the CI test suite?
 4. Does the code include new tests to validate its functionality? Note that we do not have a firm requirement that tests be provided, but we should strive to do so when possible.
-5. Is the code written in a reasonably easy-to-understand manner, following modern best-practices for the language it is written in? Not all "best practices" violations represent major defects, but care should be taken to guide Contributors toward submitting the best code they can. Merging code with minor best-practices defects and advising Contributors to address those defects in follow-on PRs the encouraged workflow.
+5. Is the code written in a reasonably easy-to-understand manner, following modern best-practices for the language it is written in? Not all "best practices" violations represent major defects, but care should be taken to guide Contributors toward submitting the best code they can. Merging code with minor best-practices defects and advising Contributors to address those defects in follow-on PRs is the encouraged workflow.
 6. Are the commits well-structured, with clear commit messages following the guidelines outlined in CONTRIBUTING.md?
-7. Are there any copyright issues that must be addressed? (e.g. use of logos or graphics from other organizations, code copied from other projects, etc.) Any copyrighted content (logos, graphics, code, etc.) included in FreeCAD must have a compatible license, and should have clear permission for us to use it. Of course, it must also be used in a way that's beneficial to FreeCAD's users. 
+7. Are there any copyright issues that must be addressed? (e.g. use of logos or graphics from other organizations, code copied from other projects, etc.) Any copyrighted content (logos, graphics, code, etc.) included in FreeCAD must have a compatible license, and should have clear permission for us to use it. Of course, it must also be used in a way that's beneficial to FreeCAD's users.
+
+### Review of code style/formatting
+
+FreeCAD is in a transitional period: eventually we expect all code to be formatted by automated code styling tools via a pre-commit hook. However, this transition is not yet complete. Until it is, as a best practice developers should work to eliminate any code formatting changes except in code they are actually changing (that is, they should not apply automatic code formatting across an entire file where they are only changing a few lines). Maintainers should err on the side of forgiveness in the event of inadvertent code format changes: if it's straightforward to remove the superfluous changes then it should be done, but a PR should not be rejected for simple formatting issues.
+
+### When in doubt
+
+A major goal during a code review is to provide a good experience for Contributors, and part of that is ensuring consistency across Maintainers. FreeCAD operates predominantly on a consensus basis: if you run into a situation during a code review where you are unsure how to proceed, your first course of action should be to reach out to other Maintainers to see how others have handled such things in the past. Once a course of action has been arrived at, consider documenting the new process here in the Developer's Handbook.
 
 ## Onboarding new Contributors
 
