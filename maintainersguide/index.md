@@ -28,6 +28,7 @@ Anyone who wishes to participate in the code review process may do so, but all p
 4. Does the code include new tests to validate its functionality? Note that we do not have a firm requirement that tests be provided, but we should strive to do so when possible.
 5. Is the code written in a reasonably easy-to-understand manner, following modern best-practices for the language it is written in? Not all "best practices" violations represent major defects, but care should be taken to guide Contributors toward submitting the best code they can. Merging code with minor best-practices defects and advising Contributors to address those defects in follow-on PRs the encouraged workflow.
 6. Are the commits well-structured, with clear commit messages following the guidelines outlined in CONTRIBUTING.md?
+7. Are there any copyright issues that must be addressed? (e.g. use of logos or graphics from other organizations, code copied from other projects, etc.) Any copyrighted content (logos, graphics, code, etc.) included in FreeCAD must have a compatible license, and should have clear permission for us to use it. Of course, it must also be used in a way that's beneficial to FreeCAD's users. 
 
 ## Onboarding new Contributors
 
