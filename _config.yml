@@ -6,7 +6,7 @@ title: [FreeCAD Developers Handbook]
 description: [A handbook about FreeCAD development]
 
 # Where things are
-source              : [your repo's top level directory]
+source              : .
 destination         : ./_site
 collections_dir     : .
 plugins_dir         : _plugins # takes an array of strings and loads plugins in that order
