@@ -18,9 +18,9 @@ FreeCAD's codebase currently includes a preliminary [.clang-format](https://gith
 ### C++ Copyright Header
 
 The following is the standard C++ copyright header that should be included in all new C++ files (and backported to files a developer is making significant changes to if they do not already have this format).
-```
-// SPDX-License-Identifier: LGPL-2.1-or-later
 
+```cpp
+// SPDX-License-Identifier: LGPL-2.1-or-later
 /****************************************************************************
  *                                                                          *
  *   Copyright (c) <YEAR> <YOUR NAME> <YOUR EMAIL>                          *
@@ -52,7 +52,7 @@ There is no unified Python coding style agreed upon for the FreeCAD codebase: ea
 
 The following is the standard Python copyright header that should be included in all new Python files (and backported to files a developer is making significant changes to if they do not already have this format).
 
-```
+```python
 # SPDX-License-Identifier: LGPL-2.1-or-later
 # ***************************************************************************
 # *                                                                         *
