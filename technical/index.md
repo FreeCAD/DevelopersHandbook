@@ -8,7 +8,9 @@ layout: default
 
 {{page.description}}
 
+
 ## The Basics
+- [Developer's Glossary](./developerglossary.md)
 - [Source Tree Basics](./SourceTreeBasics.md)
 - [The Application Module](./TheApplicationModule.md)
 - [The Source Code in More Depth](https://wiki.freecad.org/The_FreeCAD_source_code)
@@ -26,6 +28,7 @@ layout: default
     file in the root of the source tree.
 - [Creating a WorkBench](https://wiki.freecad.org/Workbench_creation)
 - The [PowerUser's hub](https://wiki.freecad.org/Power_users_hub) in the FreeCAD wiki contains good information about Python scripting and workbench creation
+- [Accessing User Preferences](./preferences.md)
 - [Create a Python Binding for C++ Class](./CreatePythonBindingForCpp.md)
 - [Checklist for Adding a Feature to a Workbench in C++](./ChecklistForNewFeatureC++.md)
 
