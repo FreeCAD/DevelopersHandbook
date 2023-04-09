@@ -17,7 +17,7 @@ In the long term, the book should settle down and become primarily a resource fo
 
 ## Parts of the UI
 
-![The FreeCAD UI and it's elements](ui.png)
+![The FreeCAD UI and its elements](ui.png)
 
 1. Workbench Switcher
 2. Toolbars
