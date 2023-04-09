@@ -67,7 +67,7 @@ The workbench switcher is an important control to the general FreeCAD workflow. 
 4. Anticipate the user might disable the toolbar.
 5. Group locally similar tools into a toolgroup.
 6. All tools in a toolbar should have a translatable and useful tooltip.
-7. The toolbar itself should have a translatable and userful tooltip.
+7. The toolbar itself should have a translatable and useful tooltip.
 8. A toolbar should contain a minimum number of tools, ideally less than seven. Longer toolbars provide fewer options for customization and often get shortened or clipped offscreen. They also increase cognitive burden since the user has to process the group as a whole.
 
 #### Problems
