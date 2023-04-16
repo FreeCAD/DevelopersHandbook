@@ -15,6 +15,8 @@ In the short term, this book surely will undergo massive changes and reorganizat
 
 In the long term, the book should settle down and become primarily a resource for developers and designers to refer to. Most links should be removed.
 
+Note: The stylebook is a catalog of _guidelines_.  These are not hard laws to be followed. The overarching principle is to make the user interface intuitive and welcoming. If blindly following a guideline does not serve that purpose, then ignoring the guideline is acceptable.  However, the _right answer_ is to refine the guideline here to account for what has been learned.
+
 ## Parts of the UI
 
 ![The FreeCAD UI and its elements](ui.png)
@@ -268,6 +270,14 @@ FreeCAD has a major terminology problem for new users. We have a Part workbench 
 ## Philosophy
 
 There should be one -- and preferably ONLY one -- obvious way to do a task. Developers are notorious for giving users options thinking that is a good thing. In reality, every tool takes time to understand. Given two nearly identical implementations of the same workflow, the user has to figure out how they differ. Don’t make the user think.
+
+Never present the user with an enabled tool that is broken, non-functional, or cannot be used in the current context. Some examples:
+- It should not be possible for the user to initiate the 'export' operation
+   without a document open because there is nothing exportable.
+- A workbench which requires the user to install something extra to be useful
+  should not be part of the workbench switcher if the extra thing is not installed.
+- A toolbar tool that groups related tools together should be disabled if all
+  the sub-tools are disabled.
 
 ## Resources
 
