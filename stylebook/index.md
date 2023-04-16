@@ -14,6 +14,11 @@ In the long term, the book should settle down and become primarily a resource fo
 
 Note: The stylebook is a catalog of _guidelines_.  These are not hard laws to be followed. The overarching principle is to make the user interface intuitive and welcoming. If blindly following a guideline does not serve that purpose, then ignoring the guideline is acceptable.  However, the _right answer_ is to refine the guideline here to account for what has been learned.
 
+## Subpages
+[Glossary](./glossary.md)  [Navigation](./navigation.md)  [Selection](./selection.md)  [Toolbars](toolbars.md)
+
+
+
 ## Parts of the UI
 
 ![The FreeCAD UI and its elements](ui.png)
@@ -44,47 +49,6 @@ The workbench switcher is an important control to the general FreeCAD workflow. 
 1. The switcher itself has no accelerator key associated with it. The user must click with a mouse.
 2. The first ten workbenches are automatically assigned an accelerator of W &lt;#>. The user has no control over the assignment of accelerators.
 3. By default, all workbenches installed in FreeCAD are shown. This includes workbenches that are of marginal value or seldom used, especially by new users. This contributes to confusion since users don’t know yet which workbenches they need to use.
-
-### Toolbars
-
-1. File
-2. Edit
-3. Clipboard
-4. Workbench
-5. Macro
-6. View
-7. Structure
-8. Help
-9. Navigation
-10. <&lt;Workbench>>
-
-#### Guidelines
-
-1. Toolbars provide convenient access to frequently used commands. They do this at the expense of permanently occupying screen real space.
-2. Too many toolbars create visual clutter. All tools compete for the users attention simultaneously. They are not context aware.
-3. Toolbars group related commands.
-4. Anticipate the user might disable the toolbar.
-5. Group locally similar tools into a toolgroup.
-6. All tools in a toolbar should have a translatable and useful tooltip.
-7. The toolbar itself should have a translatable and useful tooltip.
-8. A toolbar should contain a minimum number of tools, ideally less than seven. Longer toolbars provide fewer options for customization and often get shortened or clipped offscreen. They also increase cognitive burden since the user has to process the group as a whole.
-
-#### Problems
-
-1. Toolbars are the developers go-to UI element. They are simple to code and useful during development. As a result they are often overused and visually cluttered.
-
-### Toolbar Area
-
-The toolbar area contains toolbars. Some of the toolbars are available everywhere and some are workbench specific. 
-
-#### Guidelines
-
-1. Consider how toolbars will look and arrange on small screens
-2. Consider how toolbars will look and arrange on multi-screen configurations
-
-#### Problems
-
-1. Toolbars can be rearranged on a per-workbench basis and the arrangement is meant to persist between sessions. This is intended to be a feature but often acts like a bug.   The user arranges toolbars to his liking (including those toolbars that appear on multiple workbenches) while in one workbench. After a switch to another workbench it can happen that the toolbars rearrange in a different order.  
 
 ### ComboView
 
@@ -176,18 +140,6 @@ The status bar is the only part of the UI that is always the same regardless of 
 
 tbd
 
-### Navigation Cube
-
-General
-
-#### Guidelines
-
-tbd
-
-#### Problems
-
-tbd
-
 ### Task View
 
 Each tool should put all of it’s settings in a single task box.
@@ -202,51 +154,11 @@ Task panels should always start with valid defaults (e.g. the shapestring dialog
 
 Task panels should always preview their results in the 3d window. If a preview is computationally too intense, provide an `Apply` button to generate a preview. _(I’m looking at YOU, shapestring tool!)_
 
-### Selection
-
-Reference: [FreeCAD Wiki - Selection Methods](https://wiki.freecad.org/selection_methods)
-
-![The Selection View](selection.png)
-
-#### Terms
-
-1. Selection: the set of objects and subobjects that the user has selected
-2. Pre-selection: the object directly under the pointer which will be added to the selection if the user clicks
-3. Selection View: The panel which allows the user to see the selection items
-4. Greedy selection: Mode in which additional items are added to the selection without requiring a modifier key
-5. Selection gate: Logic which can be initiated via code that controls which objects may be selected
-6. Selection observer: Logic which can be initiated via code that watches the selection. It can be used to trigger actions under specific selection conditions.
-
-#### Guidelines
-
-1. Selection gates and observers are powerful tools for adjusting the affordances of the GUI and providing signals. They must be used with care because they can adversely affect the performance of the GUI. 
-2. If the user is asked to select multiple features, he should be able to select by clicking them, and unselect them as well by clicking on selected features.
-
 ## Context Menus
 
 tbd
 
 ### Guidelines
-
-tbd
-
-## Navigation
-
-### Elements
-
-1. Navigation Cube
-2. Standard Views
-3. Keyboard Accelerators
-
-#### Navigation Cube
-
-tbd
-
-#### Standard Views
-
-tbd
-
-#### Keyboard Accelerators
 
 tbd
 
