@@ -1,13 +1,10 @@
 ---
-title: Stylebook
-description:
-   The stylebook provides guidelines and explanations for visual elements in the FreeCAD application
 layout: default
 ---
 
-# {{page.title}}
+# Stylebook
 
-{{page.description}}
+The stylebook provides guidelines and explanations for visual elements in the FreeCAD application
 
 This book is meant to document the general style and conventions of the FreeCAD User Interface. Guidelines, terminology, and philosophies described here will be used to justify changes in the current UI in order to make the overall user experience more consistent, predictable, intuitive, and attractive in the future.
 

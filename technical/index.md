@@ -1,12 +1,9 @@
 ---
-title: Technical
-description:
-  Technical information of interest to Contributors.
 layout: default
 ---
-# {{page.title}}
+# Technical
 
-{{page.description}}
+Technical information of interest to Contributors.
 
 
 ## The Basics

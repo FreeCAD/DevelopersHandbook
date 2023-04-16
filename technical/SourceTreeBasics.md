@@ -1,13 +1,10 @@
 ---
-title: "Partial View of the FreeCAD Source Tree"
-description:
-    "A picture of the most commonly encountered branches of the tree."
 layout: default
 mermaid: true
 ---
-# {{page.title}}
+# "Partial View of the FreeCAD Source Tree"
 
-{{page.description}}
+"A picture of the most commonly encountered branches of the tree."
 
 {{page.mermaid}}
 

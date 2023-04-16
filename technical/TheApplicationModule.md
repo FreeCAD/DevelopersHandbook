@@ -1,13 +1,11 @@
 ---
-title: "The Application Module"
-description:
-    "An overview of application module structure."
 layout: default
 mermaid: true
 ---
-# {{page.title}}
 
-{{page.description}}
+# "The Application Module"
+
+"An overview of application module structure."
 
 The functionality of FreeCAD is separated into Modules.  Some Modules are built into FreeCAD and some are Extension Modules (a form of plug-in).  Once installed, Extension Modules behave exactly as built-in Modules.
 

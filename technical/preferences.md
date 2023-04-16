@@ -1,12 +1,9 @@
 ---
-title: Handling Preferences
-description:
-  How to retrieve and update user preferences
 layout: default
 ---
-# {{page.title}}
+#  Handling Preferences
 
-{{page.description}}
+How to retrieve and update user preferences
 
 The user.cfg Xml file contains a hierarchical list of all the preferences used by FreeCAD.
 

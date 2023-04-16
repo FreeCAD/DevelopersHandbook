@@ -1,12 +1,9 @@
 ---
-title: "Developer's Glossary"
-description:
-    "Some terms that a developer may run across."
 layout: default
 ---
-# {{page.title}}
+# "Developer's Glossary"
 
-{{page.description}}
+"Some terms that a developer may run across."
 
 Note that there may be subtle differences in how some terms are used by deveopers vs how they are used by users.
 

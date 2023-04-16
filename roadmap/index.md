@@ -1,13 +1,10 @@
 ---
-title: Roadmap
-description:
-   The roadmap provides broad objectives for the direction of FreeCAD development
 layout: default
 ---
 
-# {{page.title}}
+Roadmap
 
-{{page.description}}
+The roadmap provides broad objectives for the direction of FreeCAD development
 
 # Development Roadmap 1.0
 

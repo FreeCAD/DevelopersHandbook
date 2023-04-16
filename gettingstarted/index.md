@@ -1,12 +1,10 @@
 ---
-title: Getting Started
-description: Covers how to set up a build environment for contributing to FreeCAD
 layout: default
 ---
 
-# {{page.title}}
+# Getting Started
 
-{{page.description}}
+Covers how to set up a build environment for contributing to FreeCAD
 
 Working on FreeCAD is similar to working on may other open-source projects. This guide provides a short overview of the process. Much more information can be found at https://wiki.freecad.org.
 

@@ -1,13 +1,10 @@
 ---
-title: Code Formatting Guidelines
-description:
-  Guidelines for code formatting in C++ and Python
 layout: default
 ---
 
-# {{page.title}}
+# Code Formatting Guidelines
 
-{{page.description}}
+Guidelines for code formatting in C++ and Python
 
 FreeCAD is written primarily in C++ and Python (with a few files in other languages such as CMake). To smooth the process of merging new contributions it is desirable to minimize formatting changes to existing code, and to use a uniform code formatting style when writing new code. Eventually we expect to standardize the codebase on specific coding styles using Clang Format for C++ and a Python code-formatter (such as Black), but that is a work-in-progress and _should not_ be applied to existing otherwise-untouched code.
 

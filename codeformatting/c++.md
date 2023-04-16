@@ -1,12 +1,9 @@
 ---
-title: C++ Code Code Formatting Guidelines
-description:
-  Guidelines for code formatting in Python
 layout: default
 ---
 
-# {{page.title}}
+# C++ Code Code Formatting Guidelines
 
-{{page.description}}
+Guidelines for code formatting in Python
 
 Content goes here

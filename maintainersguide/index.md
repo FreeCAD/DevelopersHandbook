@@ -1,13 +1,11 @@
 ---
-title: Maintainers Guide
-description:
-  Guidelines for Maintainers regarding code review and merge procedures.
 layout: default
 ---
 
-# {{page.title}}
+# Maintainers Guide
 
-{{page.description}}
+Guidelines for Maintainers regarding code review and merge procedures.
+
 
 ## The role of a Maintainer
 
