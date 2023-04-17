@@ -11,7 +11,7 @@ In most cases, any user-visible text in FreeCAD should be made translatable. Exc
 3. Names of Python commands, etc.
 
 Some general guidelines when constructing strings for translation:
-* Not all languages use the same word order, so it's best to write complete sentences (and sometimes complete paragraphs), using the `Qtring::args()` function, or the Python `format()` function to do replacements where necessary.
+* Not all languages use the same word order, so it's best to write complete sentences (and sometimes complete paragraphs), using the `QString::args()` function, or the Python `format()` function to do replacements where necessary.
 * The script that extracts translatable strings from Python does not currently (as of Qt 6.4) support Python string concatenation, so to follow the above guideline you *must* write your translatable string on a single line of code.
 * The NOOP-versions of the Qt translation functions extract the string for translation purposes, but *do not* replace the string in place with its translated equivalent. They should generally only be used in classes derived from Gui::Command for things like the menu entry and tooltip. The Command class handles actually loading the translated string.
 * In a non-QObject-derived class, use `Q_DECLARE_TR_FUNCTIONS(MyClass)` to give your class access to the `tr()` function. See also [the Qt documentation](https://doc.qt.io/qt-5/i18n-source-translation.html).
