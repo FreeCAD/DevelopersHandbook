@@ -19,8 +19,9 @@ There are two ways of updating preferences:
     
 Preference values are retrieved (and sometimes set) using functions from [Base/Parameter.cpp](https://github.com/FreeCAD/FreeCAD/blob/master/src/Base/Parameter.cpp).
 
-
-
+Good examples of retrieving parameters can be found in:
+* Python: [get_param()](https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/Draft/draftutils/utils.py) in /Mod/Draft/draftutils/util.py
+* C++: [various methods](https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/TechDraw/App/Preferences.cpp) in /Mod/TechDraw/App/Preferences.cpp
 
 ## See also
 * [Preference Editor wiki entry](https://wiki.freecad.org/Preferences_Editor)
