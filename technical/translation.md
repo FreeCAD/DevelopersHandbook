@@ -16,6 +16,67 @@ Some general guidelines when constructing strings for translation:
 * The NOOP-versions of the Qt translation functions extract the string for translation purposes, but *do not* replace the string in place with its translated equivalent. They should generally only be used in classes derived from Gui::Command for things like the menu entry and tooltip. The Command class handles actually loading the translated string.
 * In a non-QObject-derived class, use `Q_DECLARE_TR_FUNCTIONS(MyClass)` to give your class access to the `tr()` function. See also [the Qt documentation](https://doc.qt.io/qt-5/i18n-source-translation.html).
 
+# Qt Translation Functions
+
+## C++
+
+The main translation function for C++ code is `tr()`, automatically defined in any class derived from `QObject`. It automatically sets the "context" of the translation to the name of the class, providing disambiguation between the same string in different parts of FreeCAD, where the meaning might be different. It generates a `QString` out of a string literal:
+```
+void SpecialWidget::DoThings()
+{
+    this->labelThing.setText(tr("This will get translated")); // Context is "SpecialWidget"
+}
+```
+
+If your class is not derived from `QObject`, include the Q_DECLARE_TR_FUNCTIONS macro when defining your class to gain the `tr()` function:
+```
+#include <QCoreApplication>
+
+class NotAWidget
+{
+    Q_DECLARE_TR_FUNCTIONS(NotAWidget);
+    
+public:
+    NotAWidget();
+};
+```
+
+Technically `tr()` can take an additional string: a "comment" that is displayed to translators, but is not itself translated. This is rarely used.
+
+To do string replacement use `QString::arg()`, for example:
+```
+label.setText(tr("Item %1 of %2 confabulated. Please wait...").arg(i).arg(total));
+```
+The string "Item %1 of %2 confabulated. Please wait..." will be presented to translators, but CrowdIn will prevent them from removing the placeholders accidentally.
+
+Note that in many places in the FreeCAD source code you will see uses of `QT_TR_NOOP` - this is *only* used in cases where the string is later passed through a separate call to `tr()`. If you aren't sure, check with a Maintainer, and when in doubt, `tr()` is probably what you need.
+
+## Python
+
+In your Python code, import FreeCAD, then create a function called `translate` with the following code:
+```
+translate = FreeCAD.Qt.translate
+```
+It then gets used similarly to `tr()` in C++, but with a manually-specified context:
+```
+print(translate("MyMod", "This will get translated"))
+```
+Note that "translate" is not a true function: it is really a tag that the lupdate utility uses to identify strings for translation. You *cannot* rename it, or use it with non-literal strings, etc. You also cannot use f-strings, or Python string concatenation:
+```
+print(translate(modNameInAVariable, someOtherVariable)) # NO!
+print(translate("MyMod", f"This won't {work}")) # NO!
+print(translate("MyMod", "This" " also " "won't work")) # NO!
+```
+To do argument replacement use the `format` function of Python's string class:
+```
+print(translate("MyMod", "There are {} widgets present, out of {} total").format(present, total))
+```
+(Note that the string sent to translators is "There are {} widgets present, out of {} total" -- the format function is called on the string that is *returned* from the translate function).
+
+## UI Files
+
+For the most part, all strings in UI files are automatically subject to translation. In some circumstances you may want to *disable* that translation. Using Qt Designer, uncheck the "translatable" checkbox on the widget that you want to disable translation for. 
+
 ## Translating plurals
 
 Many languages have complex pluralization rules. To support this, you can write strings that are designed for pluralization, including in English, by specifying a parameter that indicates how many of a thing there are. The translation system will dynamically select the correct translation (assuming translators wrote one), even for English. For example
