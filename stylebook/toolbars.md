@@ -3,9 +3,6 @@ layout: default
 ---
 
 
-## Subpages
-[Glossary](./glossary.md)  [Navigation](./navigation.md)  [Selection](./selection.md)  [Toolbars](toolbars.md)
-
 
 
 ### Toolbars

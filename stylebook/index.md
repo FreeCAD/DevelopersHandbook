@@ -16,7 +16,7 @@ Note: The stylebook is a catalog of _guidelines_.  These are not hard laws to be
 
 ## Subpages
 [Glossary](./glossary.md)  [Navigation](./navigation.md)  [Selection](./selection.md)  [Toolbars](toolbars.md)
-
+[Task Panel](./taskpanel.md)
 
 
 ## Parts of the UI
