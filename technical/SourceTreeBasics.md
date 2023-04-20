@@ -7,8 +7,6 @@ mermaid: true
 
 A picture of the most commonly encountered branches of the tree.
 
-{{page.mermaid}}
-
 The full FreeCAD source tree has many other branches, but most Contributors will
 only need to deal with these:
 
