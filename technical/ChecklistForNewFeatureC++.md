@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Checklist for adding a new feature to an existing workbench in C++
 
 This checklist is intended as an aid to contributors.

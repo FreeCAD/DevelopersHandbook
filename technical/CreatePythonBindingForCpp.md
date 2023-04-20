@@ -1,4 +1,10 @@
-# Background
+---
+layout: default
+---
+
+# Create a Python Binding for C++
+
+## Background
 
 It becomes necessary at times to expand the FreeCAD API further by exposing functions that are available in the source code in c++ to the python. This process is generally referred to as creating a binding.
 
@@ -18,7 +24,7 @@ The XML file YourClassPy.xml provides information about the functions and attrib
 
 For this example, we will look at the wrapper for the Base::Axis C++ class. The XML description file begins with:
 
-```XML
+```xml
 <GenerateModel xmlns:xsi##"http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation##"generateMetaModel_Module.xsd">
     <PythonExport
         Father##"PyObjectBase"
@@ -42,7 +48,7 @@ For this example, we will look at the wrapper for the Base::Axis C++ class. The 
 
 Following this preamble, a list of methods and attributes is given. The format of a method is:
 
-```XML
+```xml
 <Methode Name##"move">
     <Documentation>
         <UserDocu>
@@ -55,7 +61,7 @@ Following this preamble, a list of methods and attributes is given. The format o
 
 The format of an attribute is:
 
-```XML
+```xml
 <Attribute Name##"Direction" ReadOnly##"false">
     <Documentation>
         <UserDocu>Direction vector of the Axis</UserDocu>
@@ -66,24 +72,25 @@ The format of an attribute is:
 
 For an attribute, if "ReadOnly" is false, you will provide both a getter and a setter function. If it is true, only a getter is allowed. In this case we will be required to provide two functions in the implementation C++ file:
 
-```C++
+```cpp
 Py::Object AxisPy::getDirection(void) const
+````
 
 and:
 
+```cpp
 void AxisPy::setDirection(Py::Object arg)
 ```
 
+## Implementation C++ File
 
-## Implementation Cplusplus File
-
-The implementation C++ file YourClassPyImp.cpp provides the "glue" that connects the C++ and Python structures together, effectively translating from one language to the other. The FreeCAD C++-to-Python system provides a number of C++ classes that map to their corresponding Python type. The most fundamental of these is the incode|Py::Object class -- rarely created directly, this class provides the base of the inheritance tree, and is used as the return type for any function that is returning Python data.
+The implementation C++ file `YourClassPyImp.cpp` provides the "glue" that connects the C++ and Python structures together, effectively translating from one language to the other. The FreeCAD C++-to-Python system provides a number of C++ classes that map to their corresponding Python type. The most fundamental of these is the incode `Py::Object` class - rarely created directly, this class provides the base of the inheritance tree, and is used as the return type for any function that is returning Python data.
 
 ### Include Files
 
 Your C++ implementation file will include the following files:
 
-```C++
+```cpp
  #include "PreCompiled.h"
 
  #include "YourClass.h"
@@ -99,7 +106,7 @@ Of course, you may include whatever other C++ headers your code requires to func
 
 Your C++ implementation must contain the definition of the PyInit function: for example, for the Axis class wrapper, this is
 
-```C++
+```cpp
 int AxisPy::PyInit(PyObject* args, PyObject* /*kwd*/)
 
 //Within this function you will most likely need to parse incoming arguments to the constructor: the most important function for this purpose is the Python-provided incode|PyArg_ParseTuple. It takes in the 
@@ -122,7 +129,6 @@ For a complete list of format specifiers see [https://docs.python.org/3/c-api/ar
 * PyArg_ParseTupleAndKeywords (PyObject *, PyObject *, const char *, char **, ...);
 * PyArg_VaParse (PyObject *, const char *, va_list);
 * PyArg_VaParseTupleAndKeywords (PyObject *, PyObject *, const char *, char **, va_list);
-
 
 ## Another Explanation
 
@@ -147,7 +153,6 @@ There is a convention for return values from our C++/Python connections:
 * xxxxxPyImp routines return a PyObject* pointer (see TopoShapePyImp.cpp) 
 * AppmyModulePy.cpp routines return a Py::Object (see https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/Part/App/AppPartPy.cpp and FreeCAD/src/Mod/Part/AppPartPy.cpp.
 
-
 ## See also
 
 * [https://forum.freecadweb.org/viewtopic.php?p##314796#p314617]
@@ -155,6 +160,3 @@ There is a convention for return values from our C++/Python connections:
 * [https://forum.freecadweb.org/viewtopic.php?f##10&t##70750] Another forum thread
 * (./Workbench creation.md)
 * [https://github.com/FreeCAD/FreeCAD/commit/20b86e55b8dd1873f4c19e036d047528c9ff7f4e] Commit 20b86e5, exposing OCC's precision methods to Python
-
-
-
