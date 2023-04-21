@@ -13,11 +13,56 @@ In most cases, any user-visible text in FreeCAD should be made translatable. Exc
 
 Some general guidelines when constructing strings for translation:
 * Not all languages use the same word order, so it's best to write complete sentences (and sometimes complete paragraphs), using the `QString::args()` function, or the Python `format()` function to do replacements where necessary.
-* The script that extracts translatable strings from Python does not currently (as of Qt 6.4) support Python string concatenation, so to follow the above guideline you *must* write your translatable string on a single line of code.
-* The NOOP-versions of the Qt translation functions extract the string for translation purposes, but *do not* replace the string in place with its translated equivalent. They should generally only be used in classes derived from Gui::Command for things like the menu entry and tooltip. The Command class handles actually loading the translated string.
+* The NOOP-versions of the Qt translation functions extract the string for translation purposes, but *do not* replace the string in place with its translated equivalent. A later call to `tr()` or `translate()` is always required in these cases. See more detail below.
 * In a non-QObject-derived class, use `Q_DECLARE_TR_FUNCTIONS(MyClass)` to give your class access to the `tr()` function. See also [the Qt documentation](https://doc.qt.io/qt-5/i18n-source-translation.html).
 
-## Qt Translation Functions
+## Qt Translation Process
+
+Qt translation takes place in four steps (only two of which developers need concern themselves with, steps 1 and 4 below):
+
+1. A source-code pre-processor called `lupdate` examines the source code, looking for specific strings that mark string literals to be translated. This is **not** a compiler or interpreter, and does not understand all of the details of C++ or Python code. Its only purpose is to generate a `*.ts` file that can be uploaded to our translation platform, CrowdIn. That upload is not currently automated, and must be done manually by a CrowdIn Manager. See [https://crowdin.com/project/freecad](https://crowdin.com/project/freecad).
+2. Translators on CrowdIn are presented with these strings (plus some metadata about where they are in the code, and optional comments that developers can leave for them). For each language, translators work to develop appropriate translated strings.
+3. A CrowdIn Manager exports those strings, processes them to `*.qm` files, and commits them to the FreeCAD repository.
+4. When FreeCAD is compiled, those files become part of FreeCAD's Qt resources and are available to the translation functions at runtime. The translation functions `tr()` and `translate()` do the actual work of looking up the string in the translation table and extracting the correct user-visible translation.
+
+### lupdate extraction
+
+The critical first step above is the use of `lupdate` to extract strings marked for translation. From a developer point of view, the most critical thing to
+note is that *only string literals are extracted*. A variable containing a string is **not**. There are many different functions that can be used to mark strings
+for extraction: the four most important are:
+* `tr(string)` All QObject-derived classes have access to this function. It serves *both* to mark a string for extraction (if a string literal is provided) *and* to do the actual translation lookup at runtime. In classes *not* derived from `QObject`, the `Q_DECLARE_TR_FUNCTIONS` macro can be used to define this function in your class.
+* `translate(context, string)` It's sometimes necessary to manually specify the "context" of a string. Otherwise this does the same thing that `tr()` does.
+* `QT_TR_NOOP(string)` This marks a string literal for extraction, *but does not translate it in place*. In compiled/interpreted code, this is a literal no-op, it does nothing and is completely ignored. A later call to one of the above translation functions must do the actual user-visible translation.
+* `QT_TRANSLATE_NOOP(context, string)` The same as `QT_TR_NOOP` but with manual specification of context.
+
+The most basic usage is:
+```cpp
+QPushButton myButton(tr("Do great things"));
+```
+In this case, `tr()` functions both as a marker for the `lupdate` tool to extract the string literal "Do great things", as well as an actual function call at
+runtime to look up the appropriate translated string. The string's context is the name of the class that this code is exectuded from, provided automatically
+by the `tr()` function.
+
+In some cases it's necessary or useful to split up the string extraction and the translation calls, for example:
+```cpp
+// The following vector ALWAYS contains the English language strings, regardless of the current
+// language setting. The macro just serves as a marker for lupdate.
+std::vector<std::string> optionsToDisplay {
+    QT_TRANSLATE_NOOP("WidgetOptionDisplay", "Long bar"),
+    QT_TRANSLATE_NOOP("WidgetOptionDisplay", "Short bar"),
+    QT_TRANSLATE_NOOP("WidgetOptionDisplay", "Dots"),
+    QT_TRANSLATE_NOOP("WidgetOptionDisplay", "Dashes")
+};
+
+// Then later in your code:
+QComboBox *optionCombo = getOptionCombo();
+for (const auto &option : optionsToDisplay) {
+    // option is in English: ask the translate function to look it up in the database
+    optionCombo->addItem(translate("WidgetOptionDisplay", option.c_str()));
+}
+```
+In that case, the `translate()` function call cannot provide any information to `lupdate` because it is not being called on a string literal. Therefore
+a separate mechanism must be used to provide the string to translators, and `translate()` only serves to do the final database lookup at runtime.
 
 ### C++
 
@@ -70,12 +115,11 @@ It then gets used similarly to `tr()` in C++, but with a manually-specified cont
 print(translate("MyMod", "This will get translated"))
 ```
 
-Note that "translate" is not a true function: it is really a tag that the lupdate utility uses to identify strings for translation. You *cannot* rename it, or use it with non-literal strings, etc. You also cannot use f-strings, or Python string concatenation:
+Note that "translate" is not a true function: it is really a tag that the lupdate utility uses to identify strings for translation. You *cannot* rename it, or use it with non-literal strings, etc. You also cannot use f-strings:
 
 ```python
 print(translate(modNameInAVariable, someOtherVariable)) # NO!
 print(translate("MyMod", f"This won't {work}")) # NO!
-print(translate("MyMod", "This" " also " "won't work")) # NO!
 ```
 To do argument replacement use the `format` function of Python's string class:
 
@@ -128,7 +172,7 @@ To determine whether the string is being replaced correctly, you can create a du
 
 For testing purposes, choose a language you are familiar with (or at least, can navigate well enough to deactivate when you are done testing!), and copy the file generated by lupdate into the appropriate filename. Locate the string you want to test:
 
-```ts
+```xml
     <message>
         <location filename="../CommandDoc.cpp" line="1649"/>
         <source>Activates or Deactivates the selected object&apos;s edit mode</source>
@@ -138,7 +182,7 @@ For testing purposes, choose a language you are familiar with (or at least, can 
 
 Edit this to eliminate the "unfinished" and to add a translation, e.g.
 
-```ts
+```xml
     <message>
       <location filename="../CommandDoc.cpp" line="1649"/>
       <source>Activates or Deactivates the selected object's edit mode</source>
