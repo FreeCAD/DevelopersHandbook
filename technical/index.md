@@ -1,12 +1,13 @@
 ---
 layout: default
 ---
+
 # Technical
 
 Technical information of interest to Contributors.
 
-
 ## The Basics
+
 - [Developer's Glossary](./developerglossary.md)
 - [Source Tree Basics](./SourceTreeBasics.md)
 - [The Application Module](./TheApplicationModule.md)
@@ -19,8 +20,8 @@ Technical information of interest to Contributors.
     - [Coin3d](https://www.coin3d.org/): a [scenegraph](https://wiki.freecad.org/Scenegraph) manager based on OpenInventor that handles drawing in the 3d window.
     - [Pivy](https://wiki.freecad.org/Pivy): a Python binding for Coin3d
 
-
 ## Modifying FreeCAD
+
 - Contributing to FreeCAD
     - The process for submitting changes to FreeCAD is described in the [CONTRIBUTING.md](https://github.com/FreeCAD/FreeCAD/blob/master/CONTRIBUTING.md)
     file in the root of the source tree.
@@ -30,11 +31,8 @@ Technical information of interest to Contributors.
 - [Create a Python Binding for C++ Class](./CreatePythonBindingForCpp.md)
 - [Checklist for Adding a Feature to a Workbench in C++](./ChecklistForNewFeatureC++.md)
 
+## See Also
 
-
-
-
-### See Also
 - [Wiki Developer Hub](https://wiki.freecad.org/Developer_hub)
 - [Compiling](https://wiki.freecad.org/Developer_hub#Compiling_FreeCAD)
 - [Useful Python Modules](https://wiki.freecad.org/Extra_python_modules)
