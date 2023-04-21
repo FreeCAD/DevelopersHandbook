@@ -8,10 +8,11 @@ The task panel appears in the Tasks tab of the combo view, one of the important 
 
 A task panel is opened when a user uses a tool that requires additional user input to complete.  A task may remain open for a long time while the user does significant work.  ie Padding a sketch.
 
+Only a single task can be open at a time.
+
 ![Task Panel](./taskpanel.png)
 
 # Guidelines
-
 
 ## 1. Transactions
 
@@ -25,9 +26,9 @@ While the contents of the task panel can vary widely based on the specific detai
 
 While the user is adjusting the settings and properties reflected in the panel, the result is updated in realtime in the 3D window allowing the user to preview the result.  The toolbar at the top of the panel will have an 'ok' button to confirm the settings and exit the task.  A 'cancel' button will dismiss the task, cancel the transaction, and revert the document to the state it was in prior to initiating the task.
 
-### 2.2 Apply Button
+### 2.2 Apply to Update
 
-Some task require considerable computational resources to complete.  In this case,  live preview isn't practical.  For these cases, a third button is available at the top.  'Apply' will initiate the applicaton of the settings and update the model.  The task will remain open and the user will still have the option to accept or reject the result.
+Some task require considerable computational resources to complete.  In this case,  live preview isn't practical and the computation is intended to be done once when all settings are complete.  For these cases, a third button is available at the top.  'Apply' (or 'Ok') will initiate the computation of the settings and update the model.  If 'Apply' is used, the model should be updated for preview and the task will remain open so the user will still have the option to further refine the settings or cancel the entire task.
 
 ## 3. Create and Edit Panels
 
@@ -60,3 +61,14 @@ Input fields should be placed in the task panel in an order that maps to typical
 The cursor should move from field to field when the user presses the tab key. The tab order should follow the visual order on in the panel from top left to bottom right.
 
 
+## 6  Use of the Escape key
+
+The correct behavior of the system when the user presses the escape key has some subtle considerations.
+
+### 6.1 Escaping from a task
+
+When the user has started a task, pressing Esc should behave the same as pressing the 'Cancel' button. It should dismisse the task and abort the current transaction. The document should be in the same state that it was in prior to initiating the task.
+
+### 6.2 Escaping from a modal tool within a task.
+
+Some tasks allow the user to conduct extensive work with many tools all within the context of the parent task.  For example, a user can edit a sketch.  While the sketch is open, the user can use many different tools.  Tools for adding geometry and applying constraints are modal, allowing the user to repeat the action many times before exiting the tool (without exiting the sketch).  While in this mode, the escape key should exit the mode but not abort the prior work.
