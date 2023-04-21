@@ -5,7 +5,7 @@ layout: default
 
 "Some terms that a developer may run across."
 
-Note that there may be subtle differences in how some terms are used by deveopers vs how they are used by users.
+Note that there may be subtle differences in how some terms are used by developers vs how they are used by users.
 
 
 * Binding: the mechanism for linking C++ functionality to and from Python.
