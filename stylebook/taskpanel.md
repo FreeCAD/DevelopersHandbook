@@ -72,3 +72,17 @@ When the user has started a task, pressing Esc should behave the same as pressin
 ### 6.2 Escaping from a modal tool within a task.
 
 Some tasks allow the user to conduct extensive work with many tools all within the context of the parent task.  For example, a user can edit a sketch.  While the sketch is open, the user can use many different tools.  Tools for adding geometry and applying constraints are modal, allowing the user to repeat the action many times before exiting the tool (without exiting the sketch).  While in this mode, the escape key should exit the mode but not abort the prior work.
+
+## 7 Field Labels
+
+Field labels should be placed as close as possible to the field they describe, either immediately to the left or above.  Placement to the left is preferred unless the input field is particularly wide and left placement would make the entire panel stretch or truncate the field contents.
+
+Labels should begin with a capital letter and should not include a colon.
+
+## 8 Tool Tips
+
+Tooltips should always be configured for translation.  
+Longer tool tips with complete sentences should use regular punctuation.  Shorter tool tips with a descriptive clause should not contain a closing period.
+
+e.g  "If left empty, the default will be used."
+     "Horizontal Feed Rate"
