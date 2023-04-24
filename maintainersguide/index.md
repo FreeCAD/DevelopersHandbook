@@ -7,15 +7,21 @@ layout: default
 Guidelines for Maintainers regarding code review and merge procedures.
 
 
-## The role of a Maintainer
+## The Role of a Maintainer
 
-Maintainers have two primary responsibilities:
- - To participate in Issue discussions to help guide the resolution of that Issue, including refining, splitting, closing duplicates, and ensuring that all discussion participants are professional, inclusive, and working towards a common goal of improving FreeCAD.
- - Once an Issue has been identified and agreed upon and a PR has been submitted to resolve it, Maintainers review the code itself to identify major defects and conflicts with FreeCAD's coding guidelines. If the PR is by a new Contributor, Maintainers work to onboard that Contributor, ensuring they feel welcome, and recieve the mentorship they need to succeed in this project.
+The maintainers group has the ultimate responsibility for determining which contributions are accepted into the FreeCAD source. To perform their duty, maintainers have elevated permission.   Maintainers use this authority within the scope and process outlined by the [CONTRIBUTING.md](https://github.com/FreeCAD/FreeCAD/blob/master/CONTRIBUTING.md) document.
 
 ## CONTRIBUTING.md
 
-The FreeCAD contribution process is governed by the [CONTRIBUTING.md](https://github.com/FreeCAD/FreeCAD/blob/master/CONTRIBUTING.md) document. In particular, that document describes the expected process to go from an Issue to a merged piece of code. All Maintainers should be familiar with this document, and work to follow the process that it outlines. In particular, once an Issue has an agreed-upon solution path, then a PR that conforms to that path should be merged without further debate about the merits of the solution: code review focuses solely on whether the PR does indeed follow the agreed-upon path, and on identifying major defects in the code. Minor defects may be included in the review process, but should not prevent the PR from being merged in a timely manner.
+This document describes the expected process to go from an Issue to a merged piece of code. All Maintainers should be familiar with this document, and work to follow the process that it outlines. In particular, once an Issue has an agreed-upon solution path, then a PR that conforms to that path should be merged without further debate about the merits of the solution: code review focuses solely on whether the PR does indeed follow the agreed-upon path, and on identifying major defects in the code. Minor defects may be included in the review process, but should not prevent the PR from being merged in a timely manner.
+
+## Maintainer Duties
+
+Individual maintainers have two primary duties:
+ - They participate in Issue discussions to help clarify the Issue and guide the discussion towards a viable solution path. This includes refining, splitting, closing duplicates, and ensuring that all discussion participants are professional, inclusive, and working towards a common goal of improving FreeCAD.
+ - Once an Issue has been identified and agreed upon and a PR has been submitted to resolve it, Maintainers participate in the PR discussion to move it towards merge as quickly as possible.  This includes reviewing the code to identify major defects and conflicts with FreeCAD's coding guidelines. Maintainers also work to further the conversation around the PR by clarifying open questions, involving others, and drawing attention to critical concerns. If the PR is by a new Contributor, Maintainers work to onboard that Contributor, ensuring they understand the pocess, feel welcome, and recieve the mentorship they need to succeed.
+
+All open PRs should have at least one maintainer identified in the 'Assignees' field.  PRs should not be assigned to a maintainer. Instead, maintainers should self-assign PRs. If a PR does not have an assigned maintainer in a reasonable time, the author may comment and ask for a maintainer.
 
 ## Code Review Process
 
@@ -60,4 +66,4 @@ When possible Maintainers should use the web-based PR merge system on GitHub to 
 
 Under almost no circumstances should a Maintainer revert something that they did not themselves merge. If a serious issue is identified with a commit, the committing Maintainer and original Contributor should be notified by either commenting on the original Pull Request, commenting on the commits themselves, or (preferably) by creating a new GitHub Issue and mentioning them in it. It is expected that despite our best efforts, occasionally the master branch will fail to compile on some platforms, that serious unintended feature regressions will occur, etc. None of these things constitute a reason to revert the commit without discussion.
 
-In cases where the committing Maintainer and/or original Contributor cannot be reached in a timely manner, and the bug results in the risk of serious data loss, the commit may be reverted if several Maintainers discuss it and determine that is the best course of action. Under no circumstances should a commit be reverted unilaterally.
+In cases where the committing Maintainer and/or original Contributor cannot be reached in a timely manner, and the bug results in the risk of serious data loss, the commit may be reverted if several Maintainers discuss it and determine that is the best course of action. Under no circumstances should a commit or PR be reverted unilaterally.
