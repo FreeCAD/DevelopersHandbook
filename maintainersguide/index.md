@@ -34,6 +34,14 @@ Anyone who wishes to participate in the code review process may do so, but all p
 6. Are the commits well-structured, with clear commit messages following the guidelines outlined in CONTRIBUTING.md?
 7. Are there any copyright issues that must be addressed? (e.g. use of logos or graphics from other organizations, code copied from other projects, etc.) Any copyrighted content (logos, graphics, code, etc.) included in FreeCAD must have a compatible license, and should have clear permission for us to use it. Of course, it must also be used in a way that's beneficial to FreeCAD's users.
 
+### When is it "good enough"?
+
+The most difficult (and divisive) judgement call a Maintainer must make is, when is imperfect code good enough to merge anyway? In any signficant block of code, it's nearly always possible to identify items that could be improved upon. A Maintainer must decide when it is appropriate to merge code, even if they feel that improvements can be made to it. The judgement rests on several criteria:
+1. Does the PR fix an important bug? If it does, then getting the fix into the codebase quickly *may* take precedence over any other factor.
+2. Is the code blatantly bad by modern software development standards? For example, in C++, does the code use C-style loops, raw pointers, unmanaged memory allocations, etc.? In Python does it eschew PEP8 coding conventions, use ranges in for loops for simple array access, or fail to handle UTF-8 string conversions? If so, the "code smell" may be so bad that it should not be included, even if it does solve some problem. The infinite-horizon maintainability of the codebase is more important that the immediate fix at hand.
+3. Is the developer new to FreeCAD? If so, Maintainers should be particularly aware that Open Source development is a new experience for those just joining us, and the encouragement of having a PR merged with suggestions for future improvements may be worth the short-term hassle of managing a multi-PR workflow.
+4. Is the developer combative, or resistant to even simple change suggestions? Community-building is a critically important part of Open Source software development, and occasionally that means actively resisting destructive contributors.
+
 ### Review of code style/formatting
 
 FreeCAD is in a transitional period: eventually we expect all code to be formatted by automated code styling tools via a pre-commit hook. However, this transition is not yet complete. Until it is, as a best practice developers should work to eliminate any code formatting changes except in code they are actually changing (that is, they should not apply automatic code formatting across an entire file where they are only changing a few lines). Maintainers should err on the side of forgiveness in the event of inadvertent code format changes: if it's straightforward to remove the superfluous changes then it should be done, but a PR should not be rejected for simple formatting issues.
