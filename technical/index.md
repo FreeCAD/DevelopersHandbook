@@ -31,6 +31,10 @@ Technical information of interest to Contributors.
 - [Create a Python Binding for C++ Class](./CreatePythonBindingForCpp.md)
 - [Checklist for Adding a Feature to a Workbench in C++](./ChecklistForNewFeatureC++.md)
 
+## Release Management
+
+- [Overview](./ReleaseProcess.md)
+
 ## See Also
 
 - [Wiki Developer Hub](https://wiki.freecad.org/Developer_hub)
