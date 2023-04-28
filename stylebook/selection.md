@@ -22,3 +22,10 @@ Reference: [FreeCAD Wiki - Selection Methods](https://wiki.freecad.org/selection
 1. Selection gates and observers are powerful tools for adjusting the affordances of the GUI and providing signals. They must be used with care because they can adversely affect the performance of the GUI. 
 2. If the user is asked to select multiple features, he should be able to select by clicking them, and unselect them as well by clicking on selected features.
 
+
+
+### Items to address
+
+These items need to be written about
+- If the selection order is relevant for the outcome of a command, does the 'main' object come first or last?
+- Selection and deselection of geometry references: generic, for solids and shells, for faces, for edges, for points, for a limited set of these. Should be unified, might need variants for selection of a single reference or multiple.

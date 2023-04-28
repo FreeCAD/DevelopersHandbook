@@ -86,3 +86,22 @@ Longer tool tips with complete sentences should use regular punctuation.  Shorte
 
 e.g  "If left empty, the default will be used."
      "Horizontal Feed Rate"
+     
+     
+## Thing to address
+
+These things need to be written about 
+
+- selection and storage of paths to fonts and other external files
+
+- multi step tasks, do we need "previous" and "next" buttons? If yes we should have a generic one to be reused by WBs
+- disabled and disappearing gui elements, when to use which? What's the expected behavior in the property panel for the properties related to these elements?
+- what size policies for what gui elements are preferred?
+- how to deal with dense dialogs? what compromise do we want regarding vertical vs horizontal space (see the PD Hole dialog)
+- when to separate stuff into different task boxes and when to use the same?
+- when to use toolbutton menus in the task panel? See sketcher's task panel, maybe we want to borrow this idea in other places?
+- Creation of objects when there is an active container, when do we want to create outside and when inside?
+
+
+- ok, apply, cancel and close buttons, when to use which and how? See how Part WB uses the Apply button, very odd.
+- This one has been touched on in section 2.  Please review
