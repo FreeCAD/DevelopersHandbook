@@ -34,6 +34,8 @@ Technical information of interest to Contributors.
 ## Release Management
 
 - [Overview](./ReleaseProcess.md)
+    - [Major Releases](./MajorRelease.md)
+    - [Minor Releases](./MinorRelease.md)
 
 ## See Also
 
