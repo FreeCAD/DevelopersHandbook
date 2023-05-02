@@ -35,7 +35,10 @@ FreeCAD depends on many other open source projects to provide the basic foundati
 3. Set up `pre-commit` (our automatic code-formatter and checker):
  
 
-    - `pip install pre-commit` or `apt install pre-commit` on Debian/Ubuntu
+    - Install `pre-commit`:
+      - `apt install pre-commit` (Debian/Ubuntu)
+      - `dnf install pre-commit` (Fedora)
+      - `pip install pre-commit`
     - `cd FreeCAD-src`
     - `pre-commit install`
   
