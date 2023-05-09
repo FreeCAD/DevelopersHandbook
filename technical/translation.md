@@ -8,8 +8,7 @@ How to write code with strings that should be translated.
 
 In most cases, any user-visible text in FreeCAD should be made translatable. Exceptions to this general rule are:
 1. Text that only appears as log-level messages in the Report View
-2. Names of Workbenches (e.g. "Start", "Part", "Path")
-3. Names of Python commands, etc.
+2. Names of Python commands, etc.
 
 Some general guidelines when constructing strings for translation:
 * Not all languages use the same word order, so it's best to write complete sentences (and sometimes complete paragraphs), using the `QString::args()` function, or the Python `format()` function to do replacements where necessary.
