@@ -8,12 +8,35 @@ FreeCAD uses two different automated testing mechanisms, depending on the langua
 
 ## References
 
-Some good references about automated testing:
+Some good references about automated testing...
+
+Videos:
 * [Back to Basics: C++ Testing - Amir Kirsh - CppCon 2022 - YouTube.](https://www.youtube.com/watch?v=SAM4rWaIvUQ)
 * [Practical Advice for Maintaining and Migrating Working Code - Brian Ruth - CppCon 2021 - YouTube.](https://www.youtube.com/watch?v=CktRuMALe2A)
 * [The Science of Unit Tests - Dave Steffen - CppCon 2020 - YouTube.](https://www.youtube.com/watch?v=FjwayiHNI1w)
+
+Books:
+* [Kent Beck. Test Driven Development by Example. ISBN 9780321146533](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530)
 * [Michael Feathers. Working Effectively with Legacy Code. ISBN 0131177052.](https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052)
 * [Jeff Langr. Modern C++ Programming with Test-Driven Development: Code Better, Sleep Better. ISBN 1937785483.](https://www.amazon.com/Modern-Programming-Test-Driven-Development-Better/dp/1937785483/)
+
+## Terminology
+
+Test writers have a few terms that are often used, but whose precise definitions aren't well-agreed-upon. The internet is full of arguments about what a "unit" is in
+"unit testing" for example. To Kent Beck, author of Test Driven Development (the seminal book on the subject), the "unit" is *the test itself*. In his concept, every test must be wholly isolated from
+every other test. They must be able to be run singly, or as part of an entire suite. While that advice has remained, in later years various TDD advocates have suggested that the 
+function, method, or class under test is the "unit". Consider that if you don't feel like getting into a flame war on the internet, just don't use the word "unit" at all!
+
+A "Mock" is a replacement class or method that is simpler to construct, easier to reason about, contains code for inspection of who called it with what arguments, and ideally is faster than the class or method it replaces. 
+For example, writing tests of code that normally downloads files from an internet location, a Mock class will typically be implemented to fake those returns results so the tests don't require a network connection 
+(and run more quickly and reliably). In Python most test writers use the `unittest.Mock.MagicMock` class to automatically generated any needed mock on the fly. In Google Test you can use the 
+[`MOCK_METHOD`](https://google.github.io/googletest/reference/mocking.html) macro to achieve some of the same effect.
+
+A "Fake" is similar to a mock, but typically doesn't bother with the introspection code, it is there simply to replace the existing class, but the test is not interested in how it is used. Rarely used in Python because
+of the ease of generating a Mock.
+
+A "Stub" is a method that simply provides a canned answer for a given input. Sometimes instrumented, but often simply used to replace a more complex function with a simple, predictable response. For example, a random-number
+generator may be replaced with a function that simply returns "42" every time so that the results are deterministic (and therefore more easily testable).
 
 ## Python Testing
 
