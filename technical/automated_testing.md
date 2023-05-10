@@ -78,6 +78,18 @@ class TestVersion(unittest.TestCase):
             os.unlink(temp.name)
 ```
 
+If you are developing a FreeCAD module, place the above in a file inside your module, and register your unit test with FreeCAD's Test Workbench by adding this in your Init.py file:
+
+```
+FreeCAD.__unit_test__ += ["my_file"]
+```
+
+Then you can run your tests either from inside FreeCAD, using the Test workbench and running the "Self Test" command, or from the command line by issuing:
+
+```
+FreeCAD -t my_file
+```
+
 ## C++ Testing
 
 In an ideal world, a C++ unit test would be perfectly isolated from any external dependencies, which would be replaced with minimal, instrumented "mock" versions of themselves. However,
