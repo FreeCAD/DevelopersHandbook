@@ -14,6 +14,7 @@ Videos:
 * [Back to Basics: C++ Testing - Amir Kirsh - CppCon 2022 - YouTube.](https://www.youtube.com/watch?v=SAM4rWaIvUQ)
 * [Practical Advice for Maintaining and Migrating Working Code - Brian Ruth - CppCon 2021 - YouTube.](https://www.youtube.com/watch?v=CktRuMALe2A)
 * [The Science of Unit Tests - Dave Steffen - CppCon 2020 - YouTube.](https://www.youtube.com/watch?v=FjwayiHNI1w)
+* [TDD, Where Did It All Go Wrong (Ian Cooper)](https://www.youtube.com/watch?v=EZ05e7EMOLM)
 
 Books:
 * [Kent Beck. Test Driven Development by Example. ISBN 9780321146533](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530)
