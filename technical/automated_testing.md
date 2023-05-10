@@ -105,16 +105,21 @@ of the code (though sometimes that "functionality" is encompassed by multiple fu
 themselves be "under test" it is critical that they be as short, simple, and self-explanatory as possible. A common idiom to use is "Arrange-Act-Assert", which in our test
 framework looks like this:
 ```c++
+// ??? App/AppTests/MappedNamePOSTFIXTEST.cpp ???
+// TEST(ClassName, methodName)
 TEST(MappedName, toConstString)
 {
     // Arrange
+    // create a MappedName instance and a size variable
     Data::MappedName mappedName(Data::MappedName("TEST"), "POSTFIXTEST");
     int size {0};
 
     // Act
+    // invoke the method
     const char* temp = mappedName.toConstString(0, size);
 
     // Assert
+    // compare the actual result to expected results
     EXPECT_EQ(QByteArray(temp, size), QByteArray("TEST"));
     EXPECT_EQ(size, 4);
 }
