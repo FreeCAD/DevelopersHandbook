@@ -196,3 +196,15 @@ Edit this to eliminate the "unfinished" and to add a translation, e.g.
 ```
 
 Next, this file must be converted to a `*.qm` file using the `lrelease` tool (distributed with Qt). Finally, place the generated QM file in the same location as your user.cfg file, in a subdirectory called "translations", then switch FreeCAD to the language you chose to test with. Your translated string should appear.
+
+## Synchronizing Translations with CrowdIn
+
+This section is for CrowdIn administrators and FreeCAD Maintainers. Approximately once per week, FreeCAD's source tree should be synchronized with CrowdIn. This is a multi-step process that may be partially automated in the future. For the time being:
+1. Ensure you have at least Qt 6.4 available on your system, and use the `updatets.py` script in src/Tools to extract the translatable strings from the FreeCAD source code. You do not need to be compiling FreeCAD with this version of Qt, but you must use it to extract the strings, it addresses many longstanding bugs with earlier extractors.
+2. Examine the output from that script to ensure there were no errors that prevented some of the workbenches from being extracted.
+3. If all sections of the code completed appropriately, use the `updatecrowdin.py` in src/Tools with the `update` subcommand to send the new TS files to CrowdIn. You will need a CrowdIn API key in your home directory for this to work: see the comments at the top of that script for details.
+4. Next, using `updatecrowdin.py build` (or manually on the CrowdIn website) trigger a build of the current translation files. This process will take a few minutes. You can check the status with `updatecrowdin.py build-status`, or by visiting the CrowdIn website.
+5. Use `updatecrowdin.py download` to get a new copy of the translations.
+6. Create a new PR branch using git.
+7. Use `updatecrowdin.py apply` to move the TS files into place, and to generate the QM files for the parts of the code where that is not yet part of the build process (the Python workbenches).
+8. Create a PR with the changed files.
