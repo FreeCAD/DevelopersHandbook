@@ -14,6 +14,7 @@ Technical information of interest to Contributors.
 - [The Source Code in More Depth](https://wiki.freecad.org/The_FreeCAD_source_code)
 - [Writing Code for Translation](./translation.md)
 - [Automated Testing](./automated_testing.md)
+- [Dealing with Property Changes](./PropertyChanges.md)
 - The FreeCAD developer's tool set:
     - C++ and Python
     - [Qt](https://www.qt.io/): a cross platform development framework
