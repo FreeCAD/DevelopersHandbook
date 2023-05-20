@@ -134,6 +134,48 @@ print(translate("MyMod", "There are {} widgets present, out of {} total").format
 
 (Note that the string sent to translators is "There are {} widgets present, out of {} total" -- the format function is called on the string that is *returned* from the translate function).
 
+## Special Cases
+
+There are several places in FreeCAD where specific procedures must be followed to ensure translations are correct:
+
+### Preference Pages
+
+Whether using `addPreferencePage` in Python, or `new Gui::PrefPageProducer` in C++, the "Group" of the page must use the NOOP-functions and the `QObject` context.
+
+In Python this is:
+```python
+FreeCADGui.addPreferencePage("somePage.ui", QT_TRANSLATE_NOOP("QObject", "SomeGroupName"))
+```
+and in C++,
+```cpp
+new Gui::PrefPageProducer<SomeClass> (QT_TRANSLATE_NOOP("QObject","SomeGroupName"));
+```
+
+### Exceptions
+
+C++ exceptions that may end up displayed to the user should be put inside a QT_TRANSLATE_NOOP with the `Exception` context, e.g.
+```cpp
+throw MyException(QT_TRANSLATE_NOOP("Exception", "Something bad happened"));
+```
+
+### Commands
+
+When creating a new command, use the following template:
+```cpp
+CmdDoAThing::CmdDoAThing()
+  :Command("MyWorkbench_DoAThing")
+{
+    sAppModule    = "MyWorkbench";
+    sGroup        = "MyWorkbench";
+    sMenuText     = QT_TR_NOOP("Do a thing");
+    sToolTipText  = QT_TR_NOOP("A longer explanation of doing a thing");
+    sWhatsThis    = "MyWorkbench_DoAThing";
+    sStatusTip    = sToolTipText;
+    sPixmap       = "MyWorkbench_DoAThing";
+}
+```
+Note that `sGroup` should not be translated here (you will still find many counterexamples in older code, however).
+
 ## UI Files
 
 For the most part, all strings in UI files are automatically subject to translation. In some circumstances you may want to *disable* that translation. Using Qt Designer, uncheck the "translatable" checkbox on the widget that you want to disable translation for. 
