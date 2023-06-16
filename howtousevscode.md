@@ -11,17 +11,9 @@ ms-vscode.cpptools-extension-pack
 ms-python.python
 ```
 
-Other useful extensions, recommended but not necessary are
-- ```gruntfuggly.todo-tree```: Scans all the files and reports where particular keywords appear. For example `TODO`, `FIXME`, `BUG`...
-
-- ```mhutchie.git-graph```: Helps visualize git commits and branches. 
-
-- ```donjayamanne.githistory```: Adds two buttons to the right-click menu: `git: view file history` and `git: view line history`
-
-
 ## Configure CMake
 
-![](images/configure.gif)
+<video autoplay muted playsinline loop src="images/configure.mp4" type="video/mp4"></video>
 
 First on the bottom left corner, in the status bar, select the build type. Options are:
 - debug
@@ -37,7 +29,7 @@ You will have to do this when you select a new configutation never used before. 
 
 ## First build
 
-![](images/build.gif)
+<video autoplay muted playsinline loop src="images/build.mp4" type="video/mp4"></video>
 
 Press `Ctrl + P` and write `task ` again (don't forget the space!)
 
@@ -49,7 +41,8 @@ Note that if you change configuration in the step above you will have to build a
 
 ## Launching the built executable and debugging
 
-![](images/launch_debug.gif)
+<video autoplay muted playsinline loop src="images/launch_debug.mp4" type="video/mp4"></video>
+
 
 On the left panel go to the debug section and click the little green play button. Alternatively press `F5`. Every time you launch the executable a build is triggered, to ensure all the latest changes you made to the code are compiled in.
 
@@ -72,7 +65,7 @@ To debug please refer to the [documentation](https://code.visualstudio.com/docs/
 
 ## Running tests
 
-![](images/testing.gif)
+<video autoplay muted playsinline loop src="images/testing.mp4" type="video/mp4"></video>
 
 The IDE supports running FreeCAD tests as well. On the left panel go to the testing section and click the play button. A build takes place and then all the tests are run and results reported. 
 
@@ -111,10 +104,16 @@ Read the documentation for more:
 - [code navigaton](https://code.visualstudio.com/docs/editor/editingevolved) 
 - [refactoring](https://code.visualstudio.com/docs/editor/refactoring)
 
-Screenshot of the extensions recommended in the begining:
+Other useful extensions, recommended but not necessary are
+- ```gruntfuggly.todo-tree```: Scans all the files and reports where particular keywords appear. For example `TODO`, `FIXME`, `BUG`...
+
+- ```mhutchie.git-graph```: Helps visualize git commits and branches. 
+
+- ```donjayamanne.githistory```: Adds two buttons to the right-click menu: `git: view file history` and `git: view line history`
+
 
 ![](images/extensions.png)
 
 - On the very left you can see the `Todo-Tree` extension reporting `TODO`s and `FIXME`
 - On the left half you can see the `git graph` extension showing all the commits on different branches. You can click a commit to see exactly what was modified by it.
-- On the right half you can see the `git history` of the DocumentObject.cpp file. 
+- On the right half you can see the `git history` of the DocumentObject.cpp file.  
