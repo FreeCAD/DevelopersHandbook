@@ -49,7 +49,7 @@ On the left panel go to the debug section and click the little green play button
 The first time VSCode will ask to select some options. Just stick to `[default]` (which is the only option) and `FreeCADMain`. Don't worry you won't have to select these again.
 
 After that you should see freecad launching and the debugger attaching to the process. If an error pops up the python debugger failed to attach (there's 30 second timeout).
-Close FreeCAD and try launching it again. If it still fails try increasing the timeout located in the file `.vscode/WaitForPort.py`
+Close FreeCAD and try launching it again. If it still fails try increasing the timeout located in the file `.vscode/scripts/WaitForDebugpy.py`
 
 To debug please refer to the [documentation](https://code.visualstudio.com/docs/editor/debugging#_debug-actions) or search for a tutorial online. 
 
@@ -60,8 +60,6 @@ To debug please refer to the [documentation](https://code.visualstudio.com/docs/
 **NOTE:** Don't use the restart button. It only restarts the selected debugger, which definitely is not what you want. Instead press the stop button (which stops both debuggers) and launch again.
 
 **NOTE:** During the build process all the python files in the source tree get copied (yes simply copied) to the build directory. You need to place breakpoints in the files inside `build/` otherwise the debugger won't pick them up. This does not apply to cpp files, with those simply place the breakpoints inside the source tree `src/`.
-
-**TIP:** You can change the launch target in the bottom left corner. This is useful in case you want to debug the tests executable for example. To do that click `[FreeCADMain]` and select `[Tests_run]` from the dropdown. 
 
 ## Running tests
 
