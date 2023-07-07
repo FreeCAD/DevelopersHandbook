@@ -39,6 +39,7 @@ Technical information of interest to Contributors.
 - [Overview](./ReleaseProcess.md)
     - [Major Releases](./MajorRelease.md)
     - [Minor Releases](./MinorRelease.md)
+    - [Building Release Packages](./ReleasePackages.md)
 
 ## See Also
 
