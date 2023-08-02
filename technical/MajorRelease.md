@@ -76,6 +76,8 @@ Any problems identified with the release candidate should be addressed via PRs m
     - (Future work) Sign the Windows builds
 - Create a new release on GitHub, this time marking the "Set as latest release" box and not marking it as a pre-release, and setting the release to use the tag created above. It's best to ensure all assets are attached prior to publication of the final release, so save the release as a draft as necessary until all builds are completed. The release contains a release announcement text that should be appropriate for the general user audience (not targeted at developers).
 - Prepare a packager's release files and alert the packagers.
+- Update the website [downloads page](https://www.freecad.org/downloads.php) to point to the new files
+- Update the website [features page](https://www.freecad.org/features.php) to point to the new release notes
 
 ## Release Announcment
 
