@@ -55,34 +55,42 @@ After the PR Merge phase, only bug-fix PRs will be merged.
 
 ## Release Candidates
 
-After all outstanding PRs are merged and all critical bugs are resolved, a Release Candidate (RC) version will be created and a public announcment made.  This is a request to the community for intentional and deliberate testing with the goal of uncovering as many bugs as possible.
+After all outstanding PRs are merged and all critical bugs are resolved, a Release Candidate (RC) version will be created and a public announcment made.  This is a request to the community for intentional and deliberate testing with the goal of uncovering as many bugs as possible. This is the point at which the formal branch is created for the releases. First, create a branch called "releases/FreeCAD-X-Y" where X and Y are the major and minor release numbers. Next use the GitHub "Draft new release" button on the Releases page to create a new release. Set it up to create a new tag with the release number in it, e.g. "0.21rc1" and ensure that the release is based on the "releases/FreeCAD-X-Y" branch. Mark the release as a "pre-release" so that it does not display as the latest version. Attach all of the necessary installers, appimages, packages, etc. to this release. Note that the release can be edited after creation, so assets can be added as they become available. 
 
 Translation files will be pushed to CrowdIn and a public call for translation assistance should be made.
 
-Release notes should be reviewed at this point and any ommisions corrected
+Release notes should be reviewed at this point and any ommisions corrected.
 
-Numerous release candidates may be produced as critical bugs are addressed.
+Any problems identified with the release candidate should be addressed via PRs made to the release branch. If necessary, multiple release candidates may be tagged using the same "Draft new release" process described above, and incrementing the release candidate number.
 
 ## Final Release
 
-- The result of the splash screen contest is announced and the new splash screen is added to the source.
-
-- update all versions in a number of source code locations:
+- The result of the splash screen contest is announced and the new splash screen is added to the source, if that was not done in earlier stages.
+- Update all versions in a number of source code locations where they are not automatically generated:
     - README.md
-    - appveyor.yml
     - CMakeLists.txt
-    - src/Tools/offlinedoc/buildqhelp.py
-    - src/XDGData/org.freecadweb.FreeCAD.appdata.xml
-    - vagrant/Xenial/generate_yaml.sh
-    - vagrant/Xenial/bin/launcher
-    - vagrant/generate_yaml.sh
-    - vagrant/FreeCAD.sh
-
-    - Prepare a packager's release files and alert the packagers.
-
-- Tag the new release
-        TODO: relevant git commands
+- Manually tag the release on the appropriate branch using semantic versioning for the tag name, e.g. "1.2.3". Launch the various build-creation tasks based on this tag.
+    - Conda builds for all platforms
+    - Manual compilation of a Windows LibPack-based binary and NSIS-created installer
+    - Sign and notarize the Mac OS Conda builds once they are complete
+    - (Future work) Sign the Windows builds
+- Create a new release on GitHub, this time marking the "Set as latest release" box and not marking it as a pre-release, and setting the release to use the tag created above. It's best to ensure all assets are attached prior to publication of the final release, so save the release as a draft as necessary until all builds are completed. The release contains a release announcement text that should be appropriate for the general user audience (not targeted at developers).
+- Prepare a packager's release files and alert the packagers.
 
 ## Release Announcment
 
-Todo
+Once all release files are in place, a release announcement should be posted to all "official" FreeCAD channels:
+
+- FreeCAD News (https://blog.freecad.org)
+- The FreeCAD Forum (https://forum.freecad.org)
+- Facebook
+- X
+- Mastodon (automatic from the blog post)
+- Discord
+- LinkedIn
+
+There are also other active communities where FreeCAD does not maintain any sort of official presence, but where nevertheless users are likely to benefit from an announcement:
+
+- Yorik's blog
+- Ondsel blog
+- Reddit
