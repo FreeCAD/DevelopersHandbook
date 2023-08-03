@@ -78,6 +78,7 @@ Any problems identified with the release candidate should be addressed via PRs m
 - Prepare a packager's release files and alert the packagers.
 - Update the website [downloads page](https://www.freecad.org/downloads.php) to point to the new files
 - Update the website [features page](https://www.freecad.org/features.php) to point to the new release notes
+- Update the stable branch of the [Snap package](https://github.com/FreeCAD/FreeCAD-snap) to the new version number by editing snap/snapcraft.yaml
 
 ## Release Announcment
 
