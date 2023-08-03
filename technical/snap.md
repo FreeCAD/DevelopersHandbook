@@ -16,9 +16,10 @@ GitHub actions are used to do the actual building of each of these branches.
 
 ## Routine maintenance
 
-The most common thing to break is the KDE Neon extension, which periodically needs to have its version number updated:
+The most common thing to break is the KDE Neon extension, which periodically needs to reference an update version of
+the kde-frameworks (e.g. kde-frameworks-5-99-qt-5-15-7-core20):
 if the snap-building logs contain errors about being unable to locate neon, check for the correct version number at
-https://snapcraft.io/docs/kde-neon-extension
+https://snapcraft.io/docs/kde-neon-extension and update it everywhere it appears in the snapcraft.yaml file.
 
 Snaps are built based on specific "cores" -- the base operating system whose libraries they use. From time to time
 we have to update to a new core. The current builds use "core20", or Ubuntu 20.04 LTS. Updating the core will likely
