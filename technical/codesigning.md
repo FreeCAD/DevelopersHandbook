@@ -15,7 +15,8 @@ Certificates, Identifiers & Profiles page of your Apple Developer account. Once 
 and install it into one of your Keychains (double-click on the certificate to open and install it).
 
 The easiest way to upload an app for notarization is to create an App Store Connect API Key at https://appstoreconnect.apple.com . This is
-a file that resides on your computer and can be referenced by the notarization upload tool.
+a file that resides on your computer and can be referenced by the notarization upload tool. Run `xcrun notarytool store-credentials` to store
+the credentials and allow the signing script to access them when running the notary tool.
 
 Note that the Intel bundles must be signed on an Intel machine, and the ARM bundles must be signed on an ARM machine.
 
