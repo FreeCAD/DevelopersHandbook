@@ -173,4 +173,9 @@ structure, so the final LibPack contains several different types of installation
 * **[ICU](https://icu.unicode.org)** -- Advanced Unicode handling for Xerces-C
   - Clone from https://github.com/unicode-org/icu
   - Switch to the tag you want to build, e.g. `release-73-2`
+  - Open the Visual Studio project in icu4c/source/allinone
+  - Configure for your platform and Release, and run Rebuild Solution
+  - Copy the contents of *bin64/*, *include/*, and *lib64/* to *LIBPACK/bin/*, *LIBPACK/include/* and *LIBPACK/lib*, respectively.
 * **[Xerces-C](https://xerces.apache.org/xerces-c/)**
+  - Set ICU_INCLUDE_DIR to *LIBPACK/include/unicode*
+  - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
