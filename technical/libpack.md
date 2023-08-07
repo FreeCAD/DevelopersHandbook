@@ -5,7 +5,7 @@ layout: default
 # Maintaining the FreeCAD LibPack for Windows
 
 To create a new LibPack for Windows, begin by creating an empty directory. The suggested naming scheme
-is to name it "LibPack-XX-YY-ARCH" where XX is the release of FreeCAD the pack is intented to work with,
+is to name it "LibPack-XX-YY-ARCH" where XX is the release of FreeCAD the pack is intended to work with,
 YY is a version number of the LibPack itself, and ARCH is the architecture the LibPack was build for
 (e.g. x86_64 or arm64). The rest of this document will refer to that directory as *LIBPACK*.
 
@@ -13,14 +13,21 @@ Note that in several places below you are instructed to load a developer's power
 whichever shell you'd like, but ensure that you are loading the shell configured with the x64 native
 compilation tools if you are compiling on an Intel processor. ARM compilation is untested.
 
+In most of the instructions below, code is cloned directly from a first-party git repository. In most
+cases it is perfectly feasible to directly download a source release package instead of cloning the
+entire git repository.
+
 For the most part, the libraries below are self-compiled in order to reduce dependency on third-party
 packagers. In some cases it is feasible to download precompiled binaries of the individual items. Major
 exceptions here are that both Python and Qt are used in their precompiled forms since the packages are
-provided for Windows by the first parties in each case.
+provided for Windows by the first parties in each case. libclang is provided by the Qt project as part
+of the dependencies of PySide6, but can be self-compiled if desired.
 
 WORK IN PROGRESS!!
 
-Perform the following in this order (the order does not *always* matter, but sometimes does):
+Install the following packages into the subdirectory you created for this LibPack. In general the order below should work, with
+dependencies being installed before the software which requires them. Note that not all packages use the same installation
+structure, so the final LibPack contains several different types of installation tree.
 * **[Python](https://python.org)** -- Install in a newly-created *LIBPACK\bin* subdirectory using the basic Python installer. Only install
   Python itself: the Idle IDE, debug symbols, etc. are not included in the LibPack.
 * **[Qt](https://qt.io)** -- The Open Source installer is found at https://www.qt.io/download-open-source
@@ -50,7 +57,7 @@ Perform the following in this order (the order does not *always* matter, but som
   - In some cases even with Qt6_DIR specified, Quarter will fail to find all necessary Qt library cmake files. In
     those cases you will need to manually set the path to the cmake files as *LIBPACK/lib/cmake/Qt6XXX*.
   - Do not build the examples, tests, or documentation
-  - At this time this guide was written, Quarter did not correctly support Qt 6.4: the file QuarterWidgetP.cpp had to
+  - At this time this guide was written, Quarter did not correctly support Qt 6.5: the file QuarterWidgetP.cpp had to
     be modified to add `#include <QOpenGLContext>` in the Qt includes section at the top of the file.
   - Build the ALL_BUILD and INSTALL targets in Release mode
 * **[SWIG](https://www.swig.org)** -- obtained from https://www.swig.org, prebuilt binaries are available for Windows
@@ -72,25 +79,26 @@ Perform the following in this order (the order does not *always* matter, but som
 * **[Pyside](https://pypi.org/project/PySide6)** -- now part of the Qt project, installed as a Python package with pip
   - E.g. `LIBPACK/bin/python.exe -m pip install pyside6==6.5.2`
   - Note that this will also install Shiboken, in the same location
-* **[VTK](https://vtk.org)** -- installed with pip
-  - E.g. `LIBPACK/bin/python.exe -m pip install vtk==9.2.4`
-* **[HarfBuzz](https://harfbuzz.github.io)** -- Required by FreeType (and thus by OCCT)
+* **[VTK](https://vtk.org)** -- Download or clone the source
+  - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
+  - Build the ALL_BUILD and INSTALL targets in Release mode
+* **[HarfBuzz](https://harfbuzz.github.io)**
   - Clone https://github.com/harfbuzz/harfbuzz
   - Switch to the latest release branch
   - Set PYTHON_EXECUTABLE to *LIBPACK/bin/python.exe*
   - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
   - Build the ALL_BUILD and INSTALL targets in Release mode
-* **[ZLIB](http://zlib.net)** -- Required by FreeType (and thus by OCCT)
+* **[ZLIB](http://zlib.net)**
   - Download and unpack the latest source code
   - Set CMAKE_INSTALL_PREFIX to *LIBPACK* (note: must be done prior to running Configure if using the GUI)
   - Build the ALL_BUILD and INSTALL targets in Release mode
-* **[libpng](http://www.libpng.org)** -- Required by FreeType (and thus by OCCT)
+* **[libpng](http://www.libpng.org)**
   - Download the zipfile of the source code and extract it
   - Set ZLIB_INCLUDE_DIR to *LIBPACK/include*
   - Set ZLIB_LIBRARY_RELEASE to *LIBPACK/lib/zlib.lib*
   - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
   - Build the ALL_BUILD and INSTALL targets in Release mode
-* **[bzip2](https://sourceware.org.bzip2)** -- Required by FreeType (and this by OCCT)
+* **[bzip2](https://sourceware.org.bzip2)**
   - Download the source from https://sourceware.org/bzip2/downloads.html
   - Extract it to a directory with no spaces or non-ASCII characters in it
   - Open a Developer's PowerShell
@@ -98,7 +106,7 @@ Perform the following in this order (the order does not *always* matter, but som
   - `nmake -f .\makefile.msc`
   - Copy libbz2.lib into *LIBPACK\lib*
   - Copy all header files into *LIBPACK\include*
-* **[FreeType](https://freetype.org)** -- Required by OCCT
+* **[FreeType](https://freetype.org)**
   - Download the latest version from https://sourceforge.net/projects/freetype/files/freetype2/ (a Windows .zip file is available)
   - Extract the files and run cMake
   - Set HarfBuzz_INCLUDE_DIR to *LIBPACK/include*
@@ -127,12 +135,42 @@ Perform the following in this order (the order does not *always* matter, but som
     - Set 3RDPARTY_XXX_DIR to *LIBPACK*
     - Set 3RDPARTY_XXX_DLL_DIR to *LIBPACK/bin/*
     - Set 3RDPARTY_XXX_LIBRARY_DIR to *LIBPACK/lib/*
+    - Set 3RDPARTY_XXX_INCLUDE_DIR to *LIBPACK/include/* (VTK has an additional path component for the version)
     - Set 3RDPARTY_XXX_LIBRARY to *LIBPACK/lib/xxxYYY.lib* (the name of the library varies, use whatever is present)
   - Set INSTALL_DIR to *LIBPACK*
   - Configure, Generate, and open the project in Visual Studio
-  - Switch to Release and build the ALL_BUILD target
+  - Switch to Release and build the ALL_BUILD and INSTALL targets
 * **[Netgen](https://ngsolve.org)**
   - Clone https://github.com/NGSolve/netgen
   - Switch to the tag you wish to compile (e.g. `git checkout v6.2.2304`)
   - Run cMake
-* **[GMSH](https://gmsh.info)** 
+  - Turn off "Superbuild"
+  - Turn off "USE_GUI"
+  - Set paths for ZLIB, TCL, and TK
+  - Set all Python paths in Advanced cMake options (netgen ignores Python_ROOT_DIR)
+  - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
+  - Switch to Release and build the ALL_BUILD and INSTALL targets
+* **[HDF5](https://github.com/HDFGroup/hdf5)**
+  - Clone the repository from https://github.com/HDFGroup/hdf5
+  - Check out the release tag you want to build (e.g. `hdf5-1_14_1-2`)
+  - Deactivate building tests and examples
+  - Set ZLIB_INCLUDE_DIR and ZLIB_LIBRARY_RELEASE
+  - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
+  - Configure and Generate, then open in Visual Studio, switch to Release, and build ALL_BUILD and INSTALL
+* **[GMSH](https://gmsh.info)**
+  - Download the desired version of the Gmsh source code
+  - Set the path to FreeType
+  - Set HDF5_DIR to *LIBPACK/cmake*
+  - Set HDF5_LIBRARY_RELEASE to *LIBPACK/lib/hdf5.lib*
+  - Set HDF5_DIFF_EXECUTABLE to *LIBPACK/bin/hdf5diff.exe*
+  - Add a new variable called CMAKE_LIBRARY_PATH and set it to *LIBPACK/win64/vc14/lib* (adapt to your system as needed)
+  - Disable OpenMP (as of this writing the compilation fails if it is enabled)
+  - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
+  - Configure and Generate, then open in Visual Studio, switch to Release, and build ALL_BUILD and INSTALL
+* **[PyCXX](https://cxx.sourceforge.net)**
+  - Download the latest source from Sourceforge
+  - Run `LIBPACK/bin/python.exe setup.py install` from within the extracted directory
+* **[ICU](https://icu.unicode.org)** -- Advanced Unicode handling for Xerces-C
+  - Clone from https://github.com/unicode-org/icu
+  - Switch to the tag you want to build, e.g. `release-73-2`
+* **[Xerces-C](https://xerces.apache.org/xerces-c/)**
