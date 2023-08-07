@@ -41,6 +41,11 @@ structure, so the final LibPack contains several different types of installation
   the top level of the LibPack
 * **[Boost](https://boost.org)** -- this is split into its headers and libraries:
   - Many Boost libraries are header-only, but FreeCAD does require several compiled libraries
+  - Create a file either in your home directory, or in the toplevel boost src directory, called user-config.jam and
+    in it specify the path and version of the Python interpreter installed above. For example:
+    ```
+    using python : 3.11 : "C:/path/to/libpack/bin" : "C:/path/to/libpack/bin/Include" : "C:/path/to/libpack/bin/libs"  ;
+    ```
   - Follow the Boost instructions for compiling: the easiest is to run `bootstrap` from a developer's command prompt
   - Copy the libraries from *BOOST_ROOT\stage\lib* into *LIBPACK\lib*
   - Copy the entire *BOOST_ROOT\boost* directory into *LIBPACK\include*
@@ -49,7 +54,7 @@ structure, so the final LibPack contains several different types of installation
   - Set CMAKE_INSTALL_PATH to the top of the *LIBPACK*
   - Add include directory to find the Boost include files by editing CXXFLAGS and adding "/I C:\path\to\libpack\include" to it
   - Do not build the Tests or Documentation
-  - In Visual Studio, run the ALL_BUILD and then INSTALL targets in Release mode.
+  - In Visual Studio, run the ALL_BUILD and then INSTALL targets in Release mode, and then again in Debug mode.
 * **[Quarter](https://www.coin3d.org)** -- obtained by cloning and compiling https://github.com/coin3d/quarter
   - Set Coin_DIR to *LIBPACK/lib/cmake/Coin-4.0.1* (or the current version, if it is not 4.0.1)
   - Set Qt6_DIR to *LIBPACK/lib/cmake/Qt6*
@@ -157,6 +162,14 @@ structure, so the final LibPack contains several different types of installation
   - Set ZLIB_INCLUDE_DIR and ZLIB_LIBRARY_RELEASE
   - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
   - Configure and Generate, then open in Visual Studio, switch to Release, and build ALL_BUILD and INSTALL
+* **[MEDFile](https://www.salome-platform.org)**
+  - Download the source package from http://files.salome-platform.org/Salome/other/med-4.1.1.tar.gz
+  - Activate MEDFILE_USE_UNICODE
+  - The current Medfile CMake scripts assert a dependence on HDF5 v1.10.x -- the error message claims to be
+    searching for HDF5 >= 1.10.2, but that is not what is actually implemented, requiring instead *exactly*
+    minor version 10. The difference between 1.10 and 1.14 from Medfile's perspective seems to be various calls
+    to file information functions, which now require an additional "fields" parameter. Adding `H5O_INFO_ALL` for
+    this parameter lets compilation succeed.
 * **[GMSH](https://gmsh.info)**
   - Download the desired version of the Gmsh source code
   - Set the path to FreeType
@@ -179,3 +192,16 @@ structure, so the final LibPack contains several different types of installation
 * **[Xerces-C](https://xerces.apache.org/xerces-c/)**
   - Set ICU_INCLUDE_DIR to *LIBPACK/include/unicode*
   - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
+  - Configure and Generate, then open in Visual Studio, switch to Release, and build ALL_BUILD and INSTALL
+  - Switch to Debug and run ALL_BUILD and INSTALL again
+* **[libfmt](https://github.com/fmtlib/fmt)**
+  - Clone https://github.com/fmtlib/fmt
+  - Check out the desired tag (e.g. `git checkout 10.0.0`)
+  - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
+  - Turn off Test
+  - Configure and Generate, then open in Visual Studio, switch to Release, and build ALL_BUILD and INSTALL
+* **[Eigen3](https://gitlab.com/libeigen/eigen)**
+  - Clone https://gitlab.com/libeigen/eigen
+  - Deactivate BUILD_TESTING and BUILD_DOC
+  - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
+  - Configure and Generate, then open in Visual Studio, switch to Release, and build ALL_BUILD and INSTALL
