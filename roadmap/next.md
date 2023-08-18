@@ -30,7 +30,7 @@ The toponaming problem has been widely discussed and work is proceeding to resol
 
 ## Assembly Workbench
 
-Building multi-part assemblies is something users expect a modern CAD system to do.  FreeCAD has multiple add-on options lacks an integrated Assembly workbench.  Version 1.0 will address this definciency.  The integrated workbench delivered in 1.0 will be minimally viable.  It will provide the core functionality users need but will likely be less capable than the addon options currently available.  Goals for this release are modest and include
+Building multi-part assemblies is something users expect a modern CAD system to do.  FreeCAD has multiple add-on options but lacks an integrated Assembly workbench.  Version 1.0 will address this deficiency.  The integrated workbench delivered in 1.0 will be minimally viable.  It will provide the core functionality users need but will likely be less capable than the addon options currently available.  Goals for this release are modest and include
  - An intuitive and user-friendly user interface
  - An integrated solver to resolve assembly constraints
  - A standard API for assemblies that external workbench authors can use to be compatible with both that workbench and each other.
