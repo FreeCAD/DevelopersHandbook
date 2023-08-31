@@ -2,7 +2,7 @@
 
 This is the repo for the [Developers Handbook](https://freecad.github.io/DevelopersHandbook/)
 
-## Install an run locally
+## Install and run locally
 
 Make sure the dependencies `Ruby`, `Jekyll` and `Bundler` are installed on your system. See the [Jekyll installation guidelines](https://jekyllrb.com/docs/installation/) as well as the [Ruby 101 notes](https://jekyllrb.com/docs/ruby-101/) on how to setup your system.
 
