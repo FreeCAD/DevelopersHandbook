@@ -130,11 +130,12 @@ tbd
 
 ### Status Bar
 
-The status bar is the only part of the UI that is always the same regardless of workbench, task or mode. That makes it special.  
+The status bar is the only part of the UI that is always the same regardless of workbench, task or mode. The tools shown in the status bar are not configurable by the user. Tools cannot be rearranged or moved.  These attributes make the status bar special.  Any use of the status bar should be carefully scrutinized.  
 
 #### Guidelines
 
-1. The real estate is very limited so it should be protected and used very sparingly and wisely. For example the mouse model switcher probably doesn’t need a label. An icon with a tooltip is sufficient and would use only 1/4 of the space it currently occupies.
+1. The real estate is very limited so it should be protected and used very sparingly. Think carefully about what is displayed.  For example the mouse model switcher probably doesn’t need a label. Once set, does the user need to continuously check back to make sure they are still in 'Blender' mode?  Probably not.  An icon with a tooltip that displays the current mode is sufficient and would use only 1/4 of the space currently used.
+2. The status bar should only show tools that are consistent and usable across all workbenches.  Individual workbenches should _not_ add tools to the status bar.
 
 #### Problems
 
