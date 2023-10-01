@@ -176,6 +176,11 @@ CmdDoAThing::CmdDoAThing()
 ```
 Note that `sGroup` should not be translated here (you will still find many counterexamples in older code, however).
 
+If for any reason you need to manually set the name of the command's menu item or tooltip, you will need to explicitly (and manually) set the context to the name of the class, e.g.:
+```
+action->setText(QCoreApplication::translate("MyCommandClass", "Some text to be translated"));
+```
+
 ## UI Files
 
 For the most part, all strings in UI files are automatically subject to translation. In some circumstances you may want to *disable* that translation. Using Qt Designer, uncheck the "translatable" checkbox on the widget that you want to disable translation for. 
