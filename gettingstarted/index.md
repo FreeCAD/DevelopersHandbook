@@ -35,12 +35,15 @@ FreeCAD depends on many other open source projects to provide the basic foundati
 3. Set up `pre-commit` (our automatic code-formatter and checker):
  
 
-    - Install `pre-commit`:
-      - `apt install pre-commit` (Debian/Ubuntu)
-      - `dnf install pre-commit` (Fedora)
-      - `pip install pre-commit`
-    - `cd FreeCAD-src`
-    - `pre-commit install`
+    - Install `pre-commit` (either using your system package manager or pip):
+      - Debian/Ubuntu: `apt install pre-commit`
+      - Fedora: `dnf install pre-commit` (Fedora)
+      - Other (pip in PATH): `pip install pre-commit`
+      - Other (pip not in PATH): `python -m pip install pre-commit`
+    - On a command line, change into your FreeCAD clone, e.g. `cd FreeCAD-src`
+    - Run `pre-commit install` (or `python -m pre-commit install`, depending on your PATH)
+  
+   
   
 4. We **strongly** recommend doing an out-of-source build, that is, build FreeCAD and put all generated files in a separate directory. Otherwise, the build files will be spread all over the source code and it will be much harder to sort out one from the other. A build directory can be created outside the FreeCAD source folder or inside:
 

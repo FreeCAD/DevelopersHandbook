@@ -6,6 +6,18 @@ layout: default
 
 Guidelines for Maintainers regarding code review and merge procedures.  Git can be [configured to make checking out and reviewing PRs easier](./git.md).
 
+## The Current Team of Maintainers
+
+- Adrián Insaurralde Avalos: release manager, PR triage
+- Yorik van Havre: Arch/BIM, Spreadsheet
+- Brad "sliptonic" Collette: Path
+- Werner Mayer: everything
+- WandererFan: TechDraw
+- abdullahtahiriyo: Sketcher
+- Bernd Hahnebach: FEM
+- Roy-043: Draft
+- OpenBrain: CI management
+- Chris Hennes: addon manager, translations, topological naming
 
 ## The Role of a Maintainer
 

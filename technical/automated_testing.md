@@ -4,7 +4,7 @@ layout: default
 
 # Automated Testing
 
-FreeCAD uses two different automated testing mechanisms, depending on the language being tested. The oldest, and most well-used test framework is the Python `unittest` system, which hooks directly into the FreeCAD Test Workbench. The second is the standalone Google Test C++ testing framework, which generates individual executables fo each part of the test suite.
+FreeCAD uses two different automated testing mechanisms, depending on the language being tested. The oldest, and most well-used test framework is the Python `unittest` system, which hooks directly into the FreeCAD Test Workbench, but can only test Python code (and Python wrappers to C++ code). The second is the standalone Google Test C++ testing framework, which generates individual executables for each part of the test suite, and is used to directly test C++ code without having to wrap it in Python.
 
 ## References
 
@@ -42,7 +42,7 @@ generator may be replaced with a function that simply returns "42" every time so
 ## Python Testing
 
 Most Python workbenches in FreeCAD already have at least a rudimentary test suite, so no additional cMake setup should be required beyond simply adding your test file(s) to the cMakeLists.txt file. In addition, in Python it is very easy
-to create Mock functions and objects to reduce the dependency on external code, and/or to ensure you are testing only the isolated bit of code that you mean to. A typical Python unit test file might look like this:
+to create Mock functions and objects to reduce the dependency on external code, and/or to ensure you are testing only the isolated bit of code that you mean to. A typical Python test file might look like this:
 ```python
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
@@ -78,7 +78,7 @@ class TestVersion(unittest.TestCase):
             os.unlink(temp.name)
 ```
 
-If you are developing a FreeCAD module, place the above in a file inside your module, and register your unit test with FreeCAD's Test Workbench by adding this in your Init.py file:
+If you are developing a FreeCAD module, place the above in a file inside your module, and register your test with FreeCAD's Test Workbench by adding this in your Init.py file:
 
 ```
 FreeCAD.__unit_test__ += ["my_file"]
@@ -92,7 +92,7 @@ FreeCAD -t my_file
 
 ## C++ Testing
 
-In an ideal world, a C++ unit test would be perfectly isolated from any external dependencies, which would be replaced with minimal, instrumented "mock" versions of themselves. However,
+In an ideal world, a C++ test would be perfectly isolated from any external dependencies, which would be replaced with minimal, instrumented "mock" versions of themselves. However,
 this almost always requires that the code under test has been *designed* for testing, which is usually not the case for our existing code. In many cases you must add tests for the existing
 functionality and implementation, with all its deficiencies, before you can begin to refactor the code to make the tests better. There are many strategies for doing those "dependency injections", 
 and over time we aspire to refactor FreeCAD such that it is possible, but developers are also encouraged to remember that:
@@ -105,16 +105,23 @@ of the code (though sometimes that "functionality" is encompassed by multiple fu
 themselves be "under test" it is critical that they be as short, simple, and self-explanatory as possible. A common idiom to use is "Arrange-Act-Assert", which in our test
 framework looks like this:
 ```c++
+// TEST(ClassName, testMethodName), where "testMethodName" is some desciptive indication
+// of what is being tested. In simple cases in may simply be the name of the method being
+// tested. In more complex cases, it may be a longer statement of the input and expected
+// test result (e.g. `toConstStringWithBadDataThrowsException`)
 TEST(MappedName, toConstString)
 {
     // Arrange
+    // create a MappedName instance and a size variable
     Data::MappedName mappedName(Data::MappedName("TEST"), "POSTFIXTEST");
     int size {0};
 
     // Act
+    // invoke the method
     const char* temp = mappedName.toConstString(0, size);
 
     // Assert
+    // compare the actual result to expected results
     EXPECT_EQ(QByteArray(temp, size), QByteArray("TEST"));
     EXPECT_EQ(size, 4);
 }

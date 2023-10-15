@@ -65,8 +65,13 @@ structure, so the final LibPack contains several different types of installation
   - At this time this guide was written, Quarter did not correctly support Qt 6.5: the file QuarterWidgetP.cpp had to
     be modified to add `#include <QOpenGLContext>` in the Qt includes section at the top of the file.
   - Build the ALL_BUILD and INSTALL targets in Release mode
+* **[PCRE2](https://pcre.org/)** -- Clone https://github.com/PCRE2Project/pcre2
+  - Only required if compiling SWIG, rather than downloading binaries
+  - Only shared libraries needed (no need to build static)
 * **[SWIG](https://www.swig.org)** -- obtained from https://www.swig.org, prebuilt binaries are available for Windows
   - Copy the downloaded folder to *LIBPACK\bin\swig* (e.g. change its name to remove the version number)
+  - Alternative: follow instructions above for PCRE2, then clone from https://github.com/swig/swig.git
+  - Note that this will require GNU Bison to build. Windows exe can be downloaded from https://github.com/lexxmark/winflexbison/
 * **[Pivy](https://www.coin3d.org)** -- obtained by cloning and compiling https://github.com/coin3d/pivy
   - Set Python_ROOT_DIR to *LIBPACK/bin*
   - Set SWIG_EXECUTABLE to *LIBPACK/bin/swig/swig.exe*
