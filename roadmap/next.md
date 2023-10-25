@@ -46,7 +46,7 @@ The existing material capability is limited and does not meet the needs of many 
 
 ### Reference
  - [original issue](https://github.com/FreeCAD/FreeCAD/issues/10174)
- - [Github Project]()
+ - [Github Project](https://github.com/orgs/FreeCAD/projects/17)
  - [Ondsel Blog post](https://ondsel.com/blog/freecad-needs-a-better-materials-system)
  - [Forum topic](https://forum.freecad.org/viewtopic.php?style=4&t=78242)
 
@@ -62,4 +62,6 @@ The goals for 1.0 are
 - UI / UX improvements to improve discoverability and usability.
 
 ### Reference
- - [Github Project]()
+ - [Github Project for the Customization and Preference Cleanup](https://github.com/orgs/FreeCAD/projects/1/views/1)
+ - [Github Project for the Toolbar stability and modernization](https://github.com/orgs/FreeCAD/projects/15/views/1)
+ - [Github Project for the Workbench Selector Cleanup](https://github.com/orgs/FreeCAD/projects/16/views/1)
