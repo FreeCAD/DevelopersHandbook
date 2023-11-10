@@ -26,7 +26,7 @@ Toolbar management in complex technical software such as CAD poses unique challe
 
 **Toolbar Buttons:**
 
-- Shall consist of only QToolButton or QMenuButton widgets. Deviations from this break down the cognitive consistency of what toolbars in FreeCAD are intended to provide.
+- Should consist of only QToolButton or QMenuButton widgets. Other widgets may be used in special circumstances. The developer must ensure that the introduced widget is visually consistent and does not stand out above other tools. Features adding custom widget to toolbars shall be reviewed by the design working group.
 
 - Toolbars which toggle/indicate a funtional state can do so via change in icon (color or inclusion of an indicator)
 
@@ -56,6 +56,6 @@ Here are general guidelines to be followed for a task panel:
 
 - Task Panels can potentially include enormous amounts of information and advanced settings/controls. Utilizing FreeCAD's custom [QSInt](https://freecad.github.io/SourceDoc/d9/d11/namespaceQSint.html) widget class, which provides a 'rolling up' of portions of the panel, is encouraged. Follow the [80/20 rule](laws-of-ux.md#pareto-principle), and by default only expose the most commonly needed controls/data to avoid overwhelming users with information/settings when they are not needed. This allows the user to expand more advanced settings, controls or information when the need arises.
 
-##
+## 
 
 [Return to Design Guide Main Page](design-guide.md)
