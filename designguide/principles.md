@@ -4,6 +4,9 @@ The following guiding principles are based on various established Laws of UX out
 
 - Aesthetics - Not a replacement for good design, but helps compensate for minor flaws. Poor aesthetics can ruin an otherwise well designed functional flow. ([*Aesthetic-Usability Effect*](laws-of-ux.md#aesthetic-usability-effect))
 
+- Avoid providing multiple ways to achieve the same goal. Providing alternative methods seems like a benefit to the user but requires the user to process/understand why two methods exist and how they may  differ.  
+  From [the zen of python]([PEP 20 – The Zen of Python | peps.python.org](https://peps.python.org/pep-0020/#the-zen-of-python)): "There should be one-- and preferably only one --obvious way to do it."
+
 - Attempt to make user interactions and software responses as fluid and quick as possible. Ideally below 400ms. ([*Doherty threshold*](laws-of-ux.md#doherty-threshold))
 
 - Avoid making interactive elements too small. The size of elements should be large enough to prevent a majority of 'miss-clicks'. ([*Fitts's Law*](laws-of-ux.md#fitts-law))
@@ -24,6 +27,6 @@ The following guiding principles are based on various established Laws of UX out
   Related elements/functions should share similar visual symbology
   ([*Law of Proximity*](laws-of-ux.md#law-of-proximity) / [*Law of Uniform Connectedness*](laws-of-ux.md#law-of-uniform-connectedness))
   
-  ##
+  ## 
   
   [Return to Design Guide Main Page](design-guide.md)
