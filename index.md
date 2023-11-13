@@ -8,7 +8,7 @@ Describes the broad objectives for FreeCAD Development
 ### [Getting Started](./gettingstarted/index.md)
 How to set up a development environment to work on FreeCAD.
 
-### [Style Book](./stylebook/index.md)
+### [Design Guide](./designguide/index.md)
 Covers guidelines for visual elements in the FreeCAD Application.
 
 ### [Code Formatting Guide](./codeformatting/index.md)

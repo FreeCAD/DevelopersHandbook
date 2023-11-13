@@ -31,4 +31,4 @@ The following guiding principles are based on various established Laws of UX out
   
   ## 
   
-  [Return to Design Guide Main Page](design-guide.md)
+  [Return to Design Guide Main Page](index.md)
