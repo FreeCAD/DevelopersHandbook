@@ -24,4 +24,4 @@ Efforts should be made to conserve space within the UI in order to prevent eleme
 
 ##
 
-[Return to Design Guide Main Page](design-guide.md)
+[Return to Design Guide Main Page](index.md)
