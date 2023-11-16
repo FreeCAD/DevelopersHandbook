@@ -7,8 +7,8 @@ layout: default
 This checklist is intended as an aid to contributors.
 
 The checklist itemizes the tasks involved in adding a wholly new feature to an
-existing module (workbench). It assumes that the existing workbench (myModule) 
-and the new feature are written in C++. 
+existing module (workbench). It assumes that the existing workbench (myModule)
+and the new feature are written in C++.
 
 The module code is divided into an App portion that deals with the document and
 its objects and a Gui portion that deals with visual aspects. Our source tree looks
@@ -75,7 +75,7 @@ FreeCAD/src
 ## Test changes
 
 - new test script myModule/myModuleTest/myFeatureTest.py
-- edit myModule/myModuleTest/TestmyModuleApp.py _and/or_ myModule/myModuleTest/TestmyModuleGui.py 
+- edit myModule/myModuleTest/TestmyModuleApp.py _and/or_ myModule/myModuleTest/TestmyModuleGui.py
   + add import for myFeatureTest
 - edit myModule/CMakeLists.txt
   + add myFeatureTest.py to list

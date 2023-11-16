@@ -37,5 +37,5 @@ Minor bugs may be gathered together for a period of days or weeks to batch them 
 
 When the determination is made to proceed with the release, the following things happen"
 
-1. something 
+1. something
 2. Something else
