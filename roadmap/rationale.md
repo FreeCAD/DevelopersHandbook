@@ -18,9 +18,9 @@ People may, _and probably will_ argue about _which_ future state FreeCAD should 
 
 ## Why build a roadmap?
 
-Technical discussions often become contentious because the decisions made have real consequences.  Well-meaning people may disagree because they have differing priorities or goals.  
+Technical discussions often become contentious because the decisions made have real consequences.  Well-meaning people may disagree because they have differing priorities or goals.
 
-A well-designed roadmap is beneficial because it _first_ focuses on the priorities and then encourages technical decision-making in context.  
+A well-designed roadmap is beneficial because it _first_ focuses on the priorities and then encourages technical decision-making in context.
 
 A good roadmap will be useful to many different kinds of people:
 
@@ -38,13 +38,13 @@ A good roadmap will be useful to many different kinds of people:
 
 FreeCAD releases have never followed a predictable routine.  Instead, the project’s unofficial motto,  “It’s done when it’s done” has dictated when official releases are prepared.  This model has served the project very well for many years but not without controversy and consequences.
 
-Within the last couple of years many things in the FreeCAD ecosystem have changed.  
+Within the last couple of years many things in the FreeCAD ecosystem have changed.
 
 The user community has grown dramatically.  It has spread far beyond the forum and it includes far more non-developer users.
 
-The FPA was formed to protect the FreeCAD project and encourage its growth.  The FPA has started receiving donations. Deploying those funds well is becoming a challenge itself.  
+The FPA was formed to protect the FreeCAD project and encourage its growth.  The FPA has started receiving donations. Deploying those funds well is becoming a challenge itself.
 
-Ondsel was formed as an open-core public benefit corporation building around the FreeCAD project.  As a commercial enterprise, they have a strong need for predictabiilty in the development process and project goals.  
+Ondsel was formed as an open-core public benefit corporation building around the FreeCAD project.  As a commercial enterprise, they have a strong need for predictabiilty in the development process and project goals.
 
 Interest by commercial users to deploy FreeCAD in production environments is increasing.
 
@@ -55,5 +55,4 @@ Universities, trade-schools, and online educators have shown interest in teachin
 
 ## Who gets to write/change it?
 
-The roadmap is, in a sense, a living document.  It should be frequently reviewed and revised. The FPA is the steward of the document itself and takes the lead on drafting and revising its content, but it should reflect the will of the whole FreeCAD community.  The FPA actively seeks input from the community members and other stakeholders, partners and industry experts. 
-
+The roadmap is, in a sense, a living document.  It should be frequently reviewed and revised. The FPA is the steward of the document itself and takes the lead on drafting and revising its content, but it should reflect the will of the whole FreeCAD community.  The FPA actively seeks input from the community members and other stakeholders, partners and industry experts.
