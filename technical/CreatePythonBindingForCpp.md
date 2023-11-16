@@ -109,7 +109,7 @@ Your C++ implementation must contain the definition of the PyInit function: for 
 ```cpp
 int AxisPy::PyInit(PyObject* args, PyObject* /*kwd*/)
 
-//Within this function you will most likely need to parse incoming arguments to the constructor: the most important function for this purpose is the Python-provided incode|PyArg_ParseTuple. It takes in the 
+//Within this function you will most likely need to parse incoming arguments to the constructor: the most important function for this purpose is the Python-provided incode|PyArg_ParseTuple. It takes in the
 //passed argument list, a descriptor for the expected arguments that it should parse, and type information and storage locations for the parsed results. For example:
 
     PyObject* d;
@@ -145,12 +145,12 @@ There are two source files required to implement a new Python binding.  Assuming
 
 These 2 files need to be added to ../Mod/yourModule/App/CMakeLists.txt.  See https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/Part/App/AppPartPy.cpp and FreeCAD/src/Mod/Part/App/CMakeLists.txt for examples.
 
-You can extend the Python version of your module by adding to ../Mod/yourModule/App/AppmyModulePy.cpp (see https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/Part/App/AppPartPy.cpp and FreeCAD/src/Mod/Part/AppPartPy.cpp]). The additions are accessed in Python by "import myModule". 
+You can extend the Python version of your module by adding to ../Mod/yourModule/App/AppmyModulePy.cpp (see https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/Part/App/AppPartPy.cpp and FreeCAD/src/Mod/Part/AppPartPy.cpp]). The additions are accessed in Python by "import myModule".
 
 Note:
 
 There is a convention for return values from our C++/Python connections:
-* xxxxxPyImp routines return a PyObject* pointer (see TopoShapePyImp.cpp) 
+* xxxxxPyImp routines return a PyObject* pointer (see TopoShapePyImp.cpp)
 * AppmyModulePy.cpp routines return a Py::Object (see https://github.com/FreeCAD/FreeCAD/blob/master/src/Mod/Part/App/AppPartPy.cpp and FreeCAD/src/Mod/Part/AppPartPy.cpp.
 
 ## See also

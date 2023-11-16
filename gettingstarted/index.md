@@ -33,7 +33,7 @@ FreeCAD depends on many other open source projects to provide the basic foundati
 1. Fork [https://github.com/FreeCAD/FreeCAD](https://github.com/FreeCAD/FreeCAD) on GitHub
 2. Clone your fork: for example, on the command line you can use `git clone https://github.com/YourUsername/FreeCAD FreeCAD-src`
 3. Set up `pre-commit` (our automatic code-formatter and checker):
- 
+
 
     - Install `pre-commit` (either using your system package manager or pip):
       - Debian/Ubuntu: `apt install pre-commit`
@@ -42,9 +42,9 @@ FreeCAD depends on many other open source projects to provide the basic foundati
       - Other (pip not in PATH): `python -m pip install pre-commit`
     - On a command line, change into your FreeCAD clone, e.g. `cd FreeCAD-src`
     - Run `pre-commit install` (or `python -m pre-commit install`, depending on your PATH)
-  
-   
-  
+
+
+
 4. We **strongly** recommend doing an out-of-source build, that is, build FreeCAD and put all generated files in a separate directory. Otherwise, the build files will be spread all over the source code and it will be much harder to sort out one from the other. A build directory can be created outside the FreeCAD source folder or inside:
 
     - `mkdir build`
@@ -52,12 +52,12 @@ FreeCAD depends on many other open source projects to provide the basic foundati
 
 5. Run CMake, either in via the CMake GUI or on the command line see the wiki compilation page for your operating system for a detailed list of options.
 6. CMake will generate project files that can be read by your IDE of choice. See your IDE's documentation for details. In general:
- 
+
     - On Linux, compile with a command like `cmake --build /path/to/FreeCAD-src` run from your build directory ( or `cmake --build ..` if your build directory is inside FreeCAD-src).
     - On Windows with Visual Studio, build the "ALL_BUILD target" (you will have to change the path to the final executable the first time you try to run that target).
     - On Mac on the command line use `cmake --build /path/to/FreeCAD-src` from your build directory, or if using CLion be sure to "Build All" the first time you run.
- 
-7. If you plan on submitting a PR, create a branch: 
+
+7. If you plan on submitting a PR, create a branch:
 
     - `git branch fixTheThing`
     - `git checkout fixTheThing` (or both commands in one go: `git checkout -b fixTheThing`)

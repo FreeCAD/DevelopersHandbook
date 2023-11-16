@@ -8,10 +8,10 @@ Information about the dependencies in FreeCAD
 
 ## Overview
 
-Like most software projects, FreeCAD depends on many other packages. Most critical among these is [OpenCASCADE](https://www.opencascade.com/), 
-the actual CAD kernel that FreeCAD is built upon. Of course, OpenCASCADE itself has its own dependencies. Many of which have *their* own 
-dependencies, etc. The dependency graph quickly become overwhelming if you have to manually install each one. This is where package managers come 
-in. Depending on what platform you are developing on, you have a variety of tools at your disposal to resolve these dependencies. A brief overview 
+Like most software projects, FreeCAD depends on many other packages. Most critical among these is [OpenCASCADE](https://www.opencascade.com/),
+the actual CAD kernel that FreeCAD is built upon. Of course, OpenCASCADE itself has its own dependencies. Many of which have *their* own
+dependencies, etc. The dependency graph quickly become overwhelming if you have to manually install each one. This is where package managers come
+in. Depending on what platform you are developing on, you have a variety of tools at your disposal to resolve these dependencies. A brief overview
 of the most common ones is included below. The main purpose of this document is to highlight the primary dependencies and describe what they do and
 why FreeCAD needs them.
 
@@ -21,8 +21,8 @@ The following is a brief overview of what each of FreeCAD's most critical 3rd-pa
 
 ### OpenCASCADE
 
-OpenCASCADE Technology (OCCT) is a full-featured, professional grade CAD kernel. It was developed in 1993 and originally called 
-CAS.CADE, by Matra Datavision in France for the Strim (Styler) and Euclid Quantum applications. In 1999 it was released as open 
+OpenCASCADE Technology (OCCT) is a full-featured, professional grade CAD kernel. It was developed in 1993 and originally called
+CAS.CADE, by Matra Datavision in France for the Strim (Styler) and Euclid Quantum applications. In 1999 it was released as open
 source software, and since then it's been called OpenCASCADE.
 
 OCCT is a big and complex set of C++ libraries that provide functionality required by a CAD application:
@@ -36,13 +36,13 @@ Note that the "Community Edition" of OpenCASCADE is no longer supported by FreeC
 
 ### Python
 
-Python is a popular all-purpose scripting language that is widely used in Linux and open source software. 
+Python is a popular all-purpose scripting language that is widely used in Linux and open source software.
 In FreeCAD, Python is used during compilation and also at runtime in different ways. FreeCAD itself contains
 hundreds of thousands of lines of Python code, and all FreeCAD Addons and Macros are written in Python.
 
 ### Qt
 
-Qt is one of the most popular graphical user interface (GUI) toolkits available in the open source world. 
+Qt is one of the most popular graphical user interface (GUI) toolkits available in the open source world.
 FreeCAD uses this toolkit to draw the interface of the program, as well as to provide some advanced networking functionality
 and translation facilities. FreeCAD currently provides primary support for Qt v5.12 - v5.15, and work is ongoing to support Qt v6.4 and
 later.
@@ -51,7 +51,7 @@ Further information about Qt libraries and their programming documentation are a
 
 ### PySide and Shiboken
 
-Shiboken is the Python binding generator that Qt for Python uses to create the PySide module, in other words, it is the system that 
+Shiboken is the Python binding generator that Qt for Python uses to create the PySide module, in other words, it is the system that
 is used to expose the Qt C++ API to the Python language. FreeCAD's Python code uses the PySide library to draw its user interface elements.
 FreeCAD provides primary support for PySide2 (corresponding to Qt5), and support for PySide6 (corresponding to Qt6) is in progress.
 Python developers should import `PySide` (with no numeric suffix) -- at compile-time FreeCAD's build system will generate the appropriate
@@ -59,54 +59,54 @@ version.
 
 ### Coin3D
 
-The dependencies Coin, Quarter, and Pivy are collectively part of the Coin3D library system. Coin3D is a high-level 3D graphics library 
-with a C++ application programming interface. It uses scenegraph data structures to render real-time graphics suitable for all kinds 
+The dependencies Coin, Quarter, and Pivy are collectively part of the Coin3D library system. Coin3D is a high-level 3D graphics library
+with a C++ application programming interface. It uses scenegraph data structures to render real-time graphics suitable for all kinds
 of scientific and engineering visualization applications.
 
-Coin3D (Open Inventor) is used as the 3D viewer in FreeCAD because the OpenCASCADE viewer (AIS and Graphics3D) has limitations and performance 
-bottlenecks, especially with large-scale engineering rendering; other things like textures or volumetric rendering are not entirely supported 
-by the OpenCASCADE viewer. 
+Coin3D (Open Inventor) is used as the 3D viewer in FreeCAD because the OpenCASCADE viewer (AIS and Graphics3D) has limitations and performance
+bottlenecks, especially with large-scale engineering rendering; other things like textures or volumetric rendering are not entirely supported
+by the OpenCASCADE viewer.
 
 ### Boost
 
-The Boost C++ libraries are collections of peer-reviewed, open source libraries that extend the functionality of C++. They are intended to 
-be widely useful across a broad spectrum of applications, and to work well with the C++ Standard Library. The Boost license is designed 
+The Boost C++ libraries are collections of peer-reviewed, open source libraries that extend the functionality of C++. They are intended to
+be widely useful across a broad spectrum of applications, and to work well with the C++ Standard Library. The Boost license is designed
 to encourage their use in both open source and closed source projects. Over time, many Boost libraries end up incorporated into the C++ standard
 library itself. As this happens, developers should work to transition their code to the `std::` variant rather than the `boost::` variant. Note
 that exception is made for `boost::regex`, which as of this writing is still considerably faster than its `std::regex` counterpart.
 
 ### Xerces-C++
 
-Xerces-C++ is a validating XML parser written in a portable subset of C++. Xerces-C++ makes it easy to give your application the ability to 
-read and write XML data. A shared library is provided for parsing, generating, manipulating, and validating XML documents. Xerces-C++ is 
+Xerces-C++ is a validating XML parser written in a portable subset of C++. Xerces-C++ makes it easy to give your application the ability to
+read and write XML data. A shared library is provided for parsing, generating, manipulating, and validating XML documents. Xerces-C++ is
 faithful to the XML 1.0 recommendation and associated standards. The parser is used for saving and restoring parameters in FreeCAD.
 
 ### Eigen3
 
-Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms. If you just want to use Eigen, 
-you can use the header files right away. There is no binary library to link to, and no configured header file. Eigen is a pure template library 
+Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms. If you just want to use Eigen,
+you can use the header files right away. There is no binary library to link to, and no configured header file. Eigen is a pure template library
 defined in the headers. Eigen is used in FreeCAD for many vector operations in 3D space.
 
 ### Zipios++
 
-Zipios++ is a C++ library for reading and writing .zip files. Access to individual entries is provided through standard C++ iostreams. A 
-simple read-only virtual file system that mounts regular directories and .zip files is also provided. The structure and public interface 
+Zipios++ is a C++ library for reading and writing .zip files. Access to individual entries is provided through standard C++ iostreams. A
+simple read-only virtual file system that mounts regular directories and .zip files is also provided. The structure and public interface
 of Zipios++ are loosely based on the java.util.zip package of Java.
 
-FreeCAD's native file format .FCstd is in reality a .zip file that stores and compresses other types of data within it, such as BREP 
+FreeCAD's native file format .FCstd is in reality a .zip file that stores and compresses other types of data within it, such as BREP
 and XML files. Therefore, Zipios++ is used to save and open compressed archives, including FreeCAD files.
 
-A copy of Zipios++ is included in the source code of FreeCAD so it is compiled together with it. If you want to use an external Zipios++ 
+A copy of Zipios++ is included in the source code of FreeCAD so it is compiled together with it. If you want to use an external Zipios++
 library, provided by your operating system, you may set `-DFREECAD_USE_EXTERNAL_ZIPIOS=ON` with cmake.
 
-Zipios++ uses the Zlib library to perform the actual decompression of files. 
+Zipios++ uses the Zlib library to perform the actual decompression of files.
 
 ### Zlib
 
-Zlib is designed to be a free, general-purpose, lossless data-compression library for use on any computer hardware and operating system. 
+Zlib is designed to be a free, general-purpose, lossless data-compression library for use on any computer hardware and operating system.
 It implements the DEFLATE compression algorithm commonly used in .zip and .gzip files.
 
-A copy of this library is included in the source code of FreeCAD so it is compiled together with it. 
+A copy of this library is included in the source code of FreeCAD so it is compiled together with it.
 
 ## Dependency management
 

@@ -4,7 +4,7 @@ The following guiding principles are based on various established Laws of UX out
 
 - Aesthetics - Not a replacement for good design, but helps compensate for minor flaws. Poor aesthetics can ruin an otherwise well designed functional flow. ([*Aesthetic-Usability Effect*](laws-of-ux.md#aesthetic-usability-effect))
 
-- Avoid providing multiple ways to achieve the same goal within a singular workbench. Providing alternative methods seems like a benefit to the user but requires the user to process/understand why two methods exist and how they may  differ.  
+- Avoid providing multiple ways to achieve the same goal within a singular workbench. Providing alternative methods seems like a benefit to the user but requires the user to process/understand why two methods exist and how they may  differ.
   From [the zen of python]([PEP 20 – The Zen of Python | peps.python.org](https://peps.python.org/pep-0020/#the-zen-of-python)): "There should be one-- and preferably only one --obvious way to do it."
 
 - When implementing functionality which is common within other workbenches, a developer should make every effort to ensure behavior of those functions remains consistent with pre-existing implementations.
@@ -28,7 +28,7 @@ The following guiding principles are based on various established Laws of UX out
 - Proper organization of like functionality in close proximity together help users understand and organize information better.
   Related elements/functions should share similar visual symbology
   ([*Law of Proximity*](laws-of-ux.md#law-of-proximity) / [*Law of Uniform Connectedness*](laws-of-ux.md#law-of-uniform-connectedness))
-  
-  ## 
-  
+
+  ##
+
   [Return to Design Guide Main Page](index.md)

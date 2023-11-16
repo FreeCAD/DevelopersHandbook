@@ -44,7 +44,7 @@ msvcp140.dll
 vcamp140.dll
 vccorlib140.dll
 vcomp140.dll
-```    
+```
 3. Open the file *Settings.nsh* with a text editor (both jEdit and Visual Studio Code are good editors for NSIS files). Edit the following paths to correspond to your system: `FILES_FREECAD` corresponds to your installation directory (e.g. `CMAKE_INSTALL_PREFIX` if you self-compiled) and `FILES_DEPS` is the folder you created with the MSVC redistributable files in it.
 ```
 !define FILES_FREECAD "C:\FreeCAD\Installer\FreeCAD"
@@ -66,7 +66,7 @@ vcomp140.dll
 
 
 NOTE: For test builds of the installer you can turn off the LZMA compression and use the much faster default compression. This speeds up
-the build time for the installer but significantly increases the final installer file size. The LZMA compression is turned off by commenting 
+the build time for the installer but significantly increases the final installer file size. The LZMA compression is turned off by commenting
 out the line
 ```
 !SetCompressor lzma
@@ -113,7 +113,7 @@ The main structure used to gather FreeCAD and its dependencies and build appimag
 
 You will need:
 
-1. **Mambaforge** from https://github.com/conda-forge/miniforge#mambaforge 
+1. **Mambaforge** from https://github.com/conda-forge/miniforge#mambaforge
 2. **appimagetool** from https://appimage.github.io/appimagetool/
 
 To use the script:
