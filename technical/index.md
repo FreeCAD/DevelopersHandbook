@@ -29,6 +29,7 @@ Technical information of interest to Contributors.
     file in the root of the source tree.
 - [Creating a WorkBench](https://wiki.freecad.org/Workbench_creation)
 - The [PowerUser's hub](https://wiki.freecad.org/Power_users_hub) in the FreeCAD wiki contains good information about Python scripting and workbench creation
+- [Python stubs package](./PythonStubsPackage.md)
 - [Accessing User Preferences](./preferences.md)
 - [Controlling Object Deletion](./ObjectDeletion.md)
 - [Create a Python Binding for C++ Class](./CreatePythonBindingForCpp.md)
