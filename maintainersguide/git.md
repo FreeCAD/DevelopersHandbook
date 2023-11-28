@@ -30,7 +30,7 @@ add a second fetch line to the upstream remote definition.  This line will fetch
     fetch = +refs/pull/*/head:refs/remotes/upstream/pr/*
 ```
 
-### now you can fetch PRs with the command 
+### now you can fetch PRs with the command
 ```bash
 git fetch upstream
 ```
@@ -39,7 +39,3 @@ git fetch upstream
 ```bash
 git checkout upstream/pr/1234
 ```
-
-
-
-

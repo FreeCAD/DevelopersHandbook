@@ -46,7 +46,7 @@ Or manually using cloning repo:
 1. Clone [repo](https://github.com/ostr00000/freecad-stubs):
     ```shell
     git clone https://github.com/ostr00000/freecad-stubs
-    ``` 
+    ```
 2. Choose desired version:
    ```shell
    git checkout FreeCAD-0-20
