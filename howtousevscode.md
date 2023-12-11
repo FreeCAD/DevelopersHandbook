@@ -3,7 +3,17 @@
 
 A convenient way of working with the FreeCAD source code is to use an IDE or Integrated Development Environment. The FreeCAD repository contains a VSCode configuration which makes it particularly easy to get started with.
 
-To get started from VSCode select `File > Open Folder`, then select the folder where you have cloned your fork of the repo.
+Get VSCode here https://code.visualstudio.com/download and Git here https://git-scm.com/downloads 
+
+After that go to github and create your own fork of the FreeCAD repository by clicking the fork button. Once that's done, clone your fork to your local computer that you will be using for development. 
+
+```
+git clone https://github.com/YourUsername/FreeCAD --recurse-submodules
+```
+
+Open VSCode and select `File > Open Folder`, then select the folder where you have cloned your fork of the repo.
+
+Be sure to copy the `.vscode` folder inside `/contrib` to the root directory of the repo (`/.vscode`) 
 
 VSCode will probably ask to install the recommended extensions: say `yes`. If it doesn't you'll need to manually install these extensions     
 ```
