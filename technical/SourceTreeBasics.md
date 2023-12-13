@@ -10,7 +10,7 @@ A picture of the most commonly encountered branches of the tree.
 The full FreeCAD source tree has many other branches, but most Contributors will
 only need to deal with these:
 
-![The FreeCAD Source Tree](./ressources/SourceTreeBasics.svg)
+![The FreeCAD Source Tree](./resources/SourceTreeBasics.svg)
 
 ```mermaid
 graph LR
