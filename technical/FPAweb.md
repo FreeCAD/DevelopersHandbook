@@ -16,6 +16,7 @@ On a Debian or Ubuntu GNU/Linux system, Bundler is used :
 ```
 $ sudo apt install ruby-bundler ruby-dev build-essential
 $ bundle install
+$ cd path/to/your/local/fork/of/the/FPA/website
 $ bundle exec jekyll serve
 ```
 
