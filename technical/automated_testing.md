@@ -197,3 +197,4 @@ add_subdirectory(src/Mod/Sketcher)
 target_include_directories(Sketcher_tests_run PUBLIC ${EIGEN3_INCLUDE_DIR})
 target_link_libraries(Sketcher_tests_run gtest_main ${Google_Tests_LIBS} Sketcher)
 ```
+Note that it can be tempting to further group functionality using [value parameterized tests](https://google.github.io/googletest/advanced.html#value-parameterized-tests).  A key measure here is to assess whether the grouping benefits the writer or the reader of the tests.  Since a test is for use by a future programmer to figure out why it failed, it's okay and often preferred to be more pedantic and more repetitive rather than super efficient.  The reader should be able to figure out your test just by reading it, and maybe the test fixture.  If more work is required then the test is likely too complex.
