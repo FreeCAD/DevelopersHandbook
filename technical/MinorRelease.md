@@ -2,11 +2,11 @@
 layout: default
 ---
 
+# Minor Releases
+
 Between major releases, bugs are occasionally found and repaired. These fixes may be urgent enough or isolated enough that applying them incrementally to the existing ‘stable’ version is both possible and desirable. A set of such changes may be grouped together and released as a ‘minor’ version.
 
 Usually these fixes have already been applied to the development branch.  The process of applying them to the previous stable version is called 'backporting'
-
-## Stages
 
 Each minor release goes through the following stages:
 
@@ -35,7 +35,6 @@ The backport PR will go through the same process as any other PR.
 
 Minor bugs may be gathered together for a period of days or weeks to batch them together. A significant bug or one that risks user data may require an expedited release.
 
-When the determination is made to proceed with the release, the following things happen"
+When the determination is made to proceed with the release, the following things happen:
 
-1. something 
-2. Something else
+<!-- ## TODO: ping maintainers to clarify procedure here -->
