@@ -2,9 +2,9 @@
 layout: default
 ---
 
-# Stages
+# Major Releases
 
-Each release goes through the following milestones and stages:
+Each major release goes through the following milestones and stages:
 
 ## Announcement Preparation
 
@@ -16,7 +16,7 @@ A release may be triggered for several reasons.
 Whatever the reason, the first step in the determination by the maintainers that a release is needed.
 
 The maintainers will create a Github project to track the release.
-The maintainers will schedule a meeting to review outstanding Pull Requests. 
+The maintainers will schedule a meeting to review outstanding Pull Requests.
 
 
 ## Announcment milestone
@@ -55,7 +55,7 @@ After the PR Merge phase, only bug-fix PRs will be merged.
 
 ## Release Candidates
 
-After all outstanding PRs are merged and all critical bugs are resolved, a Release Candidate (RC) version will be created and a public announcment made.  This is a request to the community for intentional and deliberate testing with the goal of uncovering as many bugs as possible. This is the point at which the formal branch is created for the releases. First, create a branch called "releases/FreeCAD-X-Y" where X and Y are the major and minor release numbers. Next use the GitHub "Draft new release" button on the Releases page to create a new release. Set it up to create a new tag with the release number in it, e.g. "0.21rc1" and ensure that the release is based on the "releases/FreeCAD-X-Y" branch. Mark the release as a "pre-release" so that it does not display as the latest version. Attach all of the necessary installers, appimages, packages, etc. to this release. Note that the release can be edited after creation, so assets can be added as they become available. 
+After all outstanding PRs are merged and all critical bugs are resolved, a Release Candidate (RC) version will be created and a public announcment made.  This is a request to the community for intentional and deliberate testing with the goal of uncovering as many bugs as possible. This is the point at which the formal branch is created for the releases. First, create a branch called "releases/FreeCAD-X-Y" where X and Y are the major and minor release numbers. Next use the GitHub "Draft new release" button on the Releases page to create a new release. Set it up to create a new tag with the release number in it, e.g. "0.21rc1" and ensure that the release is based on the "releases/FreeCAD-X-Y" branch. Mark the release as a "pre-release" so that it does not display as the latest version. Attach all of the necessary installers, appimages, packages, etc. to this release. Note that the release can be edited after creation, so assets can be added as they become available.
 
 Translation files will be pushed to CrowdIn and a public call for translation assistance should be made.
 
