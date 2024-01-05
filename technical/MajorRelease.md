@@ -2,9 +2,9 @@
 layout: default
 ---
 
-# Stages
+# Major Releases
 
-Each release goes through the following milestones and stages:
+Each major release goes through the following milestones and stages:
 
 ## Announcement Preparation
 

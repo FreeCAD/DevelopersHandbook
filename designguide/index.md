@@ -1,4 +1,6 @@
-![](https://wiki.freecad.org/images/0/06/Freecad.svg)
+---
+layout: default
+---
 
 # Design Guide
 

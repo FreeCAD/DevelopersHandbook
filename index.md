@@ -9,7 +9,7 @@ Describes the broad objectives for FreeCAD Development
 How to set up a development environment to work on FreeCAD.
 
 ### [Design Guide](./designguide/index.md)
-Covers guidelines for visual elements in the FreeCAD Application.
+Covers guidelines for User Experience, Interaction and Interface in FreeCAD.
 
 ### [Code Formatting Guide](./codeformatting/index.md)
 Covers the C++ and Python code formatting guidelines.
