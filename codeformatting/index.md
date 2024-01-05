@@ -12,7 +12,7 @@ FreeCAD is written primarily in C++ and Python (with a few files in other langua
 
 For the sections of the code that have already been auto-formatted, we use [git pre-commit hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) to enforce that formatting. We use the [pre-commit](https://pre-commit.com/) framework to install and manage our hooks. All developers should install pre-commit following the [instructions here](https://freecad.github.io/DevelopersHandbook/gettingstarted/). When making a new commit, the hooks examine your changed files and ensure that they follow the appropriate formatting for the section of code you are working on. You do not need to manually yourself with your code's formatting as you develop, and may code it as you like (or as your IDE likes...). The hook will ensure that your finished code conforms to project requirements.
 
-Not all of FreeCAD currently uses these hooks: it is up to the Maintainers in charge of a particular Workbench or subdirectory to work with their development team to migrate their code's formatting to the automated tools, and to then enable the hooks on their subdirectory. 
+Not all of FreeCAD currently uses these hooks: it is up to the Maintainers in charge of a particular Workbench or subdirectory to work with their development team to migrate their code's formatting to the automated tools, and to then enable the hooks on their subdirectory.
 
 Currently the following sections of code are covered by pre-commit: `src/Mod/AddonManager`, `src/Tools`, and `tests/src`.
 

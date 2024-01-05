@@ -40,11 +40,11 @@ Assembly is a core feature of modern CAD systems.  Without an integrated assembl
 
 ## Objective: Flatten the learning curve
 
-CAD is hard.  These are complicated and powerful tools and the user should be expected to invest appropriate time to learn to use them well.  However, UI/UX inconsistency makes the learning process more difficult than it need be.  The FreeCAD community must pursue a program of UI normalization to make learning FreeCAD easier.  
+CAD is hard.  These are complicated and powerful tools and the user should be expected to invest appropriate time to learn to use them well.  However, UI/UX inconsistency makes the learning process more difficult than it need be.  The FreeCAD community must pursue a program of UI normalization to make learning FreeCAD easier.
 
 The first step in this process is to stop making things worse by accepting UI submissions that are poorly designed or implemented.  Focus areas:
 
-1. Creation of a UI/UX ‘style book’.  This would be a guidebook for developers to follow when creating core and add-on functionality.  The style book would also be useful when evaluating new submissions that affect user experience.  Eventually, the style book standards can be used to ‘score’ existing workbenches and identify opportunities for improvement. 
+1. Creation of a UI/UX ‘style book’.  This would be a guidebook for developers to follow when creating core and add-on functionality.  The style book would also be useful when evaluating new submissions that affect user experience.  Eventually, the style book standards can be used to ‘score’ existing workbenches and identify opportunities for improvement.
 2. A ‘first run’ wizard to familiarize the user with essential customizations and features.
 3. Reduce confusing UI elements
     1. Eliminate redundant tools
@@ -61,7 +61,7 @@ The first step in this process is to stop making things worse by accepting UI su
 FreeCAD has an addon manager to allow the user to add niche features.  This provides two important functions.  First, it allows the core application to remain leaner and avoid bloat. Second, it allows for competing solutions early on.  Our approach to addons, however, has been somewhat undisciplined.  As a result, the quality of addons is very uneven.  Some are excellent and behave like native parts of the application.  Others feel and behave inconsistently.  Still others are completely broken or unmaintained.  If we want the addon capability to serve both purposes, additional development is needed.  Focus areas include:
 
 1. Improve the Addon Manager workbench to make it easier for users to find good well-maintained addons.  Maybe a ‘Featured’ section if addon workbench has a responsive maintainer, minimum open bugs.   Maybe a user review?  Without some status, we could end up with lots of cruft polluting the the manager.
-2. Establish standards for addons to meet to achieve a ‘recommended’ or ‘featured’ status. Featured Addons should 
+2. Establish standards for addons to meet to achieve a ‘recommended’ or ‘featured’ status. Featured Addons should
     1. Have an engaged maintainer
     2. Have minimal high priority open issues tickets
     3. Comply with published style book
@@ -90,7 +90,7 @@ The FreeCAD documentation is generally in a very good state already. But it coul
 
 We want the FreeCAD application to be both efficient and attractive.  We want it to integrate well with the rest of the desktop experience, to be responsive and to be delightful to use. Focus areas include:
 
-1. User customization 
+1. User customization
     1. themes
 2. Modern UI concepts
     1. Eg “pie menu”
@@ -108,8 +108,8 @@ We want the FreeCAD application to be both efficient and attractive.  We want it
 Performing common and repetitive tasks should be as effortless as possible.  FreeCAD developers should commit themselves to building efficient workflows throughout the application.  This means minimizing clicks and unnecessary dialogs.  It means adding dedicated tools for routine functions rather than relying on generalized tools that may require more steps. It means anticipating and giving the user efficient access to information when and where they need it.  Focus areas include:
 
 1. Better and consistent measuring tools
-2. Improve sketcher : 
-    1. Missing tools : 
+2. Improve sketcher :
+    1. Missing tools :
         1. Offset tool.
         2. Circular pattern
         3. Usable rectangular array.

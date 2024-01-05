@@ -43,6 +43,8 @@ Technical information of interest to Contributors.
 
 - The [PowerUser's hub](https://wiki.freecad.org/Power_users_hub) in the FreeCAD wiki contains good information about Python scripting and workbench creation
 
+- [Python stubs package](./PythonStubsPackage.md)
+
 - [Accessing User Preferences](./preferences.md)
 
 - [Controlling Object Deletion](./ObjectDeletion.md)

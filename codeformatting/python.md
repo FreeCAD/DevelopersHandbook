@@ -7,4 +7,3 @@ layout: default
 Guidelines for code formatting in Python
 
 Use Black.
-

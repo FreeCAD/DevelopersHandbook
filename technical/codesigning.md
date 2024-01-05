@@ -7,10 +7,10 @@ layout: default
 ## Mac OS
 
 ### Prerequisites
-  
+
 You must be a member of Apple's Developer program to generate and use signing keys. Information can be found at https://developer.apple.com
 
-To sign an app you must have a "Developer ID Application" certificate. These can be created on the 
+To sign an app you must have a "Developer ID Application" certificate. These can be created on the
 Certificates, Identifiers & Profiles page of your Apple Developer account. Once it is created, download the certificate onto your computer
 and install it into one of your Keychains (double-click on the certificate to open and install it).
 
@@ -33,7 +33,7 @@ the specified certificate. It will automatically createa DMG, submit it for nota
 the disk image.
 
 Once complete, the disk image is ready for distribution.
-  
+
 ## Windows
 
   TBD
