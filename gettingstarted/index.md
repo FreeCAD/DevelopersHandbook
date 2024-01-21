@@ -38,6 +38,7 @@ FreeCAD depends on many other open source projects to provide the basic foundati
     - Install `pre-commit` (either using your system package manager or pip):
       - Debian/Ubuntu: `apt install pre-commit`
       - Fedora: `dnf install pre-commit` (Fedora)
+      - Arch Linux: `pacman -S pre-commit`
       - Other (pip in PATH): `pip install pre-commit`
       - Other (pip not in PATH): `python -m pip install pre-commit`
     - On a command line, change into your FreeCAD clone, e.g. `cd FreeCAD-src`
