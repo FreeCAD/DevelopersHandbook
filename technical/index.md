@@ -70,5 +70,7 @@ Technical information of interest to Contributors.
 - [Useful Python Modules](https://wiki.freecad.org/Extra_python_modules)
 
 - [OpenCascade Tutorials](http://opencascade.wikidot.com/romansarticles)
+- [OpenCascade overview presentation](https://dev.opencascade.org/sites/default/files/pdf/Topology.pdf)
+- [OpenCasacde_online_documentation](https://dev.opencascade.org/doc/overview/html/index.html)
 
 - [Scripted Objects](https://wiki.freecad.org/Scripted_objects)
