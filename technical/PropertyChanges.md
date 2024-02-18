@@ -15,7 +15,7 @@ Recommended reading:
 - When a Property's value changes, its PropertyContainer (eventually a DocumentObject) executes the onChanged method with the Property as a parameter.  This is where you will take appropriate action based on the new property value.
 - Be cautious when inserting logic into onChanged and execute as it is possible to create a loop.
 
-'''c++
+```c++
 void myFeature::execute()
 {
     MyProperty->setValue(foo());
@@ -26,7 +26,7 @@ void myFeature::onChanged(App::Property property)
         execute();
     }
 }
-'''
+```
 - The other interesting method involving property changes is mustExecute.   This is where you control whether or not your object participates in the next recompute cycle.
 
 

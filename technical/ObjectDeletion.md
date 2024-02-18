@@ -14,17 +14,17 @@ is not tidy.
 
 There are two methods in the ViewProvider that deal with this situation.
 
-'''c++
+```c++
 bool canDelete(App::DocumentObject *obj)
-'''
+```
 is called when Std_Delete is asked to delete obj, BUT it is called for each of
 obj's parent in the InList.  This is where you would decide if you will allow
 one of your children can be deleted.  In effect, the is canDeleteMyChildObject().
 Return true to allow the child to be deleted, or false to prevent the deletion.
 
-'''c++
+```c++
 bool onDelete(const std::vector<std::string> & parms)
-'''
+```
 is also called when when Std_Delete is asked to delete a DocumentObject, but in
 this case it is the DocumentObject's ViewProvider that is called.  Return true
 to allow deletion of the DocumentObject, or false to prevent the deletion.

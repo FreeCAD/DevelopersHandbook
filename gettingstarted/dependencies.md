@@ -121,12 +121,16 @@ to be installed. It is very common to have to adjust the one-line command below 
 (usually provided under a different name).
 
 A single command to install the dependencies on Ubuntu-based systems (last adjusted for 22.04.3 LTS):
-```
+```sh
 sudo apt install cmake cmake-gui libboost-date-time-dev libboost-dev libboost-filesystem-dev libboost-graph-dev libboost-iostreams-dev libboost-program-options-dev libboost-python-dev libboost-regex-dev libboost-serialization-dev libboost-thread-dev libcoin-dev libeigen3-dev libgts-bin libgts-dev libkdtree++-dev libmedc-dev libocct-data-exchange-dev libocct-ocaf-dev libocct-visualization-dev libopencv-dev libproj-dev libpyside2-dev libqt5opengl5-dev libqt5svg5-dev qtwebengine5-dev libqt5x11extras5-dev libqt5xmlpatterns5-dev libshiboken2-dev libspnav-dev libvtk7-dev libx11-dev libxerces-c-dev libzipios++-dev occt-draw pyside2-tools python3-dev python3-matplotlib python3-packaging python3-pivy python3-ply python3-pyside2.qtcore python3-pyside2.qtgui python3-pyside2.qtsvg python3-pyside2.qtwidgets python3-pyside2.qtnetwork python3-pyside2.qtwebengine python3-pyside2.qtwebenginecore python3-pyside2.qtwebenginewidgets python3-pyside2.qtwebchannel python3-markdown python3-git qtbase5-dev qttools5-dev swig libyaml-cpp-dev
 ```
 To install dependencies on Fedora systems (Derived from the [RPM spec](https://src.fedoraproject.org/rpms/freecad)):
-```
+```sh
 sudo dnf install clang cmake gcc-c++ gettext dos2unix doxygen swig graphviz gcc-gfortran desktop-file-utils freeimage-devel libXmu-devel mesa-libGL-devel mesa-libGLU-devel libglvnd-devel opencascade-devel Coin4-devel python3-devel python3-matplotlib python3-pivy boost-devel eigen3-devel tbb-devel qt5-qtbase-devel qt5-qtsvg-devel qt5-qtxmlpatterns-devel qt5-qttools-devel qt5-qttools-static qt5-qtwebengine-devel xerces-c xerces-c-devel libspnav-devel python3-shiboken2-devel python3-pyside2-devel pyside2-tools smesh-devel zipios++-devel python3-pycxx-devel libicu-devel vtk-devel med-devel libkdtree++-devel libappstream-glib python3-pivy python3-matplotlib python3-collada python3-pyside2 qt5-assistant
+```
+To install dependencies on Arch Linux based systems:
+```sh
+sudo pacman -S boost boost-libs cgns cmake coin eigen fmt git glew graphviz jsoncpp libharu liblas libspnav med-openmpi netcdf ninja nlohmann-json openmpi openvdb opencascade openvr ospray pdal pugixml pyside2 pyside2-tools python-gitpython python-markdown python-matplotlib python-mpi4py python-pip python-pivy python-ply python-shiboken2 python-yaml qt5-svg qt5-tools qt5-webengine qt5-x11extras qt5-xmlpatterns shiboken2 swig utf8cpp verdict xerces-c
 ```
 
 ### Windows
