@@ -10,10 +10,9 @@ Guidelines for Maintainers regarding code review and merge procedures.  Git can 
 
 - Adrián Insaurralde Avalos: release manager, PR triage
 - Yorik van Havre: Arch/BIM, Spreadsheet
-- Brad "sliptonic" Collette: Path
+- Brad Collette: CAM
 - Werner Mayer: everything
 - WandererFan: TechDraw
-- abdullahtahiriyo: Sketcher
 - Bernd Hahnebach: FEM
 - Roy-043: Draft
 - OpenBrain: CI management
@@ -81,6 +80,14 @@ When possible Maintainers should use the web-based PR merge system on GitHub to 
 1. Create a merge commit. This has the advantage of preserving the cryptographic commit signature of the individual commits created by the Contributor, if included. It demonstrates the history of the process clearly, and provides links back to the original Pull Request automatically. However, it creates one extra commit per PR, and for very small single-commit PRs may needlessly pollute the project's commit history. Nevertheless, this should be considered the default merge strategy.
 2. Rebase and merge. The rebase process changes the commits, so eliminates any cryptographic commit signature that had been provided by the Contributor. It directly includes the commits in the main history of the repository, without any intervening merge commit. This arguably results in a "cleaner" commit history for the project as a whole. This is most appropriate for small, single-commit PRs.
 3. Squash and merge. In some cases a Contributor may not be comfortable using git, and may be unable to squash their own commit history into a reasonable number of well-defined commits. In those cases Maintainers have the option of squashing all commits into one during the merge process. This is most appropriate when working with those uncomfortable with using git, who have a needlessly complex commit history for a single simple task.
+
+## Merge Meetings
+
+Every Monday, FreeCAD maintainers meet on a Jitsi call for an hour to go through the list of open pull requests and apply the ones that are ready for merging. The recurring event is [available in the FPA calendar](https://www.freecad.org/events.php).
+
+The call moderator opens the list of all open PRs, then the team of moderators goes through them in reverse chronological order: they look at submitted patches, discuss whether further changes need to happen, and collectively reach decision on merging or postponing the merge.
+
+This event is open for everybody. Developers whose patches are undergoing review are encouraged to join the call in case maintainers have questions about the code / design decisions.
 
 ## Reverting
 
