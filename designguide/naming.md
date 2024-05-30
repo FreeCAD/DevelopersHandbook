@@ -1,4 +1,4 @@
-![](https://wiki.freecad.org/images/0/06/Freecad.svg)
+![](/images/freecad.svg)
 
 ## Naming Convention
 
