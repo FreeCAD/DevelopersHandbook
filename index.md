@@ -1,4 +1,4 @@
-# <img src="images/freecad.svg" style="zoom:50%;" /> FreeCAD Developers Guide
+# <img src="images/freecad.svg" width="5%" style="margin-bottom:-2%" /> FreeCAD Developers Guide
 
 Welcome to the FreeCAD Developer's Guide! This is a work-in-progress, so please feel free to submit Issues and Pull Requests when you find areas that need work.
 

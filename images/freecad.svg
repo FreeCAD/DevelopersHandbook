@@ -1,31 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
-   width="24"
-   height="24"
-   viewBox="0 0 24 24"
+   width="400"
+   height="480"
+   viewBox="0 0 400 480"
+   fill="none"
    version="1.1"
-   id="svg1"
-   xml:space="preserve"
+   id="svg4"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"><title
-     id="title11">FreeCAD</title><defs
-     id="defs1" /><path
-     d="m 22,3.9997423 -3.999742,4.0002581 h -8 V 10.999806 H 14 v 4.000259 h -3.999742 v 4.999678 L 5.9999997,24 h 4.0503843 c 0.30326,-1e-6 0.571883,-0.195269 0.66559,-0.48369 l 0.723985,-2.22828 c 0.06925,-0.213087 0.236489,-0.379833 0.449583,-0.449065 l 0.556553,-0.180868 c 0.213108,-0.06926 0.446577,-0.03248 0.627866,0.09922 l 1.894968,1.377173 c 0.245331,0.178232 0.57787,0.178229 0.823203,0 l 1.698598,-1.234547 c 0.245363,-0.178242 0.347963,-0.493948 0.254247,-0.782378 l -0.723984,-2.22828 c -0.06926,-0.213109 -0.03197,-0.446575 0.09974,-0.627866 l 0.344164,-0.473355 c 0.131697,-0.181276 0.34179,-0.288856 0.565855,-0.28887 l 2.343001,5.1e-4 c 0.303278,10e-6 0.571885,-0.19577 0.66559,-0.484207 l 0.649054,-1.996771 c 0.0937,-0.288413 -0.0089,-0.60465 -0.254247,-0.782895 L 19.538664,11.858666 C 19.357381,11.726957 19.250306,11.516889 19.250311,11.292812 V 10.70732 c 1.9e-5,-0.224072 0.107062,-0.434681 0.288353,-0.566372 L 21.711646,8.5622376 C 21.892924,8.4305313 21.999999,8.219938 22,7.9958659 Z"
-     style="fill:#418fde;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.64567;stroke-linecap:square"
-     id="path8" /><path
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title4">FreeCAD Symbol</title>
+  <defs
+     id="defs4">
+    <clipPath
+       id="clip0_194_9881">
+      <rect
+         width="400"
+         height="480"
+         fill="white"
+         id="rect4" />
+    </clipPath>
+  </defs>
+  <path
+     d="m 400,79.994846 -79.99484,80.005164 h -160 v 59.99611 H 240 v 80.00518 h -79.99484 v 99.99356 L 79.999994,480 h 81.007686 c 6.0652,-2e-5 11.43766,-3.90538 13.3118,-9.6738 l 14.4797,-44.5656 c 1.385,-4.26174 4.72978,-7.59666 8.99166,-8.9813 l 11.13106,-3.61736 c 4.26216,-1.3852 8.93154,-0.6496 12.55732,1.9844 l 37.89936,27.54346 c 4.90662,3.56464 11.5574,3.56458 16.46406,0 l 33.97196,-24.69094 c 4.90726,-3.56484 6.95926,-9.87896 5.08494,-15.64756 l -14.47968,-44.5656 c -1.3852,-4.26218 -0.6394,-8.9315 1.9948,-12.55732 l 6.88328,-9.4671 c 2.63394,-3.62552 6.8358,-5.77712 11.3171,-5.7774 l 46.86002,0.0102 c 6.06556,2e-4 11.4377,-3.9154 13.3118,-9.68414 l 12.98108,-39.93542 c 1.874,-5.76826 -0.178,-12.093 -5.08494,-15.6579 l -37.90972,-27.5433 c -3.62566,-2.63418 -5.76716,-6.83554 -5.76706,-11.31708 V 214.1464 c 3.8e-4,-4.48144 2.14124,-8.69362 5.76706,-11.32744 l 43.45964,-31.57421 c 3.62556,-2.63412 5.76706,-6.84599 5.76708,-11.32743 z"
+     style="fill:#418fde;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.64566;stroke-linecap:square"
+     id="path8" />
+  <path
      id="path7"
-     style="display:inline;fill:#ff585d;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.64567;stroke-linecap:square"
-     d="M 18 0 L 14 4 L 18 4 L 18 8 L 22 4 L 22 0 L 18 0 z M 6 16 L 2 20 L 2 24 L 6 24 L 10 20 L 6 20 L 6 16 z " /><path
-     d="M 6,0 2,4 V 20 L 6,16 V 4 h 8 l 4,-4 z"
-     style="fill:#cb333b;fill-rule:evenodd;stroke-width:2.64567;stroke-linecap:square"
-     id="path3" /><path
-     d="M 5.9999997,19.999743 H 10.000258 V 15.000065 H 14 V 10.999806 H 10.000258 V 8.0000004 h 8 V 3.9997423 H 5.9999997 Z"
-     style="fill:#fefefe;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.64567;stroke-linecap:square"
-     id="path9" /><metadata
-     id="metadata11"><rdf:RDF><cc:Work
-         rdf:about=""><dc:title>FreeCAD</dc:title></cc:Work></rdf:RDF></metadata></svg>
+     style="display:inline;fill:#ff585d;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.64566;stroke-linecap:square"
+     d="m 320,0 -80,80 h 80 v 80 L 400,80 V 0 Z M 80,320 0,400 v 80 h 80 l 80,-80 H 80 Z" />
+  <path
+     d="M 80,0 0,80 V 400 L 80,320 V 80 H 240 L 320,0 Z"
+     style="fill:#cb333b;fill-rule:evenodd;stroke-width:2.64566;stroke-linecap:square"
+     id="path3" />
+  <path
+     d="M 79.999994,399.99486 H 160.00516 V 300.0013 H 240 v -80.00518 h -79.99484 v -59.99611 h 160 V 79.994846 H 79.999994 Z"
+     style="fill:#fefefe;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.64566;stroke-linecap:square"
+     id="path9" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>FreeCAD Symbol</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Max Wilfinger (maxwxyz)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>The FreeCAD project association AISBL (FPA)</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
