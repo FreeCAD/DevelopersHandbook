@@ -41,14 +41,14 @@ You can download the logo kit including guidelines:
 
 ### Wordmark
 
-<img src="../images/large.svg" width="50%">
+<img src="../images/FreeCAD-wordmark.svg" width="50%">
 
 The logo consists of two elements: the *F* symbol and the wordmark. The text uses the [Evolventa](https://evolventa.github.io/) font family, in regular weight for "Free" and in bold weight for "CAD". It should not be recreated but instead used as provided, either in the dark or light version.
 
 
 ### Symbol
 
-<img src="../images/freecad.svg" width="10%">
+<img src="../images/FreeCAD-symbol.svg" width="10%">
 
 The symbol has two versions:
 1. Full color (primary) which is the preferred version
@@ -60,13 +60,13 @@ The symbol has two versions:
 The FreeCAD logos must always appear as one of the primary brand colors. This includes *Tufts Blue*, *Light Red*, *Dark Red*, *Off Black*, and *White*. These colors should also be used for other branded applications.
 Regardless of the used symbol, the wordmark *FreeCAD* must always be used in either *Off Black* or *White* as provided in the logo kit.
 
-- **Tufts Blue** [#418FDE, RGBA(65,143,222,1), CMYK(73,36,0,13), PMS 279 C](https://encycolorpedia.com/418fde)
+- **Tufts Blue**, [#418FDE, RGBA(65,143,222,1), CMYK(73,36,0,13), PMS 279 C](https://encycolorpedia.com/418fde)
 
-- **Light Red** [#FF585D, RGBA(255,88,93,1), CMYK(0,64,64,0), PMS 178 C](https://encycolorpedia.com/ff585d)
+- **Light Red**, [#FF585D, RGBA(255,88,93,1), CMYK(0,64,64,0), PMS 178 C](https://encycolorpedia.com/ff585d)
 
-- **Dark Red** [#CB333B, RGBA(203,51,59,1), CMYK(0,75,72,18), PMS 1797 C](https://encycolorpedia.com/cb333b)
+- **Dark Red**, [#CB333B, RGBA(203,51,59,1), CMYK(0,75,72,18), PMS 1797 C](https://encycolorpedia.com/cb333b)
 
-- **Off Black** [#212529, RGBA(33,37,41,1), CMYK(0,0,16,1), PMS BLACK C](https://encycolorpedia.com/212529)
+- **Off Black**, [#212529, RGBA(33,37,41,1), CMYK(0,0,16,1), PMS BLACK C](https://encycolorpedia.com/212529)
 
 
 ## Uses
