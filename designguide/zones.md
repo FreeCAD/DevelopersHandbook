@@ -1,5 +1,3 @@
-![](/images/freecad.svg)
-
 ## Zones
 
 The circle shown in the image below can be considered a 'hot zone' where a user should be able to focus attention on the work/task being performed.
