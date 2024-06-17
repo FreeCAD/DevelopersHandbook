@@ -74,6 +74,10 @@ There is no one-size-fits-all solution to Maintainer-Contributor relations: diff
 3. **Be polite, courteous, and professional.** Even considering the language and cultural differences we face in our communications, simple use of "please" and "thank you" go a long way towards encouraging civil, professional discourse. *Ad hominem* arguments, character criticism, and other forms of disrespect for the human beings participating in this project have no place here.
 4. **Cut your losses.** Your well-being as a Maintainer is valuable too, and you have the right to expect polite, courteous, and professional behavior from those whose code you are reviewing. If you face a situation in which a Contributor refuses to respond or cooperate with your (polite, courteous, and professional) advice, it may be that their contribution does not merit further consideration. You are never obligated to continue a review that you don't feel is proceeding in a constructive way.
 
+### First time contributors require the CI workflow to be started manually
+
+The Github CI/CD pipepline will execute for any PR that is created unless the PR comes from a first-time. This is intentional and allow is meant to catch bad actors attempting to slip malicious code into the CI process.  When a PR requires the workflow to be started manually, take extra time to evaluate the PR and ensure that any change to the CI system is expected and desirable.
+
 ## Merge Process
 
 When possible Maintainers should use the web-based PR merge system on GitHub to avoid potential git errors and to maintain process consistency. There are three merge strategies available:
