@@ -81,3 +81,7 @@ The following is the standard Python copyright header that should be included in
 # *                                                                         *
 # ***************************************************************************
 ```
+
+## Inline documentation
+
+You will find a mix of different generations of comment-based inline documentation systems in the code base depending on when the code was written.  As of 2024 it is preferred that you write [doxygen](https://www.doxygen.nl/manual/docblocks.html) compatible comment documentation.  For methods, including the @param and @return as appropriate is highly recommended.
