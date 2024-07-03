@@ -10,11 +10,11 @@ Below is the notional zone layout of the FreeCAD user interface, specific sizes 
 
 ![](images/zones.svg)
 
-**Title Bar:** Windows 10 standard is a height of 32 pixels. No other consideration is made, nor should a developer attempt to modify this area in any way due to limitations that arise from cross-platform compatibility.
+**Title Bar:** Windows 10 standard is a height of 32 pixels. Any modifications to this area has to be carefully considered because of cross-platform compatibility and should only be done in the core of FreeCAD. Individual workbenches should not attempt to modify it.
 
 **Task Bar:** Windows 10 standard is a height of 48 pixels. This element is a fixed size and follows the same rationale and guidelines provided for the Title Bar.
 
-**Menu Bar:** Standard height is established as 32 pixels in the stylesheet. There shall be no insertion of non-standard elements (ie. QComboBox) in this area by default. New menus can be added, however they should ideally be confined to the menu named after your specific workbench. Simple addons should insert entries into a menu titled "Accessories" if applicable.
+**Menu Bar:** Standard height is established as 32 pixels in the stylesheet. There shall be no insertion of non-standard elements (ie. QComboBox) in this area by individual workbenches. New menus can be added, however they should ideally be confined to the menu named after your specific workbench. Simple addons should insert entries into a menu titled "Accessories" if applicable.
 
 **Global Function Toolbar:** By default, FreeCAD uses a height for horizontal toolbars of 40 pixels with icons size of 24px. Total icons displayed on this toolbar shall not exceed a total of 44 in order to prevent clipping on a 1080p display. This toolbar is primarily designated for global functions across any workbench. Unused space can be populated with workbench related settings and controls (ie. grid, snap, unit, controls) rather than work features.
 
