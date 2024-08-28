@@ -49,6 +49,8 @@ The following is the standard C++ copyright header that should be included in al
  ***************************************************************************/
 ```
 
+### [General C++ coding practices](c++practices.md)
+
 ## Python
 
 There is no unified Python coding style agreed upon for the FreeCAD codebase: each module currently has its own style. Developers working on an existing module should format their code in the prevailing style of the module they are working in.
