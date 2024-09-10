@@ -17,7 +17,6 @@ To work on FreeCAD you will need CMake, git, a code editor, a C++ compiler, and 
 - On MacOS you will need to install the XCode command line tools, and can use XCode, Visual Studio Code, or CLion as your editor.
 
 Other combinations may work as well, these are just the ones that you will be able to get help with most readily on the [FreeCAD Forum](https://forum.freecad.org).
-
 ## Dependencies
 
 See also [Dependencies](./dependencies.md)
@@ -27,6 +26,19 @@ FreeCAD depends on many other open source projects to provide the basic foundati
 - Linux: [https://wiki.freecad.org/Compile_on_Linux](https://wiki.freecad.org/Compile_on_Linux)
 - Windows: [https://wiki.freecad.org/Compile_on_Windows](https://wiki.freecad.org/Compile_on_Windows)
 - Mac: [https://wiki.freecad.org/Compile_on_MacOS](https://wiki.freecad.org/Compile_on_MacOS)
+
+### Conda
+
+One of the easiest ways of creating a standalone FreeCAD build environment with its dependencies in a way that does not affect the rest of your system is to use
+Conda. Install Miniconda on your system, then use one of the setup scripts included with the FreeCAD source code to create the appropriate
+environment, e.g. `conda/setup-environment.sh`. Once complete, activate the environment with `conda activate freecad`. This creates an environment
+that you can run your build system in. For example, on MacOS from the top of a FreeCAD source code clone:
+
+- `conda/setup-environment.sh`
+- `conda activate freecad`
+- `cmake -B build/debug --preset conda-macos-debug .`
+- `cmake --build . --parallel`
+
 
 ## Setting up for Development
 
