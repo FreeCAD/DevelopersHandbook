@@ -32,6 +32,8 @@ Technical information of interest to Contributors.
 
 - [Contributing to FreeCAD websites](./Websites.md)
 
+- [Reference Library](./ReferenceLibrary.md)
+
 ## Modifying FreeCAD
 
 - Contributing to FreeCAD
