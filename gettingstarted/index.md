@@ -90,7 +90,7 @@ The basic process is:
 
 Maintainers review PRs on a rolling basis throughout the week, and also in a more concentrated review meeting on Mondays
 (see the [FreeCAD Events Calendar](https://freecad.org/events.php) for the exact date and time in your timezone). When reviewing,
-Maintainers strive to uphold the tenets of the [CONTRIBUTING.md](https://github.com/FreeCAD/FreeCAD/blob/main/CONTRIBUTING.md) 
+Maintainers strive to uphold the tenets of the [CONTRIBUTING.md](https://github.com/FreeCAD/FreeCAD/blob/main/CONTRIBUTING.md)
 document. These meetings are open to the public and all developers are welcome to attend: particularly if you have a PR under review,
 you may be able to accelerate that process by being present to address and questions or concerns that arise. You can also participate
 in the process by reviewing PRs yourself. Although only Maintainers may merge PRs, anyone is welcome to test and provide feedback, and
