@@ -3,9 +3,11 @@
 
 A convenient way of working with the FreeCAD source code is to use an IDE or Integrated Development Environment. The FreeCAD repository contains a VSCode configuration which makes it particularly easy to get started with.
 
-Get VSCode here https://code.visualstudio.com/download and Git here https://git-scm.com/downloads 
+Get VSCode here https://code.visualstudio.com/download and Git here https://git-scm.com/downloads
 
-After that go to github and create your own fork of the FreeCAD repository by clicking the fork button. Once that's done, clone your fork to your local computer that you will be using for development. 
+After that go to github and create your own fork of the FreeCAD repository by clicking the fork button. Once that's done, clone your fork to your local computer that you will be using for development.
+
+Note: if you are using VSCode on an Ubuntu based Linux, please avoid using the snap version - it won't work properly with FreeCAD.
 
 ```
 git clone https://github.com/YourUsername/FreeCAD --recurse-submodules
@@ -13,9 +15,9 @@ git clone https://github.com/YourUsername/FreeCAD --recurse-submodules
 
 Open VSCode and select `File > Open Folder`, then select the folder where you have cloned your fork of the repo.
 
-Be sure to copy the `.vscode` folder inside `/contrib` to the root directory of the repo (`/.vscode`) 
+Be sure to copy the `.vscode` folder inside `/contrib` to the root directory of the repo (`/.vscode`)
 
-VSCode will probably ask to install the recommended extensions: say `yes`. If it doesn't you'll need to manually install these extensions     
+VSCode will probably ask to install the recommended extensions: say `yes`. If it doesn't you'll need to manually install these extensions
 ```
 ms-vscode.cpptools-extension-pack
 ms-python.python
@@ -23,7 +25,7 @@ ms-python.python
 
 ## Select build configuration
 
-<video autoplay muted playsinline loop src="images/configure.mp4" type="video/mp4"></video>
+<video autoplay muted playsinline loop src="resources/configure.mp4" type="video/mp4"></video>
 
 First on the bottom left corner, in the status bar, select the build type. Options are:
 - debug
@@ -37,7 +39,7 @@ Cmake should automatically configure the project with the selected configuration
 
 ## First build
 
-<video autoplay muted playsinline loop src="images/build.mp4" type="video/mp4"></video>
+<video autoplay muted playsinline loop src="resources/build.mp4" type="video/mp4"></video>
 
 Press `Ctrl + Shift + B`, or click the build button with the cog icon in the status bar, or run the `CMake: build` task.
 
@@ -47,16 +49,16 @@ Press `Ctrl + Shift + B`, or click the build button with the cog icon in the sta
 
 ## Launching the built executable and debugging
 
-<video autoplay muted playsinline loop src="images/debug.mp4" type="video/mp4"></video>
+<video autoplay muted playsinline loop src="resources/debug.mp4" type="video/mp4"></video>
 
 On the left panel go to the debug section and click the little green play button. Alternatively press `F5`. Every time you launch the debugger a build is triggered, to ensure all the latest changes you made to the code are compiled in.
 
 You should see freecad launching and the debugger attaching to the process. If an error pops up the python debugger failed to attach (there's 30 second timeout).
 Close FreeCAD and try launching it again. If it still fails try increasing the timeout located in the file `.vscode/scripts/WaitForDebugpy.py`
 
-To debug please refer to the [documentation](https://code.visualstudio.com/docs/editor/debugging#_debug-actions) or search for a tutorial online. 
+To debug please refer to the [documentation](https://code.visualstudio.com/docs/editor/debugging#_debug-actions) or search for a tutorial online.
 
-**NOTE:** VSCode has an option called 'run without debugging'. This doesn't work, don't use it. If you just want to run the application launch with `F5` and ignore the debugger. 
+**NOTE:** VSCode has an option called 'run without debugging'. This doesn't work, don't use it. If you just want to run the application launch with `F5` and ignore the debugger.
 
 **NOTE:** There's actually two debuggers: on the top panel you can see a dropdown to select either the c++ debugger or the python one.
 
@@ -64,9 +66,9 @@ To debug please refer to the [documentation](https://code.visualstudio.com/docs/
 
 ## Running tests
 
-<video autoplay muted playsinline loop src="images/testing.mp4" type="video/mp4"></video>
+<video autoplay muted playsinline loop src="resources/testing.mp4" type="video/mp4"></video>
 
-The IDE supports running FreeCAD tests as well. On the left panel go to the testing section and click the play button. A build takes place and then all the tests are run and results reported. 
+The IDE supports running FreeCAD tests as well. On the left panel go to the testing section and click the play button. A build takes place and then all the tests are run and results reported.
 
 **NOTE:** This is much slower than running the `Tests_run` executable directly. The video above is sped up.
 
@@ -78,7 +80,7 @@ Alternatively, there are two vscode tasks that can be used to run the cpp and py
 
 ## General features of VSCode
 
-On the left panel you can see the following sections: 
+On the left panel you can see the following sections:
 
 - File manager: here you can control fils and search them with `Ctrl+F`. Press `F2` to rename the selected file.
 - Source control: here you can control git from the graphical user interface.
@@ -101,20 +103,20 @@ General editor useful shortcuts:
 
 Read the documentation for more:
 
-- [basic editing](https://code.visualstudio.com/docs/editor/codebasics) 
-- [code navigaton](https://code.visualstudio.com/docs/editor/editingevolved) 
+- [basic editing](https://code.visualstudio.com/docs/editor/codebasics)
+- [code navigaton](https://code.visualstudio.com/docs/editor/editingevolved)
 - [refactoring](https://code.visualstudio.com/docs/editor/refactoring)
 
 Other useful extensions, recommended but not necessary are
 - ```gruntfuggly.todo-tree```: Scans all the files and reports where particular keywords appear. For example `TODO`, `FIXME`, `BUG`...
 
-- ```mhutchie.git-graph```: Helps visualize git commits and branches. 
+- ```mhutchie.git-graph```: Helps visualize git commits and branches.
 
 - ```donjayamanne.githistory```: Adds two buttons to the right-click menu: `git: view file history` and `git: view line history`
 
 
-![](images/extensions.png)
+![](resources/extensions.png)
 
 - On the very left you can see the `Todo-Tree` extension reporting `TODO`s and `FIXME`
 - On the left half you can see the `git graph` extension showing all the commits on different branches. You can click a commit to see exactly what was modified by it.
-- On the right half you can see the `git history` of the DocumentObject.cpp file.  
+- On the right half you can see the `git history` of the DocumentObject.cpp file.
