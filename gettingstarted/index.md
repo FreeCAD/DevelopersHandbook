@@ -75,6 +75,11 @@ that you can run your build system in. For example, on MacOS from the top of a F
     - `git branch fixTheThing`
     - `git checkout fixTheThing` (or both commands in one go: `git checkout -b fixTheThing`)
 
+## Running and Debugging
+
+   - [Visual Studio Code](gettingstarted/VSCode)
+   - [CLion](gettindstarted/CLion)
+
 ## Submitting a PR
 
 The basic process is:
