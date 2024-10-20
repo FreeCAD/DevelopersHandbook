@@ -10,3 +10,6 @@ _site/
 .bundle/**
 !.bundle/config
 vendor/
+
+# Ignore IDE directories
+.idea/
