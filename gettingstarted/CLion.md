@@ -8,7 +8,7 @@ If you don't already have CLion installed, download it, license it, install it p
 
 ### Checking out FreeCAD
 
-**Command line:**   `git clone https://github.com/FreeCAD/FreeCAD` and then File -> Open or New Project on that directory.
+**Command line:**   `git clone --recurse-submodules https://github.com/FreeCAD/FreeCAD` and then File -> Open or New Project on that directory.
 
 **IDE:** From upper left, choose Project from Version Control.   Use https://github.com/FreeCAD/FreeCAD
 ![Pict8](./resources/CLionPythonDebug8.png)
