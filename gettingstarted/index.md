@@ -43,7 +43,7 @@ that you can run your build system in. For example, on MacOS from the top of a F
 ## Setting up for Development
 
 1. Fork [https://github.com/FreeCAD/FreeCAD](https://github.com/FreeCAD/FreeCAD) on GitHub
-2. Clone your fork: for example, on the command line you can use `git clone https://github.com/YourUsername/FreeCAD FreeCAD-src`
+2. Clone your fork: for example, on the command line you can use `git clone --recurse-submodules https://github.com/YourUsername/FreeCAD FreeCAD-src`
 3. Set up `pre-commit` (our automatic code-formatter and checker):
 
 
