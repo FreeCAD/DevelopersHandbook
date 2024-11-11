@@ -2,19 +2,10 @@
 layout: default
 ---
 
-# C++ coding practices
+# C++ practices
 
-Although this chapter is not FreeCAD specific, it is provided here to help both developers and code reviewers to ensure
-clean and easily maintainable code. The practices presented should be treated like food recipies - you can play with them, alter them - but every change should be thoughtful and intentional.
-
-This document is __very__ much inspired by the [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
-Most rules presented here are from this document and whenever something is not covered or you are in doubt - 
-don't hesitate to consult it. 
-
-> [!NOTE]  
-> Remember that code review is a collaborative discussion. Don’t hesitate to ask for clarification or help when needed. Reviewers can also make mistakes, the goal is to work together to refine the code to a point where everyone is satisfied.
-
-While this guideline might not be consistently followed throughout all of the existing codebase, adhering to these practices moving forward will help improve the overall quality of the code and make future contributions more maintainable.
+Most rules presented here cover the same things as the very good [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines). 
+Whenever something is not covered or you are in doubt - don't hesitate to consult it - it is a very good source of information.
 
 ## Avoid anonymous namespaces
 
@@ -466,7 +457,7 @@ constexpr auto redDogColor {"red"}; // OK
 ```
 See also variable sets.
 
-## Out parameters
+# Out parameters
 
 Out parameters are _non-const, by-reference, or by-pointer_, function parameters. These are known to cause hard to find bugs.
 
@@ -601,4 +592,4 @@ constexpr std::array<Button, numButtons> buttonDefs {{
 }};
 ```
 
-When in doubt, use a struct.
+When in doubt, use a struct - it is better to have good names than not.
