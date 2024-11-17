@@ -107,7 +107,7 @@ static constexpr std::array<PrefixSpec, 7> sortedPrefixes {
 	{'k', 1ULL << 10},  // 1 << 10 = 2^10 = 1024
 	{'\0', 0}}};
     
-const auto res = std::find_if(prefixes, [&](const auto& spec) {
+const auto res = std::find_if(prefixes.begin(), prefixes.end(), [&](const auto& spec) {
 	return spec.factor <= size;
 });
 
@@ -147,6 +147,38 @@ Can also apply to `switch` statements.
 
 Complicated `if else` code might benefit from converting to a state machine.
 
+### Ternary operator
+You can reduce six lines:
+```cpp
+int r; // can’t be const
+
+if (x == 2) {
+	r = 2;
+} else {
+	r = 3;
+}
+```
+to one, with a single assignment, no curly braces, no repetition, and
+const option:
+```cpp
+const int r = x == 2 ? 2 : 3;
+```
+This works especially great for simplifying return statements.
+
+If you have more than one ternary it might be worth to extract function that encapsulates the conditional logic:
+```
+auto someConditionalLogic = []() {
+	if (condition1) {
+		return 1;
+	} else if (condition2) {
+		return 2;
+	} else {
+		return 3;
+	}
+}
+
+const int r = someConditionalLogic();
+```
 
 ## Const correctness
 
@@ -184,7 +216,7 @@ Required information can be injected via constructor or method parameters.
 
 If it is necessary to introduce external code (e.g. a service object), do so by passing an interface, helper function or similar to avoid coupling.
 
-Even in complex cases where singeltons are used we can avoid hard coupling and make unit test a breeze.
+Even in complex cases where singletons are used we can avoid hard coupling and make unit test a breeze.
 Example:
 ```c++
 // For this example the implementation is included in the class definition
@@ -424,13 +456,13 @@ To document what the magic literal is, use a suitable named constant.
 
 Instead of this:
 ```cpp
-displayLines(25);
+displayLines(80);
 ```
 
 Do the following instead:
 ```c++
-constexpr auto sandardScreenLength {25};
-displayLines(sandardScreenLength);
+constexpr auto standardScreenLength {80};
+displayLines(standardScreenLength);
 ```
 
 ## Good naming
@@ -493,8 +525,7 @@ Change requires finding every usage (difficult) and replicating the change (erro
 
 **Repetition is entirely avoidable.**
 
-The variant part (the bit that is different between usages) of repeating
-code is often just one or two items in a long chain of statement.
+The variant part (the bit that is different between usages) of repeating code is often just one or two items in a long chain of statement.
 The variant parts can be extracted and passed as parameters to a function or lambda executing the common body. A sequence of repeated code likely indicates the underlying data is actually a set and hence should be defined in a container and dealt with accordingly.
 
 ## Static
@@ -504,24 +535,6 @@ initialisation in lambda capture.
 
 `static` functions _may_ be better moved out of class into a named namespace or some utility library/file.
 
-## Ternary operator
-
-Reduce six lines:
-```cpp
-int r; // can’t be const
-
-if (x == 2) {
-	r = 2;
-} else {
-	r = 3;
-}
-```
-to one, with a single assignment, no curly braces, no repetition, and
-const option:
-```cpp
-const int r = x == 2 ? 2 : 3;
-```
-Also great for simplifying return statements.
 
 ## Automated testing
 
