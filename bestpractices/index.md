@@ -5,10 +5,10 @@ layout: default
 # Best Practices
 
 Although this chapter is not FreeCAD specific, it is provided here to help both developers and code reviewers to ensure
-clean and easily maintainable code. The practices presented should be treated like food recipes - you can play with them, 
+clean and easily maintainable code. The practices presented should be treated like food recipes - you can play with them,
 alter them - but every change should be thoughtful and intentional.
 
-While this guideline might not be consistently followed throughout all of the existing codebase, adhering to these practices 
+While this guideline might not be consistently followed throughout all of the existing codebase, adhering to these practices
 moving forward will help improve the overall quality of the code and make future contributions more maintainable. Consider it
 as inspiration for the better future.
 

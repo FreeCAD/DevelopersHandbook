@@ -11,10 +11,10 @@ You can always consult it to learn more useful stuff.
 
 While points of this guide might not be consistently followed throughout all of the existing codebase, checking if new code follows them is possible and in long term should help us immensely.
 
-> [!NOTE]  
+> [!NOTE]
 > Remember that code review is a collaborative discussion. Don’t hesitate to ask for clarification or help when needed. Reviewers can also make mistakes, the goal is to work together to refine the code to a point where everyone is satisfied.
 
-In this document the **bolded** text will indicate how important each suggestion is. 
+In this document the **bolded** text will indicate how important each suggestion is.
  - **must** will be used for fundamental things that should be non-controversial and which you really should follow
  - **should** will be used for important details that will apply for vast majority of cases, there could however be valid reasons to ignore them depending on context
  - **could** will be used for best practices, things that you should try to follow but not following them is not an error per se
@@ -38,11 +38,11 @@ In this document the **bolded** text will indicate how important each suggestion
 4. Early-Exit **should** be preferred to prune unwanted execution branches fast.
 7. Global state (global variables, static fields, singletons) **should be** avoided.
 8. (C++ only) `enum class` **should** be preferred over normal enum whenever possible.
-9. (C++ only) C++ libraries/structures **should** be preferred over C ones. i.e. `std::array/vector` should be used instead of C array. 
+9. (C++ only) C++ libraries/structures **should** be preferred over C ones. i.e. `std::array/vector` should be used instead of C array.
 10. (C++ only) C++ standard library **should** be utilized if possible, especially the `<algorithms>` one.
     <details>
         <summary>Example #1</summary>
-        
+
         Consider following code:
         ```c++
             std::vector<int> vertices;
@@ -87,7 +87,7 @@ In this document the **bolded** text will indicate how important each suggestion
 14. All members **must** be initialized.
     <details>
         <summary>Rationale</summary>
-        Not initialized members can easily cause undefined behaviors that are really hard to find. 
+        Not initialized members can easily cause undefined behaviors that are really hard to find.
     </details>
 
 ## Design / Architecture
@@ -105,7 +105,7 @@ In this document the **bolded** text will indicate how important each suggestion
 5. Long methods **should** be split into smaller, better described ones.
 6. (C++ only) Defining new macros **must** be avoided, unless absolutely necessary.
 7. Integers **must not** be used to express anything other than numbers. For enumerations enums **must** be used.
-8. Code **should** be written in a way that it expresses intent, i.e. what should be done, rather than just how it is done. 
+8. Code **should** be written in a way that it expresses intent, i.e. what should be done, rather than just how it is done.
     <details>
         <summary>Example #1</summary>
         Consider this code:
@@ -115,7 +115,7 @@ In this document the **bolded** text will indicate how important each suggestion
                 // ... some code ...
 
                 QDockWidget *dock = nullptr;
-                
+
                 for (auto w = qApp->widgetAt(QCursor::pos()); w; w = w->parentWidget()) {
                     dock = qobject_cast<QDockWidget*>(w);
                     if (dock) {
@@ -144,10 +144,10 @@ In this document the **bolded** text will indicate how important each suggestion
                 toggleOverlay(dock, m);
             }
         ```
-        
-        It is hard to understand what is the job of the for loop inside `if (!dock)` statement. 
+
+        It is hard to understand what is the job of the for loop inside `if (!dock)` statement.
         We can refactor it to a new `QWidget* findClosestDockWidget()` method for it to look like this:
-        
+
         ```c++
             void setOverlayMode(OverlayMode mode)
             {
@@ -168,19 +168,19 @@ In this document the **bolded** text will indicate how important each suggestion
 
         That way reading through code of `setOverlayMode` we don't need to care about the details of finding the closest dock widget.
     </details>
-10. Boolean arguments **must** be avoided. Use enumerations instead - enum with 2 values is absolutely fine. 
+10. Boolean arguments **must** be avoided. Use enumerations instead - enum with 2 values is absolutely fine.
     For python boolean arguments are ok, but they **must** forced to be keyword ones.
     <details>
         <summary>example #1 (c++)</summary>
         consider following example:
-        
+
         ```c++
         mapper.populate(false, it.key(), it.value());
         ```
 
         it is impossible to understand what false means without consulting the documentation or at least the method signature.
         instead the enum should be used:
-        
+
         ```c++
         mapper.populate(mappingstatus::modified, it.key(), it.value());
         ```
@@ -188,7 +188,7 @@ In this document the **bolded** text will indicate how important each suggestion
         now the intent is clear
     </details>
 11. (C++ only) Code **should** prefer uniform initialization `{ }` (also called brace initialization). Prevents narrowing.
-12. (C++ only) Class member variables **should** be initialized at declaration, not in constructors 
+12. (C++ only) Class member variables **should** be initialized at declaration, not in constructors
 13. Magic numbers or other literals **must** be avoided.
 
 

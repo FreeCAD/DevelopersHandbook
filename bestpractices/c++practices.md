@@ -4,7 +4,7 @@ layout: default
 
 # C++ practices
 
-Most rules presented here cover the same things as the very good [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines). 
+Most rules presented here cover the same things as the very good [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
 Whenever something is not covered or you are in doubt - don't hesitate to consult it - it is a very good source of information.
 
 ## Avoid anonymous namespaces
@@ -31,7 +31,7 @@ In addition, private static functions doesn't even need to be declared in the he
 
 Data is information, facts etc. An algorithm is code that operates on data.
 
-Programming languages, or their libraries, include thoroughly tested algorithms to handle common data structures. 
+Programming languages, or their libraries, include thoroughly tested algorithms to handle common data structures.
 
 By properly considering algorithms and data structure, and keeping data separate from code, both code and data become simpler, more reliable, more flexible, and easier to maintain for the next person.
 
@@ -106,7 +106,7 @@ static constexpr std::array<PrefixSpec, 7> sortedPrefixes {
 	{'M', 1ULL << 20},  // 1 << 20 = 2^20 = 1024
 	{'k', 1ULL << 10},  // 1 << 10 = 2^10 = 1024
 	{'\0', 0}}};
-    
+
 const auto res = std::find_if(prefixes.begin(), prefixes.end(), [&](const auto& spec) {
 	return spec.factor <= size;
 });
@@ -212,7 +212,7 @@ A function which has hard dependencies cannot function, be understood, edited or
 
 Code and its dependencies are said to be _coupled._ When different pieces of code _have the same_ dependency, they in turn are coupled to each other.
 
-Required information can be injected via constructor or method parameters. 
+Required information can be injected via constructor or method parameters.
 
 If it is necessary to introduce external code (e.g. a service object), do so by passing an interface, helper function or similar to avoid coupling.
 
@@ -393,7 +393,7 @@ when removing repetition.
 Whilst lambdas are quite happy with simple auto parameters, best not
 to omit const or & as appropriate. Types may be required to help the IDE.
 
-Consider the following code: 
+Consider the following code:
 ```c++
 doSomething()
 if (somethingWentWrong()) {
