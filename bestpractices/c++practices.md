@@ -76,52 +76,6 @@ auto result = std::ranges::find_if(stuff, do_something);
 Note, STL `<algorithm>` library can also use lambdas.
 
 
-**Example**: For a given input, find the appropriate prefix.
-```cpp
-constexpr std::array<std::string_view, 5> prefixes {"", "k", "M", "G", "T"};
-size_t base = 0;
-double inUnits = bytes;
-constexpr double siFactor {1000.0};
-
-while (inUnits > siFactor && base < prefixes.size() - 1) {
-	++base;
-	inUnits /= siFactor;
-}
-
-auto prefix = prefixes[base];
-```
-
-Let’s make the data more expressive, more self-contained, and use STL
-algorithm `find_if`:
-
-```cpp
-using PrefixSpec = struct {
-	char prefix;
-	unsigned long long factor;
-};
-
-static constexpr std::array<PrefixSpec, 7> sortedPrefixes {
-	{{'E', 1ULL << 60}, // 1 << 60 = 2^60
-	{'P', 1ULL << 50},
-	{'T', 1ULL << 40},
-	{'G', 1ULL << 30},
-	{'M', 1ULL << 20},  // 1 << 20 = 2^20 = 1024
-	{'k', 1ULL << 10},  // 1 << 10 = 2^10 = 1024
-	{'\0', 0}}};
-
-const auto res = std::find_if(prefixes.begin(), prefixes.end(), [&](const auto& spec) {
-	return spec.factor <= size;
-});
-
-// Add one digit after the decimal place for all prefixed sizes
-return res->factor
-	? fmt::format("{:.1f} {}B", static_cast<double>(size) / res->factor, res->prefix)
-	: fmt::format("{} B", size);
-```
-
-Simpler, cleaner, more reliable. No raw loops, magic numbers or calculations.
-Note the reverse iterator.
-
 ## Code comments
 
 > Don’t comment bad code—rewrite it.
