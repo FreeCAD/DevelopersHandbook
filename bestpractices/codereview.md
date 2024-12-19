@@ -27,9 +27,10 @@ In this document the **bolded** text will indicate how important each suggestion
 5. Comments **could** be made to existing comments just to note that other (potentially better) soluyions are available and should be used instead when writing new code.
 6. Reviewer **can** hint to make more changes to the existing code in order to improve the proposed solution (for example, refactor another class so it can be used).
 7. Code **must** follow the Scout Rule - https://biratkirat.medium.com/step-8-the-boy-scout-rule-robert-c-martin-uncle-bob-9ac839778385 - i.e. leave code in better shape than you found it.
-8. PRs **must not** contain any remains of development code, like debug statements other than actual logs.
-9. New code **must not** introduce any new linter warnings
-10. Developer **should** have `pre-commit` installed and working. `pre-commit-ci` commits should be avoided.
+8. If possible, code cleanup done while working on the feature should be split into separate commits or even better PR.
+9. PRs **must not** contain any remains of development code, like debug statements other than actual logs.
+10. New code **must not** introduce any new linter warnings
+11. Developer **should** have `pre-commit` installed and working. `pre-commit-ci` commits should be avoided.
 
 ## Basic Code Rules
 1. (C++ only) New code **must** be formatted with clang-format tool or in a way that is compatible with clang-format result if file is excluded from auto formatting.

@@ -14,9 +14,11 @@ and other code.
 Some code might only make sense in a given context, but if the functionality
 is generic, it could be put in a library or suchlike.
 
-Use a (named) namespace to house free functions rather than a class or struct
-full of static (or what should be static) functions.
-In addition, private static functions doesn't even need to be declared in the header file.
+Use a *named namespace* to house free functions rather than relying on a class or struct filled with static functions (or functions that should be static).
+This approach ensures better organization and clarity.
+
+In addition, private static functions do not need to be declared in the header file when moved out of a class.
+This reduces unnecessary exposure of implementation details.
 
 ## Algorithms and data structures
 
@@ -199,10 +201,10 @@ This provides compile-time evaluation. Can increase compile time, but speedup ru
 
 Hard dependencies makes the codebase more entangled, makes changes more difficult, and makes unit testing really difficult.
 
-Examples of dependencies creeping in:
+Three examples of dependencies creeping in:
 ```cpp
 Application::getSomething(); // or any other singleton
-SomeDistantClass fing;
+SomeDistantClass thing;
 void method(AnotherDistantClass values){}
 ```
 
@@ -341,9 +343,9 @@ doThing();
 
 ## Initialization
 
-**Initialize all objects, and, if possible, make const or better still, constexpr.**
+**Initialize all objects, and, if possible, use const or better still, constexpr.**
 
-Avoid default constructors. If there is not yet a value for an object, then there's no need to create it. Declare variables close to where they are used (there's no need to start the declear variables at the start of the block like in ansi-c). Joining declaration and initialization allows const:
+Avoid default constructors. If there is not yet a value for an object, then there's no need to create it. Declare variables close to where they are used (there's no need to start the declare variables at the start of the block like in ansi-c). Joining declaration and initialization allows const:
 
 ```cpp
 AType thing; // mutable. Does it have a default constructor?
@@ -475,7 +477,7 @@ For an object that _is_ something (value object), prefer a noun. E.g. `drawing`.
 
 Something diﬃcult to name concisely likely does not have a single purpose and needs refactoring.
 
-Use names that are specific. E.g. `SaveLogToDisc`, not `ProcessLog`. "Process" could be anything.
+Use names that are specific. E.g. `SaveLogToDisk`, not `ProcessLog`. `Process` could be anything.
 
 A variable named after its data value defeats the whole point of a variable:
 ```cpp
@@ -551,7 +553,7 @@ Writing tests on a coupled design is difficult, therefore removing hard dependen
 
 Test driven development, where tests are written before, and during code creation, is a good practice to follow to ensure good quality code. Writing tests afterwards can be difficult as it won't help you with code design as much when code is produced.
 
-Gui is often classified as untestable as there's few good tools to verify behavior when buttons and sliders are manipulated. And while gui can't easily be tested, the logic it is connected to, can. Splitting ui from from "business logic" is a good choice and highly recommended.
+Gui code is often classified as untestable because there are good tools to verify behavior when buttons and sliders are manipulated. And while gui code can't easily be tested, the logic it is connected to, can. Splitting ui from from "business logic" is a good choice and highly recommended.
 
 Just like good naming is important for variables and functions, naming tests are too. A good test name describes what has been tested. This way, when it fails for someone else, they can easily see what failed.
 
