@@ -14,6 +14,9 @@ Covers guidelines for User Experience, Interaction and Interface in FreeCAD.
 ### [Code Formatting Guide](./codeformatting/index.md)
 Covers the C++ and Python code formatting guidelines.
 
+### [Good Practices / Code Review Guide](./bestpractices/index.md)
+Covers the C++ and Python code best practices and tips for code reviewers.
+
 ### [Maintainers Guide](./maintainersguide/index.md)
 Gives guidelines to maintainers about code reviews and merge procedures.
 
