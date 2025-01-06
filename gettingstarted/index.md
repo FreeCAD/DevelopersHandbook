@@ -17,6 +17,7 @@ To work on FreeCAD you will need CMake, git, a code editor, a C++ compiler, and 
 - On MacOS you will need to install the XCode command line tools, and can use XCode, Visual Studio Code, or CLion as your editor.
 
 Other combinations may work as well, these are just the ones that you will be able to get help with most readily on the [FreeCAD Forum](https://forum.freecad.org).
+
 ## Dependencies
 
 See also [Dependencies](dependencies.md)
@@ -27,18 +28,48 @@ FreeCAD depends on many other open source projects to provide the basic foundati
 - Windows: [https://wiki.freecad.org/Compile_on_Windows](https://wiki.freecad.org/Compile_on_Windows)
 - Mac: [https://wiki.freecad.org/Compile_on_MacOS](https://wiki.freecad.org/Compile_on_MacOS)
 
-### Conda
+### Pixi
 
 One of the easiest ways of creating a standalone FreeCAD build environment with its dependencies in a way that does not affect the rest of your system is to use
-Conda. Install Miniconda on your system, then use one of the setup scripts included with the FreeCAD source code to create the appropriate
-environment, e.g. `conda/setup-environment.sh`. Once complete, activate the environment with `conda activate freecad`. This creates an environment
-that you can run your build system in. For example, on MacOS from the top of a FreeCAD source code clone:
+[Pixi](https://pixi.sh/latest/).
 
-- `conda/setup-environment.sh`
-- `conda activate freecad`
-- `cmake -B build/debug --preset conda-macos-debug .`
-- `cmake --build . --parallel`
+1. Install `pixi` using the following command:
 
+- Windows (PowerShell): `iwr -useb https://pixi.sh/install.ps1 | iex`
+- Linux/macOS: `curl -fsSL https://pixi.sh/install.sh | bash`
+
+2. Configure FreeCAD for your platform.  There are additional steps necessary on Windows outlined in the next subsection.
+
+    `pixi run configure`
+
+3. Build FreeCAD
+
+    `pixi run build`
+
+    If your computer has less ram than is necessary to run a compiler per processor core, then you can reduce the number of parallel compiler jobs.  For example, if you wish to limit to 4 parallel compiler processes use the following command:
+
+    `pixi run build -j 4`
+
+4. Run FreeCAD
+
+    `pixi run freecad`
+
+In general, there will be no need to re-run the configure command as it will be automatically run by `pixi run build` if needed.  However, there may be times in which a git submodule is added or updated.  To integrate these changes, the command `pixi run initialize` will run the commands necessary.
+
+### Pixi on Windows
+
+Pixi uses the `conda-forge` packages, including the `compilers` metapackage to bring in the platform-specific compiler support.  On Windows, it is expected that Microsoft Visual C++ has been installed and matches the version used by the `conda-forge` team, which is [Visual Studio Community 2019](https://visualstudio.microsoft.com/vs/older-downloads/#visual-studio-2019-and-other-products).
+
+The Visual Studio Installer may be used to install Visual Studio Community 2019 alongside newer versions of Visual Studio.  Ensure all of the necessary components are installed:
+
+1. Open the Visual Studio Installer
+2. Click `modify` for Visual Studio 2019.
+
+    ![Visual Studio 2019](resources/vs2019-modify.png)
+
+3. Make sure to select `Desktop development with C++` under the `Desktop & Mobile` section.  Ensure that the necessary optional items are selected on the right.
+
+    ![vs2019-dev-C++](resources/vs2019-cpp.png)
 
 ## Setting up for Development
 
