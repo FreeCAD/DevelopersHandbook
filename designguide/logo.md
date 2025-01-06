@@ -66,7 +66,7 @@ Regardless of the used symbol, the wordmark *FreeCAD* must always be used in eit
 
 - **Dark Red**, [#CB333B, RGBA(203,51,59,1), CMYK(0,75,72,18), PMS 1797 C](https://encycolorpedia.com/cb333b)
 
-- **Off Black**, [#212529, RGBA(33,37,41,1), CMYK(0,0,16,82), PMS BLACK C](https://encycolorpedia.com/212529)
+- **Off Black**, [#212529, RGBA(33,37,41,1), CMYK(20,10,0,84), PMS BLACK C](https://encycolorpedia.com/212529)
 
 
 ## Uses
