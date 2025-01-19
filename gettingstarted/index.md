@@ -108,8 +108,8 @@ The Visual Studio Installer may be used to install Visual Studio Community 2019 
 
 ## Running and Debugging
 
-   - [Visual Studio Code](gettingstarted/VSCode)
-   - [CLion](gettindstarted/CLion)
+   - [Visual Studio Code](./VSCode.md)
+   - [CLion](./CLion.md)
 
 ## Submitting a PR
 
