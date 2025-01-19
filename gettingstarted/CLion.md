@@ -12,6 +12,27 @@ If you don't already have CLion installed, download it, license it, install it p
 
 **IDE:** From upper left, choose Project from Version Control.   Use https://github.com/FreeCAD/FreeCAD
 ![Pict8](./resources/CLionPythonDebug8.png)
+
+### Configure Pixi Toolchain (Optional)
+If you choose to use Pixi to get the dependencies then you need to configure a CLion toolchain and assign it to your CMake profile.
+1. Run `pixi shell` in the local FreeCAD directory to get all packages, this is also needed to update the environment after the `pixi.toml` has been changed.
+2. Go to Settings &rarr; Build, Execution, Deployment &rarr; Toolchains.
+3. Create a new "System" toolchain.
+4. Click on "Add environment" and select "From file".
+5. Enter the location of the `pixi-default.bash` script in the "Environment file" field. The file can be found in the FreeCAD repository in contrib/clion/pixi
+
+![PixiPict1](./resources/CLionPixi1.png)
+
+6. Go to Settings &rarr; Build, Execution, Deployment &rarr; CMake.
+7. Select the "conda-[your os]-debug" or "conda-[your os]-release" preset and duplicate it.
+8. Enable the duplicated profile and assign the created toolchain to this profile.
+
+![PixiPict2](./resources/CLionPixi2.png)
+
+Note: If CMake does not detect any packages from the .pixi folder then the toolchain script may have failed.
+This may be resolved by using the absolute path to your FreeCAD repository in the `pixi-default.bash` script.
+
+
 ### Building CMake
 
 CLion should automatically refresh the CMake build for the application.  You see results or rerun using the cmake
