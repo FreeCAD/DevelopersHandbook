@@ -19,13 +19,14 @@ If you choose to use Pixi to get the dependencies then you need to configure a C
 2. Go to Settings &rarr; Build, Execution, Deployment &rarr; Toolchains.
 3. Create a new "System" toolchain.
 4. Click on "Add environment" and select "From file".
-5. Enter the location of the `pixi-default.bash` script in the "Environment file" field. The file can be found in the FreeCAD repository in contrib/clion/pixi
+5. Enter the location of the `pixi-default.bat` for Windows or otherwise the `pixi-default.bash` script in the "Environment file" field. The file can be found in the FreeCAD repository in contrib/clion/pixi
 
 ![PixiPict1](./resources/CLionPixi1.png)
 
 6. Go to Settings &rarr; Build, Execution, Deployment &rarr; CMake.
 7. Select the "conda-[your os]-debug" or "conda-[your os]-release" preset and duplicate it.
 8. Enable the duplicated profile and assign the created toolchain to this profile.
+9. If on Windows, you also need to select the Visual Studio generator.
 
 ![PixiPict2](./resources/CLionPixi2.png)
 
