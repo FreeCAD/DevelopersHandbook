@@ -531,6 +531,7 @@ Move the data into a container e.g. `constexpr std::array`, not a vector or map.
 Container elements are typically value, array, pair, tuple, or a defined struct.
 Pair and tuple should only be used for very short lived data, such as this case:
 
+{% raw %}
 ```cpp
 using Pair = std::pair<std::string_view, size_t>;
 
@@ -542,9 +543,10 @@ constexpr std::array<Pair, numItems> items {{
 	{ "George", 40 }
 }};
 ```
+{% endraw %}
 
 A struct can also be used, which has the advantage of named elements, but is slightly more overhead.
-
+{% raw %}
 ```cpp
 struct Button {
 	std::string_view name;
@@ -560,5 +562,5 @@ constexpr std::array<Button, numButtons> buttonDefs {{
 	{ "On your marks", 15, 15 }
 }};
 ```
-
+{% endraw %}
 When in doubt, use a struct - it is better to have good names than not.
