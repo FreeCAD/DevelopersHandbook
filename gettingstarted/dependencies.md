@@ -15,6 +15,13 @@ in. Depending on what platform you are developing on, you have a variety of tool
 of the most common ones is included below. The main purpose of this document is to highlight the primary dependencies and describe what they do and
 why FreeCAD needs them.
 
+## Supported versions
+
+The head of the main branch of FreeCAD can be compiled from source on systems as old as the oldest currently-supported Ubuntu LTS, which has been
+chosen as the "reference" system for this purpose. That is currently Ubuntu 20.04 LTS, which will reach its EOL in April 2025. This ties FreeCAD
+development to the C++17 standard, Python 3.8 and later, Qt 5.14, and the versions of the required libraries available on that system. This will change in
+April 2025 to the C++20 standard, Python 3.10, and Qt 5.15. Qt6.4 and later are also fully supported.
+
 ## Major dependencies
 
 The following is a brief overview of what each of FreeCAD's most critical 3rd-party library dependencies provide.
@@ -33,6 +40,7 @@ OCCT is a big and complex set of C++ libraries that provide functionality requir
 * A document and project data structure with support for save and restore, external linking of documents, recalculation of design history (parametric modeling) and a facility to load new data types as an extension package dynamically.
 
 Note that the "Community Edition" of OpenCASCADE is no longer supported by FreeCAD, you must install the first-party library.
+The current minimum supported version is OCCT 7.3.
 
 ### Python
 
@@ -40,12 +48,13 @@ Python is a popular all-purpose scripting language that is widely used in Linux 
 In FreeCAD, Python is used during compilation and also at runtime in different ways. FreeCAD itself contains
 hundreds of thousands of lines of Python code, and all FreeCAD Addons and Macros are written in Python.
 
+The current minimum supported version is 3.8.
+
 ### Qt
 
 Qt is one of the most popular graphical user interface (GUI) toolkits available in the open source world.
 FreeCAD uses this toolkit to draw the interface of the program, as well as to provide some advanced networking functionality
-and translation facilities. FreeCAD currently provides primary support for Qt v5.12 - v5.15, and work is ongoing to support Qt v6.4 and
-later.
+and translation facilities. FreeCAD currently provides primary support for Qt v5.14 - v5.15, and Qt 6.4 and later.
 
 Further information about Qt libraries and their programming documentation are available at [Qt Documentation](https://doc.qt.io/).
 
@@ -53,7 +62,7 @@ Further information about Qt libraries and their programming documentation are a
 
 Shiboken is the Python binding generator that Qt for Python uses to create the PySide module, in other words, it is the system that
 is used to expose the Qt C++ API to the Python language. FreeCAD's Python code uses the PySide library to draw its user interface elements.
-FreeCAD provides primary support for PySide2 (corresponding to Qt5), and support for PySide6 (corresponding to Qt6) is in progress.
+FreeCAD provides primary support for PySide2 (corresponding to Qt5) and PySide6 (corresponding to Qt6).
 Python developers should import `PySide` (with no numeric suffix) -- at compile-time FreeCAD's build system will generate the appropriate
 version.
 
