@@ -17,7 +17,7 @@ why FreeCAD needs them.
 
 ## Supported versions
 
-The head of the main branch of FreeCAD can be compiled from source on systems as old as the oldest currently-supported Ubuntu LTS, which has been
+The head of the main branch of FreeCAD can be compiled from source on systems as old as the oldest currently-supported [Ubuntu LTS](https://packages.ubuntu.com/), which has been
 chosen as the "reference" system for this purpose. That is currently Ubuntu 20.04 LTS, which will reach its EOL in April 2025. This ties FreeCAD
 development to the C++17 standard, Python 3.8 and later, Qt 5.14, and the versions of the required libraries available on that system. This will change in
 April 2025 to the C++20 standard, Python 3.10, and Qt 5.15. Qt6.4 and later are also fully supported.
