@@ -41,7 +41,12 @@ Cmake should automatically configure the project with the selected configuration
 
 <video autoplay muted playsinline loop src="resources/build.mp4" type="video/mp4"></video>
 
-Press `Ctrl + Shift + B`, or click the build button with the cog icon in the status bar, or run the `CMake: build` task.
+To build, either:
+
+- Run [Pixi](./index.md#pixi) (**Recommended**), or
+- Press `Ctrl + Shift + B`, or 
+- Click the build button with the cog icon in the status bar, or 
+- Run the `CMake: build` task
 
 **NOTE:** The first build takes a while.
 
