@@ -17,7 +17,7 @@ why FreeCAD needs them.
 
 ## Supported versions
 
-The head of the main branch of FreeCAD, currently used for the development of FreeCAD 1.1, can be compiled from source on systems as old as the 
+The head of the main branch of FreeCAD, currently used for the development of FreeCAD 1.1, can be compiled from source on systems as old as the
 oldest currently-supported [Ubuntu LTS](https://packages.ubuntu.com/) at the time of its expected release, Ubuntu 22.04 LTS. This ties FreeCAD
 development to the C++20 standard, Python 3.10 and later, Qt 5.15, and the versions of the required libraries available on that system. We
 plan to update to requiring Ubuntu 24.04 LTS upon release of FreeCAD 1.1, with FreeCAD 1.2 only supporting compiling on that system and newer.
