@@ -44,8 +44,8 @@ Cmake should automatically configure the project with the selected configuration
 To build, either:
 
 - Run [Pixi](./index.md#pixi) (**Recommended**), or
-- Press `Ctrl + Shift + B`, or 
-- Click the build button with the cog icon in the status bar, or 
+- Press `Ctrl + Shift + B`, or
+- Click the build button with the cog icon in the status bar, or
 - Run the `CMake: build` task
 
 **NOTE:** The first build takes a while.
