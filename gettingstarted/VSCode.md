@@ -70,9 +70,9 @@ To debug please refer to the [documentation](https://code.visualstudio.com/docs/
 
 The IDE supports running FreeCAD tests as well. On the left panel go to the testing section and click the play button. A build takes place and then all the tests are run and results reported.
 
-**NOTE:** This is much slower than running the `Tests_run` executable directly. The video above is sped up.
+**NOTE:** This is much slower than running the `Tests_run` executable directly (run `path/to/the/build-dir/tests/Tests_run`). The video above is sped up.
 
-**NOTE:** Only c++ tests are currently integrated. Python tests are run from the `Test workbench` or with the command `FreeCAD -t 0`.
+**NOTE:** Only c++ tests are currently integrated. Python tests are run from the `Test workbench`, or with the command `FreeCAD -t 0`, or `pixi run freecad -t 0` if you're using Pixi.
 
 Alternatively, there are two vscode tasks that can be used to run the cpp and python tests directly.
 
