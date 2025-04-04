@@ -445,7 +445,7 @@ constexpr auto redDogColor {"red"}; // OK
 ```
 See also variable sets.
 
-# Out parameters
+## Out parameters
 
 Out parameters are _non-const, by-reference, or by-pointer_, function parameters. These are known to cause hard to find bugs.
 
