@@ -247,6 +247,58 @@ A well-designed class manages its own state and provides behavior, not just acce
 
 Using strings for everything can make code harder to understand and maintain. Use appropriate types to add clarity and structure.
 
+### The use of `auto`
+
+The use of `auto` has not yet been discussed in the C++ Core Guidelines (see
+[the to-do
+list](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#to-do-unclassified-proto-rules)).
+Below follow general guidelines with examples:
+
+#### The use of `auto` is ok if the right-hand side makes clear which type it is
+
+```c++
+auto* xyz = new Xyz();
+```
+
+```c++
+auto xyz = <whatever>_cast<Xyz>(...);
+```
+
+```c++
+auto xyz = getAnything<Xyz>(...);
+```
+
+Counter examples:
+
+```c++
+auto value = randomThing.weirdProperty->getValue(); // non-obvious type
+```
+
+```c++
+auto doStuff() { ... } // auto as return type
+```
+
+```c++
+auto xyz = 1; // unclear what type of integer
+```
+
+#### The use of `auto` is ok if the type is long or verbose
+
+```c++
+auto it = foo.begin(); // iterator
+```
+
+```c++
+auto lambda = [](){...};
+```
+
+#### The use of `auto` is ok if redundancy is avoided
+
+```c++
+std::unordered_map<std::string, int> map;
+for (const auto& [key, value] : map) { ... }
+```
+
 ## Main code path and indentation
 
 > If you are past three indents you are basically screwed.
