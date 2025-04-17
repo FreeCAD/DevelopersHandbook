@@ -8,15 +8,17 @@ Guidelines for Maintainers regarding code review and merge procedures.  Git can 
 
 ## The Current Team of Maintainers
 
-- Adrián Insaurralde Avalos: release manager, PR triage
-- Yorik van Havre: Arch/BIM, Spreadsheet
-- Brad Collette: CAM
-- Werner Mayer: everything
-- WandererFan: TechDraw
-- Bernd Hahnebach: FEM
-- Roy-043: Draft
-- OpenBrain: CI management
-- Chris Hennes: addon manager, translations, topological naming
+- Adrián Insaurralde Avalos (@adrianinsaval)
+- Benjamin Nauck (@hyarion)
+- Brad Collette* (@sliptonic)
+- Chris Hennes* (@chennes)
+- @kadet1090
+- @Roy-043
+- @WandererFan
+- Werner Mayer* (@wwmayer)
+- Yorik van Havre* (@yorik)
+
+*Project administrator
 
 ## The Role of a Maintainer
 
