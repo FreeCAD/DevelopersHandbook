@@ -467,7 +467,7 @@ displayLines(80);
 
 Do the following instead:
 ```c++
-constexpr auto standardScreenLength {80};
+constexpr unsigned standardScreenLength {80};
 displayLines(standardScreenLength);
 ```
 
