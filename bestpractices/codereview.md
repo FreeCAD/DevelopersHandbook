@@ -106,6 +106,14 @@ In this document the **bolded** text will indicate how important each suggestion
         <summary>Rationale</summary>
         Not initialized members can easily cause undefined behaviors that are really hard to find.
     </details>
+15. If possible, functions / methods **should** not use more than 3 indentation levels.
+    <details>
+        <summary>Rationale</summary>
+        Main path of code should be the least indented, exceptional cases should be handled as 
+        early-exit if statements. Code that is highly indented is harder to process and often 
+        has large cognitive load - if something is not possible to write within 3 indentation 
+        levels it is a good signal that it might require splitting into smaller methods.
+    </details>
 
 ## Design / Architecture
 1. Each class / method / function **should** be doing only one thing and should do it well.
