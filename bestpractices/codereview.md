@@ -17,7 +17,7 @@ While points of this guide might not be consistently followed throughout all of 
 In this document the **bolded** text will indicate how important each suggestion is.
  - **must** will be used for fundamental things that should be non-controversial and which you really should follow
  - **should** will be used for important details that will apply for vast majority of cases, there could however be valid reasons to ignore them depending on context
- - **could** will be used for best practices, things that you should try to follow but not following them is not an error per se
+ - **could**/**can** will be used for best practices, things that you should try to follow but not following them is not an error per se
 
 ## Common Rules
 1. Consistency **must** be preferred over strict rule following. If, for example, in a given context code uses different naming scheme - it should be followed instead of one described in that document.
@@ -31,6 +31,22 @@ In this document the **bolded** text will indicate how important each suggestion
 9. PRs **must not** contain any remains of development code, like debug statements other than actual logs.
 10. New code **must not** introduce any new linter warnings
 11. Developer **should** have `pre-commit` installed and working. `pre-commit-ci` commits should be avoided.
+
+## PRs and Commits
+1. Commit message **should** include prefix with module name, e.g. `Part: `
+2. Commit message **should** use imperative mode - just like git does, e.g. `Part: Add fillet feature`
+    <details>
+    A properly formed Git commit subject line should always be able to complete the following sentence:
+    
+    If applied, this commit will **your commit message**,
+
+    e.g. If applied, this commit will add fillet feature.
+    </details>
+3. If changeset is big and spans across multiple modules it **should** be split into one commit per module.
+4. Every commit in the PR **must** compile and run properly. `git bisect` workflow does not work if some commits are not possible to compile. 
+5. Commit message **can** contain additional information after one blank line. 
+6. Every PR **should** have description, even if it seems obvious.
+
 
 ## Basic Code Rules
 1. (C++ only) New code **must** be formatted with clang-format tool or in a way that is compatible with clang-format result if file is excluded from auto formatting.
