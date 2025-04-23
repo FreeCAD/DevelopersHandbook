@@ -208,6 +208,16 @@ while checking the code Reviewer should take into account surrounding code and f
 9. (C++ only) Enums should use singular form (i.e. `enum ObjectState` instead of `enum ObjectStates`)
 8. (C++ only) Local variables **should** use `camelCase`
 
+### Naming Conventions
+1. Coin nodes **should** be prefixed with `So`, e.g. `SoTransformDragger`. Reimplementation of existing Coin nodes **should** use `SoFC` prefix, e.g. `SoFCTransform`.
+2. Features in Part and Part Design workbenches **should** be prefixed with `Feature`, e.g. `FeatureHole`.
+3. View Providers corresponding to features / other objects **should** be prefixed `ViewProvider`, e.g. `ViewProviderHole`
+4. Task Views (content for task panels) **should** be prefixed with `Task`, e.g. `TaskTransform`
+5. Task Dialog for Task View **should** be additionally suffixed with `Dialog`, e.g. `TaskTransformDialog`
+6. Preference Pages **should** be prefixed with `DlgSettings`, e.g. `DlgSettingsLights`.
+7. Commands **should** be prefixed with `Cmd` and Workbench name e.g. `CmdPartDesignCreateSketch`
+
+
 ## Commenting the code
 1. Good naming **must** be preferred over commenting the code.
 2. Comments that describe what code does **should** be avoided, instead comments **should** explain intended result.
