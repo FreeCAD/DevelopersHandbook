@@ -123,6 +123,9 @@ In this document the **bolded** text will indicate how important each suggestion
         has large cognitive load - if something is not possible to write within 3 indentation 
         levels it is a good signal that it might require splitting into smaller methods.
     </details>
+20. (C++ only) dedicated casts should be preferred over `dynamic_cast` due to performance
+    a. QObjects should use `qobject_cast`
+    b. FreeCAD types (deriving from `BaseClass`) should use `freecad_cast`
 
 ## Design / Architecture
 1. Each class / method / function **should** be doing only one thing and should do it well.
