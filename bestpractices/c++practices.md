@@ -576,7 +576,7 @@ Item martha { "Martha", 30 };
 Item george { "George", 40 };
 ```
 
-Move the data into a container e.g. `constexpr std::array`, not a vector or map.
+Move the data into a container e.g. `constexpr std::initializer_list`, not a vector or map.
 
 Container elements are typically value, array, pair, tuple, or a defined struct.
 Pair and tuple should only be used for very short lived data, such as this case:
@@ -585,13 +585,11 @@ Pair and tuple should only be used for very short lived data, such as this case:
 ```cpp
 using Pair = std::pair<std::string_view, size_t>;
 
-constexpr auto numItems {3};
-
-constexpr std::array<Pair, numItems> items {{
+constexpr std::initializer_list<Pair> items {
     { "Fred", 20 },
     { "Martha", 30 },
     { "George", 40 }
-}};
+};
 ```
 {% endraw %}
 
@@ -604,13 +602,11 @@ struct Button {
     size_t width;
 };
 
-constexpr auto numButtons {3};
-
-constexpr std::array<Button, numButtons> buttonDefs {{
+constexpr std::initializer_list<Button> buttonDefs {
     { "Go", 25, 25 },
     { "Get set", 20, 20 },
     { "On your marks", 15, 15 }
-}};
+};
 ```
 {% endraw %}
 When in doubt, use a struct - it is better to have good names than not.
