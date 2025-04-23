@@ -41,24 +41,22 @@ Raw loops are those starting with `for`, `while` etc. While there are many optio
 
 ```cpp
 // Pre-C++11:
-for(std::map<KeyType, ValueType>::iterator it = itemsMap.begin(); it != itemsMap.end(); ++it) {
-	//...
+for (std::map<KeyType, ValueType>::iterator it = itemsMap.begin(); it != itemsMap.end(); ++it) {
+    //...
     doSomething(*it);
-	//...
+    //...
 }
 
-// C++11
-for(auto item : itemsMap) {
-	//...
-	doSomething(item);
-	//...
+for (const auto& item : itemsMap) {
+    //...
+    doSomething(item);
+    //...
 }
 
-// C++17
-for(auto [name, value] : itemsMap) {
-	//...
-	doSomething(name, value);
-	//...
+for (const auto& [name, value] : itemsMap) {
+    //...
+    doSomething(name, value);
+    //...
 }
 ```
 
@@ -109,9 +107,9 @@ You can reduce six lines:
 int r; // can’t be const
 
 if (x == 2) {
-	r = 2;
+    r = 2;
 } else {
-	r = 3;
+    r = 3;
 }
 ```
 to one, with a single assignment, no curly braces, no repetition, and
@@ -124,13 +122,13 @@ This works especially great for simplifying return statements.
 If you have more than one ternary it might be worth to extract function that encapsulates the conditional logic:
 ```
 auto someConditionalLogic = []() {
-	if (condition1) {
-		return 1;
-	} else if (condition2) {
-		return 2;
-	} else {
-		return 3;
-	}
+    if (condition1) {
+        return 1;
+    } else if (condition2) {
+        return 2;
+    } else {
+        return 3;
+    }
 }
 
 const int r = someConditionalLogic();
@@ -312,37 +310,37 @@ Main execution path should be the least indented one, i.e. conditions should cov
 Example:
 ```cpp
 if (something) {
-	doSomething();
-	if (somethingElse) {
-		doSomethingElse()
-		if (somethingElseAgain) {
-			doThing();
-		} else {
-			doDifferent();
-		}
-	} else {
-		doTheOther();
-	}
+    doSomething();
+    if (somethingElse) {
+        doSomethingElse()
+        if (somethingElseAgain) {
+            doThing();
+        } else {
+            doDifferent();
+        }
+    } else {
+        doTheOther();
+    }
 } else {
-	doNothing();
+    doNothing();
 }
 ```
 
 Can be changed into:
 ```cpp
 if (!something) {
-	doNothing();
-	return;
+    doNothing();
+    return;
 }
 doSomething();
 if (!somethingElse) {
-	doTheOther();
-	return;
+    doTheOther();
+    return;
 }
 doSomethingElse();
 if (!somethingElseAgain) {
-	doDifferent();
-	return;
+    doDifferent();
+    return;
 }
 doThing();
 ```
@@ -374,8 +372,8 @@ Initialize class member variables at declaration, not in constructors (since C++
 Static members can be defined in header file, no need to split to source file:
 ```cpp
 struct Something {
-	static const int _value_ = 2; // since C++98 for int
-	static inline std::string _something_ {"str"}; // since C++17
+    static const int _value_ = 2; // since C++98 for int
+    static inline std::string _something_ {"str"}; // since C++17
 }
 ```
 Lambdas can create and initialize variables in the capture, removing the
@@ -488,7 +486,7 @@ Use names that are specific. E.g. `SaveLogToDisk`, not `ProcessLog`. `Process` c
 A variable named after its data value defeats the whole point of a variable:
 ```cpp
 struct Dog {
-	std::string color {};
+    std::string color {};
 };
 Dog redDog {"blue"}; // BAD
 // 200 lines later, -_obviously_\- redDog is red! He’s blue? WTF?
@@ -508,7 +506,7 @@ Whether values are updated by the function is not obvious.
 Return value optimizations (RVO) simplifies return and usually elides copies.
 ```cpp
 auto func = [](const auto& str, const auto num) {
-	return { str, num };
+    return { str, num };
 };
 ```
 Structured binding (since C++17) simplifies reading back the result at the calling side:
@@ -590,9 +588,9 @@ using Pair = std::pair<std::string_view, size_t>;
 constexpr auto numItems {3};
 
 constexpr std::array<Pair, numItems> items {{
-	{ "Fred", 20 },
-	{ "Martha", 30 },
-	{ "George", 40 }
+    { "Fred", 20 },
+    { "Martha", 30 },
+    { "George", 40 }
 }};
 ```
 {% endraw %}
@@ -601,17 +599,17 @@ A struct can also be used, which has the advantage of named elements, but is sli
 {% raw %}
 ```cpp
 struct Button {
-	std::string_view name;
-	size_t height;
-	size_t width;
+    std::string_view name;
+    size_t height;
+    size_t width;
 };
 
 constexpr auto numButtons {3};
 
 constexpr std::array<Button, numButtons> buttonDefs {{
-	{ "Go", 25, 25 },
-	{ "Get set", 20, 20 },
-	{ "On your marks", 15, 15 }
+    { "Go", 25, 25 },
+    { "Get set", 20, 20 },
+    { "On your marks", 15, 15 }
 }};
 ```
 {% endraw %}
