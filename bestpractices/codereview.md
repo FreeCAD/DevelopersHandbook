@@ -194,13 +194,19 @@ In this document the **bolded** text will indicate how important each suggestion
 
 
 ## Naming Things
+
+Naming described in that section of the document refers mostly to newer parts of code. Some modules use different naming conventions,
+while checking the code Reviewer should take into account surrounding code and first of all ensure consistency within the closes scope.
+
 1. Code symbols (classes, structs, methods, functions, variables...) **must** have names that are meaningful and grammatically correct.
 2. Variables **should not** be named using abbreviations and/or 1 letter names. Iterator variables or math related ones like `i` or `u` are obviously not covered by this rule.
 3. Names **must not** use the hungarian notation.
-4. (C++ only) Classes/Structs **must** be written in `PascalCase`, underscores are allowed but should be avoided.
-5. (C++ only) Class members **should** be written in `camelCase`, underscores are allowed but should be avoided.
+4. (C++ only) Classes/Structs/Enums **must** be written in `PascalCase`, underscores are allowed but should be avoided.
+5. (C++ only) Class/Struct members **should** be written in `camelCase`, underscores are allowed but should be avoided.
 6. (C++ only) Global functions **should** be written in `camelCase`, underscores are allowed but should be avoided.
 7. (C++ only) Enum cases **should** use `PascalCase`
+9. (C++ only) Enums should use singular form (i.e. `enum ObjectState` instead of `enum ObjectStates`)
+8. (C++ only) Local variables **should** use `camelCase`
 
 ## Commenting the code
 1. Good naming **must** be preferred over commenting the code.
