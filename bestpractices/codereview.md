@@ -95,18 +95,27 @@ In this document the **bolded** text will indicate how important each suggestion
 11. (C++ only) Return values **should** be preferred over out arguments.
     a. For methods that can fail `std::optional` should be used
     b. For methods that return multiple values it may be better to either provide dedicated struct for result or use `std::tuple` with expression binding.
-12. If expression is not obvious - it **should** be given a name by using variable.
+13. (C++ only) If dealing with pointers `auto` **must** be suffixed with `*`: `auto*`.
+14. (C++ only) If dealing with references `auto` **must** be suffixed with `&`: `auto&` 
+15. (C++ only) `auto` **should** be used if:
+    a. the right-hand side makes clear which type it is, e.g. with `static_cast`, or `new`
+    b. the type is long or verbose (iterators, ranges, ...)
+    c. it reduces redundancy in code (repeated type)
+15. (C++ only) `auto` **should not** be used if:
+    a. dealing with primitives (the type is not always clear, int vs unsigned etc)
+    b. the type is not clear from context, method name or template arguments
+16. If expression is not obvious - it **should** be given a name by using variable.
     <details>
         <summary>Example #1</summary>
         TODO: Find some good example
     </details>
-13. (C++ only) Code **should not** be put in anonymous namespace.
-14. All members **must** be initialized.
+17. (C++ only) Code **should not** be put in anonymous namespace.
+18. All members **must** be initialized.
     <details>
         <summary>Rationale</summary>
         Not initialized members can easily cause undefined behaviors that are really hard to find.
     </details>
-15. If possible, functions / methods **should** not use more than 3 indentation levels.
+19. If possible, functions / methods **should** not use more than 3 indentation levels.
     <details>
         <summary>Rationale</summary>
         Main path of code should be the least indented, exceptional cases should be handled as 
