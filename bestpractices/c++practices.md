@@ -303,7 +303,7 @@ for (const auto& [key, value] : map) { ... }
 > Time to rewrite.
 --- Linus Torvalds, 1995
 
-Indented code can be diﬃcult to reason about, and fragile.
+Indented code can be difficult to reason about, and fragile.
 
 Main execution path should be the least indented one, i.e. conditions should cover specific cases. Early-Exit should be preferred to prune unwanted execution branches fast.
 
@@ -360,11 +360,11 @@ Using uninitialized POD type variables is undefined behavior.
 
 It _is_ OK to declare variables inside a loop.
 
-Prefer uniform initialization { } (also called brace initialization)(since C++11). Prevents narrowing.
+Prefer uniform initialization `{ }` (also called brace initialization), it prevents narrowing.
 
 Clarifies not assignment (=) or function call (()).
 
-Initialize class member variables at declaration, not in constructors (since C++11):
+Initialize class member variables at declaration, not in constructors:
 - Simplifies constructors
 - Avoids repetition
 - Establishes default state
