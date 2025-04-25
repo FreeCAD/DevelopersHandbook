@@ -37,14 +37,14 @@ In this document the **bolded** text will indicate how important each suggestion
 2. Commit message **should** use imperative mode - just like git does, e.g. `Part: Add fillet feature`
     <details>
     A properly formed Git commit subject line should always be able to complete the following sentence:
-    
+
     If applied, this commit will **your commit message**,
 
     e.g. If applied, this commit will add fillet feature.
     </details>
 3. If changeset is big and spans across multiple modules it **should** be split into one commit per module.
-4. Every commit in the PR **must** compile and run properly. `git bisect` workflow does not work if some commits are not possible to compile. 
-5. Commit message **can** contain additional information after one blank line. 
+4. Every commit in the PR **must** compile and run properly. `git bisect` workflow does not work if some commits are not possible to compile.
+5. Commit message **can** contain additional information after one blank line.
 6. Every PR **should** have description, even if it seems obvious.
 
 
@@ -96,7 +96,7 @@ In this document the **bolded** text will indicate how important each suggestion
     a. For methods that can fail `std::optional` should be used
     b. For methods that return multiple values it may be better to either provide dedicated struct for result or use `std::tuple` with expression binding.
 13. (C++ only) If dealing with pointers `auto` **must** be suffixed with `*`: `auto*`.
-14. (C++ only) If dealing with references `auto` **must** be suffixed with `&`: `auto&` 
+14. (C++ only) If dealing with references `auto` **must** be suffixed with `&`: `auto&`
 15. (C++ only) `auto` **should** be used if:
     a. the right-hand side makes clear which type it is, e.g. with `static_cast`, or `new`
     b. the type is long or verbose (iterators, ranges, ...)
@@ -118,9 +118,9 @@ In this document the **bolded** text will indicate how important each suggestion
 19. If possible, functions / methods **should** not use more than 3 indentation levels.
     <details>
         <summary>Rationale</summary>
-        Main path of code should be the least indented, exceptional cases should be handled as 
-        early-exit if statements. Code that is highly indented is harder to process and often 
-        has large cognitive load - if something is not possible to write within 3 indentation 
+        Main path of code should be the least indented, exceptional cases should be handled as
+        early-exit if statements. Code that is highly indented is harder to process and often
+        has large cognitive load - if something is not possible to write within 3 indentation
         levels it is a good signal that it might require splitting into smaller methods.
     </details>
 20. (C++ only) dedicated casts should be preferred over `dynamic_cast` due to performance
