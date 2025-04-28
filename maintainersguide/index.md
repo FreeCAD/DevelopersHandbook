@@ -12,7 +12,7 @@ Guidelines for Maintainers regarding code review and merge procedures.  Git can 
 - Benjamin Nauck (@hyarion)
 - Brad Collette* (@sliptonic)
 - Chris Hennes* (@chennes)
-- @kadet1090
+- Kacper Donat (@kadet1090)
 - @Roy-043
 - @WandererFan
 - Werner Mayer* (@wwmayer)
