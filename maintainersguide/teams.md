@@ -9,7 +9,7 @@ https://discord.gg/Juv7cwN85R
 
 ## CAD Working Group (CWG)
 ### Mission
-The role of the CAD working group is to provide input from profesionnal CAD users (both mechanical background and achitectural background). The goal is to propose new features to follow industrial practice, find issues about existing features, and give advice to contributors wanting to solve issues or implement new features. Opinions of the CWG are non-binding.
+The role of the CAD working group is to provide input from professional CAD users (both mechanical background and achitectural background). The goal is to propose new features to follow industrial practice, find issues about existing features, and give advice to contributors wanting to solve issues or implement new features. Opinions of the CWG are non-binding.
 ### Contact Info
 The DWG coordinates and engages in real-time discussions on the FreeCAD Discord server and GitHub.
 https://discord.gg/DePggHgxcx
