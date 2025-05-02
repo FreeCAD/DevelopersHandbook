@@ -266,7 +266,7 @@ auto xyz = <whatever>_cast<Xyz>(...);
 auto xyz = getAnything<Xyz>(...);
 ```
 
-Counter examples:
+Examples with unclear types:
 
 ```c++
 auto value = randomThing.weirdProperty->getValue(); // non-obvious type
