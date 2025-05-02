@@ -257,46 +257,44 @@ Below follow general guidelines with examples:
 #### The use of `auto` is ok if the right-hand side makes clear which type it is
 
 ```c++
-auto* xyz = new Xyz();
+auto* xyz = new Xyz(); // OK: type is clear from calling the constructor
 ```
 
 ```c++
-auto xyz = <whatever>_cast<Xyz>(...);
+auto xyz = <whatever>_cast<Xyz>(...); // OK: type is clear from the cast
 ```
 
 ```c++
-auto xyz = getAnything<Xyz>(...);
-```
-
-Counter examples:
-
-```c++
-auto value = randomThing.weirdProperty->getValue(); // non-obvious type
+auto xyz = getAnything<Xyz>(...); // OK: type is clear from the context and type parameter
 ```
 
 ```c++
-auto doStuff() { ... } // auto as return type
+auto value = randomThing.weirdProperty->getValue(); // bad: non-obvious type
 ```
 
 ```c++
-auto xyz = 1; // unclear what type of integer
+auto doStuff() { ... } // bad: auto as return type
+```
+
+```c++
+auto xyz = 1; // bad: unclear what type of integer
 ```
 
 #### The use of `auto` is ok if the type is long or verbose
 
 ```c++
-auto it = foo.begin(); // iterator
+auto it = foo.begin(); // OK: iterator
 ```
 
 ```c++
-auto lambda = [](){...};
+auto lambda = [](){...}; // OK: function type
 ```
 
 #### The use of `auto` is ok if redundancy is avoided
 
 ```c++
 std::unordered_map<std::string, int> map;
-for (const auto& [key, value] : map) { ... }
+for (const auto& [key, value] : map) { ... } // OK: map declaration contains the type
 ```
 
 ## Main code path and indentation
