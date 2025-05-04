@@ -17,7 +17,7 @@ While points of this guide might not be consistently followed throughout all of 
 In this document the **bolded** text will indicate how important each suggestion is.
  - **must** will be used for fundamental things that should be non-controversial and which you really should follow
  - **should** will be used for important details that will apply for vast majority of cases, there could however be valid reasons to ignore them depending on context
- - **could** will be used for best practices, things that you should try to follow but not following them is not an error per se
+ - **could**/**can** will be used for best practices, things that you should try to follow but not following them is not an error per se
 
 ## Common Rules
 1. Consistency **must** be preferred over strict rule following. If, for example, in a given context code uses different naming scheme - it should be followed instead of one described in that document.
@@ -31,6 +31,22 @@ In this document the **bolded** text will indicate how important each suggestion
 9. PRs **must not** contain any remains of development code, like debug statements other than actual logs.
 10. New code **must not** introduce any new linter warnings
 11. Developer **should** have `pre-commit` installed and working. `pre-commit-ci` commits should be avoided.
+
+## PRs and Commits
+1. Commit message **should** include prefix with module name, e.g. `Part: `
+2. Commit message **should** use imperative mode - just like git does, e.g. `Part: Add fillet feature`
+    <details>
+    A properly formed Git commit subject line should always be able to complete the following sentence:
+
+    If applied, this commit will **your commit message**,
+
+    e.g. If applied, this commit will add fillet feature.
+    </details>
+3. If changeset is big and spans across multiple modules it **should** be split into one commit per module.
+4. Every commit in the PR **must** compile and run properly. `git bisect` workflow does not work if some commits are not possible to compile.
+5. Commit message **can** contain additional information after one blank line.
+6. Every PR **should** have description, even if it seems obvious.
+
 
 ## Basic Code Rules
 1. (C++ only) New code **must** be formatted with clang-format tool or in a way that is compatible with clang-format result if file is excluded from auto formatting.
@@ -79,17 +95,37 @@ In this document the **bolded** text will indicate how important each suggestion
 11. (C++ only) Return values **should** be preferred over out arguments.
     a. For methods that can fail `std::optional` should be used
     b. For methods that return multiple values it may be better to either provide dedicated struct for result or use `std::tuple` with expression binding.
-12. If expression is not obvious - it **should** be given a name by using variable.
+13. (C++ only) If dealing with pointers `auto` **must** be suffixed with `*`: `auto*`.
+14. (C++ only) If dealing with references `auto` **must** be suffixed with `&`: `auto&`
+15. (C++ only) `auto` **should** be used if:
+    a. the right-hand side makes clear which type it is, e.g. with `static_cast`, or `new`
+    b. the type is long or verbose (iterators, ranges, ...)
+    c. it reduces redundancy in code (repeated type)
+15. (C++ only) `auto` **should not** be used if:
+    a. dealing with primitives (the type is not always clear, int vs unsigned etc)
+    b. the type is not clear from context, method name or template arguments
+16. If expression is not obvious - it **should** be given a name by using variable.
     <details>
         <summary>Example #1</summary>
         TODO: Find some good example
     </details>
-13. (C++ only) Code **should not** be put in anonymous namespace.
-14. All members **must** be initialized.
+17. (C++ only) Code **should not** be put in anonymous namespace.
+18. All members **must** be initialized.
     <details>
         <summary>Rationale</summary>
         Not initialized members can easily cause undefined behaviors that are really hard to find.
     </details>
+19. If possible, functions / methods **should** not use more than 3 indentation levels.
+    <details>
+        <summary>Rationale</summary>
+        Main path of code should be the least indented, exceptional cases should be handled as
+        early-exit if statements. Code that is highly indented is harder to process and often
+        has large cognitive load - if something is not possible to write within 3 indentation
+        levels it is a good signal that it might require splitting into smaller methods.
+    </details>
+20. (C++ only) dedicated casts should be preferred over `dynamic_cast` due to performance
+    a. QObjects should use `qobject_cast`
+    b. FreeCAD types (deriving from `BaseClass`) should use `freecad_cast`
 
 ## Design / Architecture
 1. Each class / method / function **should** be doing only one thing and should do it well.
@@ -194,13 +230,29 @@ In this document the **bolded** text will indicate how important each suggestion
 
 
 ## Naming Things
+
+Naming described in that section of the document refers mostly to newer parts of code. Some modules use different naming conventions,
+while checking the code Reviewer should take into account surrounding code and first of all ensure consistency within the closest scope.
+
 1. Code symbols (classes, structs, methods, functions, variables...) **must** have names that are meaningful and grammatically correct.
 2. Variables **should not** be named using abbreviations and/or 1 letter names. Iterator variables or math related ones like `i` or `u` are obviously not covered by this rule.
 3. Names **must not** use the hungarian notation.
-4. (C++ only) Classes/Structs **must** be written in `PascalCase`, underscores are allowed but should be avoided.
-5. (C++ only) Class members **should** be written in `camelCase`, underscores are allowed but should be avoided.
+4. (C++ only) Classes/Structs/Enums **must** be written in `PascalCase`, underscores are allowed but should be avoided.
+5. (C++ only) Class/Struct members **should** be written in `camelCase`, underscores are allowed but should be avoided.
 6. (C++ only) Global functions **should** be written in `camelCase`, underscores are allowed but should be avoided.
 7. (C++ only) Enum cases **should** use `PascalCase`
+9. (C++ only) Enums should use singular form (i.e. `enum ObjectState` instead of `enum ObjectStates`)
+8. (C++ only) Local variables **should** use `camelCase`
+
+### Naming Conventions
+1. Coin nodes **should** be prefixed with `So`, e.g. `SoTransformDragger`. Reimplementation of existing Coin nodes **should** use `SoFC` prefix, e.g. `SoFCTransform`.
+2. Features in Part and Part Design workbenches **should** be prefixed with `Feature`, e.g. `FeatureHole`.
+3. View Providers corresponding to features / other objects **should** be prefixed `ViewProvider`, e.g. `ViewProviderHole`
+4. Task Views (content for task panels) **should** be prefixed with `Task`, e.g. `TaskTransform`
+5. Task Dialog for Task View **should** be additionally suffixed with `Dialog`, e.g. `TaskTransformDialog`
+6. Preference Pages **should** be prefixed with `DlgSettings`, e.g. `DlgSettingsLights`.
+7. Commands **should** be prefixed with `Cmd` and Workbench name e.g. `CmdPartDesignCreateSketch`
+
 
 ## Commenting the code
 1. Good naming **must** be preferred over commenting the code.

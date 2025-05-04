@@ -303,7 +303,7 @@ for (const auto& [key, value] : map) { ... }
 > Time to rewrite.
 --- Linus Torvalds, 1995
 
-Indented code can be diﬃcult to reason about, and fragile.
+Indented code can be difficult to reason about, and fragile.
 
 Main execution path should be the least indented one, i.e. conditions should cover specific cases. Early-Exit should be preferred to prune unwanted execution branches fast.
 
@@ -360,11 +360,11 @@ Using uninitialized POD type variables is undefined behavior.
 
 It _is_ OK to declare variables inside a loop.
 
-Prefer uniform initialization { } (also called brace initialization)(since C++11). Prevents narrowing.
+Prefer uniform initialization `{ }` (also called brace initialization), it prevents narrowing.
 
 Clarifies not assignment (=) or function call (()).
 
-Initialize class member variables at declaration, not in constructors (since C++11):
+Initialize class member variables at declaration, not in constructors:
 - Simplifies constructors
 - Avoids repetition
 - Establishes default state
@@ -467,7 +467,7 @@ displayLines(80);
 
 Do the following instead:
 ```c++
-constexpr auto standardScreenLength {80};
+constexpr unsigned standardScreenLength {80};
 displayLines(standardScreenLength);
 ```
 
@@ -576,7 +576,7 @@ Item martha { "Martha", 30 };
 Item george { "George", 40 };
 ```
 
-Move the data into a container e.g. `constexpr std::array`, not a vector or map.
+Move the data into a container e.g. `constexpr std::initializer_list`, not a vector or map.
 
 Container elements are typically value, array, pair, tuple, or a defined struct.
 Pair and tuple should only be used for very short lived data, such as this case:
@@ -585,13 +585,11 @@ Pair and tuple should only be used for very short lived data, such as this case:
 ```cpp
 using Pair = std::pair<std::string_view, size_t>;
 
-constexpr auto numItems {3};
-
-constexpr std::array<Pair, numItems> items {{
+constexpr std::initializer_list<Pair> items {
     { "Fred", 20 },
     { "Martha", 30 },
     { "George", 40 }
-}};
+};
 ```
 {% endraw %}
 
@@ -604,13 +602,11 @@ struct Button {
     size_t width;
 };
 
-constexpr auto numButtons {3};
-
-constexpr std::array<Button, numButtons> buttonDefs {{
+constexpr std::initializer_list<Button> buttonDefs {
     { "Go", 25, 25 },
     { "Get set", 20, 20 },
     { "On your marks", 15, 15 }
-}};
+};
 ```
 {% endraw %}
 When in doubt, use a struct - it is better to have good names than not.
