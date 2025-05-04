@@ -232,7 +232,7 @@ In this document the **bolded** text will indicate how important each suggestion
 ## Naming Things
 
 Naming described in that section of the document refers mostly to newer parts of code. Some modules use different naming conventions,
-while checking the code Reviewer should take into account surrounding code and first of all ensure consistency within the closes scope.
+while checking the code Reviewer should take into account surrounding code and first of all ensure consistency within the closest scope.
 
 1. Code symbols (classes, structs, methods, functions, variables...) **must** have names that are meaningful and grammatically correct.
 2. Variables **should not** be named using abbreviations and/or 1 letter names. Iterator variables or math related ones like `i` or `u` are obviously not covered by this rule.
