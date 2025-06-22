@@ -8,7 +8,7 @@ Due to the technical nature associated with CAD and advanced programming, it is 
 
 - Use the shortest descriptive words possible for a function. Single words are preferred, however this will not always be possible.
 
-- Use third-person present tense in tooltips. "Creates", "adds", "sends", "opens", etc. 
+- Use third-person present tense in tooltips. "Creates", "adds", "sends", "opens", etc.
 
 - Describe the action or result: say what the command does, do not only repeat its name. Be specific if possible: instead of "Add" -> `Adds a new sketch to the active body`.
 
@@ -28,7 +28,7 @@ Use **sentence case** for all user-facing UI text, including buttons, menu items
 
 **Don't capitalize commands or object names** unless it is a technical term that is capitalized in general.
 
-**Use ellipsis (...)** at the end of menu items when specific input from the user is required for the action. 
+**Use ellipsis (...)** at the end of menu items when specific input from the user is required for the action.
 
 **Example:**
 - `This option controls whether sketches automatically constrain new geometry. It is recommended to leave it enabled for most workflows.` - Complete sentences ends with a period.
