@@ -10,8 +10,8 @@ Due to the technical nature associated with CAD and advanced programming, it is 
 
 - Use third-person present tense in tooltips. "Creates", "adds", "sends", "opens", etc.
 
-- Describe the action or result in tooltips: say what the command does and what is needed (e.g. active body or selection), do not only repeat its name. Be specific if possible: instead of "Add" -> `Adds a new sketch to the active body`. 
-- Do not add additional information which is obvious or list multiple steps like "Select one or more line(s) click this button, add dimension". Better: "Inserts a dimension for the selected lines". 
+- Describe the action or result in tooltips: say what the command does and what is needed (e.g. active body or selection), do not only repeat its name. Be specific if possible: instead of "Add" -> `Adds a new sketch to the active body`.
+- Do not add additional information which is obvious or list multiple steps like "Select one or more line(s) click this button, add dimension". Better: "Inserts a dimension for the selected lines".
 - Do not address the user directly where not necessary. Don't wrie of "Click this button" in the tooltip or "Select something then do this". Instead describe in a short sentence what the command does with which inputs without asking the user directly.
 
 - Broadly accepted and understood acronyms can be used in place of full words, however, these should be scrutinized closely by the design and development teams to avoid obscure references.
