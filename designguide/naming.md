@@ -2,11 +2,11 @@
 
 Due to the technical nature associated with CAD and advanced programming, it is easy to fall into the trap of using terminology that is either overly descriptive or seems obvious as a developer but is obscure to the layman. Additionally, with so many functions at a user's disposal within FreeCAD, screen space comes at a high premium, and text strings can quickly change a UI/UX from being concise and efficient to awkwark and unpleasant. The following guidelines should be considered when naming/labeling functions, features and other various addons.
 
-*NOTE: This area is highly subjective as FreeCAD is translated into many languages, however english is considered the standard by which naming will be assessed. It will be up to various translators to best adhere to these guidlines as best as possible.*1
+*NOTE: This area is highly subjective as FreeCAD is translated into many languages, however English is considered the standard by which naming will be assessed. It will be up to various translators to best adhere to these guidlines as best as possible.*
 
 ### Language
 
-- Use the shortest descriptive words possible for a function. Single words are preferred, however this will not always be possible.
+- Use the shortest descriptive words possible for a function. Single words are preferred, however this will not always be possible. For example use `Additive cube` instead of "Add additive Cube" or "Create new additive cube" for naming the command. Tooltips can be more descriptive, but concepts and functionality should be explained in the documentation.
 
 - Use third-person present tense in tooltips. "Creates", "adds", "sends", "opens", etc.
 
@@ -20,7 +20,7 @@ Due to the technical nature associated with CAD and advanced programming, it is 
 
 Efforts should be made to conserve space within the UI in order to prevent elements from needing to be resized from workbench-to-workbench or dialog-to-dialog. Word choices should be reviewed before merging a pull-request with text elements in the GUI.
 
-### Typography
+### UI Text Style
 
 Use **sentence case** for all user-facing UI text, including buttons, menu items, tooltips, labels, and settings. Sentence case means only the first word and proper nouns are capitalized, and complete sentences end with a period.
 
@@ -32,7 +32,7 @@ Use **sentence case** for all user-facing UI text, including buttons, menu items
 
 **Example:**
 - `This option controls whether sketches automatically constrain new geometry. It is recommended to leave it enabled for most workflows.` - Complete sentences ends with a period.
-- `Create new file` - This is just a short label.
+- `New file` - This is just a short label. A tooltip for toolbar button would be "Creates a new file".
 - `Save as...` - The function requires user input to function.
 - `Addon manager` - This is not a simple action, so no ellipsis.
 
