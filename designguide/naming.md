@@ -2,7 +2,7 @@
 
 Due to the technical nature associated with CAD and advanced programming, it is easy to fall into the trap of using terminology that is either overly descriptive or seems obvious as a developer but is obscure to the layman. Additionally, with so many functions at a user's disposal within FreeCAD, screen space comes at a high premium, and text strings can quickly change a UI/UX from being concise and efficient to awkwark and unpleasant. The following guidelines should be considered when naming/labeling functions, features and other various addons.
 
-*NOTE: This area is highly subjective as FreeCAD is translated into many languages, however English is considered the standard by which naming will be assessed. It will be up to various translators to best adhere to these guidlines as best as possible.*
+*NOTE: This area is highly subjective as FreeCAD is translated into many languages, however English is considered the standard by which naming will be assessed. It will be up to various translators to best adhere to these guidelines as best as possible.*
 
 ### Language
 
