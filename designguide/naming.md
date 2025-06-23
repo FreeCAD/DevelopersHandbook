@@ -18,6 +18,10 @@ Due to the technical nature associated with CAD and advanced programming, it is 
 
 - For concepts already used within FreeCAD, use the same wording so those concepts remain consistent wherever possible.
 
+- Write numbers in arabic numerals (0, 1, 2,...) not spelled out (one, two)
+
+- If a text is valid for one or multiple actions use always plural, e.g. "Creates holes based on the selected profiles" not "Creates hole(s) based on the selected profile(s)"
+
 Efforts should be made to conserve space within the UI in order to prevent elements from needing to be resized from workbench-to-workbench or dialog-to-dialog. Word choices should be reviewed before merging a pull-request with text elements in the GUI.
 
 ### UI Text Style
