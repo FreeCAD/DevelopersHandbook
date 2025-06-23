@@ -22,7 +22,7 @@ Efforts should be made to conserve space within the UI in order to prevent eleme
 
 ### UI Text Style
 
-Use **sentence case** for all user-facing UI text, including buttons, menu items, tooltips, labels, and settings. Sentence case means only the first word and proper nouns are capitalized, and complete sentences end with a period.
+Use **sentence case** for all user-facing UI text, including buttons, menu items, tooltips, labels, and settings. Sentence case means only the first word and proper nouns are capitalized, and complete sentences end with a period. This makes the user interface visually less distracting and easier to read. For the same reason, avoid contractions like for example "don't" or "can't" - write "do not" and "cannot" instead.
 
 **Do not use periods** at the end of **short** UI strings like menu items, button labels, and checkbox texts. Use a period on tooltips and longer text elements, if they contain a full sentence. Omit the period if the tooltip is a short phrase or label.
 
