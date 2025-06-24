@@ -20,7 +20,7 @@ Efforts should be made to conserve space within the UI in order to prevent eleme
 - Write numbers in arabic numerals (`0, 1, 2,...`) not spelled out ("one, two,...")
 - For concepts already used within FreeCAD, use the same wording so those concepts remain consistent wherever possible.
 - Avoid using common programming terms, preference should be given towards more plain language words.
-- For all user-facing stings add comments to help adding context for translators `//: Sketcher: Command name for new line`. More info in the [Qt docs](https://doc.qt.io/qt-6/i18n-source-translation.html#add-comments-for-translators).
+- For all user-facing strings add comments to help adding context for translators `//: Sketcher: Command name for new line`. More info in the [Qt docs](https://doc.qt.io/qt-6/i18n-source-translation.html#add-comments-for-translators).
 
 
 ### UI Text Style
