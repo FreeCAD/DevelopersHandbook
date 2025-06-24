@@ -34,7 +34,7 @@ Use **sentence case** for all user-facing UI text, including buttons, menu items
 **Use ellipsis (...)** at the end of menu items when specific input from the user is required for the action.
 
 **Example:**
-- `Constrains new geometry automatically. It is recommended to leave it enabled for most workflows.` - Complete sentences ends with a period.
+- `Constrains new geometry automatically. It is recommended to leave it enabled for most workflows.` - Complete sentences end with a period.
 - `New file` - This is just a short label. A tooltip for that command button would be "Creates a new file".
 - `Save as...` - The function requires user input to function.
 - `Addon manager` - This is not a simple action, so no ellipsis.
