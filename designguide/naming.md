@@ -16,11 +16,11 @@ Efforts should be made to conserve space within the UI in order to prevent eleme
 - Do not add additional information which is obvious or list multiple steps like "Select one or more line(s) click this button, add dimension". Better: `Inserts a dimension for the selected lines`.
 - Avoid redundant descriptions of states in tooltips and notes. Example: instead of "If checked by the user, the view is updated automatically", "If active,..." or "This option controls..." use `Updates view atomatically`.
 - Avoid addressing the user directly or in third person. Do not write "Click this button" in the tooltip or "Select something then do this". Instead describe in a short sentence what the command does with which inputs without asking the user directly.
-- Broadly accepted and understood acronyms can be used in place of full words, however, these should be scrutinized closely by the design and development teams to avoid obscure references.
-- Write numbers in arabic numerals (0, 1, 2,...) not spelled out (one, two)
+- Broadly accepted and understood acronyms can be used in place of full words (e.g. `CAD` or `ISO`), however, these should be scrutinized closely by the design and development teams to avoid obscure references.
+- Write numbers in arabic numerals (`0, 1, 2,...`) not spelled out ("one, two,...")
 - For concepts already used within FreeCAD, use the same wording so those concepts remain consistent wherever possible.
 - Avoid using common programming terms, preference should be given towards more plain language words.
-- For all user-facing stings add comments to help adding context for translators `//: Sketcher: Command name for new line`. Mor info in the [Qt docs](https://doc.qt.io/qt-6/i18n-source-translation.html#add-comments-for-translators).
+- For all user-facing stings add comments to help adding context for translators `//: Sketcher: Command name for new line`. More info in the [Qt docs](https://doc.qt.io/qt-6/i18n-source-translation.html#add-comments-for-translators).
 
 
 ### UI Text Style
