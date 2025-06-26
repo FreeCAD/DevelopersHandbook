@@ -25,18 +25,35 @@ Efforts should be made to conserve space within the UI in order to prevent eleme
 
 ### UI Text Style
 
-Use **sentence case** for all user-facing UI text, including buttons, menu items, tooltips, labels, and settings. Sentence case means only the first word and proper nouns are capitalized, and complete sentences end with a period. This makes the user interface visually less distracting and easier to read. For the same reason, avoid contractions like for example "don't" or "can't" - write `do not` and `cannot` instead.
+Use **title case** for buttons, menu items, group titles. All other text should use normal sentence case.
 
-**Do not use periods** at the end of **short** UI strings like menu items, button labels, and checkbox texts. Use a period on tooltips and longer text elements, if they contain a full sentence. Omit the period if the tooltip is a short phrase or label.
+**Do not use periods** at the end of **short** UI strings like menu items, button labels, and checkbox texts. Use a period on tooltips and longer text elements if they contain a full sentence. Omit the period if the tooltip is a short phrase or label.
 
-**Do not capitalize commands or object names** unless it is a technical term that is capitalized in general.
+**Capitalize command and object names** using title case, even if not technical terms. This ensures UI labels remain visually consistent and scannable.
 
 **Use ellipsis (...)** at the end of menu items when specific input from the user is required for the action.
 
-**Example:**
+In title case, major words are capitalized, and most minor words are lowercase.
+
+
+### How to implement title case
+
+In title case, capitalize the following words in a title or heading:
+
+- the first word of the title or heading, even if it is a minor word such as “The” or “A”
+- major words, including the second part of hyphenated major words (e.g., “Self-Report,” not “Self-report”)
+- words of four letters or more (e.g., “With,” “Between,” “From”)
+
+Lowercase only minor words that are three letters or fewer in a title or heading (except the first word in a title or subtitle or the first word after a colon, em dash, or end punctuation in a heading):
+
+- short conjunctions (e.g., “and,” “as,” “but,” “for,” “if,” “nor,” “or,” “so,” “yet”)
+- articles (“a,” “an,” “the”)
+- short prepositions (e.g., “as,” “at,” “by,” “for,” “in,” “of,” “off,” “on,” “per,” “to,” “up,” “via”)
+  
+**Examples:**
 - `Constrains new geometry automatically. It is recommended to leave it enabled for most workflows.` - Complete sentences end with a period.
-- `New file` - This is just a short label. A tooltip for that command button would be "Creates a new file".
-- `Save as...` - The function requires user input to function.
-- `Addon manager` - This is not a simple action, so no ellipsis.
+- `New File` - This is just a short label. A tooltip for that command button would be "Creates a new file".
+- `Save As ...` - The function requires user input to function.
+- `Addon Manager` - This is not a simple action, so no ellipsis.
 
 [Return to Design Guide Main Page](index.md)
