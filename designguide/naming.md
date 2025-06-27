@@ -26,7 +26,7 @@ Avoid verbose or inconsistent language in the UI, as it may cause layout issues 
 
 ### UI Text Style
 
-Use **title case** only for buttons, menu items, and group titles. All other text should use normal sentence case.
+Use **title case** only for command names, buttons, menu items, and group titles. All other text should use normal sentence case.
 
 **Do not use periods** on short UI elements like buttons or labels. Use them only in full-sentence tooltips or descriptive text.
 
