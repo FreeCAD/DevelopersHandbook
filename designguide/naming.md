@@ -30,8 +30,6 @@ Use **title case** only for command names, buttons, menu items, and group titles
 
 **Do not use periods** on short UI elements like buttons or labels. Use them only in full-sentence tooltips or descriptive text.
 
-**Capitalize command and object names** using title case, even if not technical terms.
-
 **Use ellipsis (...)** at the end of menu items that require user input.
 
 ### How to implement title case
