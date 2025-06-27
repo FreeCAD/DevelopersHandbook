@@ -22,7 +22,8 @@ Avoid verbose or inconsistent language in the UI, as it may cause layout issues 
 - Tooltips should describe the action and required context. E.g., `Adds a new sketch to the active body`, not just “Add sketch”.
 - Avoid step-by-step instructions in tooltips. Focus on outcome: `Inserts a dimension for the selected lines`, not “Select one or more lines...”.
 - Avoid stating the obvious: "If checked by the user, the view is updated automatically", use `Updates view atomatically`.
-- Don’t address the user directly: say what the command does, not “Click this button...”.
+- Don't address the user directly: say what the command does, not “Click this button...”.
+- Avoid using technical object terms in the UI. If necessary, write them in single quotation marks: `Inspects the selected 'DocumentObject' `.
 
 ### UI Text Style
 
