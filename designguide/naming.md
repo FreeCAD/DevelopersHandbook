@@ -54,7 +54,7 @@ Lowercase only minor words that are three letters or fewer:
 - Tooltip: `Constrains new geometry automatically. It is recommended to leave it enabled for most workflows.` - Complete sentences end with a period.
 - Hint: `Toggles the visibility of the active sketch`
 - Command: `New File` - This is just a short label. A tooltip for that command button would be "Creates a new file".
-- `Save As ...` - The function requires user input to function.
+- Command: `Save As ...` - The function requires user input to function.
 - `Addon Manager` - This is not a simple action, so no ellipsis.
 
 [Return to Design Guide Main Page](index.md)
