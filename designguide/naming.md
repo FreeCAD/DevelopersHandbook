@@ -55,6 +55,6 @@ Lowercase only minor words that are three letters or fewer:
 - Hint: `Toggles the visibility of the active sketch`
 - Command: `New File` - This is just a short label. A tooltip for that command button would be "Creates a new file".
 - Command: `Save As ...` - The function requires user input to function.
-- `Addon Manager` - This is not a simple action, so no ellipsis.
+- Command: `Addon Manager` - This is not a simple action, so no ellipsis.
 
 [Return to Design Guide Main Page](index.md)
