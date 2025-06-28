@@ -21,7 +21,7 @@ Avoid verbose or inconsistent language in the UI, as it may cause layout issues 
 - Use **third-person present tense** in tooltips: `Creates`, `Adds`, `Inserts`. Write complete sentences where appropriate.
 - Tooltips should describe the action and required context. E.g., `Adds a new sketch to the active body`, not just "Add sketch".
 - Avoid step-by-step instructions in tooltips. Focus on outcome: `Inserts a dimension for the selected lines`, not "Select one or more lines…".
-- Avoid stating the obvious: "If checked by the user, the view is updated automatically", use `Updates view atomatically`.
+- Avoid stating the obvious: "If checked by the user, the view is updated automatically", use `Updates view automatically`.
 - Don't address the user directly: say what the command does, not "Click this button…".
 - Avoid direct source-code references in the UI, instead of "This feature only works with PartDesign bodies" use `"This feature only works with Part Design bodies"`
 
