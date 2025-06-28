@@ -31,7 +31,7 @@ Use **Title Case** only for command names, buttons, menu items, and group titles
 
 **Do not use periods** on short UI elements like buttons or labels. Use them only in full-sentence tooltips or descriptive text.
 
-**Use ellipsis (…)** at the end of menu items or commands that require user input. Do not use three periods “...”  instead of the ellipsis character `…` for consistency. 
+**Use ellipsis (…)** at the end of menu items or commands that require user input. Do not use three periods “...”  instead of the ellipsis character `…` for consistency.
 
 Do not put a colon or space at the end of labels that are followed by required user input (e.g. QLabel for input box, button, dropdown, or checkbox) or headers. Instead of “X direction: ” write `X direction:`
 
