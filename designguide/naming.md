@@ -17,7 +17,7 @@ Avoid verbose or inconsistent language in the UI, as it may cause layout issues 
 - Use standard numerals (`0, 1, 2,…`) not spelled out ("one, two,…")
 - Keep terminology consistent with existing FreeCAD concepts.
 - Avoid programmer jargon in favor of simpler terminology.
-- For user-facing strings add comments as needed to help provide context for translators `//: Sketcher: Command name for new line`. [More info]([Writing Source Code for Translation | Qt 6.9](https://doc.qt.io/qt-6/i18n-source-translation.html#add-comments-for-translators)).
+- For user-facing strings add comments as needed to help provide context for translators `//: Sketcher: Command name for new line`. [More info in Qt docs](https://doc.qt.io/qt-6/i18n-source-translation.html#add-comments-for-translators).
 - Use **third-person present tense** in tooltips: `Creates`, `Adds`, `Inserts`. Write complete sentences where appropriate.
 - Tooltips should describe the action and required context. E.g., `Adds a new sketch to the active body`, not just "Add sketch".
 - Avoid step-by-step instructions in tooltips. Focus on outcome: `Inserts a dimension for the selected lines`, not "Select one or more lines…".
