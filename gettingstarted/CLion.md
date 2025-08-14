@@ -56,8 +56,6 @@ Use the Run or Debug Icons from the top bar shown in the prior image.
 
 ## Debugging
 
-*note* This depends on https://github.com/FreeCAD/FreeCAD/pull/16850 getting merged!
-
 While CLion supports both a C++ debugger and a Python debugger, it generally does not support
 embedded Python interpreters, nor debugging both simultaneously.  However, there are workaround
 procedures that will allow this.
@@ -97,30 +95,31 @@ Simply choose the debug option to start FreeCAD, and you're good to go.
 
 ### Setting up for python debugging in CLion
 
-Install pydevd in the interpreter that FreeCAD is using.  'pip3 install pydevd' from the correct
-venv is one way to accomplish this.
-
 Use the settings button in the upper right, the File Menu -> Settings, or the Ctrl-Alt-S shortcut
 to open the settings dialog, expand the Build, Execution, Deployment tree item, and select a Python
 Interpreter:
 
 ![Pict1](./resources/CLionPythonDebug1.png)
 
+Install `pydevd` into the FreeCAD python environment, if it is not already present. For example,
+```
+C:\Users\jdoe\FreeCAD\cmake-build-relwithdebinfo-visual-studio\bin\python.exe -m pip install pydevd
+```
 Switch to the Python Debugger settings, and change the Attach To Process name from python to 'Freecad'
 You may need to change this back if you use the IDE for other applications.
 
 ![Pict2](./resources/CLionPythonDebug2.png)
 
 Now there are three approaches here:
-1. Wait for CLion 2024.3 which is supposed to have a static port listener option with a
-configurable port available in the 'Python Debugger' pane of the CMake profile you use.
-   [see context](https://youtrack.jetbrains.com/issue/CPP-5797/Cross-debugging-Python-and-C#focus=Comments-27-10655987.0-0)
-   and [see planned fix.](https://youtrack.jetbrains.com/issue/PY-21325/Add-an-ability-to-specify-debugger-port)  Port should be 5679 if you use the macro below.
-2. Find the attach_pydevd.py file in your CLion installation, and modify it using the
+1. Using a recent version of CLion (at least 2024.3), ensure that the `python.debug.use.single.port` is checked in
+CLion's Registry (Help->Find action...->"Registry"), then in the Python Debugger settings page set the port to 5679.
+Note that this option will not appear if your registry setting is off (the default starting in 2024.3.1), so
+if you don't see the option to set the port, go back and double-check the registry setting.
+3. Find the attach_pydevd.py file in your CLion installation, and modify it using the
 contrib/clion/attach_pydevd.py.patch in the source code.  Then use the macro below.
-3. Use this elaborate work around:
+4. Use this elaborate work around:
 
-### Running a python or simultaneous debug using the non intrusive procedure
+### Running a python or simultaneous debug using the non-intrusive procedure
 
 1. You can start your FreeCAD independently, via CLion, or in c++ debug mode under CLion.
 
