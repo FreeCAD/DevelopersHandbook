@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# Getting Started
+# CLion
+
+## Getting Started
 
 If you don't already have CLion installed, download it, license it, install it per JetBrains instructions.
 

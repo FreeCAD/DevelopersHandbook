@@ -1,4 +1,4 @@
-## Naming Convention and Writing Style
+# Naming Convention and Writing Style
 
 Because FreeCAD involves both CAD and programming, it's easy to use overly technical or redundant language. Names that seem obvious to developers may confuse general users. Additionally, with limited UI space, concise and clear naming is critical for usability. Follow the guidelines below when naming or labeling functions, features, and add-ons.
 
@@ -6,7 +6,7 @@ Because FreeCAD involves both CAD and programming, it's easy to use overly techn
 
 Avoid verbose or inconsistent language in the UI, as it may cause layout issues across workbenches and dialogs. Always review naming before merging UI-related pull requests.
 
-### Language
+## Language
 
 - Use short, descriptive terms. Prefer single nouns when possible: `Additive Cube`, not "Create new Additive Cube".
 - Favor unique noun-first naming: `Horizontal Constraint`, not "Constrain Horizontal".
@@ -25,7 +25,7 @@ Avoid verbose or inconsistent language in the UI, as it may cause layout issues 
 - Don't address the user directly: say what the command does, not "Click this button…".
 - Avoid direct source-code references in the UI, instead of "This feature only works with PartDesign bodies" use `This feature only works with Part Design bodies`
 
-### UI Text Style
+## UI Text Style
 
 Use **Title Case** only for command names, buttons, menu items, and group titles. All other text should use normal **sentence case**.
 
@@ -35,7 +35,7 @@ Use **Title Case** only for command names, buttons, menu items, and group titles
 
 Do not put a colon or space at the end of labels that are followed by required user input (e.g. QLabel for input box, button, dropdown, or checkbox) or headers. Instead of "X direction: " write `X direction`
 
-### How to Implement Title Case
+## How to Implement Title Case
 
 In title case, capitalize the following words:
 

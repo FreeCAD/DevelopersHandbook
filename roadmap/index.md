@@ -6,7 +6,7 @@ layout: default
 
 The roadmap provides broad objectives for the direction of FreeCAD development.
 
-# Development Roadmap
+## Development Roadmap
 
 This document describes several high-level objectives for the FreeCAD project.  Rather than being a laundry list of development tasks, it focuses on a small set of strategic initiatives that, if achieved, will move FreeCAD closer to an ideal future state.
 
@@ -14,11 +14,11 @@ You can read more about the [rationale for having a roadmap](rationale.md).
 
 This roadmap outlines broad strategic objectives. Code contributions from developers will always be evaluated on their merits but are more likely to receive timely attention and be successfully merged if they are consistent with the stated objectives of this roadmap.
 
-# The "Next" Release
+## The "Next" Release
 
 These objectives described here are very broad. Some of them are very ambitious and will take a long time to achieve.  Others will never be fully achieved or 'done'.  For that reason, it's helpful to pick a specific set of goals to focus on for the next release.  [This page](next.md) broadly describes the major goals for the next release.
 
-## Objective: Model stability
+### Objective: Model stability
 
 Robust, stable models are a necessary precursor to widespread adoption of FreeCAD.  Some types of breakage are the unavoidable result of poor design practices by the user but FreeCAD must commit itself to reducing or eliminating as many causes of breakage as possible. Focus areas include:
 
@@ -30,7 +30,7 @@ Robust, stable models are a necessary precursor to widespread adoption of FreeCA
     2. Remove / replace tools that allow unstable results
 4. Improved stability around linked documents
 
-## Objective:  Assembly
+### Objective:  Assembly
 
 Assembly is a core feature of modern CAD systems.  Without an integrated assembly capability, users are forced to use one of several add-on options.  With competing alternatives available, collaboration and interoperability is negatively affected.  Adoption of an assembly workbench should consider, at a minimum, a base set of features including
 
@@ -38,7 +38,7 @@ Assembly is a core feature of modern CAD systems.  Without an integrated assembl
 2. A license-compatible solver or the option to include a solver at a later date
 3. A minimum set of features to satisfy the 80+% of requirements of typical users
 
-## Objective: Flatten the learning curve
+### Objective: Flatten the learning curve
 
 CAD is hard.  These are complicated and powerful tools and the user should be expected to invest appropriate time to learn to use them well.  However, UI/UX inconsistency makes the learning process more difficult than it need be.  The FreeCAD community must pursue a program of UI normalization to make learning FreeCAD easier.
 
@@ -56,7 +56,7 @@ The first step in this process is to stop making things worse by accepting UI su
 6. Normalize the use of terminology both within FreeCAD and, when possible, with external standards.
 7. Improve support for materials and implement consistently across all workbenches
 
-## Objective:  Seamless Extensibility
+### Objective:  Seamless Extensibility
 
 FreeCAD has an addon manager to allow the user to add niche features.  This provides two important functions.  First, it allows the core application to remain leaner and avoid bloat. Second, it allows for competing solutions early on.  Our approach to addons, however, has been somewhat undisciplined.  As a result, the quality of addons is very uneven.  Some are excellent and behave like native parts of the application.  Others feel and behave inconsistently.  Still others are completely broken or unmaintained.  If we want the addon capability to serve both purposes, additional development is needed.  Focus areas include:
 
@@ -73,7 +73,7 @@ FreeCAD has an addon manager to allow the user to add niche features.  This prov
     2. Native debugger
     3. Improved API
 
-## Objective:  Have the best documentation possible
+### Objective:  Have the best documentation possible
 
 Documentation has become as important as the FreeCAD application itself. Good documentation can offer a bridge to new users and smooth the learning curve. It can make all the difference between an application that is hard to use and one that is easy to learn.
 
@@ -86,7 +86,7 @@ The FreeCAD documentation is generally in a very good state already. But it coul
 5. Support for off-line readers
 6. Natural integration of Developer / API documentation
 
-## Objective: UI modernization and beautification
+### Objective: UI modernization and beautification
 
 We want the FreeCAD application to be both efficient and attractive.  We want it to integrate well with the rest of the desktop experience, to be responsive and to be delightful to use. Focus areas include:
 
@@ -103,7 +103,7 @@ We want the FreeCAD application to be both efficient and attractive.  We want it
     1. Shadows
     2. Simplified ray tracing and rendering
 
-## Objective: Streamlined workflow
+### Objective: Streamlined workflow
 
 Performing common and repetitive tasks should be as effortless as possible.  FreeCAD developers should commit themselves to building efficient workflows throughout the application.  This means minimizing clicks and unnecessary dialogs.  It means adding dedicated tools for routine functions rather than relying on generalized tools that may require more steps. It means anticipating and giving the user efficient access to information when and where they need it.  Focus areas include:
 
@@ -125,7 +125,7 @@ Performing common and repetitive tasks should be as effortless as possible.  Fre
     5. Surface area
 7. Text alignment tool
 
-## Objective: Lower Barriers to Entry
+### Objective: Lower Barriers to Entry
 
 FreeCAD has an enormous number of functions and for a new user, there is no obvious way to use just a task oriented subset.  It should be possible for new users to access a subset of FreeCAD functionality, say on the level of a TinkerCAD.  As they gain experience, they can use additional functions.
 
@@ -133,6 +133,6 @@ FreeCAD has a major terminology problem for new users.  We have a Part workbench
 
 Forum comment regarding nomenclature: [https://forum.freecad.org/viewtopic.php?p=669869#p669869](https://forum.freecad.org/viewtopic.php?p=669869#p669869)
 
-## Objective: Prevent Shooting Yourself in the Foot
+### Objective: Prevent Shooting Yourself in the Foot
 
 FreeCAD allows users to do things that are known to build fragile models, such as building features based on variable foundations (ex Sketches on Faces, Dimensions based on drawing lines).  We even have icons and commands for doing this.  FreeCAD should prevent "dangerous" actions, convert them behind the scenes to safe actions or at least provide a warning about unsafe practices.
