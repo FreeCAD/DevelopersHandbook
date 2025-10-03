@@ -12,8 +12,8 @@ This is the list of **current** maintainers & admins.
 
 ### Maintainers
 
--   [![GitHub]][GitHub-AdrianInsAvel]
-    [![Forum]][Forum-AdrianInsAvel]
+-   [![GitHub]][GitHub-AdrianInsAval]
+    [![Forum]][Forum-AdrianInsAval]
     `Adrián Insaurralde Avalos`
 
 -   [![GitHub]][GitHub-Hyarion]
@@ -51,7 +51,7 @@ This is the list of **current** maintainers & admins.
     `Yorik van Havre`
 
 
-[GitHub-AdrianInsAvel]: https://github.com/adrianinsaval 'GitHub'
+[GitHub-AdrianInsAval]: https://github.com/adrianinsaval 'GitHub'
 [GitHub-WandererFan]: https://github.com/WandererFan 'GitHub'
 [GitHub-Sliptonic]: https://github.com/sliptonic 'GitHub'
 [GitHub-Hyarion]: https://github.com/hyarion 'GitHub'
@@ -61,7 +61,7 @@ This is the list of **current** maintainers & admins.
 [GitHub-Kadet]: https://github.com/kadet1090 'GitHub'
 [GitHub-Roy]: https://github.com/Roy-043 'GitHub'
 
-[Forum-AdrianInsAvel]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=19302 'Forum'
+[Forum-AdrianInsAval]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=19302 'Forum'
 [Forum-WandererFan]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=1375 'Forum'
 [Forum-Sliptonic]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=708 'Forum'
 [Forum-Hyarion]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=34430 'Forum'
