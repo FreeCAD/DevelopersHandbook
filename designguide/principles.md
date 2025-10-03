@@ -1,4 +1,4 @@
-## Principles:
+# Principles
 
 The following guiding principles are based on various established [Laws of UX outlined here](laws-of-ux.md).
 

@@ -1,4 +1,4 @@
-## History and Purpose:
+# History and Purpose
 
 FreeCAD is a highly modular, complex piece of design software which has been developed for over [20 years](https://wiki.freecad.org/History) by volunteer contributors from across the globe. Due to the nature of this organic growth, individuals have injected their own ideas and implementations without following a uniform design language for how the application should present itself to users as well as flow through its many features. As a result user feedback regarding aesthetic and usability were generally poor, despite a robust set of features.
 

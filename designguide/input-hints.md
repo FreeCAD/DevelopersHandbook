@@ -1,4 +1,4 @@
-## Input Hints
+# Input Hints
 
 Input Hints is feature that provides user with hints for available actions as part of the status bar.
 

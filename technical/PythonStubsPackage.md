@@ -21,9 +21,9 @@ Using an external tool (type checker like
 Also, stub files allow IDE (integrated development environment)
 detect possible names for imported classes or method names.
 
-# Installation
+## Installation
 
-## PyPi
+### PyPi
 
 It is possible to install stubs directly from
 [PyPI](https://pypi.org/project/freecad-stubs/):
@@ -32,7 +32,7 @@ It is possible to install stubs directly from
 pip install FreeCAD-stubs
 ```
 
-## From GitHub repo (especially older versions)
+### From GitHub repo (especially older versions)
 
 To install stubs for older FreeCAD version
 (replace `FreeCAD-0-20` with tag/branch you want),
@@ -62,7 +62,7 @@ Or manually using cloning repo:
    pip install freecad-stubs
    ```
 
-# False positives in stubs
+## False positives in stubs
 
 Probably not all types are correctly detected.
 [Reporting issues](https://github.com/ostr00000/freecad-stubs/issues) are very welcome.
