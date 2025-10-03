@@ -6,19 +6,74 @@ layout: default
 
 Guidelines for Maintainers regarding code review and merge procedures.  Git can be [configured to make checking out and reviewing PRs easier](./git.md).
 
-## The Current Team of Maintainers
+## The Team
 
-- Adrián Insaurralde Avalos (@adrianinsaval)
-- Benjamin Nauck (@hyarion)
-- Brad Collette* (@sliptonic)
-- Chris Hennes* (@chennes)
-- Kacper Donat (@kadet1090)
-- @Roy-043
-- @WandererFan
-- Werner Mayer* (@wwmayer)
-- Yorik van Havre* (@yorik)
+This is the list of **current** maintainers & admins.
 
-*Project administrator
+### Maintainers
+
+-   [![GitHub]][GitHub-AdrianInsAval]
+    [![Forum]][Forum-AdrianInsAval]
+    `Adrián Insaurralde Avalos`
+
+-   [![GitHub]][GitHub-Hyarion]
+    [![Forum]][Forum-Hyarion]
+    `Benjamin Nauck`
+
+-   [![GitHub]][GitHub-Kadet]
+    [![Forum]][Forum-Kadet]
+    `Kacper Donat`
+
+-   [![GitHub]][GitHub-Roy]
+    [![Forum]][Forum-Roy]
+    `Roy-043`
+
+-   [![GitHub]][GitHub-WandererFan]
+    [![Forum]][Forum-WandererFan]
+    `WandererFan`
+
+### Admins
+
+-   [![GitHub]][GitHub-Sliptonic]
+    [![Forum]][Forum-Sliptonic]
+    `Brad Collette`
+
+-   [![GitHub]][GitHub-Chennes]
+    [![Forum]][Forum-Chennes]
+    `Chris Hennes`
+
+-   [![GitHub]][GitHub-WMayer]
+    [![Forum]][Forum-WMayer]
+    `Werner Mayer`
+
+-   [![GitHub]][GitHub-Yorik]
+    [![Forum]][Forum-Yorik]
+    `Yorik van Havre`
+
+
+[GitHub-AdrianInsAval]: https://github.com/adrianinsaval 'GitHub'
+[GitHub-WandererFan]: https://github.com/WandererFan 'GitHub'
+[GitHub-Sliptonic]: https://github.com/sliptonic 'GitHub'
+[GitHub-Hyarion]: https://github.com/hyarion 'GitHub'
+[GitHub-Chennes]: https://github.com/chennes 'GitHub'
+[GitHub-WMayer]: https://github.com/wwmayer 'GitHub'
+[GitHub-Yorik]: https://github.com/yorikvanhavre 'GitHub'
+[GitHub-Kadet]: https://github.com/kadet1090 'GitHub'
+[GitHub-Roy]: https://github.com/Roy-043 'GitHub'
+
+[Forum-AdrianInsAval]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=19302 'Forum'
+[Forum-WandererFan]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=1375 'Forum'
+[Forum-Sliptonic]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=708 'Forum'
+[Forum-Hyarion]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=34430 'Forum'
+[Forum-Chennes]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=11959 'Forum'
+[Forum-WMayer]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=69 'Forum'
+[Forum-Kadet]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=60296 'Forum'
+[Forum-Yorik]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=68 'Forum'
+[Forum-Roy]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=22936 'Forum'
+
+[GitHub]: https://img.shields.io/badge/-181717?style=flat&logo=GitHub&logoColor=white
+[Forum]: https://img.shields.io/badge/-418FDE?style=flat&logo=FreeCAD&logoColor=white
+
 
 ## The Role of a Maintainer
 
