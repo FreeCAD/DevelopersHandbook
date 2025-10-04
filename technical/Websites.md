@@ -83,7 +83,7 @@ The page is based on [phpBB].
 [![Page]][Page-FPA]
 [![Repo]][Repo-FPA]
 
-Everything relating to the project   
+Everything relating to the project  
 association that oversees the FreeCAD.
 
 The page is built using [Jekyll]  
