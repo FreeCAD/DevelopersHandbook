@@ -2,64 +2,140 @@
 layout: default
 ---
 
-# Contributing to FreeCAD websites
+# Websites
 
-Technical information for contributors interested to work on FreeCAD websites.
+FreeCAD has a multitude of websites for various purposes.
 
-## The Ecosystem
+<br/>
 
-Currently, the websites infrastructure of FreeCAD consists of the following :
+## Hosted
 
-- [The FreeCAD website](https://www.freecad.org) acts as the main entry point into FreeCAD's universe for all users, contributors and interested parties.
+The following websites are directly hosted by FreeCAD.
 
-- [The News Blog](https://blog.freecad.org/) brings together development news, tutorials and use cases from the community.
+<br/>
 
-- [The Wiki](https://wiki.freecad.org/) gathers all the documentation about FreeCAD, from usage to installation, development, release notes and much more. Historically, this has been the all-purpose place for all FreeCAD-related matters. A more development-oriented portion of it has been migrated to this Developer Handbook.
+### Homepage
 
-- [The Developer Handbook](https://freecad.github.io/DevelopersHandbook/) is the very site you are currently in.
+[![Page]][Page-Homepage]
+[![Repo]][Repo-Homepage]
 
-- [The Forum](https://forum.freecad.org/) is one of the many places where the community meets and exchanges.
+This is the entry point for everything FreeCAD.
 
-- [The FreeCAD Project Association website](https://fpa.freecad.org/) groups everything that relates to the association overseeing the FreeCAD project.
+The backend is built with [PHP], the frontend uses  
+[Bootstrap] & [jQuery] as well as [Font Awesome].
 
-In addition to the implemented websites listed above, several external platforms are used :
+*[≫ How to contribute][Contribute-Homepage]*
 
-- [The Repositories](https://github.com/FreeCAD) of FreeCAD main codebase, building and packaging, continuous integration, addons, macros, library, websites and more are on GitHub.
+<br/>
 
-- [The Translations](https://crowdin.com/project/freecad) of the software interface and the main website are on Crowdin.
+### Blog
 
-Moreover, here are the current implementation initiatives not yet used :
+[![Page]][Page-Blog]
 
-- [The FreeCAD Documentation](https://freecad-documentation.netlify.app/) overhaul as part of the GSOC 2023
+Reports on new releases, tutorials  
+and use cases from the community.
 
-## Technical details
+The page is based on [WordPress].
 
-### FreeCAD website
-
-The website mainly uses HTML/PHP, CSS, the Bootstrap and jQuery JavaScript libraries, the Font Awesome toolkit.\
-To contribute to the main website, find [here a few advices and resources](./FreeCADweb.md).
-
-### News Blog
-
-The News Blog is based on WordPress.\
-<!-- To contribute to the blog, find here a few advices and resources. TODO: contact Chennes, ConcreteDog and Alex -->
+<br/>
 
 ### Wiki
 
-The News Blog is based on MediaWiki.\
-<!-- To contribute to the wiki, find here a few advices and resources. TODO: contact wiki team -->
+[![Page]][Page-Wiki]
+[![Repo]][Repo-Wiki]
 
-### Developer Handbook
+Aggregation of FreeCAD knowledge, mostly  
+user documentation, with development info  
+continually migrating to other system.
 
-The Developer Handbook uses Jekyll, a Ruby static site generator, and Markdown.\
-To contribute to the Developer Handbook, find [here a few advices and resources](./DevBook.md).
+The page is based on [MediaWiki].
+
+<br/>
+
+### Handbook
+
+[![Page]][Page-Handbook]
+[![Repo]][Repo-Handbook]
+
+Documentation for developers,  
+focused mostly on FreeCAD Core.
+
+The page is built using [Jekyll]  
+and written in simple Markdown.
+
+*[≫ How to contribute][Contribute-Handbook]*
+
+<br/>
 
 ### Forum
 
-The News Blog is based on phpBB.\
-<!-- To contribute to the Forum, find here a few advices and resources. TODO: contact forum team -->
+[![Page]][Page-Forum]
 
-### FreeCAD Project Association website
+Community exchange structured using  
+boards and posts to communicate.
 
-The FreeCAD Project Association website also uses Jekyll, a Ruby static site generator, and Markdown.\
-To contribute to the FreeCAD Project Association website, find [here a few advices and resources](./FPAweb.md).
+The page is based on [phpBB].
+
+<br/>
+
+### FPA
+
+[![Page]][Page-FPA]
+[![Repo]][Repo-FPA]
+
+Everything relating to the project   
+association that oversees the FreeCAD.
+
+The page is built using [Jekyll]  
+and written in simple Markdown.
+
+*[≫ How to contribute][Contribute-FPA]*
+
+<br/>
+
+## Employed
+
+The following websites are hosted by platforms.
+
+### [GitHub][Page-GitHub]
+
+Hosts most of source code and  
+assets of the FreeCAD project.
+
+### [Crowdin][Page-Crowdin]
+
+Translation platform used for the FreeCAD  
+app and homepage as well as some addons.
+
+<br/>
+
+
+[Contribute-Handbook]: ./DevBook
+[Contribute-Homepage]: ./FreeCADweb
+[Contribute-FPA]: ./FPAweb
+
+[Repo-Handbook]: https://github.com/FreeCAD/DevelopersHandbook
+[Repo-Homepage]: https://github.com/FreeCAD/FreeCAD-Homepage
+[Repo-Wiki]: https://github.com/Reqrefusion/FreeCAD-Documentation-Project
+[Repo-FPA]: https://github.com/FreeCAD/FPA
+
+[Page-Handbook]: https://freecad.github.io/DevelopersHandbook
+[Page-Homepage]: https://freecad.org
+[Page-Crowdin]: https://crowdin.com/project/freecad
+[Page-GitHub]: https://github.com/FreeCAD
+[Page-Forum]: https://forum.freecad.org
+[Page-Blog]: https://blog.freecad.org
+[Page-Wiki]: https://wiki.freecad.org
+[Page-FPA]: https://fpa.freecad.org
+
+[Font Awesome]: https://fontawesome.com
+[Bootstrap]: https://getbootstrap.com
+[WordPress]: https://wordpress.org
+[MediaWiki]: https://mediawiki.org
+[Jekyll]: https://jekyllrb.com
+[jQuery]: https://jquery.com
+[phpBB]: https://www.phpbb.com
+[PHP]: https://www.php.net
+
+[Repo]: https://img.shields.io/badge/Repository-181717?style=flat&logo=GitHub&logoColor=white
+[Page]: https://img.shields.io/badge/Website-418FDE?style=flat&logo=FreeCAD&logoColor=white
