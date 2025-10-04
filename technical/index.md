@@ -30,7 +30,7 @@ Technical information of interest to Contributors.
     - [Coin3d](https://www.coin3d.org/): a [scenegraph](https://wiki.freecad.org/Scenegraph) manager based on OpenInventor that handles drawing in the 3d window.
     - [Pivy](https://wiki.freecad.org/Pivy): a Python binding for Coin3d
 
-- [Contributing to FreeCAD websites](./Websites.md)
+- [Websites](./Websites)
 
 - [Reference Library](./ReferenceLibrary.md)
 
