@@ -57,7 +57,7 @@ vcomp140.dll
         `!define FILES_FREECAD` to the folder you specified as `CMAKE_INSTALL_PREFIX`
        * Copy into that folder the file *Delete.bat* that is part of the installer
        * open a command line in Windows and change to the folder
-       * run the comamand</br>
+       * run the command</br>
         `Delete.bat`
        * (These steps assure that the installer only contains files users need. Moreover it assures that the
        overall files size is below 2 GB and we can use the most compact compression for the installer.)
@@ -109,7 +109,7 @@ On Linux, we mostly let distributions produce packages themselves from the FreeC
 
 The most complex part, when building an AppImage, is therefore to gather those libraries. FreeCAD therefor uses [conda](https://conda.io) which is at the same time a build system and a package manager, to locate, download and organize these libraries. After this is done, the official AppImage tool is used to actually build the AppImage. Note that FreeCAD itself is built and made available on conda, so the process of building an AppImage does not compile FreeCAD. It rather uses a compiled version of FreeCAD already available on the conda platform.
 
-The main structure used to gather FreeCAD and its dependencies and build appimages is located in a separate Git repository at [FreeCAD/FreeCAD-Bundle](https://github.com/FreeCAD/FreeCAD-Bundle). The main script to run is [conda/linux/create_bundle.sh](https://github.com/FreeCAD/FreeCAD-Bundle/blob/master/conda/linux/create_bundle.sh). This script will do all the process of assembling and producing an AppImage.
+The main structure used to gather FreeCAD and its dependencies and build AppImages is located in a separate Git repository at [FreeCAD/FreeCAD-Bundle](https://github.com/FreeCAD/FreeCAD-Bundle). The main script to run is [conda/linux/create_bundle.sh](https://github.com/FreeCAD/FreeCAD-Bundle/blob/master/conda/linux/create_bundle.sh). This script will do all the process of assembling and producing an AppImage.
 
 You will need:
 
@@ -119,8 +119,8 @@ You will need:
 To use the script:
 
 1. Clone the FreeCAD-Bundle repository
-2. Download and place the appimagetool Appimage in the root of the repo, make it executable with `chmod +x`
+2. Download and place the appimagetool AppImage in the root of the repo, make it executable with `chmod +x`
 3. If you chose to not install the conda environment when installing Mambaforge, you will need to enable a conda environment now. Do it by running the following in your terminal: `eval "$(/$USER/Mambaforge/bin/conda shell.sh hook)"` (replace the Mambaforge path by yours if you installed it somewhere else and sh by your shell name if not sh). This will make the **conda** and **mamba** commands available in this terminal session
 4. Run `create_bundle.sh`
 
-Note that appimages produced by that script are by default not signed. It is generally seen on the AppImage website as not very widely used to sign AppImages. If you wish to sign the package, add `--sign-key you@yourdomain.com` to the appimage line in the create_bundle.sh script. You will need to have a gpg key configured for that email.
+Note that AppImages produced by that script are by default not signed. It is generally seen on the AppImage website as not very widely used to sign AppImages. If you wish to sign the package, add `--sign-key you@yourdomain.com` to the AppImage line in the create_bundle.sh script. You will need to have a gpg key configured for that email.

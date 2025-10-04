@@ -72,13 +72,13 @@ to control the program under test.
 
 ### Basic Python concept
 
-The pydevd debugger is run inside of the python interpreter under test.  This provides
+The PyDev debugger is run inside of the python interpreter under test.  This provides
 a network socket, normally connected _from_ the interpreter under test to a listening
 socket in the controlling debugger UI.  This port defaults to 5678 for non-CLion uses.  CLion
-generates a random port number, and then passes this into the pydevd initialization code;
+generates a random port number, and then passes this into the PyDev initialization code;
 if you run a python program then this is accomplished by directly running a shim with
 parameters that include the port number and the program to be debugged.  In an attach
-scenario, CLion _launches a C++ debugger_ to inject the pydevd initialization into the
+scenario, CLion _launches a C++ debugger_ to inject the PyDev initialization into the
 running python interpreter and cause it to make the socket connection back to the UI.  Note
 that since you generally cannot have more than one c++ debugger attached to a program,
 this mechanism cannot work for a program already under c++ debugging, and since it assumes
@@ -86,9 +86,9 @@ that the c++ program is in fact a python process, it won't work for embedded pyt
 
 ### Technique for getting Python testing working
 
-The challenge here is to get CLion to listen on a port for the incoming connection from pydevd,
-and to execute pydevd on that port in the program under test.  Since CLion does not support this
-natively, we trick it.  To do this we need to have a pydevd installed in the python interpreter in
+The challenge here is to get CLion to listen on a port for the incoming connection from PyDev,
+and to execute PyDev on that port in the program under test.  Since CLion does not support this
+natively, we trick it.  To do this we need to have a PyDev installed in the python interpreter in
 FreeCAD.
 
 ### Running a basic c++ debug
@@ -128,7 +128,7 @@ contrib/clion/attach_pydevd.py.patch in the source code.  Then use the macro bel
 2. Regardless of the starting technique, once FreeCAD is up, if there is no code in your FreeCAD supporting
    CLion debugging, then:
    1. Go to the python console and import pydevd.
-   Then go ahead and pretype in the settrace call, leaving the cursor poised to enter a port name but not executing the line.
+   Then go ahead and pre-type in the settrace call, leaving the cursor poised to enter a port name but not executing the line.
    2. Alternatively, go to the Macro -> Attach to remote debugger dialog and switch to the CLion tab.
 
 ![Pict1](./resources/CLionPythonDebug6.png)
@@ -154,7 +154,7 @@ and execute it:
 
 ![Pict1](./resources/CLionPythonDebug6.png)
 
-7. Note the appearance of a "Connected to pydev debugger" line in the CLion console.  Shortly before or after that
+7. Note the appearance of a "Connected to PyDev debugger" line in the CLion console.  Shortly before or after that
 message, you will also see the timeout of CLion's attempt to use a debugger to trigger an attach.  Ignore this
 error.
 

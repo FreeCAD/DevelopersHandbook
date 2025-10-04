@@ -73,6 +73,6 @@ Technical information of interest to Contributors.
 
 - [OpenCascade Tutorials](http://opencascade.wikidot.com/romansarticles)
 - [OpenCascade overview presentation](https://dev.opencascade.org/sites/default/files/pdf/Topology.pdf)
-- [OpenCasacde online documentation](https://dev.opencascade.org/doc/overview/html/index.html)
+- [OpenCascade online documentation](https://dev.opencascade.org/doc/overview/html/index.html)
 
 - [Scripted Objects](https://wiki.freecad.org/Scripted_objects)

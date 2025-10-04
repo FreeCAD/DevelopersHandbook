@@ -22,7 +22,7 @@ Toolbar management in complex technical software such as CAD poses unique challe
 
 - Should consist of only QToolButton or QMenuButton widgets. Other widgets may be used in special circumstances. The developer must ensure that the introduced widget is visually consistent and does not stand out above other tools. Features adding custom widget to toolbars shall be reviewed by the design working group.
 
-- Toolbars which toggle/indicate a funtional state can do so via change in icon (color or inclusion of an indicator)
+- Toolbars which toggle/indicate a functional state can do so via change in icon (color or inclusion of an indicator)
 
 - Deviations in prescribed widget types allocated to a tool bar must only be accepted after consensus is reached between applicable developers and a thorough review by the design team.
 
@@ -41,7 +41,7 @@ Alternative button configurations are inconsistent and not acceptable.
 
 - Minimize the width of the panel as much as possible through good use of space, arrangement of widgets, and [naming](naming.md).
 
-- Developers should use the approriate [interactive control](interactive.md) widgets to ensure a consistent experience throughout
+- Developers should use the appropriate [interactive control](interactive.md) widgets to ensure a consistent experience throughout
 
 - Task Panels can potentially include enormous amounts of information and advanced settings/controls. Utilizing FreeCAD's custom [QSInt](https://freecad.github.io/SourceDoc/d9/d11/namespaceQSint.html) widget class, which provides a 'rolling up' of portions of the panel, is encouraged. Follow the [80/20 rule](laws-of-ux.md#pareto-principle), and by default only expose the most commonly needed controls/data to avoid overwhelming users with information/settings when they are not needed. This allows the user to expand more advanced settings, controls or information when the need arises.
 

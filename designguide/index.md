@@ -23,7 +23,7 @@ layout: default
 
 ## How to use this guide
 
-This guide is organized into multiple documents as outlined above, for the purpose of aiding developers in finding relevant content without excess information. Newcomers to FreeCAD, and this Design Guide, should familiarize themselves with the principles and assumptions which were used as the foundation on which these guidelines were built before progressing to more targeted content. The rest of the sections are organized in a manner of logical hierarchy of concepts and guidlines starting with more conceptual matter and moving on towards greater levels of detail.
+This guide is organized into multiple documents as outlined above, for the purpose of aiding developers in finding relevant content without excess information. Newcomers to FreeCAD, and this Design Guide, should familiarize themselves with the principles and assumptions which were used as the foundation on which these guidelines were built before progressing to more targeted content. The rest of the sections are organized in a manner of logical hierarchy of concepts and guidelines starting with more conceptual matter and moving on towards greater levels of detail.
 
 ## Assumptions:
 

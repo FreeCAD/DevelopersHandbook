@@ -6,7 +6,7 @@ layout: default
 
 This page describes a high-level overview of the release planning and management process.
 
-We recognize signficant wisdom in the philosophy to ["Release Early and Release Often"](https://en.wikipedia.org/wiki/Release_early,_release_often). However, releases can require significant coordinated work within the community.  FreeCAD aspires to produce a major release every 3-6 months. In order to meet this goal, we will work to make releases more predicatable and automated.
+We recognize significant wisdom in the philosophy to ["Release Early and Release Often"](https://en.wikipedia.org/wiki/Release_early,_release_often). However, releases can require significant coordinated work within the community.  FreeCAD aspires to produce a major release every 3-6 months. In order to meet this goal, we will work to make releases more predictable and automated.
 
 ## Major and Minor Releases
 

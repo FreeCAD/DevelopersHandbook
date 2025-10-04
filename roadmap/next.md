@@ -42,7 +42,7 @@ Building multi-part assemblies is something users expect a modern CAD system to 
 
 ## Material System
 
-The existing material capability is limited and does not meet the needs of many users.  Version 1.0 will start the process of improving the material system. A new material system will address needs in many different workbenches include FEM, Arch, Path, and Render.  Like the assembly workbench, goals for 1.0 are modest. We will provide minimum viable functionality with a solid foundation for future improvment.
+The existing material capability is limited and does not meet the needs of many users.  Version 1.0 will start the process of improving the material system. A new material system will address needs in many different workbenches include FEM, Arch, Path, and Render.  Like the assembly workbench, goals for 1.0 are modest. We will provide minimum viable functionality with a solid foundation for future improvement.
 
 ### Reference
  - [original issue](https://github.com/FreeCAD/FreeCAD/issues/10174)

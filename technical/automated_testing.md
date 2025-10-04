@@ -105,7 +105,7 @@ of the code (though sometimes that "functionality" is encompassed by multiple fu
 themselves be "under test" it is critical that they be as short, simple, and self-explanatory as possible. A common idiom to use is "Arrange-Act-Assert", which in our test
 framework looks like this:
 ```c++
-// TEST(ClassName, testMethodName), where "testMethodName" is some desciptive indication
+// TEST(ClassName, testMethodName), where "testMethodName" is some descriptive indication
 // of what is being tested. In simple cases in may simply be the name of the method being
 // tested. In more complex cases, it may be a longer statement of the input and expected
 // test result (e.g. `toConstStringWithBadDataThrowsException`)
