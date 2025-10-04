@@ -14,7 +14,7 @@ Some general guidelines when constructing strings for translation:
 * Not all languages use the same word order, so developers should write complete phrases/sentences (and sometimes complete paragraphs), using the `QString::args()` function, or the Python `format()` function to do replacements where necessary. For example, use `tr("Edit the %1 using the %2").args(varOne).args(varTwo)` instead of `tr("Edit the ") + varOne + tr(" using the ") + varTwo`.
 * Avoid using Rich Text or HTML for labels unless their formatting capabilities are absolutely necessary.
 * Do not abbreviate unless absolutely necessary for space considerations. For example "Boolean operation", not "Bool Op".
-* Use capital letters for Workbench names, and lowercase elsewhere, to help disambiguate. For example "Create a Path object" refers to the Path workbench, but "Create a part" referes to a conceptual "part".
+* Use capital letters for Workbench names, and lowercase elsewhere, to help disambiguate. For example "Create a Path object" refers to the Path workbench, but "Create a part" refers to a conceptual "part".
 * Never rely on the displayed string as a conditional value in your code: you must always map from your internal representation to a translatable string. For example, if a `QComboBox` is constructed with a set of user options, you should only ever examine the *index* of the current item, and never its actual displayed text.
 
 Important technical details:
@@ -45,7 +45,7 @@ The most basic usage is:
 QPushButton myButton(tr("Do great things"));
 ```
 In this case, `tr()` functions both as a marker for the `lupdate` tool to extract the string literal "Do great things", as well as an actual function call at
-runtime to look up the appropriate translated string. The string's context is the name of the class that this code is exectuded from, provided automatically
+runtime to look up the appropriate translated string. The string's context is the name of the class that this code is executed from, provided automatically
 by the `tr()` function.
 
 In some cases it's necessary or useful to split up the string extraction and the translation calls, for example:

@@ -37,7 +37,7 @@ Programming languages, or their libraries, include thoroughly tested algorithms 
 
 By properly considering algorithms and data structure, and keeping data separate from code, both code and data become simpler, more reliable, more flexible, and easier to maintain for the next person.
 
-Raw loops are those starting with `for`, `while` etc. While there are many options on how to write a loop, readabillity and maintainabillity should be the priority.
+Raw loops are those starting with `for`, `while` etc. While there are many options on how to write a loop, readability and maintainability should be the priority.
 
 ```cpp
 // Pre-C++11:
@@ -479,7 +479,7 @@ For an object whose purpose is to _do_ something (service object), prefer a verb
 
 For an object that _is_ something (value object), prefer a noun. E.g. `drawing`.
 
-Something diﬃcult to name concisely likely does not have a single purpose and needs refactoring.
+Something difficult to name concisely likely does not have a single purpose and needs refactoring.
 
 Use names that are specific. E.g. `SaveLogToDisk`, not `ProcessLog`. `Process` could be anything.
 
@@ -537,7 +537,7 @@ The variant parts can be extracted and passed as parameters to a function or lam
 ## Static
 
 Often best avoided. For `const` variables consider `constexpr`, or
-initialisation in lambda capture.
+initialization in lambda capture.
 
 `static` functions _may_ be better moved out of class into a named namespace or some utility library/file.
 

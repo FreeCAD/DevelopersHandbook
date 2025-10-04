@@ -7,7 +7,7 @@ layout: default
 Python is a dynamically typed language, so there is no error when compiling
 (Yes, Python can compile.
 Compiling/interpreting is an abstract concept, language independent.
-See more on [stackoverflow](https://stackoverflow.com/a/6889798)).
+See more on [StackOverflow](https://stackoverflow.com/a/6889798)).
 Instead, an error is reported at runtime
 which may significantly slow down developing process.
 

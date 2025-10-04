@@ -99,7 +99,7 @@ We want the FreeCAD application to be both efficient and attractive.  We want it
 3. Efficient use of screen area
     1. Transparency
     2. Multi-screen support
-4. Enhanced visualizaton
+4. Enhanced visualization
     1. Shadows
     2. Simplified ray tracing and rendering
 

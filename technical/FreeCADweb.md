@@ -11,13 +11,13 @@ Technical information for contributors interested to work on FreeCAD main websit
 ## Running locally
 
 During development and before committing your changes, you may want to display the website in your web browser locally, without installing a full web server solution stack like XAMPP.\
-You can instead just transcribe the PHP files into HTML that your web broswer can read.
+You can instead just transcribe the PHP files into HTML that your web browser can read.
 
 1) To do so, fork the original FreeCAD-Homepage repository to your personal GitHub account :
 
 ![Fork the repository](./resources/FreeCADweb_01.jpg)
 
-2) If you don't have an account or prefer to inspect and modify files locally without relying on GitHub's features, download the compressed folder and unzipp it :
+2) If you don't have an account or prefer to inspect and modify files locally without relying on GitHub's features, download the compressed folder and unzip it :
 
 ![Download the repository](./resources/FreeCADweb_02.jpg)
 
@@ -52,4 +52,4 @@ In order for the language and translation management system to work, each text t
 
 The site administrators regularly run a script that updates the translatable strings on the Crowdin platform. The added texts can then be translated by contributors. The newly translated content is then forwarded back to the website.
 
-<!-- ## Ressources TODO: add more content later -->
+<!-- ## Resources TODO: add more content later -->

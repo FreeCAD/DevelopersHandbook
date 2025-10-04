@@ -29,7 +29,7 @@ require updating many of the other version numbers in the snap YAML file.
 
 Several of FreeCAD's dependencies take a long time to build and seldomly change: the two largest culprits here are
 OCCT and GMSH. These two packages have been split into their own "unlisted" snap, called freecad-deps-core22. To
-update the versions of those libraries, that snap is the one that must be updated, ratheer than freecad-snap itself.
+update the versions of those libraries, that snap is the one that must be updated, rather than freecad-snap itself.
 
 ## Important links
 

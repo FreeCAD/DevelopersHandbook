@@ -58,7 +58,7 @@ In general, there will be no need to re-run the configure command as it will be 
 
 ### Pixi on Windows
 
-Pixi uses the `conda-forge` packages, including the `compilers` metapackage to bring in the platform-specific compiler support.  On Windows, it is expected that Microsoft Visual C++ has been installed and matches the version used by the `conda-forge` team, which is [Visual Studio Community 2019](https://visualstudio.microsoft.com/vs/older-downloads/#visual-studio-2019-and-other-products).
+Pixi uses the `conda-forge` packages, including the `compilers` meta package to bring in the platform-specific compiler support.  On Windows, it is expected that Microsoft Visual C++ has been installed and matches the version used by the `conda-forge` team, which is [Visual Studio Community 2019](https://visualstudio.microsoft.com/vs/older-downloads/#visual-studio-2019-and-other-products).
 
 The Visual Studio Installer may be used to install Visual Studio Community 2019 alongside newer versions of Visual Studio.  Ensure all of the necessary components are installed:
 

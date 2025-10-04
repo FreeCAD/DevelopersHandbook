@@ -19,19 +19,19 @@ The maintainers will create a Github project to track the release.
 The maintainers will schedule a meeting to review outstanding Pull Requests.
 
 
-## Announcment milestone
+## Announcement milestone
 
-Next, the maintainers will make a formal announcment on the forum. The announcement will layout the expected timeline for the release and call for final submissions.  The announcment should be further communicated through official and unofficial channels like Twitter and Reddit.
+Next, the maintainers will make a formal announcement on the forum. The announcement will layout the expected timeline for the release and call for final submissions.  The announcement should be further communicated through official and unofficial channels like Twitter and Reddit.
 
 ## Final Feature Submission Stage
 
-The purpose of the announcment is to let contributors know that a feature freeze is imminent. Any work in process should be finalized and a Pull Request submitted.
+The purpose of the announcement is to let contributors know that a feature freeze is imminent. Any work in process should be finalized and a Pull Request submitted.
 
 At this point, a PR may not be ready to merge and can be marked as _draft_.  Creating the PR makes the maintainer community aware of pending changes that the contributor would like to have considered for the release. The maintainers will allow time (typically 1-2 weeks) for Pull Requests to be submitted.
 
-The announcment should include a date for the PR Review meeting.
+The announcement should include a date for the PR Review meeting.
 
-The announcment should also announce a splash-screen contest and provide a forum thread for submissions.
+The announcement should also announce a splash-screen contest and provide a forum thread for submissions.
 
 ## PR Review Milestone
 
@@ -55,11 +55,11 @@ After the PR Merge phase, only bug-fix PRs will be merged.
 
 ## Release Candidates
 
-After all outstanding PRs are merged and all critical bugs are resolved, a Release Candidate (RC) version will be created and a public announcment made.  This is a request to the community for intentional and deliberate testing with the goal of uncovering as many bugs as possible. This is the point at which the formal branch is created for the releases. First, create a branch called "releases/FreeCAD-X-Y" where X and Y are the major and minor release numbers. Next use the GitHub "Draft new release" button on the Releases page to create a new release. Set it up to create a new tag with the release number in it, e.g. "0.21rc1" and ensure that the release is based on the "releases/FreeCAD-X-Y" branch. Mark the release as a "pre-release" so that it does not display as the latest version. Attach all of the necessary installers, appimages, packages, etc. to this release. Note that the release can be edited after creation, so assets can be added as they become available.
+After all outstanding PRs are merged and all critical bugs are resolved, a Release Candidate (RC) version will be created and a public announcement made.  This is a request to the community for intentional and deliberate testing with the goal of uncovering as many bugs as possible. This is the point at which the formal branch is created for the releases. First, create a branch called "releases/FreeCAD-X-Y" where X and Y are the major and minor release numbers. Next use the GitHub "Draft new release" button on the Releases page to create a new release. Set it up to create a new tag with the release number in it, e.g. "0.21rc1" and ensure that the release is based on the "releases/FreeCAD-X-Y" branch. Mark the release as a "pre-release" so that it does not display as the latest version. Attach all of the necessary installers, AppImages, packages, etc. to this release. Note that the release can be edited after creation, so assets can be added as they become available.
 
 Translation files will be pushed to CrowdIn and a public call for translation assistance should be made.
 
-Release notes should be reviewed at this point and any ommisions corrected.
+Release notes should be reviewed at this point and any omissions corrected.
 
 Any problems identified with the release candidate should be addressed via PRs made to the release branch. If necessary, multiple release candidates may be tagged using the same "Draft new release" process described above, and incrementing the release candidate number.
 
@@ -80,7 +80,7 @@ Any problems identified with the release candidate should be addressed via PRs m
 - Update the website [features page](https://www.freecad.org/features.php) to point to the new release notes
 - Update the stable branch of the [Snap package](https://github.com/FreeCAD/FreeCAD-snap) to the new version number by editing snap/snapcraft.yaml
 
-## Release Announcment
+## Release Announcement
 
 Once all release files are in place, a release announcement should be posted to all "official" FreeCAD channels:
 

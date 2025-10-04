@@ -41,7 +41,7 @@ structure, so the final LibPack contains several different types of installation
   the top level of the LibPack
 * **[Boost](https://boost.org)** -- this is split into its headers and libraries:
   - Many Boost libraries are header-only, but FreeCAD does require several compiled libraries
-  - Create a file either in your home directory, or in the toplevel boost src directory, called user-config.jam and
+  - Create a file either in your home directory, or in the top level boost src directory, called user-config.jam and
     in it specify the path and version of the Python interpreter installed above. For example:
     ```
     using python : 3.11 : "C:/path/to/libpack/bin" : "C:/path/to/libpack/bin/Include" : "C:/path/to/libpack/bin/libs"  ;
@@ -83,7 +83,7 @@ structure, so the final LibPack contains several different types of installation
     those cases you will need to manually set the path to the cmake files as *LIBPACK/lib/cmake/Qt6XXX*.
   - Set CMAKE_INSTALL_PREFIX to *LIBPACK*
   - Build the ALL_BUILD and INSTALL targets in Release mode
-* **[libclang](https://clang.llvm.org)** -- Needed by pyside6, and provided prebuilt by Qt
+* **[libclang](https://clang.llvm.org)** -- Needed by PySide6, and provided prebuilt by Qt
   - Download from https://download.qt.io/development_releases/prebuilt/libclang/
   - Decompress and move the contents to the *LIBPACK* directory
 * **[Pyside](https://pypi.org/project/PySide6)** -- now part of the Qt project, installed as a Python package with pip

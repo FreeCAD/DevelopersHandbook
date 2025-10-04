@@ -37,29 +37,29 @@ Moreover, here are the current implementation initiatives not yet used :
 ### FreeCAD website
 
 The website mainly uses HTML/PHP, CSS, the Bootstrap and jQuery JavaScript libraries, the Font Awesome toolkit.\
-To contribute to the main website, find [here a few advices and ressources](./FreeCADweb.md).
+To contribute to the main website, find [here a few advices and resources](./FreeCADweb.md).
 
 ### News Blog
 
 The News Blog is based on WordPress.\
-<!-- To contribute to the blog, find here a few advices and ressources. TODO: contact Chennes, ConcreteDog and Alex -->
+<!-- To contribute to the blog, find here a few advices and resources. TODO: contact Chennes, ConcreteDog and Alex -->
 
 ### Wiki
 
 The News Blog is based on MediaWiki.\
-<!-- To contribute to the wiki, find here a few advices and ressources. TODO: contact wiki team -->
+<!-- To contribute to the wiki, find here a few advices and resources. TODO: contact wiki team -->
 
 ### Developer Handbook
 
 The Developer Handbook uses Jekyll, a Ruby static site generator, and Markdown.\
-To contribute to the Developer Handbook, find [here a few advices and ressources](./DevBook.md).
+To contribute to the Developer Handbook, find [here a few advices and resources](./DevBook.md).
 
 ### Forum
 
 The News Blog is based on phpBB.\
-<!-- To contribute to the Forum, find here a few advices and ressources. TODO: contact forum team -->
+<!-- To contribute to the Forum, find here a few advices and resources. TODO: contact forum team -->
 
 ### FreeCAD Project Association website
 
 The FreeCAD Project Association website also uses Jekyll, a Ruby static site generator, and Markdown.\
-To contribute to the FreeCAD Project Association website, find [here a few advices and ressources](./FPAweb.md).
+To contribute to the FreeCAD Project Association website, find [here a few advices and resources](./FPAweb.md).

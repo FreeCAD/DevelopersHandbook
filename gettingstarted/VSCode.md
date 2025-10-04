@@ -96,7 +96,7 @@ In the status bar on the bottom:
 - Click the error/warning counter to open the `PROBLEMS` panel. Here you will have a convenient collection of all the compiler warnings, cmake warnings, and problems from the workspace.
 
 General editor useful shortcuts:
-- Rename all occurrencies of a symbol (e.g. a function name) with `F2`
+- Rename all occurrences of a symbol (e.g. a function name) with `F2`
 - Easily navigate code with the tools in the right click menu. For example `Go to definition` and `Find all references`.
 - Press `Ctrl+P` and type a file name to jump to that file.
 - Press `Ctrl+F` to search the current file.
@@ -109,7 +109,7 @@ General editor useful shortcuts:
 Read the documentation for more:
 
 - [basic editing](https://code.visualstudio.com/docs/editor/codebasics)
-- [code navigaton](https://code.visualstudio.com/docs/editor/editingevolved)
+- [code navigation](https://code.visualstudio.com/docs/editor/editingevolved)
 - [refactoring](https://code.visualstudio.com/docs/editor/refactoring)
 
 Other useful extensions, recommended but not necessary are

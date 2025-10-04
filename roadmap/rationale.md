@@ -44,7 +44,7 @@ The user community has grown dramatically.  It has spread far beyond the forum a
 
 The FPA was formed to protect the FreeCAD project and encourage its growth.  The FPA has started receiving donations. Deploying those funds well is becoming a challenge itself.
 
-Ondsel was formed as an open-core public benefit corporation building around the FreeCAD project.  As a commercial enterprise, they have a strong need for predictabiilty in the development process and project goals.
+Ondsel was formed as an open-core public benefit corporation building around the FreeCAD project.  As a commercial enterprise, they have a strong need for predictability in the development process and project goals.
 
 Interest by commercial users to deploy FreeCAD in production environments is increasing.
 

@@ -29,7 +29,7 @@ Once the prerequisites above are met, actually signing the FreeCAD.app bundle is
 4. Set an environment variable called `FREECAD_SIGNING_KEY_ID` to the ID of your "Developer ID Application" certificate. You can find the
 ID by running `security find-identity -p basic -v`.
 5. Run the script. This will take several minutes, as it scans the bundle for all shared library and executable objects and signs them with
-the specified certificate. It will automatically createa DMG, submit it for notarization, and staple the final authorization from Apple to
+the specified certificate. It will automatically create DMG, submit it for notarization, and staple the final authorization from Apple to
 the disk image.
 
 Once complete, the disk image is ready for distribution.

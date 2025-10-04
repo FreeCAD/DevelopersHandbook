@@ -24,4 +24,4 @@ Open then the link to `127.0.0.1:4000` (or `localhost:4000`) in you web browser.
 
 <!-- ## Design guidelines TODO: add more content later -->
 
-<!-- ## Ressources TODO: add more content later -->
+<!-- ## Resources TODO: add more content later -->

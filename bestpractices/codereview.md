@@ -24,7 +24,7 @@ In this document the **bolded** text will indicate how important each suggestion
 2. The aim of Code Review **is not** to find errors in code but to ensure code quality.
 3. There are no dedicated reviewers, everyone **can** help with the effort!
 4. Reviewers **should** comment mostly on added code and discuss existing one only if making change to existing code would help the new fragment.
-5. Comments **could** be made to existing comments just to note that other (potentially better) soluyions are available and should be used instead when writing new code.
+5. Comments **could** be made to existing comments just to note that other (potentially better) solutions are available and should be used instead when writing new code.
 6. Reviewer **can** hint to make more changes to the existing code in order to improve the proposed solution (for example, refactor another class so it can be used).
 7. Code **must** follow the Scout Rule - https://biratkirat.medium.com/step-8-the-boy-scout-rule-robert-c-martin-uncle-bob-9ac839778385 - i.e. leave code in better shape than you found it.
 8. If possible, code cleanup done while working on the feature should be split into separate commits or even better PR.
