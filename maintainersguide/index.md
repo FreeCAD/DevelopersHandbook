@@ -4,7 +4,7 @@ layout: default
 
 # Maintainers Guide
 
-Guidelines for Maintainers regarding code review and merge procedures.  Git can be [configured to make checking out and reviewing PRs easier](./git.md).
+Guidelines for Maintainers regarding code review and merge procedures.  Git can be [configured to make checking out and reviewing PRs easier](./git).
 
 ## The Team
 

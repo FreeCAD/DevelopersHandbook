@@ -10,13 +10,13 @@ The roadmap provides broad objectives for the direction of FreeCAD development.
 
 This document describes several high-level objectives for the FreeCAD project.  Rather than being a laundry list of development tasks, it focuses on a small set of strategic initiatives that, if achieved, will move FreeCAD closer to an ideal future state.
 
-You can read more about the [rationale for having a roadmap](rationale.md).
+You can read more about the [rationale for having a roadmap](./rationale).
 
 This roadmap outlines broad strategic objectives. Code contributions from developers will always be evaluated on their merits but are more likely to receive timely attention and be successfully merged if they are consistent with the stated objectives of this roadmap.
 
 ## The "Next" Release
 
-These objectives described here are very broad. Some of them are very ambitious and will take a long time to achieve.  Others will never be fully achieved or 'done'.  For that reason, it's helpful to pick a specific set of goals to focus on for the next release.  [This page](next.md) broadly describes the major goals for the next release.
+These objectives described here are very broad. Some of them are very ambitious and will take a long time to achieve.  Others will never be fully achieved or 'done'.  For that reason, it's helpful to pick a specific set of goals to focus on for the next release.  [This page](./next) broadly describes the major goals for the next release.
 
 ### Objective: Model stability
 

@@ -20,7 +20,7 @@ Other combinations may work as well, these are just the ones that you will be ab
 
 ## Dependencies
 
-See also [Dependencies](dependencies.md)
+See also [Dependencies](./dependencies)
 
 FreeCAD depends on many other open source projects to provide the basic foundations of the program. There are many ways of installing these dependencies: for details and the complete list, see the following Wiki pages:
 
@@ -65,11 +65,11 @@ The Visual Studio Installer may be used to install Visual Studio Community 2019 
 1. Open the Visual Studio Installer
 2. Click `modify` for Visual Studio 2019.
 
-    ![Visual Studio 2019](resources/vs2019-modify.png)
+    ![Visual Studio 2019](./resources/vs2019-modify.png)
 
 3. Make sure to select `Desktop development with C++` under the `Desktop & Mobile` section.  Ensure that the necessary optional items are selected on the right.
 
-    ![vs2019-dev-C++](resources/vs2019-cpp.png)
+    ![vs2019-dev-C++](./resources/vs2019-cpp.png)
 
 ## Setting up for Development
 
@@ -108,8 +108,8 @@ The Visual Studio Installer may be used to install Visual Studio Community 2019 
 
 ## Running and Debugging
 
-   - [Visual Studio Code](./VSCode.md)
-   - [CLion](./CLion.md)
+   - [Visual Studio Code](./VSCode)
+   - [CLion](./CLion)
 
 ## Submitting a PR
 

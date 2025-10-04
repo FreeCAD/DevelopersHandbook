@@ -72,7 +72,7 @@ Any problems identified with the release candidate should be addressed via PRs m
 - Manually tag the release on the appropriate branch using semantic versioning for the tag name, e.g. "1.2.3". Launch the various build-creation tasks based on this tag.
     - Conda builds for all platforms
     - Manual compilation of a Windows LibPack-based binary and NSIS-created installer
-    - Sign and notarize the Mac OS Conda builds once they are complete (See [Code signing](./codesigning.md))
+    - Sign and notarize the Mac OS Conda builds once they are complete (See [Code signing](./codesigning))
     - (Future work) Sign the Windows builds
 - Create a new release on GitHub, this time marking the "Set as latest release" box and not marking it as a pre-release, and setting the release to use the tag created above. It's best to ensure all assets are attached prior to publication of the final release, so save the release as a draft as necessary until all builds are completed. The release contains a release announcement text that should be appropriate for the general user audience (not targeted at developers).
 - Prepare a packager's release files and alert the packagers.

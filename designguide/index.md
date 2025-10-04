@@ -6,18 +6,18 @@ layout: default
 
 **This Design Guide is organized into the following sections**
 
-- [History and Purpose](history-and-purpose.md)
-- [Glossary of Terms](glossary.md)
-- [Principles](principles.md)
-- [Zones](zones.md)
-- [Primary Elements](elements.md)
-- [Input Hints Guidelines](input-hints.md)
+- [History and Purpose](./history-and-purpose)
+- [Glossary of Terms](./glossary)
+- [Principles](./principles)
+- [Zones](./zones)
+- [Primary Elements](./elements)
+- [Input Hints Guidelines](./input-hints)
 - Interactive Controls (Still under development)
-- [Naming Convention](naming.md)
+- [Naming Convention](./naming)
 - Colors and Accessibility (Still under development)
 - Theme/Styling (Still under development)
 - Icons/Art (Still under development)
-- [FreeCAD Brand Guidelines](logo.md)
+- [FreeCAD Brand Guidelines](./logo)
 
 *The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119.txt).*
 
