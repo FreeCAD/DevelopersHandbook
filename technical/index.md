@@ -8,19 +8,19 @@ Technical information of interest to Contributors.
 
 ## The Basics
 
-- [Developer's Glossary](./developerglossary.md)
+- [Developer's Glossary](./developerglossary)
 
-- [Source Tree Basics](./SourceTreeBasics.md)
+- [Source Tree Basics](./SourceTreeBasics)
 
-- [The Application Module](./TheApplicationModule.md)
+- [The Application Module](./TheApplicationModule)
 
 - [The Source Code in More Depth](https://wiki.freecad.org/The_FreeCAD_source_code)
 
-- [Writing Code for Translation](./translation.md)
+- [Writing Code for Translation](./translation)
 
-- [Automated Testing](./automated_testing.md)
+- [Automated Testing](./automated_testing)
 
-- [Dealing with Property Changes](./PropertyChanges.md)
+- [Dealing with Property Changes](./PropertyChanges)
 
 - The FreeCAD developer's tool set:
 
@@ -32,7 +32,7 @@ Technical information of interest to Contributors.
 
 - [Websites](./Websites)
 
-- [Reference Library](./ReferenceLibrary.md)
+- [Reference Library](./ReferenceLibrary)
 
 ## Modifying FreeCAD
 
@@ -45,23 +45,23 @@ Technical information of interest to Contributors.
 
 - The [PowerUser's hub](https://wiki.freecad.org/Power_users_hub) in the FreeCAD wiki contains good information about Python scripting and workbench creation
 
-- [Python stubs package](./PythonStubsPackage.md)
+- [Python stubs package](./PythonStubsPackage)
 
-- [Accessing User Preferences](./preferences.md)
+- [Accessing User Preferences](./preferences)
 
-- [Controlling Object Deletion](./ObjectDeletion.md)
+- [Controlling Object Deletion](./ObjectDeletion)
 
-- [Create a Python Binding for C++ Class](./CreatePythonBindingForCpp.md)
+- [Create a Python Binding for C++ Class](./CreatePythonBindingForCpp)
 
-- [Checklist for Adding a Feature to a Workbench in C++](./ChecklistForNewFeatureC++.md)
+- [Checklist for Adding a Feature to a Workbench in C++](./ChecklistForNewFeatureC++)
 
 ## Release Management
 
-- [Overview](./ReleaseProcess.md)
+- [Overview](./ReleaseProcess)
 
-    - [Major Releases](./MajorRelease.md)
-    - [Minor Releases](./MinorRelease.md)
-    - [Building Release Packages](./ReleasePackages.md)
+    - [Major Releases](./MajorRelease)
+    - [Minor Releases](./MinorRelease)
+    - [Building Release Packages](./ReleasePackages)
 
 ## See Also
 

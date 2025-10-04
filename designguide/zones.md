@@ -32,4 +32,4 @@ Below is the notional zone layout of the FreeCAD user interface, specific sizes 
 
 **Status Bar:** The status bar provides contextual information about the position of the mouse cursor in relation to the objects in the main view. This section of the UI is also home to some global controls within FreeCAD. They are "Notifications", "Navigation Style", and "Unit Selector". Developers shall not insert non-global elements or widgets into this area.
 
-[Return to Design Guide Main Page](index.md)
+[Return to Design Guide Main Page](.)
