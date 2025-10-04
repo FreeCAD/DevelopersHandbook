@@ -2,26 +2,65 @@
 layout: default
 ---
 
-# Contributing to the Developer Handbook
+# Contributing to the Handbook
 
-Technical information for contributors interested to work on Developer Handbook.
+Some information for people that want to work on this handbook.
 
-<!-- ## Structure TODO: add more content later -->
+<br/>
 
-## Running locally
+## Setup ( Linux )
 
-To run the Developer Handbook locally, Jekyll, the Ruby static site generator, must be executed on the corresponding folder.\
-On a Debian or Ubuntu GNU/Linux system, Bundler is used :
+The handbook uses [Jekyll] to render
+markdown files as a static website.
 
+<br/>
+
+### Repository
+
+Clone the repository to your system.
+
+```sh
+git clone https://github.com/FreeCAD/DevelopersHandbook
 ```
-$ sudo apt install ruby-bundler ruby-dev build-essential
-$ bundle install
-$ cd path/to/your/local/fork/of/the/devhandbook
-$ bundle exec jekyll serve
+
+And navigate to the repository folder.
+
+```sh
+cd DevelopersHandbook
 ```
 
-Open then the link to `127.0.0.1:4000` (or `localhost:4000`) in you web browser.
+<br/>
 
-<!-- ## Design guidelines TODO: add more content later -->
+### Dependencies
 
-<!-- ## Resources TODO: add more content later -->
+Install [Ruby] and the build essentials.
+
+```sh
+sudo apt install    \
+    build-essential \
+    ruby-bundler    \
+    ruby-dev
+
+bundle install
+```
+<br/>
+
+## Editing
+
+While editing the markdown files, run Jekyll.
+
+```sh
+bundle exec jekyll serve
+```
+
+Open the address shown in your terminal in
+your browser - usually it's `127.0.0.1:4000`
+
+<img width = '100%' src = './resources/Handbook-Serving-Terminal.webp' />
+
+<img width = '100%' src = './resources/Handbook-Serving-Browser.webp' />
+
+<br/>
+
+[Jekyll]: https://jekyllrb.com
+[Ruby]: https://www.ruby-lang.org
