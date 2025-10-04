@@ -21,7 +21,7 @@ The following websites are directly hosted by FreeCAD.
 
 This is the entry point for everything FreeCAD.
 
-The backend is built with [PHP], the frontend uses
+The backend is built with [PHP], the frontend uses  
 [Bootstrap] & [jQuery] as well as [Font Awesome].
 
 *[≫ How to contribute][Contribute-Homepage]*
@@ -32,7 +32,7 @@ The backend is built with [PHP], the frontend uses
 
 [![Page]][Page-Blog]
 
-Reports on new releases, tutorials
+Reports on new releases, tutorials  
 and use cases from the community.
 
 The page is based on [WordPress].
@@ -44,8 +44,8 @@ The page is based on [WordPress].
 [![Page]][Page-Wiki]
 [![Repo]][Repo-Wiki]
 
-Aggregation of FreeCAD knowledge, mostly
-user documentation, with development info
+Aggregation of FreeCAD knowledge, mostly  
+user documentation, with development info  
 continually migrating to other system.
 
 The page is based on [MediaWiki].
@@ -57,10 +57,10 @@ The page is based on [MediaWiki].
 [![Page]][Page-Handbook]
 [![Repo]][Repo-Handbook]
 
-Documentation for developers,
+Documentation for developers,  
 focused mostly on FreeCAD Core.
 
-The page is built using [Jekyll]
+The page is built using [Jekyll]  
 and written in simple Markdown.
 
 *[≫ How to contribute][Contribute-Handbook]*
@@ -71,7 +71,7 @@ and written in simple Markdown.
 
 [![Page]][Page-Forum]
 
-Community exchange structured using
+Community exchange structured using  
 boards and posts to communicate.
 
 The page is based on [phpBB].
@@ -83,10 +83,10 @@ The page is based on [phpBB].
 [![Page]][Page-FPA]
 [![Repo]][Repo-FPA]
 
-Everything relating to the project
+Everything relating to the project   
 association that oversees the FreeCAD.
 
-The page is built using [Jekyll]
+The page is built using [Jekyll]  
 and written in simple Markdown.
 
 *[≫ How to contribute][Contribute-FPA]*
@@ -99,12 +99,12 @@ The following websites are hosted by platforms.
 
 ### [GitHub][Page-GitHub]
 
-Hosts most of source code and
+Hosts most of source code and  
 assets of the FreeCAD project.
 
 ### [Crowdin][Page-Crowdin]
 
-Translation platform used for the FreeCAD
+Translation platform used for the FreeCAD  
 app and homepage as well as some addons.
 
 <br/>
