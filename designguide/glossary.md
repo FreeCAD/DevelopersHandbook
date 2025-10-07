@@ -12,4 +12,4 @@
 
 - **Design guidelines:** Guidelines are descriptive written and illustrated docs that demonstrate usage and behavior mainly through examples. They're the long-form discussion of specs that help designers and developers with problem-solving and decision-making.
 
-[Return to Design Guide Main Page](index.md)
+[Return to Design Guide Main Page](.)

@@ -207,4 +207,4 @@
 
 [10 Jakob Nielsen's UI heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
 
-[Return to Design Guide Main Page](index.md)
+[Return to Design Guide Main Page](.)

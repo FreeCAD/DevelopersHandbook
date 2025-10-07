@@ -158,5 +158,5 @@ There is a convention for return values from our C++/Python connections:
 * [https://forum.freecadweb.org/viewtopic.php?p##314796#p314617]
 * [https://forum.freecadweb.org/viewtopic.php?p##560639#p560639] Forum discussion: Adding Commands in Python to C++ Workbench
 * [https://forum.freecadweb.org/viewtopic.php?f##10&t##70750] Another forum thread
-* (./Workbench creation.md)
+* (./Workbench creation)
 * [https://github.com/FreeCAD/FreeCAD/commit/20b86e55b8dd1873f4c19e036d047528c9ff7f4e] Commit 20b86e5, exposing OCC's precision methods to Python

@@ -58,4 +58,4 @@ Lowercase only minor words that are three letters or fewer:
 - Command: `Save As…` - The function requires user input to function.
 - Command: `Addon Manager` - This is not a simple action, so no ellipsis.
 
-[Return to Design Guide Main Page](index.md)
+[Return to Design Guide Main Page](.)

@@ -107,4 +107,4 @@ We have made some examples of what **not** to do when using the logo:
 Download the [FreeCAD brand guidelines](../images/guidelines.pdf) as a PDF. These are also included in the logo kit at the top of the page.
 
 
-[Return to Design Guide Main Page](index.md)
+[Return to Design Guide Main Page](.)
