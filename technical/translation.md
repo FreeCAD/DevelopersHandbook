@@ -104,9 +104,9 @@ To understand how and why the more advanced translation mechanisms are needed, i
 
 Qt translation takes place in four steps (only two of which developers need concern themselves with, steps 1 and 4 below):
 
-1. A source-code pre-processor called `lupdate` examines the source code, looking for specific strings that mark string literals to be translated. This is **not** a compiler or interpreter, and does not understand all of the details of C++ or Python code. Its only purpose is to generate a `*.ts` file that can be uploaded to our translation platform, CrowdIn. That upload is not currently automated, and must be done manually by a CrowdIn Manager. See [https://crowdin.com/project/freecad](https://crowdin.com/project/freecad).
+1. A source-code pre-processor called `lupdate` examines the source code, looking for specific strings that mark string literals to be translated. This is **not** a compiler or interpreter, and does not understand all of the details of C++ or Python code. Its only purpose is to generate a `*.ts` file that can be uploaded to our translation platform, CrowdIn. That upload is automated via a GitHub Action and is done once per week.
 2. Translators on CrowdIn are presented with these strings (plus some metadata about where they are in the code, and optional comments that developers can leave for them). For each language, translators work to develop appropriate translated strings.
-3. A CrowdIn Manager exports those strings, processes them to `*.qm` files, and commits them to the FreeCAD repository.
+3. A GitHub Action then exports those strings once per week, processes them to `*.qm` files, and creates a PR to commit them to the FreeCAD repository.
 4. When FreeCAD is compiled, those files become part of FreeCAD's Qt resources and are available to the translation functions at runtime. The translation functions `tr()` and `translate()` do the actual work of looking up the string in the translation table and extracting the correct user-visible translation.
 
 #### lupdate extraction
