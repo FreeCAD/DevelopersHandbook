@@ -88,7 +88,7 @@ The "context" is generally the name of the class that the string appears in, but
 
 ### Working with Translators
 
-In most cases the developers and translators are not the same groups of people, and some coordination and extra courtesy is required to ensure that we present the best possible experience for everyone in the project.
+In most cases the developers and translators are not the same groups of people, and translators typically work on [the CrowdIn platform](https://crowdin.com/project/freecad). Some coordination and extra courtesy is required to ensure that we present the best possible experience for everyone in the project.
 
 1. *Any* change to a string requires it to be retranslated. For small changes that is an easy thing to do, but **it requires human intervention for each and every language that FreeCAD supports**. This means that, e.g. changing the capitalization of a single letter in a string will require additional input on CrowdIn from several dozen individual translators. Until they do that, the string will be presented in English. The consequence of this is that minor string changes *must not* be made late in a release cycle: it is better for a small inconsistency to appear in English than for every single language to display the "correct" English string instead of the translated one (in many cases the translators will have corrected the inconsistency or error in their own language).
 2. Two strings with different context require separate translation. In cases where the string is used throughout FreeCAD, explicitly use `QObject::tr()` to place the string in the `QObject` context so translators only need translate the string a single time.
