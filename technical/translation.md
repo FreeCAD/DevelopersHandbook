@@ -32,6 +32,16 @@ When you add a string to a *.ui file, by default it is set to be translated. For
 <string notr="true">FreeCAD</string> <!-- No need to translate the word "FreeCAD" -->
 ```
 
+If the string is ambiguous when displayed by itself to translators, please add a "comment" to the element. In Qt Designer:
+* Select a widget property (e.g., text).
+* In the Property Editor, click the "…" button next to the property.
+* Enter the text and optionally a comment — the comment becomes the disambiguation string.
+
+In the resulting .ui XML, it appears like this:
+```
+<string notr="false" comment="File operation">Open</string>
+```
+
 ### C++
 
 All classes derived from `QObject` have access to the `tr()` method from that class, which is the simplest way of ensuring a string gets translated:
@@ -43,7 +53,7 @@ Note that the argument to `tr()` is a *string literal* -- it cannot be a variabl
 //: Runs the function
 QPushButton myButton(tr("Execute"));
 ```
-You can also add a "disambiguation string", which is displayed to translators to help them understand what the word means:
+You can also add a "disambiguation string", which is displayed to translators to help them understand what the word means in this context (remember that translators don't see the source code itself, only the isolated string and the name of the file it's in. Many times that is not enough information for a good translation):
 ```
 QLabel myLabel(tr("Draft angle", "For injection molding, not the Draft workbench"));
 ```
