@@ -96,6 +96,12 @@ print(translate("MyMod", "There are {} widgets present, out of {} total").format
 
 The "context" is generally the name of the class that the string appears in, but in some cases it may make sense to use an alternate context. See the Advanced Translation section below.
 
+In many cases it is desirable to provide additional information to translators about what a word means in the context in which it appears. Translators see the string in isolation, and are only given the name of the file it appears in. To give extra information to aid in translation, provide a "disambiguation string" to your `translate()` call:
+```
+translate ("FEM", "Node Set", "Refers to a collection of finite-element nodes to be used in the extraction operation")
+```
+The translation team greatly appreciates such additional information to assist with strings that might otherwise not make sense when displayed in isolation in their CrowdIn interface.
+
 ### Working with Translators
 
 In most cases the developers and translators are not the same groups of people, and translators typically work on [the CrowdIn platform](https://crowdin.com/project/freecad). Some coordination and extra courtesy is required to ensure that we present the best possible experience for everyone in the project.
