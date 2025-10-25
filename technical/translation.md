@@ -32,14 +32,14 @@ When you add a string to a *.ui file, by default it is set to be translated. For
 <string notr="true">FreeCAD</string> <!-- No need to translate the word "FreeCAD" -->
 ```
 
-If the string is ambiguous when displayed by itself to translators, please add a "comment" to the element. In Qt Designer:
-* Select a widget property (e.g., text).
-* In the Property Editor, click the "…" button next to the property.
-* Enter the text and optionally a comment — the comment becomes the disambiguation string.
+If the string is ambiguous when displayed by itself to translators, please add "disambiguation" to the element. In Qt Designer:
+* Select a widget with the text property.
+* If the "Disambiguation" field is not visible, click the "Option" arrow next to the "Text" property in the Property Editor.
+* Enter your explanatory remarks in the "disambiguation" field. You can also add an extra comment in the "comment" field, but these display very similarly to translators so there's little value in separating the two things.
 
 In the resulting .ui XML, it appears like this:
 ```
-<string notr="false" comment="File operation">Open</string>
+    <string comment="Disambiguation string here" extracomment="This is a comment">Do thing</string>```
 ```
 
 ### C++
