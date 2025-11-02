@@ -134,7 +134,7 @@ To declare the copyright holders, simply follow this format:
 
 ##### Organization
 
-`© 2000 Crazy CAD Technologies` 
+`© 2000 Crazy CAD Technologies`
 
 
 <br/>
