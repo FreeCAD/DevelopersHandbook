@@ -31,7 +31,7 @@ SPDX-License-Identifier: <License>
 #### 1. Internal C++ Source File
 
 You just wrote a new `.cpp` file from scratch and want to license it  
-under the standard license FreeCAD uses ( `LGPL-2.1-or-later` ) 
+under the standard license FreeCAD uses ( `LGPL-2.1-or-later` )
 
 ```c++
 // SPDX-License-Identifier: LGPL-2.1-or-later
@@ -105,7 +105,7 @@ that under the `Unlicense` or `CC-BY-SA-4.0`.
 ## Copyright Headers
 
 Copyright headers are currently required to be added  
-to files if **ALL** of the following conditions are apply: 
+to files if **ALL** of the following conditions are apply:
 
 1.  The file is `C++` or `Python` source code
 
