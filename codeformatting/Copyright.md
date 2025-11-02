@@ -109,19 +109,44 @@ to files if **ALL** of the following conditions are apply:
 
 1.  The file is `C++` or `Python` source code
 
-2.  The file is solely licensed under `LGPL-2.1`
+2.  The file is solely licensed under `LGPL-2.1-or-later`
 
 3.  The code has been written for FreeCAD  
     ( Do not mark included libraries with this )
 
 <br/>
 
+### Declarations
+
+To declare the copyright holders, simply follow this format:
+
+`© <Year> <Entity>`
+
+- `<Year>` is the current year / the year you created the code.
+
+- `<Entity>` is either you - the person - or your organization.
+
+#### Examples
+
+##### Person
+
+`© 1999 Robert Robertson`
+
+##### Organization
+
+`© 2000 Crazy CAD Technologies` 
+
+
+<br/>
+
+### Languages
+
 ### C++
 
 ```C++
 /******************************************************************************
  *                                                                            *
- *   © <Year> FreeCAD                                                         *
+ *   © <Year> <Entity>                                                        *
  *                                                                            *
  *   FreeCAD is free software: you can redistribute it and/or modify          *
  *   it under the terms of the GNU Lesser General Public License as           *
@@ -146,7 +171,7 @@ to files if **ALL** of the following conditions are apply:
 ```Python
 ################################################################################
 #                                                                              #
-#   © <Year> FreeCAD                                                           #
+#   © <Year> <Entity>                                                          #
 #                                                                              #
 #   FreeCAD is free software: you can redistribute it and/or modify            #
 #   it under the terms of the GNU Lesser General Public License as             #
