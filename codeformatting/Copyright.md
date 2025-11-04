@@ -1,8 +1,7 @@
 
 # Copyright
 
-When creating new files in the FreeCAD project, you should - if possible -  
-declare an `SPDX License Identifier` with the appropriate license.
+When creating new files in the FreeCAD project, you should - if possible - declare an `SPDX License Identifier` with the appropriate license.
 
 In source files it is currently also required to add a `Copyright Header`.
 
@@ -12,14 +11,14 @@ In source files it is currently also required to add a `Copyright Header`.
 
 ## SPDX License Identifiers
 
-SPDX is a simple way of declaring what license something and is  
-declared by adding a comment in the following format to a file:
+SPDX is a simple way of declaring what license something and is declared by adding a comment in the following format to a file:
 
 ```
 SPDX-License-Identifier: <License>
 ```
 
-1.  It should be placed at the start of a file.  
+1.  It should be placed at the start of a file.
+
     ( Example exception, shebangs `#!` come first )
 
 2.  You should use the appropriate [License Identifier].
@@ -30,8 +29,7 @@ SPDX-License-Identifier: <License>
 
 #### 1. Internal C++ Source File
 
-You just wrote a new `.cpp` file from scratch and want to license it  
-under the standard license FreeCAD uses ( `LGPL-2.1-or-later` )
+You just wrote a new `.cpp` file from scratch and want to license it under the standard license FreeCAD uses ( `LGPL-2.1-or-later` )
 
 ```c++
 // SPDX-License-Identifier: LGPL-2.1-or-later
@@ -44,8 +42,7 @@ under the standard license FreeCAD uses ( `LGPL-2.1-or-later` )
 
 #### 2. External C++ Source File
 
-You want to include some pre-existing code licensed under a  
-compatible but different license to what FreeCAD uses by default.
+You want to include some pre-existing code licensed under a compatible but different license to what FreeCAD uses by default.
 
 ```c++
 // SPDX-License-Identifier: MIT
@@ -58,8 +55,7 @@ compatible but different license to what FreeCAD uses by default.
 
 #### 3. Mixed Python Licensing
 
-You have some existing code licensed under one license  
-but also want to add some code under a different license.
+You have some existing code licensed under one license but also want to add some code under a different license.
 
 ```Python
 # SPDX-License-Identifier: LGPL-2.1-or-later AND MIT
@@ -72,8 +68,7 @@ but also want to add some code under a different license.
 
 #### 4. Executable Python Script
 
-You have a Python script that has a  
-Shebang to specify how it can be run.
+You have a Python script that has a Shebang to specify how it can be run.
 
 ```Python
 #!/usr/bin/env python3
@@ -87,8 +82,7 @@ Shebang to specify how it can be run.
 
 #### 5. Icons
 
-Icons should have whatever license the  
-author intended, for example `CC-BY-SA-4.0`.
+Icons should have whatever license the author intended, for example `CC-BY-SA-4.0`.
 
 In `svg` files this is declared via medata not SPDX.
 
@@ -96,22 +90,20 @@ In `svg` files this is declared via medata not SPDX.
 
 #### 6. Documentation
 
-We currently don't license documentation,  
-however you might want to consider putting  
-that under the `Unlicense` or `CC-BY-SA-4.0`.
+We currently don't license documentation, however you might want to consider putting that under the `Unlicense` or `CC-BY-SA-4.0`.
 
 <br/>
 
 ## Copyright Headers
 
-Copyright headers are currently required to be added  
-to files if **ALL** of the following conditions are apply:
+Copyright headers are currently required to be added to files if **ALL** of the following conditions are apply:
 
 1.  The file is `C++` or `Python` source code
 
 2.  The file is solely licensed under `LGPL-2.1-or-later`
 
-3.  The code has been written for FreeCAD  
+3.  The code has been written for FreeCAD
+
     ( Do not mark included libraries with this )
 
 <br/>

@@ -1,8 +1,7 @@
 
 # Copyright - Snippets
 
-The following are snippets for copy-pasting if you  
-have already read the [Copyright] documentation.
+The following are snippets for copy-pasting if you have already read the [Copyright] documentation.
 
 [» List of SPDX License Identifiers][License Identifier]
 
