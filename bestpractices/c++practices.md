@@ -613,30 +613,28 @@ When in doubt, use a struct - it is better to have good names than not.
 
 ## API Documentation
 
-API Documentation in FreeCAD roughly consists of two types of API documentation.  **Topics** that explain the concepts behind the code and **API documentation strings**.  Both are important but topics are even more valued.
+API Documentation in FreeCAD consists of two main types of documentation.  **Topics** explain the concepts behind the code and **API documentation strings** explain the code itself.  Both are important but topics are especially valued.
 
-Although it is not required, it is encouraged to write API documentation when applicable.  Note that it **is required** to make current API documentation up-to-date with changes that are made to the code.  In this section we offer a set of guidelines.
+Although it is not strictly required, developers are highly encouraged to write API documentation when applicable.  Note that it **is required** to make current API documentation up-to-date with changes that are made to the code.  This section presents a set of guidelines for that documentation.
 
 ### General guidelines
 
-For the API documentation, the following general guidelines are recommended:
-
-- Try to be as complete as possible with each item (classes, enums, public and protected members) in a file having a documentation string.
-- Try to minimize the vertical space.  So, when possible, use a single line with `///` or `///<` for enum items (see below).
+- Be as complete as possible with each item (classes, enums, public and protected members) in a file having a documentation string.
+- Minimize the vertical space.  So, when possible, use a single line with `///` or `///<` for enum items (see below).
 - In general, do not document C++ concepts such as destructors, friends, or constructors, except when there are arguments or if something special happens.
 
 ### Syntax
 
-Doxygen supports two different types of syntax for commands with a backslash and with an `@` symbol, for example `\brief` and `@brief`.  The latter is more prevalent in the FreeCAD source code and preferred.
+Doxygen supports two different types of syntax for commands, those with a backslash (e.g. `\brief`) and those with an `@` symbol (`@brief`).  The `@`-prefixed version is more prevalent in the FreeCAD source code and is the preferred style for new documentation.
 
-For a single line, for example commenting a function, we use `/// <your comment.` ending with a full stop without using `@brief`.  Example:
+For a single line API documentation comment, for example commenting a function, use `/// <your comment.` without using `@brief` and ending with a full stop.  Example:
 
 ```c++
     /// Get the transaction ID of this transaction.
     int getID() const;
 ```
 
-For multiple lines, we use `/**` to start the docstring.  The documentation starts on the next line with a `@brief` command that ends with a full stop and then a line break.  In the case below, there are details after which the `@param[in]` and `@return` commands document the parameters and return statement respectively.
+For multiple lines, use `/**` to start the docstring.  The documentation starts on the next line with a `@brief` command that ends with a full stop and then a line break.  In the case below, there are details after which the `@param[in]` and `@return` commands document the parameters and return statement, respectively.
 
 ```c++
     /**
@@ -651,7 +649,7 @@ For multiple lines, we use `/**` to start the docstring.  The documentation star
     static bool isValidName(const char* name);
 ```
 
-If possible, it is advised to keep the number of added lines as low as possible.  For example, you can use `///<` to keep the comments on the same line, for example in this Enum documentation:
+Keep the number of added lines to a minimum.  For example, use `///<` to keep the comments on the same line:
 
 ```c++
     /// The status of the transaction object.
@@ -663,7 +661,7 @@ If possible, it is advised to keep the number of added lines as low as possible.
     } status {New};
 ```
 
-Use a single line to separate documentation of functions to make more clear to which function the documentation string belongs:
+Use a single line to separate the documentation of different functions to make clearer to which function the documentation string belongs:
 
 ```c++
     /// Generate a new unique transaction ID.
@@ -673,7 +671,7 @@ Use a single line to separate documentation of functions to make more clear to w
     static int getLastID();
 ```
 
-To prevent doxygen to automatically create a link you can use the `%` prefix.  For example, since we have a namespace `Base` in FreeCAD, we use `%Base` in the example below to prevent Doxygen to create a link here to the `Base` package:
+To prevent Doxygen from automatically creating an irrelevant or undesired link use a `%` prefix.  For example, since there is a namespace `Base` in FreeCAD, use `%Base` as shown in the example below to prevent Doxygen to create a link here to the `Base` package:
 
 ```c++
 /**
@@ -685,7 +683,7 @@ To prevent doxygen to automatically create a link you can use the `%` prefix.  F
  */
 ```
 
-It is possible to use Markdown syntax in doc comments.  In the example below, we make use of a Markdown list:
+It is possible to use Markdown syntax in doc comments.  For example, a Markdown list:
 
 ```c++
     /**
@@ -705,7 +703,7 @@ It is possible to use Markdown syntax in doc comments.  In the example below, we
 
 ### Placing API documentation
 
-The main page of the API documentation is in `src/Doc/mainpage.dox.in`.  The most important function of this page is arguably the "Organization of the API Documentation" section that allows you to quickly browse important topics.
+The main page of the API documentation is in `src/Doc/mainpage.dox.in`.  The most important function of this page is the "Organization of the API Documentation" section allowing readers to quickly browse important topics.
 
 Topics should be defined in dedicated `.dox` files in the main directory of a package.  For example, `src/App/core-app.dox` defines a group `APP` that is in group `CORE` (defined in the main page) and then it defines several topics in `APP`, such as `DocumentGroup` (for the concept of a Document in FreeCAD), `DocumentObjectGroup` (for the concept of a document object), etc.  Below are two excerpts from that file to give an indication:
 
@@ -758,7 +756,7 @@ class AppExport Document: public PropertyContainer
 ...
 ```
 
-Documentation strings can be added to classes, enums, and public and protected members of a class.  This is highly valued if a class is at the top of a hierarchy and its methods are reused in many other subclasses.  The documentation should be added in the header file and not in the C++ file.
+Documentation strings can be added to classes, enums, and public and protected members of a class.  This is especially important if a class is at the top of a hierarchy and its methods are reused in many other subclasses.  The documentation should be added in the header file and not in the C++ file.
 
 ### Specific guidelines
 
@@ -766,7 +764,7 @@ This section contains guidelines for specific types of documentation.
 
 #### Namespaces
 
-Since namespace statements are typically in many files, it is difficult to determine where to put documentation strings.  The recommendation is to add them to the `.dox` file of the respective package.  For example, in `src/App/core-app.dox` we have:
+Since namespace statements are typically in many files, it is difficult to determine where to put documentation strings.  In most cases a best practice is to add them to the `.dox` file of the respective module.  For example, in `src/App/core-app.dox`:
 
 ```c++
 /**
@@ -787,7 +785,7 @@ Since namespace statements are typically in many files, it is difficult to deter
 
 #### Classes
 
-For classes you can use a brief statement and more detailed comments:
+For classes use a brief statement and more detailed comments:
 
 ```c++
 /**
@@ -806,7 +804,7 @@ class AppExport Document: public PropertyContainer
 
 #### Functions
 
-For functions, you can use a brief statement, optionally more detailed comments and if applicable and the parameters are not trivial, `@param` statements marking the direction `[in]`, `[out]`, or `[in,out]`, a `@return` command and `@throws` command if applicable.  An example:
+For functions, use a brief statement, optionally more detailed comments, and if applicable and the parameters are not trivial, `@param` statements marking the direction `[in]`, `[out]`, or `[in,out]`, a `@return` command and `@throws` command, if applicable.  An example:
 
 ```c++
     /**
@@ -839,9 +837,9 @@ For enumerations, it often suffices to have a brief statement and a short commen
 
 #### Grouping
 
-Preferred is that a group starts with a documentation block `/**` with an `@name` command and an `@{` grouping command on the next line.  The group is ended with `/// @}`.
+Special documentation comments can be used to indicate that some group of functions, variables, etc. are all part of some single conceptual grouping. A best practice is to start a group with a documentation block `/**` with an `@name` command and an `@{` grouping command on the next line.  The group is ended with `/// @}`.
 
-Often, FreeCAD source files contain grouping commands with normal comments instead of documentation comments, such as `// @{` and `// @}`.  Since these comments are not documentation comments, this usage is incorrect and can lead to issues in rendering the documentation.
+Often, FreeCAD source files contain grouping commands with normal comments instead of documentation comments, such as `// @{` and `// @}`.  Since these comments are not documentation comments, this usage is incorrect and can lead to issues in rendering the documentation. This usage should be avoided in new code, and corrected when encountered.
 
 
 ```c++
@@ -880,7 +878,7 @@ Templates can be document with a `@tparam` command:
 
 #### Documentation with much repetition
 
-The preferred way to handle code with much repetition is to use `@copydoc` or `@copydetails`.
+The preferred way to handle code with significant repetition is to use `@copydoc` or `@copydetails`.
 
 ```c++
     /**
@@ -951,7 +949,7 @@ An example with `@copydetails`:
     void addExportType(const char* filter, const char* moduleName);
 ```
 
-Another way to handle documentation with a high degree of repetition is by grouping, although it is less preferred than using `@copydoc` or `@copydetails`.
+Another way to handle documentation with a high degree of repetition is by grouping, although in most cases it is a best practice to use `@copydoc` or `@copydetails` instead.
 
 ```c++
   /**
