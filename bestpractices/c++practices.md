@@ -973,4 +973,3 @@ Another way to handle documentation with a high degree of repetition is by group
   const char* getDocumentation(OffsetBase offsetBase,const Property* prop) const;
   /// @}
 ```
-
