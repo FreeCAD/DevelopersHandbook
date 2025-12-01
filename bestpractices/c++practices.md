@@ -610,3 +610,364 @@ constexpr std::initializer_list<Button> buttonDefs {
 ```
 {% endraw %}
 When in doubt, use a struct - it is better to have good names than not.
+
+## API Documentation
+
+API Documentation in FreeCAD consists of two main types of documentation.  **Topics** explain the concepts behind the code and **API documentation strings** explain the code itself.  Both are important but topics are especially valued.
+
+Although it is not strictly required, developers are highly encouraged to write API documentation when applicable.  Note that it **is required** to make current API documentation up-to-date with changes that are made to the code.  This section presents a set of guidelines for that documentation.
+
+### General guidelines
+
+- Be as complete as possible with each item (classes, enums, public and protected members) in a file having a documentation string.
+- Minimize the vertical space.  So, when possible, use a single line with `///` or `///<` for enum items (see below).
+- In general, do not document C++ concepts such as destructors, friends, or constructors, except when there are arguments or if something special happens.
+
+### Syntax
+
+Doxygen supports two different types of syntax for commands, those with a backslash (e.g. `\brief`) and those with an `@` symbol (`@brief`).  The `@`-prefixed version is more prevalent in the FreeCAD source code and is the preferred style for new documentation.
+
+For a single line API documentation comment, for example commenting a function, use `/// <your comment.` without using `@brief` and ending with a full stop.  Example:
+
+```c++
+    /// Get the transaction ID of this transaction.
+    int getID() const;
+```
+
+For multiple lines, use `/**` to start the docstring.  The documentation starts on the next line with a `@brief` command that ends with a full stop and then a line break.  In the case below, there are details after which the `@param[in]` and `@return` commands document the parameters and return statement, respectively.
+
+```c++
+    /**
+     * @brief Check whether the passed name is valid.
+     *
+     * If a name is null or an empty string it is considered invalid, and valid
+     * otherwise.
+     *
+     * @param[in] name The name to check.
+     * @return True if the name is valid, false otherwise.
+     */
+    static bool isValidName(const char* name);
+```
+
+Keep the number of added lines to a minimum.  For example, use `///<` to keep the comments on the same line:
+
+```c++
+    /// The status of the transaction object.
+    enum Status
+    {
+        New, ///< A new object is added to the document.
+        Del, ///< An object is deleted from the document.
+        Chn ///< An object is changed in the document.
+    } status {New};
+```
+
+Use a single line to separate the documentation of different functions to make clearer to which function the documentation string belongs:
+
+```c++
+    /// Generate a new unique transaction ID.
+    static int getNewID();
+
+    /// Get the last transaction ID.
+    static int getLastID();
+```
+
+To prevent Doxygen from automatically creating an irrelevant or undesired link use a `%` prefix.  For example, since there is a namespace `Base` in FreeCAD, use `%Base` as shown in the example below to prevent Doxygen to create a link here to the `Base` package:
+
+```c++
+/**
+ * @brief %Base class of all properties.
+ * @ingroup PropertyFramework
+ *
+ * This is the base class of all properties.  Properties are objects that are
+ * ...
+ */
+```
+
+It is possible to use Markdown syntax in doc comments.  For example, a Markdown list:
+
+```c++
+    /**
+     * @brief A multi index container for holding the property spec.
+     *
+     * The multi index has the following index:
+     * - a sequence, to preserve creation order
+     * - hash index on property name
+     * - hash index on property pointer offset
+     */
+    mutable bmi::multi_index_container<
+        PropertySpec,
+        bmi::indexed_by<
+		...
+    > propertyData;
+```
+
+### Placing API documentation
+
+The main page of the API documentation is in `src/Doc/mainpage.dox.in`.  The most important function of this page is the "Organization of the API Documentation" section allowing readers to quickly browse important topics.
+
+Topics should be defined in dedicated `.dox` files in the main directory of a package.  For example, `src/App/core-app.dox` defines a group `APP` that is in group `CORE` (defined in the main page) and then it defines several topics in `APP`, such as `DocumentGroup` (for the concept of a Document in FreeCAD), `DocumentObjectGroup` (for the concept of a document object), etc.  Below are two excerpts from that file to give an indication:
+
+```c++
+/**
+ * @defgroup APP App
+ * @ingroup CORE
+ * @brief The part of FreeCAD that works without GUI (console or server mode).
+ *
+ * It contains the App namespace and defines core concepts such as
+ * @ref DocumentGroup "Document", @ref DocumentObjectGroup "Document Object",
+ * @ref PropertyFramework "Property Framework", @ref ExpressionFramework
+ * "Expression Framework", and the @ref ExtensionFramework "Extension
+ * Framework".
+ *
+ * The largest difference between the functionality in @ref BASE "Base"
+ * compared to %App is that %App introduces the notion of properties, both used
+ * ...
+ */
+```
+
+```c++
+/**
+ * @defgroup DocumentGroup Document
+ * @ingroup APP
+ * @brief The class that represents a FreeCAD document
+ *
+ * This (besides the App::Application class) is the most important class in FreeCAD.
+ * It contains all the data of the opened, saved, or newly created FreeCAD Document.
+ * The App::Document manages the Undo and Redo mechanism and the linking of documents.
+ * ...
+ */
+```
+
+Given such a topic, you can include the most important classes into this topic, for example in `App/Document.h` class `App::Document` is included in `DocumentGroup`.
+
+```c++
+/**
+ * @brief A class that represents a FreeCAD document.
+ *
+ * A document is a container for all objects that are part of a FreeCAD
+ * project.  Besides managing the objects, it also maintains properties itself.
+ * As such, it is also a PropertyContainer.
+ *
+ * @ingroup DocumentGroup
+ * For a more high-level discussion see the topic @ref DocumentGroup "Document".
+ */
+class AppExport Document: public PropertyContainer
+{
+...
+```
+
+Documentation strings can be added to classes, enums, and public and protected members of a class.  This is especially important if a class is at the top of a hierarchy and its methods are reused in many other subclasses.  The documentation should be added in the header file and not in the C++ file.
+
+### Specific guidelines
+
+This section contains guidelines for specific types of documentation.
+
+#### Namespaces
+
+Since namespace statements are typically in many files, it is difficult to determine where to put documentation strings.  In most cases a best practice is to add them to the `.dox` file of the respective module.  For example, in `src/App/core-app.dox`:
+
+```c++
+/**
+ * @namespace App
+ * @ingroup APP
+ * @brief The namespace for the part of FreeCAD that works without GUI.
+ *
+ * This namespace includes %Application services of FreeCAD that such as:
+ *   - The Application class
+ *   - The Document class
+ *   - The DocumentObject classes
+ *   - The Expression classes
+ *   - The Property classes
+ *
+ * For a more high-level discussion see the topic @ref APP "App".
+ */
+```
+
+#### Classes
+
+For classes use a brief statement and more detailed comments:
+
+```c++
+/**
+ * @brief A class that represents a FreeCAD document.
+ *
+ * A document is a container for all objects that are part of a FreeCAD
+ * project.  Besides managing the objects, it also maintains properties itself.
+ * As such, it is also a PropertyContainer.
+ *
+ * ...
+ */
+class AppExport Document: public PropertyContainer
+{
+...
+```
+
+#### Functions
+
+For functions, use a brief statement, optionally more detailed comments, and if applicable and the parameters are not trivial, `@param` statements marking the direction `[in]`, `[out]`, or `[in,out]`, a `@return` command and `@throws` command, if applicable.  An example:
+
+```c++
+    /**
+     * @brief Get the value of the property identified by the path.
+     *
+     * This function gets the value of the property identified by the path.  It
+     * is meant to be overridden for subclasses in which the `path` is
+     * typically ignored.  The default implementation makes use of the `path`
+     * ObjectIdentifier to get the value of the property.
+     *
+     * @param[in] path The path to the property.
+     * @return The value of the property.
+     */
+    virtual const boost::any getPathValue(const App::ObjectIdentifier& path) const;
+```
+
+#### Enums
+
+For enumerations, it often suffices to have a brief statement and a short comment for each item:
+
+```c++
+    /// The status of the transaction object.
+    enum Status
+    {
+        New, ///< A new object is added to the document.
+        Del, ///< An object is deleted from the document.
+        Chn ///< An object is changed in the document.
+    } status {New};
+```
+
+#### Grouping
+
+Special documentation comments can be used to indicate that some group of functions, variables, etc. are all part of some single conceptual grouping. A best practice is to start a group with a documentation block `/**` with an `@name` command and an `@{` grouping command on the next line.  The group is ended with `/// @}`.
+
+Often, FreeCAD source files contain grouping commands with normal comments instead of documentation comments, such as `// @{` and `// @}`.  Since these comments are not documentation comments, this usage is incorrect and can lead to issues in rendering the documentation. This usage should be avoided in new code, and corrected when encountered.
+
+
+```c++
+    /**
+	 * @name Properties
+     * @{
+     */
+
+    /// The long name of the document (utf-8 coded).
+    PropertyString Label;
+
+    /// The fully qualified (with path) file name (utf-8 coded).
+    PropertyString FileName;
+
+    ...
+
+    /// Whether to use hasher on topological naming.
+    PropertyBool UseHasher;
+    /// @}
+```
+
+#### Templates
+
+Templates can be document with a `@tparam` command:
+
+```c++
+    /**
+     * @brief Get all objects of a given type.
+     *
+     * @tparam T The type to search for.
+     * @return A vector of objects of the given type.
+     */
+    template<typename T>
+    inline std::vector<T*> getObjectsOfType() const;
+```
+
+#### Documentation with much repetition
+
+The preferred way to handle code with significant repetition is to use `@copydoc` or `@copydetails`.
+
+```c++
+    /**
+     * @brief Check if this mapped name starts with the search target.
+     *
+     * If there is a postfix, only the postfix is considered. If not, then only
+     * the data is considered. A search string that overlaps the two will not
+     * be found.
+     *
+     * @param[in] searchTarget The search target to match.
+     * @param[in] offset An offset to perform the match at.
+     *
+     * @return True if this MappedName begins with the target bytes.
+     */
+    bool startsWith(const QByteArray& searchTarget, int offset = 0) const;
+
+    /// @copydoc startsWith(const QByteArray&,int) const
+    bool startsWith(const char* searchTarget, int offset = 0) const;
+
+    /// @copydoc startsWith(const QByteArray&,int) const
+    bool startsWith(const std::string& searchTarget, int offset = 0) const;
+```
+
+Another example that adds a parameter:
+
+```c++
+    /**
+     * @brief Convert the expression to a string.
+     *
+     * @param[in] persistent If true, the string representation is persistent
+     * and can be saved to a file.
+     * @param[in] checkPriority If true, check whether the expression requires
+     * parentheses based on operator priority.
+     * @param[in] indent The indentation level for pretty-printing.
+     *
+     * @return The string representation of the expression.
+     */
+    std::string toString(bool persistent = false, bool checkPriority = false, int indent = 0) const;
+
+    /**
+     * @brief Write a string representation of the expression to a stream.
+     *
+     * @param[in,out] os The output stream to write to.
+     * @copydoc Expression::toString(bool, bool, int) const
+     */
+    void toString(std::ostream &os, bool persistent=false, bool checkPriority=false, int indent=0) const;
+```
+
+An example with `@copydetails`:
+
+```c++
+    /**
+     * @brief Register an import filetype given a filter.
+     *
+     * An example of a filter is: @c "STEP with colors (*.step *.STEP *.stp *.STP)".
+     * An example of a module is: @c "Import" or @c "Mesh".
+     *
+     * @param[in] filter The filter that describes the file type and extensions.
+     * @param[in] moduleName The module name that can handle this file type.
+     */
+    void addImportType(const char* filter, const char* moduleName);
+
+    /**
+     * @brief Register an export filetype given a filter.
+     *
+     * @copydetails addImportType
+     */
+    void addExportType(const char* filter, const char* moduleName);
+```
+
+Another way to handle documentation with a high degree of repetition is by grouping, although in most cases it is a best practice to use `@copydoc` or `@copydetails` instead.
+
+```c++
+  /**
+   * @name PropertyData accessors
+   *
+   * @details These methods are used to access the property data based on:
+   * - the offset base,
+   * - either:
+   *   - a property pointer, or
+   *   - a property name.
+   * @{
+   */
+  const char* getName         (OffsetBase offsetBase,const Property* prop) const;
+  short       getType         (OffsetBase offsetBase,const Property* prop) const;
+  short       getType         (OffsetBase offsetBase,const char* name)     const;
+  const char* getGroup        (OffsetBase offsetBase,const char* name)     const;
+  const char* getGroup        (OffsetBase offsetBase,const Property* prop) const;
+  const char* getDocumentation(OffsetBase offsetBase,const char* name)     const;
+  const char* getDocumentation(OffsetBase offsetBase,const Property* prop) const;
+  /// @}
+```
