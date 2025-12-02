@@ -84,19 +84,19 @@ You have a Python script that has a Shebang to specify how it can be run.
 
 Icons should have whatever license the author intended, for example `CC-BY-SA-4.0`.
 
-In `svg` files this is declared via medata not SPDX.
+In `svg` files this is declared via metadata, not an SPDX comment.
 
 <br/>
 
 #### 6. Documentation
 
-We currently don't license documentation, however you might want to consider putting that under the `Unlicense` or `CC-BY-SA-4.0`.
+Besides the wiki, currently don't license documentation, however you might want to consider putting that under the `Unlicense` or `CC-BY-SA-4.0`.
 
 <br/>
 
 ## Copyright Headers
 
-Copyright headers are currently required to be added to files if **ALL** of the following conditions are apply:
+Copyright headers are currently required to be added to files if **ALL** of the following conditions apply:
 
 1.  The file is `C++` or `Python` source code
 
