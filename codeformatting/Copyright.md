@@ -21,7 +21,7 @@ SPDX-License-Identifier: <License>
 
     *An example for an exception to this rule are shebang declarations ( `#!` ), which should come first.*
 
-2.  You have use the appropriate [License Identifier].
+2.  You have to use the appropriate [License Identifier].
 
 <br/>
 
