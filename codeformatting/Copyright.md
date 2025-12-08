@@ -11,17 +11,17 @@ In source files it is currently also required to add a `Copyright Header`.
 
 ## SPDX License Identifiers
 
-SPDX is a simple way of declaring what license something and is declared by adding a comment in the following format to a file:
+SPDX is a simple way of declaring what license something falls under and is declared by adding a comment in the following format to a file:
 
 ```
 SPDX-License-Identifier: <License>
 ```
 
-1.  It should be placed at the start of a file.
+1.  The comment should be placed at the start of a file.
 
-    ( Example exception, shebangs `#!` come first )
+    *An example for an exception to this rule are shebang declarations ( `#!` ), which should come first.*
 
-2.  You should use the appropriate [License Identifier].
+2.  You have to use the appropriate [License Identifier].
 
 <br/>
 
@@ -68,7 +68,7 @@ You have some existing code licensed under one license but also want to add some
 
 #### 4. Executable Python Script
 
-You have a Python script that has a Shebang to specify how it can be run.
+You have a Python script with a Shebang declaration.
 
 ```Python
 #!/usr/bin/env python3
@@ -84,13 +84,13 @@ You have a Python script that has a Shebang to specify how it can be run.
 
 Icons should have whatever license the author intended, for example `CC-BY-SA-4.0`.
 
-In `svg` files this is declared via metadata, not an SPDX comment.
+In `svg` files this is declared via metadata, not as a SPDX comment.
 
 <br/>
 
 #### 6. Documentation
 
-Besides the wiki, currently don't license documentation, however you might want to consider putting that under the `Unlicense` or `CC-BY-SA-4.0`.
+Besides the wiki, currently we don't license documentation, however you might want to consider putting it under the `Unlicense` or `CC-BY-SA-4.0`.
 
 <br/>
 
@@ -114,7 +114,7 @@ To declare the copyright holders, simply follow this format:
 
 `© <Year> <Entity>`
 
-- `<Year>` is the current year / the year you created the code.
+- `<Year>` is the current year / the year the code was published.
 
 - `<Entity>` is either you - the person - or your organization.
 
