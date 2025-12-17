@@ -21,15 +21,15 @@ There are different followup steps that may be taken depending on the addons sta
 
 Addons that for example rely on services that don't exist anymore are candidate for direct removal as they are effectively non-functional.
 
-Long unmaintained addons that are usually mostly unusable in current versions may be kept for [Safe Keeping](#Safe-Keeping) or removed.
+Long unmaintained addons that are usually mostly unusable in current versions may be kept for [Safe Keeping](#Safe-Keeping) or be removed.
 
-Unmaintained addons that don't fit the previous categories are usually [Adopted](#Adoption).
+Unmaintained addons that don't fit the previous descriptions are usually [Adopted](#Adoption).
 
 ### Safe Keeping
 
 Addons that once have been functional but are no longer kept up and become incompatible with current versions may be forked for safe keeping.
 
-The addon repository will be forked and possibly given a light cleanup but no support for code changes will be offered.
+The addon repository will be forked and possibly given a light cleanup but no support for code changes will be guaranteed.
 
 The repository will effectively act as an archive that ensures it stays as it is.
 
@@ -39,7 +39,7 @@ When adopting an addon, it's repository is forked and given a light cleanup at f
 
 Depending on the state and widespread usage of the addon, it may be kept mostly as is.
 
-At this point addons usually also receive updates to fixup their licensing, manifest and addons structure.
+At this point addons usually also receive updates to fixup their licensing, manifest and structure.
 
 Afterwards we look for community members that are qualified and willing to take over maintainership.
 
