@@ -46,4 +46,3 @@ Afterwards we look for community members that are qualified and willing to take 
 ### Resurrected Authors
 
 Addon authors that had been unresponsive to IoC requests and their addons have been adopted are free to come back and continue working on them again.
-
