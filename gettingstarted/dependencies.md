@@ -17,10 +17,7 @@ why FreeCAD needs them.
 
 ## Supported versions
 
-The head of the main branch of FreeCAD, currently used for the development of FreeCAD 1.1, can be compiled from source on systems as old as the
-oldest currently-supported [Ubuntu LTS](https://packages.ubuntu.com/) at the time of its expected release, Ubuntu 22.04 LTS. This ties FreeCAD
-development to the C++20 standard, Python 3.10 and later, Qt 5.15, and the versions of the required libraries available on that system. We
-plan to update to requiring Ubuntu 24.04 LTS upon release of FreeCAD 1.1, with FreeCAD 1.2 only supporting compiling on that system and newer.
+The head of the main branch of FreeCAD, currently used for the development of FreeCAD 1.2, can be compiled from source on systems as old as the oldest currently-supported [Ubuntu LTS](https://packages.ubuntu.com/) at the time of its expected release, Ubuntu 24.04 LTS. This ties FreeCAD development to the C++23 standard, Python 3.11 and later (we plan to swtich to 3.12 or later once Blender updates their dependencies in mid-2026), Qt 6.4, and the versions of the required libraries available on that system. Note that Qt does not support PySide6 `pip` installation on this system, so use of a PPA is required for that dependency. The decision to stop support for Qt5 was [announced 5 January 2026](https://forum.freecad.org/viewtopic.php?t=102292). 
 
 ## Major dependencies
 
@@ -48,7 +45,7 @@ Python is a popular all-purpose scripting language that is widely used in Linux 
 In FreeCAD, Python is used during compilation and also at runtime in different ways. FreeCAD itself contains
 hundreds of thousands of lines of Python code, and all FreeCAD Addons and Macros are written in Python.
 
-The current minimum supported version is 3.8.
+The current minimum supported version is 3.11.
 
 ### Qt
 
