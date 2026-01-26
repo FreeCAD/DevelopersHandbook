@@ -17,7 +17,7 @@ why FreeCAD needs them.
 
 ## Supported versions
 
-The head of the main branch of FreeCAD, currently used for the development of FreeCAD 1.2, can be compiled from source on systems as old as the oldest currently-supported [Ubuntu LTS](https://packages.ubuntu.com/) at the time of its expected release, Ubuntu 24.04 LTS. This ties FreeCAD development to the C++23 standard, Python 3.11 and later (we plan to swtich to 3.12 or later once Blender updates their dependencies in mid-2026), Qt 6.4, and the versions of the required libraries available on that system. Note that Qt does not support PySide6 `pip` installation on this system, so use of a PPA is required for that dependency. The decision to stop support for Qt5 was [announced 5 January 2026](https://forum.freecad.org/viewtopic.php?t=102292). 
+The head of the main branch of FreeCAD, currently used for the development of FreeCAD 1.2, can be compiled from source on systems as old as the oldest currently-supported [Ubuntu LTS](https://packages.ubuntu.com/) at the time of its expected release, Ubuntu 24.04 LTS. This ties FreeCAD development to the C++23 standard, Python 3.11 and later (we plan to swtich to 3.12 or later once Blender updates their dependencies in mid-2026), Qt 6.4, and the versions of the required libraries available on that system. Note that Qt does not support PySide6 `pip` installation on this system, so use of a PPA is required for that dependency. The decision to stop support for Qt5 was [announced 5 January 2026](https://forum.freecad.org/viewtopic.php?t=102292).
 
 ## Major dependencies
 
