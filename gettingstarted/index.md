@@ -111,6 +111,27 @@ The Visual Studio Installer may be used to install Visual Studio Community 2019 
    - [Visual Studio Code](./VSCode)
    - [CLion](./CLion)
 
+## Finding Tasks to Work On
+
+The GitHub issues tracker contains a 'Good First Issue' tag. Filtering by this tag will show issues that are well suited for new contributors.
+Try to find an issue that seems like an obvious win. If your issue seems unclear or complex, and you've given it a good shot, consider asking for help on Discord or the Forum before investing too much time (see below).
+
+Please note: While existing contributors try their best to be helpful, open source projects attract many first-time contributors, many of whom may not stick around for long.
+As such, existing contributors have limited time to help all newcomers. Please don't be offended if your questions go unanswered. Your contributions are still appreciated.
+
+For subsequent issues:
+- Keep an eye on the GitHub issues (see below)
+- Fix issues / make improvements that you notice in your own usage of FreeCAD - ensure they haven't already been fixed in latest dev!
+- Ask on the Discord (see below)
+
+## Collaborating with Others
+
+There are four main places to collaborate with other FreeCAD developers:
+- [GitHub Issues](https://github.com/FreeCAD/FreeCAD/issues): Useful for tagging specific people for discussions related to a particular issue
+- [Discord](https://discord.com/channels/870877411049357352/1099444468895199232): More free-form and general development discussions, and longer-term planning
+- [FreeCAD Forum](https://forum.freecad.org/) (Particularly FreeCAD Development subform): Useful for reaching a wide audience + non-dev users, but typically not active for actual development discussions
+- [FreeCAD Development Meetings](https://www.freecad.org/events.php): Weekly/Monthly meetings for discussion of development work
+
 ## Submitting a PR
 
 The basic process is:
