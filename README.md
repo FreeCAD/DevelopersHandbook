@@ -23,7 +23,7 @@ $ bundle exec jekyll serve
 Docker bind mounts the handbook source directory inside the container and marks it as private & unshared with any other container, before calling `jekyll serve` as in the instructions above.
 
 ```bash
-$ docker run --rm --volume="$PWD:/srv/jekyll:Z" -it jekyll/jekyll jekyll serve
+$ docker run --rm --volume="$PWD:/srv/jekyll:Z" -p 4000:4000 -it jekyll/jekyll jekyll serve
 ```
 
 ### References
