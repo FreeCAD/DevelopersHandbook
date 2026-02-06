@@ -1,7 +1,9 @@
 
 # Copyright - Snippets
 
-The following are snippets for copy-pasting if you have already read the [Copyright] documentation.
+The following are snippets for various language for your convenience.
+
+[» Read how copyright is handled in the FreeCAD Project.][License Identifier]
 
 [» List of SPDX License Identifiers][License Identifier]
 
@@ -11,11 +13,10 @@ The following are snippets for copy-pasting if you have already read the [Copyri
 
 ```C++
 // SPDX-License-Identifier: LGPL-2.1-or-later
+// SPDX-FileCopyrightText: ‹Year› ‹Entity›
 // SPDX-FileNotice: Part of the FreeCAD project.
 
 /******************************************************************************
- *                                                                            *
- *   © <Year> <Entity>                                                        *
  *                                                                            *
  *   FreeCAD is free software: you can redistribute it and/or modify          *
  *   it under the terms of the GNU Lesser General Public License as           *
@@ -33,15 +34,16 @@ The following are snippets for copy-pasting if you have already read the [Copyri
  ******************************************************************************/
 ```
 
+<br/>
+
 ## Python
 
 ```Python
 # SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileCopyrightText: ‹Year› ‹Entity›
 # SPDX-FileNotice: Part of the FreeCAD project.
 
 ################################################################################
-#                                                                              #
-#   © <YEAR> <Entity>                                                          #
 #                                                                              #
 #   FreeCAD is free software: you can redistribute it and/or modify            #
 #   it under the terms of the GNU Lesser General Public License as             #
@@ -59,23 +61,41 @@ The following are snippets for copy-pasting if you have already read the [Copyri
 ################################################################################
 ```
 
+<br/>
+
 ## Other
 
-*Reminder other file types only need SPDX.*
+*Reminder other file types only need SPDX annotations.*
+
 
 ```C++
 // SPDX-License-Identifier: LGPL-2.1-or-later
+// SPDX-FileCopyrightText: ‹Year› ‹Entity›
 // SPDX-FileNotice: Part of the FreeCAD project.
 ```
 
+---
+
 ```Python
 # SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileCopyrightText: ‹Year› ‹Entity›
 # SPDX-FileNotice: Part of the FreeCAD project.
 ```
 
-```
+---
+
+```CSS
 /* SPDX-License-Identifier: LGPL-2.1-or-later */
+/* SPDX-FileCopyrightText: ‹Year› ‹Entity› */
 /* SPDX-FileNotice: Part of the FreeCAD project. */
+```
+
+---
+
+```Bat
+@REM SPDX-License-Identifier: LGPL-2.1-or-later
+@REM SPDX-FileCopyrightText: ‹Year› ‹Entity›
+@REM SPDX-FileNotice: Part of the FreeCAD project.
 ```
 
 <br/>

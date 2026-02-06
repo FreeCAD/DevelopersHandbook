@@ -10,7 +10,15 @@ FreeCAD is written primarily in C++ and Python (with a few files in other langua
 
 ## Copyright
 
-[» Read more about SPDX & Copyright Headers](./Copyright)
+When creating new files in the FreeCAD project, you should - if the file format allows - add the appropriate SPDX annotation.
+
+In source files like Python & C++ it is also required to add a copyright header.
+
+[» How to add SPDX annotations](./Copyright-SPDX)
+
+[» How to add Copyright Headers](./Copyright-Headers)
+
+[» Snippets for your convenience](./Copyright-Snippets)
 
 ## Setting up pre-commit
 
