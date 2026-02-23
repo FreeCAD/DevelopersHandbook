@@ -66,4 +66,23 @@ The complete process is:
 
 ## Windows
 
-  TBD
+FreeCAD is currently signed using an Azure-based system sponsored by the FreeCAD Project Association (FPA). Signing during the GitHub Actions-based build is done using a combination of the `azure/login` Action provided by the Azure team and the .NET `sign` executable that is part of Microsoft's .NET family of tools. To examine the actual signing commands, see [`create_bundle.sh`](https://github.com/chennes/FreeCAD/blob/main/package/rattler-build/windows/create_bundle.sh).
+
+FPA administrators configure four GitHub Actions Repository secrets:
+    * `AZURE_CLIENT_ID`
+    * `AZURE_CLIENT_SECRET`
+    * `AZURE_SUBSCRIPTION_ID`
+    * `AZURE_TENANT_ID`
+
+The values for those variables come from the output of the Azure RBAC creation command (run on a local Windows machine, not a CI runner):
+```
+az ad sp create-for-rbac --name "FreeCADGitHubActions" \
+  --role "Artifact Signing Certificate Profile Signer" \
+  --scopes /subscriptions/OUR_SUBSCRIPTION_ID/resourceGroups/FreeCAD_Code_Signing/providers/Microsoft.CodeSigning/codeSigningAccounts/FreeCAD-Code-Signing \
+  --json-auth
+```
+Using that command requires first logging into the appropriate tenant:
+```
+az login --tenant OUR_TENANT_ID --use-device-code --scope "https://codesigning.azure.net/.default"
+```
+FPA administrators have login access to this account and can authenticate by following the prompts from the login command. If you would like to configure a build of FreeCAD to sign with your own certificate, rather than the FPA's, you can follow the instructions in [this blog post](https://www.hanselman.com/blog/automatically-signing-a-windows-exe-with-azure-trusted-signing-dotnet-sign-and-github-actions) (note that there have been some minor terminology changes since it was written -- in particular, the necessary role is now called "Artifact Signing Certificate Profile Signer", not "Trusted Signing Certificate Profile Signer").
