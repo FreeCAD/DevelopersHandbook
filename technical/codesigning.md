@@ -69,10 +69,10 @@ The complete process is:
 FreeCAD is currently signed using an Azure-based system sponsored by the FreeCAD Project Association (FPA). Signing during the GitHub Actions-based build is done using a combination of the `azure/login` Action provided by the Azure team and the .NET `sign` executable that is part of Microsoft's .NET family of tools. To examine the actual signing commands, see [`create_bundle.sh`](https://github.com/chennes/FreeCAD/blob/main/package/rattler-build/windows/create_bundle.sh).
 
 FPA administrators configure four GitHub Actions Repository secrets:
-    * `AZURE_CLIENT_ID`
-    * `AZURE_CLIENT_SECRET`
-    * `AZURE_SUBSCRIPTION_ID`
-    * `AZURE_TENANT_ID`
+* `AZURE_CLIENT_ID`
+* `AZURE_CLIENT_SECRET`
+* `AZURE_SUBSCRIPTION_ID`
+* `AZURE_TENANT_ID`
 
 The values for those variables come from the output of the Azure RBAC creation command (run on a local Windows machine, not a CI runner):
 ```
@@ -85,4 +85,36 @@ Using that command requires first logging into the appropriate tenant:
 ```
 az login --tenant OUR_TENANT_ID --use-device-code --scope "https://codesigning.azure.net/.default"
 ```
-FPA administrators have login access to this account and can authenticate by following the prompts from the login command. If you would like to configure a build of FreeCAD to sign with your own certificate, rather than the FPA's, you can follow the instructions in [this blog post](https://www.hanselman.com/blog/automatically-signing-a-windows-exe-with-azure-trusted-signing-dotnet-sign-and-github-actions) (note that there have been some minor terminology changes since it was written -- in particular, the necessary role is now called "Artifact Signing Certificate Profile Signer", not "Trusted Signing Certificate Profile Signer").
+FPA administrators have login access to this account and can authenticate by following the prompts from the login command.
+
+### Creating your own signing system
+
+If you would like to configure a build of FreeCAD to sign with your own certificate, rather than the FPA's, you can follow the instructions in [this blog post](https://www.hanselman.com/blog/automatically-signing-a-windows-exe-with-azure-trusted-signing-dotnet-sign-and-github-actions) (note that there have been some minor terminology changes since it was written -- in particular, the necessary role is now called "Artifact Signing Certificate Profile Signer", not "Trusted Signing Certificate Profile Signer"). The sequence is:
+
+1. Create a paid Azure account (the lowest price option is almost certainly adequate if all you are doing is code signing).
+2. Install the [Azure CLI](https://aka.ms/installazurecliwindows)
+3. Go to [Azure Portal](https://portal.azure.com) and search for "Artifact Signing Account"
+4. Create a new account there:
+5. For the required parameters you can use basically anything you want. If you aren't going to do anything else with Azure it doesn't really matter. Here's what we used for the FPA's account:
+    * Resource Group: FreeCAD_Code_Signing
+    * Account Name: FreeCAD-Code-Signing
+    * Region: Northern Europe (e.g. the `neu.codesigning.azure.net` endpoint)
+6. Starting at the Azure portal's "Artifact Signing Accounts" page, go through the identity verification process. The exact stpes will depend on where you live and whether you are signing as an indvidual developer or as an organization. For the FPA this required providing our DUNS number and address information, and correlating that to one of the FPA board members' personal identities verified via a government-issued identification card. The process took a few hours to complete.
+7. In the page for the Artifact Signing Account you just verified, create a certificate profile. Again, you can be somewhat arbitrary with the values here. The FPA used:
+    * Profile name: FreeCAD
+    * Profile type: Public Trust (required to prevent SmartScreen)
+    * Identity validation: Select your approved identity
+8. Record the following pieces of information for later use (The FPA's information is shown below, you should record whatever you actually used):
+    * Account Name: FreeCAD-Code-Signing
+    * Certificate Profile Name: FreeCAD
+    * Endpoint URL: https://neu.codesigning.azure.net/
+    * Subscription ID: Found in Azure Portal
+    * Resource Group: FreeCAD_Code_Signing
+9. From the Artifact Signing Account's page, choose the Access Control settings from the left sidebar, add a role assignment, and search for "Artifact Signing Certificate Profile Signer". Select that role, click Next (hiding at the bottom of the screen), and assign that role to your account.
+10. Log out of your current scope, and into the code-signing scope using the tenant ID found in the portal at Microsoft Entra ID → Overview → Tenant ID
+    ```
+    az login --tenant YOUR_TENANT_ID --use-device-code --scope "https://codesigning.azure.net/.default" 
+    ```
+    Follow the prompts to log in using your browser.
+
+At this point you are ready to sign code locally, which is a good test to do even if you eventually plan to migrate to using some Ci system.
