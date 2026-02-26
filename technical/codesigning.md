@@ -66,13 +66,20 @@ The complete process is:
 
 ## Windows
 
-FreeCAD is currently signed using an Azure-based system sponsored by the FreeCAD Project Association (FPA). Signing during the GitHub Actions-based build is done using a combination of the `azure/login` Action provided by the Azure team and the .NET `sign` executable that is part of Microsoft's .NET family of tools. To examine the actual signing commands, see [`create_bundle.sh`](https://github.com/chennes/FreeCAD/blob/main/package/rattler-build/windows/create_bundle.sh).
+FreeCAD is currently signed using an Azure-based system sponsored by the FreeCAD Project Association (FPA). Signing during the GitHub Actions-based build is done using a combination of the `azure/login` Action provided by the Azure team and the .NET `sign` executable that is part of Microsoft's .NET family of tools. To examine the actual signing commands, see [`create_bundle.sh`](https://github.com/FreeCAD/FreeCAD/blob/main/package/rattler-build/windows/create_bundle.sh).
 
-FPA administrators configure four GitHub Actions Repository secrets:
+To keep the system flexible and make it easier to change to a different signing certificate later on (for example, if a fork wants to set up signing), all Azure signing parameters are stored as either Repository secrets (for sensitive information) or Repository variables (for non-sensitive data). The variables are:
+* `AZURE_TRUSTED_SIGNING_ACCOUNT`: "FreeCAD-Code-Signing" if using the FPA's certificate
+* `AZURE_TRUSTED_SIGNING_CERTIFICATE_PROFILE`: "FreeCAD" (defined when the FPA's certificate was created)
+* `AZURE_TRUSTED_SIGNING_ENDPOINT`: "https://neu.codesigning.azure.net" (Northern Europe for the FPA's certificate)
+
+Project administrators configure four GitHub Actions Repository secrets (in FreeCAD's case using credentials controlled by the FPA):
 * `AZURE_CLIENT_ID`
 * `AZURE_CLIENT_SECRET`
 * `AZURE_SUBSCRIPTION_ID`
 * `AZURE_TENANT_ID`
+
+### Generating the FPA's signing credentials
 
 The values for those variables come from the output of the Azure RBAC creation command (run on a local Windows machine, not a CI runner):
 ```
@@ -81,11 +88,11 @@ az ad sp create-for-rbac --name "FreeCADGitHubActions" \
   --scopes /subscriptions/OUR_SUBSCRIPTION_ID/resourceGroups/FreeCAD_Code_Signing/providers/Microsoft.CodeSigning/codeSigningAccounts/FreeCAD-Code-Signing \
   --json-auth
 ```
-Using that command requires first logging into the appropriate tenant:
+Here, "FreeCADGitHubActions" is an arbitrary account name being created by the command, and the FPA's subscription ID is "1e441f5e-9283-4984-9b1b-e42f96a7db0f". Using that command requires first logging into the appropriate tenant:
 ```
 az login --tenant OUR_TENANT_ID --use-device-code --scope "https://codesigning.azure.net/.default"
 ```
-FPA administrators have login access to this account and can authenticate by following the prompts from the login command.
+where our tenant ID is "fa7cd937-4c12-49bd-b500-075147b38022". FPA administrators have login access to this account and can authenticate by following the prompts from the login command. Note that `--use-device-code` is not the only login option, so administrators are free to use alternative login mechanisms as necessary.
 
 ### Creating your own signing system
 
@@ -99,7 +106,7 @@ If you would like to configure a build of FreeCAD to sign with your own certific
     * Resource Group: FreeCAD_Code_Signing
     * Account Name: FreeCAD-Code-Signing
     * Region: Northern Europe (e.g. the `neu.codesigning.azure.net` endpoint)
-6. Starting at the Azure portal's "Artifact Signing Accounts" page, go through the identity verification process. The exact stpes will depend on where you live and whether you are signing as an indvidual developer or as an organization. For the FPA this required providing our DUNS number and address information, and correlating that to one of the FPA board members' personal identities verified via a government-issued identification card. The process took a few hours to complete.
+6. Starting at the Azure portal's "Artifact Signing Accounts" page, go through the identity verification process. The exact steps will depend on where you live and whether you are signing as an indvidual developer or as an organization. For the FPA this required providing our DUNS number and address information, and correlating that to one of the FPA board members' personal identities verified via a government-issued identification card. The process took a few hours to complete.
 7. In the page for the Artifact Signing Account you just verified, create a certificate profile. Again, you can be somewhat arbitrary with the values here. The FPA used:
     * Profile name: FreeCAD
     * Profile type: Public Trust (required to prevent SmartScreen)
