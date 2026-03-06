@@ -120,7 +120,7 @@ If you would like to configure a build of FreeCAD to sign with your own certific
 9. From the Artifact Signing Account's page, choose the Access Control settings from the left sidebar, add a role assignment, and search for "Artifact Signing Certificate Profile Signer". Select that role, click Next (hiding at the bottom of the screen), and assign that role to your account.
 10. Log out of your current scope, and into the code-signing scope using the tenant ID found in the portal at Microsoft Entra ID → Overview → Tenant ID
     ```
-    az login --tenant YOUR_TENANT_ID --use-device-code --scope "https://codesigning.azure.net/.default" 
+    az login --tenant YOUR_TENANT_ID --use-device-code --scope "https://codesigning.azure.net/.default"
     ```
     Follow the prompts to log in using your browser.
 
