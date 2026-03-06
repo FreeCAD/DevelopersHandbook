@@ -20,6 +20,10 @@ This is the list of **current** maintainers & admins.
     [![Forum]][Forum-Hyarion]
     `Benjamin Nauck`
 
+-   [![GitHub]][GitHub-Connor9220]
+    [![Forum]][Forum-Connor]
+    `Connor9220`
+
 -   [![GitHub]][GitHub-Kadet]
     [![Forum]][Forum-Kadet]
     `Kacper Donat`
@@ -60,6 +64,7 @@ This is the list of **current** maintainers & admins.
 [GitHub-Yorik]: https://github.com/yorikvanhavre 'GitHub'
 [GitHub-Kadet]: https://github.com/kadet1090 'GitHub'
 [GitHub-Roy]: https://github.com/Roy-043 'GitHub'
+[GitHub-Connor9220]: https://github.com/Connor9220 'GitHub'
 
 [Forum-AdrianInsAval]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=19302 'Forum'
 [Forum-WandererFan]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=1375 'Forum'
@@ -70,6 +75,7 @@ This is the list of **current** maintainers & admins.
 [Forum-Kadet]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=60296 'Forum'
 [Forum-Yorik]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=68 'Forum'
 [Forum-Roy]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=22936 'Forum'
+[Forum-Connor]: https://forum.freecad.org/memberlist.php?mode=viewprofile&u=53853 'Forum'
 
 [GitHub]: https://img.shields.io/badge/-181717?style=flat&logo=GitHub&logoColor=white
 [Forum]: https://img.shields.io/badge/-418FDE?style=flat&logo=FreeCAD&logoColor=white
