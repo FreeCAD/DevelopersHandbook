@@ -1,15 +1,35 @@
 
-# Copyright - SPDX
+[ [Copyright Headers][Headers] ] [ [Snippets] ]
 
-SPDX is used to declare metadata about a file, like what license its published under or who owns the copyright. The annotations are usually placed within inline comments at the start of the file.
+# Copyright : SPDX
 
-*In cases where the first line of a file is already occupied by for example a shebang declaration `#!/usr/bin/env bash`, simply place the SPDX annotations on the next lines after.*
+
+SPDX annotations declare metadata about the file they are placed in, like the license of the content contained within, the copyright holders or where the content originates from.
+
+Generally every file whose format allows adding comments should contain SPDX annotations.
+
+<br/>
+
+## Placement
+
+SPDX annotations should be placed in inline comments at the top of the file.
+
+```C++
+// SPDX-License-Identifier: LGPL-2.1-or-later
+```
+
+Some file formats or file content may prevent this, for example shebang declarations may already occupy the first line in a script file, in that case simply add the annotations in the following lines.
+
+```sh
+#!/usr/bin/env bash
+# SPDX-License-Identifier: LGPL-2.1-or-later
+```
 
 <br/>
 
 ## License
 
-To declare what license a file falls under, specify the appropriate [License Id] in the following format:
+To declare what license a file falls under, specify the appropriate [License Id] in the following way:
 
 ```
 SPDX-License-Identifier: ‹License Id›
@@ -31,7 +51,7 @@ SPDX-License-Identifier: ‹License Id›
 
 ## Copyright
 
-To declare who own the copyright to a file, declare one annotation for every person / organization.
+To declare who holds the copyright to a file, add one annotation for every person / organization:
 
 ```
 SPDX-FileCopyrightText: ‹Year› ‹Entity›
@@ -131,3 +151,5 @@ Besides the wiki, currently we don't license documentation, however you might wa
 
 
 [License Id]: https://spdx.org/licenses/
+[Snippets]: ./Copyright-Snippets
+[Headers]: ./Copyright-Headers

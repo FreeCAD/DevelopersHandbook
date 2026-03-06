@@ -1,11 +1,9 @@
 
-# Copyright - Snippets
+[ [SPDX Annotations][SPDX] ] [ [Copyright Headers][Headers] ] [ [Licenses] ]
 
-The following are snippets for various language for your convenience.
+# Copyright : Snippets
 
-[» Read how copyright is handled in the FreeCAD Project.][License Identifier]
-
-[» List of SPDX License Identifiers][License Identifier]
+Below you will find some snippets of the commonly used SPDX annotations / copyright headers.
 
 <br/>
 
@@ -65,7 +63,7 @@ The following are snippets for various language for your convenience.
 
 ## Other
 
-*Reminder other file types only need SPDX annotations.*
+*Reminder: Other file types only require SPDX annotations, not copyright headers.*
 
 
 ```C++
@@ -100,5 +98,6 @@ The following are snippets for various language for your convenience.
 
 <br/>
 
-[License Identifier]: https://spdx.org/licenses/
-[Copyright]: ./Copyright.md
+[Licenses]: https://spdx.org/licenses/
+[Headers]: ./Copyright-Headers
+[SPDX]: ./Copyright-SPDX
