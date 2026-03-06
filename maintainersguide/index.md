@@ -22,7 +22,7 @@ This is the list of **current** maintainers & admins.
 
 -   [![GitHub]][GitHub-Connor9220]
     [![Forum]][Forum-Connor]
-    `Connor9220`
+    `Billy Huddleston`
 
 -   [![GitHub]][GitHub-Kadet]
     [![Forum]][Forum-Kadet]
