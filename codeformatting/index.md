@@ -10,15 +10,15 @@ FreeCAD is written primarily in C++ and Python (with a few files in other langua
 
 ## Copyright
 
-When creating new files in the FreeCAD project, you should - if the file format allows - add the appropriate SPDX annotation.
+Every file in the FreeCAD project should contain [SPDX Annotations][Copyright-SPDX] if possible.
 
-In source files like Python & C++ it is also required to add a copyright header.
+C++ and Python source files are currently also required to have [Copyright Headers][Copyright-Headers].
 
-[» How to add SPDX annotations](./Copyright-SPDX)
+[» How to add **SPDX Annotations**.][Copyright-SPDX]
 
-[» How to add Copyright Headers](./Copyright-Headers)
+[» How to add **Copyright Headers**.][Copyright-Headers]
 
-[» Snippets for your convenience](./Copyright-Snippets)
+[» **Snippets** for your convenience.][Copyright-Snippets]
 
 ## Setting up pre-commit
 
@@ -41,3 +41,8 @@ There is no unified Python coding style agreed upon for the FreeCAD codebase: ea
 ## Inline documentation
 
 You will find a mix of different generations of comment-based inline documentation systems in the code base depending on when the code was written.  As of 2024 it is preferred that you write [doxygen](https://www.doxygen.nl/manual/docblocks.html) compatible comment documentation.  For methods, including the @param and @return as appropriate is highly recommended.
+
+
+[Copyright-Snippets]: ./Copyright-Snippets
+[Copyright-Headers]: ./Copyright-Headers
+[Copyright-SPDX]: ./Copyright-SPDX

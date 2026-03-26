@@ -1,29 +1,37 @@
 
-# Copyright - Headers
+[ [SPDX Annotations][SPDX] ] [ [Snippets] ]
 
-The addition of copyright headers is currently required for newly added files if **ALL** of the following conditions apply:
+# Copyright : Headers
 
-1.  The file is `C++` or `Python` source code
-
-2.  The file is purely original code
-
-3.  The code was written for the FreeCAD project
-
-4.  The code is licensed under `LGPL-2.1-or-later`
+Copyright headers are an artifact of old software, they are currently still kept around for any existing files that have them and are added to new `C++` & `Python` source files.
 
 <br/>
 
-## Declarations
+## Conditions
+
+Copyright headers should be added to new files if **ALL** of the following apply:
+
+1.  The file is `C++` or `Python` source code.
+
+2.  The file is purely original code.
+
+3.  The code was written for the FreeCAD project.
+
+4.  The code is licensed under `LGPL-2.1-or-later`.
+
+<br/>
+
+## Statements
 
 Copyright statements should be made via SPDX annotations.
 
-[» Read about SPDX in the FreeCAD project.](./Copyright-SPDX)
+[» How to add **SPDX Annotations**.][SPDX]
 
 <br/>
 
 ## License Text
 
-[» Find this header in language you need.](./Copyright-Snippets)
+[» Find this header in the language you need.][Snippets]
 
 ```
 FreeCAD is free software: you can redistribute it and/or modify
@@ -41,3 +49,6 @@ License along with FreeCAD. If not, see https://www.gnu.org/licenses
 ```
 
 <br/>
+
+[Snippets]: ./Copyright-Snippets
+[SPDX]: ./Copyright-SPDX
