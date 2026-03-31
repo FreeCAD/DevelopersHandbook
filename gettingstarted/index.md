@@ -58,7 +58,7 @@ Pixi will take care of all the dependencies. In general, there will be no need t
 
 ### Pixi on Windows
 
-Pixi uses the `conda-forge` packages, including the `compilers` meta package to bring in the platform-specific compiler support.  On Windows, it is expected that Microsoft Visual C++ has been installed and matches the version used by the `conda-forge` team, which is [Visual Studio Community 2022](https://visualstudio.microsoft.com/pl/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false).
+Pixi uses the `conda-forge` packages, including the `compilers` meta package to bring in the platform-specific compiler support.  On Windows, it is expected that Microsoft Visual C++ has been installed and matches the version used by the `conda-forge` team, which is [Visual Studio Community 2022](https://aka.ms/vs/17/release/vs_community.exe).
 
 The Visual Studio Installer may be used to install Visual Studio Community 2022 alongside newer versions of Visual Studio. Ensure all of the necessary components are installed:
 
