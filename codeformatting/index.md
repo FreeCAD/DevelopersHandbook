@@ -32,7 +32,7 @@ Currently the following sections of code are covered by pre-commit: `src/Mod/Add
 
 FreeCAD's codebase currently includes a [.clang-format](https://github.com/FreeCAD/FreeCAD/blob/master/.clang-format) file. Many IDEs will automatically apply these settings when editing files. To minimize disruption of other developers, only new or significantly-refactored code should have the formatting automatically applied. Code not being worked on should not be automatically formatted at this time.
 
-For naming conventions, please see [Naming Things]({% link bestpractices/codereview.md %}#naming-things).
+For naming conventions, please see [Naming Things](../bestpractices/codereview.md#naming-things).
 
 ## Python
 
