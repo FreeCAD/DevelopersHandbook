@@ -969,3 +969,63 @@ Another way to handle documentation with a high degree of repetition is by group
   const char* getDocumentation(OffsetBase offsetBase,const Property* prop) const;
   /// @}
 ```
+
+## Recommendations for concurrency
+
+In this section we will propose a number of code conventions to make concurrent code easier to maintain, especially for other developers than the author.
+
+### Mark logically grouped variables
+
+Often locks or mutexes protect variables that logically belong together (if one changes, another variable is very likely to change as well).  An example is some data structure that has a buffer and it needs to maintain the number of items in the buffer.  If adding to the datastructure can happen concurrently, then both the buffer variable and the number of items variable need to be protected at the same time.  In such cases, it is very helpful to explicitly mark what the lock or mutex is protecting.
+
+```c++
+std::mutex taskMutex;
+// This mutex protects the queue and the active worker count:
+// ////////
+std::queue<std::function<void()>> tasks;
+int active_worker_count = 0;
+// ////////
+```
+
+If you operate on one of these variables that is governed by the lock, you need to make sure that you hold the lock.  See also [CP.50](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#rconc-mutex).
+
+### Adopt "and" in function names for atomic actions
+
+Concurrent code often limits composability.  This is often apparent in data structures where each individual public function correctly makes use of locks.  However, often you need to compose these functions for correct operation, for example:
+
+```c++
+if (!stack.empty()) {
+  int v = stack.top();
+  stack.pop();
+  process(v);
+}
+```
+
+Even though both `empty()`, `top()`, and `pop()` internally correctly use locks, the composition of such functions as in the example above is not necessarily correct in concurrent environments (and the above example explicitly not).
+
+Because of these composability issues, a typical pattern is that the names of concurrent functions are less clear than the names of sequential functions.  Given functions that perform a particular task and are named properly for these tasks, when making use of these functions for concurrency, often it is necessary to combine multiple of such functions into one larger function to adapt to the locking scheme.  In such cases, often the names of these function do not reflect well what the function does.
+
+In such situations, the recommendation is firstly to minimize the number of things that a function does and secondly adopt the convention to add "and" in the name of functions, akin to the most fundamental concurrency operations such as `testAndSet` and `compareAndSwap`.
+
+This has two benefits: 1) it is easier to find a proper name for what the function does and 2), since this is often regarded bad practice in sequential code, it marks these functions as likely concurrent functions.
+
+As an example, for the code above, a function that composes those operations could be called:
+
+```c++
+checkForEmptyAndProcess()
+```
+
+### Name condition variables according to what they wait for
+
+Naming condition variables well can make the code more readable, for example:
+
+```c++
+_recomputeRequestAvailable.wait(lock, [this] {
+  ...
+}
+_recomputeRequestAvailable.notify_all();
+```
+
+### Document new concepts introduced for concurrency
+
+If new concepts are introduced for concurrency, document the logic well and try to explain the state that needs to be maintained.  Concurrent code has a tendency to accumulate state with counters, booleans, a touched set, etc.  Each new boolean introduced doubles the state-space and you always want to be able to account for all cases.  In these situations, it is very helpful to explain the state machine, the flow, and invariants that help prune that state-space.
