@@ -2,6 +2,8 @@
 
 Welcome to the FreeCAD Developer's Guide! This is a work-in-progress, so please feel free to submit Issues and Pull Requests when you find areas that need work.
 
+The FreeCAD developer documentation is spread across several projects. For module-specific or legacy material, see the [Addon Academy](https://github.com/FreeCAD/Addon-Academy), [SourceDoc](https://github.com/FreeCAD/SourceDoc), [lens-docs](https://github.com/FreeCAD/lens-docs), and the [legacy wiki Developer Hub](https://wiki.freecad.org/Developer_hub).
+
 ### [Roadmap](./roadmap)
 Describes the broad objectives for FreeCAD Development
 

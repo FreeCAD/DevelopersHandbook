@@ -65,7 +65,11 @@ Technical information of interest to Contributors.
 
 ## See Also
 
-- [Wiki Developer Hub](https://wiki.freecad.org/Developer_hub)
+- [FreeCAD Developers Handbook](https://freecad.github.io/DevelopersHandbook/)
+- [Addon Academy](https://github.com/FreeCAD/Addon-Academy)
+- [SourceDoc](https://github.com/FreeCAD/SourceDoc)
+- [lens-docs](https://github.com/FreeCAD/lens-docs)
+- [Legacy wiki Developer Hub](https://wiki.freecad.org/Developer_hub)
 
 - [Compiling](https://wiki.freecad.org/Developer_hub#Compiling_FreeCAD)
 
