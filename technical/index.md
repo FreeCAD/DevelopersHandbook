@@ -20,6 +20,8 @@ Technical information of interest to Contributors.
 
 - [Automated Testing](./automated_testing)
 
+- [Profiling Python Code](./Profiling-Python)
+
 - [Dealing with Property Changes](./PropertyChanges)
 
 - The FreeCAD developer's tool set:

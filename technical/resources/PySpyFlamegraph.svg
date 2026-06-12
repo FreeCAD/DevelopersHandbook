@@ -1,0 +1,491 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" width="1200" height="506" onload="init(evt)" viewBox="0 0 1200 506" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:fg="http://github.com/jonhoo/inferno"><!--Flame graph stack visualization. See https://github.com/brendangregg/FlameGraph for latest version, and http://www.brendangregg.com/flamegraphs.html for examples.--><!--NOTES: --><defs><linearGradient id="background" y1="0" y2="1" x1="0" x2="0"><stop stop-color="#eeeeee" offset="5%"/><stop stop-color="#eeeeb0" offset="95%"/></linearGradient></defs><style type="text/css">
+text { font-family:monospace; font-size:12px }
+#title { text-anchor:middle; font-size:17px; }
+#matched { text-anchor:end; }
+#search { text-anchor:end; opacity:0.1; cursor:pointer; }
+#search:hover, #search.show { opacity:1; }
+#subtitle { text-anchor:middle; font-color:rgb(160,160,160); }
+#unzoom { cursor:pointer; }
+#frames > *:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+.hide { display:none; }
+.parent { opacity:0.5; }
+</style><script type="text/ecmascript"><![CDATA[
+        var nametype = 'Function:';
+        var fontsize = 12;
+        var fontwidth = 0.59;
+        var xpad = 10;
+        var inverted = true;
+        var searchcolor = 'rgb(230,0,230)';
+        var fluiddrawing = true;
+        var truncate_text_right = false;
+    ]]><![CDATA["use strict";
+var details, searchbtn, unzoombtn, matchedtxt, svg, searching, frames, known_font_width;
+function init(evt) {
+    details = document.getElementById("details").firstChild;
+    searchbtn = document.getElementById("search");
+    unzoombtn = document.getElementById("unzoom");
+    matchedtxt = document.getElementById("matched");
+    svg = document.getElementsByTagName("svg")[0];
+    frames = document.getElementById("frames");
+    known_font_width = get_monospace_width(frames);
+    total_samples = parseInt(frames.attributes.total_samples.value);
+    searching = 0;
+
+    // Use GET parameters to restore a flamegraph's state.
+    var restore_state = function() {
+        var params = get_params();
+        if (params.x && params.y)
+            zoom(find_group(document.querySelector('[*|x="' + params.x + '"][y="' + params.y + '"]')));
+        if (params.s)
+            search(params.s);
+    };
+
+    if (fluiddrawing) {
+        // Make width dynamic so the SVG fits its parent's width.
+        svg.removeAttribute("width");
+        // Edge requires us to have a viewBox that gets updated with size changes.
+        var isEdge = /Edge\/\d./i.test(navigator.userAgent);
+        if (!isEdge) {
+            svg.removeAttribute("viewBox");
+        }
+        var update_for_width_change = function() {
+            if (isEdge) {
+                svg.attributes.viewBox.value = "0 0 " + svg.width.baseVal.value + " " + svg.height.baseVal.value;
+            }
+
+            // Keep consistent padding on left and right of frames container.
+            frames.attributes.width.value = svg.width.baseVal.value - xpad * 2;
+
+            // Text truncation needs to be adjusted for the current width.
+            update_text_for_elements(frames.children);
+
+            // Keep search elements at a fixed distance from right edge.
+            var svgWidth = svg.width.baseVal.value;
+            searchbtn.attributes.x.value = svgWidth - xpad;
+            matchedtxt.attributes.x.value = svgWidth - xpad;
+        };
+        window.addEventListener('resize', function() {
+            update_for_width_change();
+        });
+        // This needs to be done asynchronously for Safari to work.
+        setTimeout(function() {
+            unzoom();
+            update_for_width_change();
+            restore_state();
+        }, 0);
+    } else {
+        restore_state();
+    }
+}
+// event listeners
+window.addEventListener("click", function(e) {
+    var target = find_group(e.target);
+    if (target) {
+        if (target.nodeName == "a") {
+            if (e.ctrlKey === false) return;
+            e.preventDefault();
+        }
+        if (target.classList.contains("parent")) unzoom();
+        zoom(target);
+
+        // set parameters for zoom state
+        var el = target.querySelector("rect");
+        if (el && el.attributes && el.attributes.y && el.attributes["fg:x"]) {
+            var params = get_params()
+            params.x = el.attributes["fg:x"].value;
+            params.y = el.attributes.y.value;
+            history.replaceState(null, null, parse_params(params));
+        }
+    }
+    else if (e.target.id == "unzoom") {
+        unzoom();
+
+        // remove zoom state
+        var params = get_params();
+        if (params.x) delete params.x;
+        if (params.y) delete params.y;
+        history.replaceState(null, null, parse_params(params));
+    }
+    else if (e.target.id == "search") search_prompt();
+}, false)
+// mouse-over for info
+// show
+window.addEventListener("mouseover", function(e) {
+    var target = find_group(e.target);
+    if (target) details.nodeValue = nametype + " " + g_to_text(target);
+}, false)
+// clear
+window.addEventListener("mouseout", function(e) {
+    var target = find_group(e.target);
+    if (target) details.nodeValue = ' ';
+}, false)
+// ctrl-F for search
+window.addEventListener("keydown",function (e) {
+    if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+        e.preventDefault();
+        search_prompt();
+    }
+}, false)
+// functions
+function get_params() {
+    var params = {};
+    var paramsarr = window.location.search.substr(1).split('&');
+    for (var i = 0; i < paramsarr.length; ++i) {
+        var tmp = paramsarr[i].split("=");
+        if (!tmp[0] || !tmp[1]) continue;
+        params[tmp[0]]  = decodeURIComponent(tmp[1]);
+    }
+    return params;
+}
+function parse_params(params) {
+    var uri = "?";
+    for (var key in params) {
+        uri += key + '=' + encodeURIComponent(params[key]) + '&';
+    }
+    if (uri.slice(-1) == "&")
+        uri = uri.substring(0, uri.length - 1);
+    if (uri == '?')
+        uri = window.location.href.split('?')[0];
+    return uri;
+}
+function find_child(node, selector) {
+    var children = node.querySelectorAll(selector);
+    if (children.length) return children[0];
+    return;
+}
+function find_group(node) {
+    var parent = node.parentElement;
+    if (!parent) return;
+    if (parent.id == "frames") return node;
+    return find_group(parent);
+}
+function orig_save(e, attr, val) {
+    if (e.attributes["fg:orig_" + attr] != undefined) return;
+    if (e.attributes[attr] == undefined) return;
+    if (val == undefined) val = e.attributes[attr].value;
+    e.setAttribute("fg:orig_" + attr, val);
+}
+function orig_load(e, attr) {
+    if (e.attributes["fg:orig_"+attr] == undefined) return;
+    e.attributes[attr].value = e.attributes["fg:orig_" + attr].value;
+    e.removeAttribute("fg:orig_" + attr);
+}
+function g_to_text(e) {
+    var text = find_child(e, "title").firstChild.nodeValue;
+    return (text)
+}
+function g_to_func(e) {
+    var func = g_to_text(e);
+    // if there's any manipulation we want to do to the function
+    // name before it's searched, do it here before returning.
+    return (func);
+}
+function get_monospace_width(frames) {
+    // Given the id="frames" element, return the width of text characters if
+    // this is a monospace font, otherwise return 0.
+    text = find_child(frames.children[0], "text");
+    originalContent = text.textContent;
+    text.textContent = "!";
+    bangWidth = text.getComputedTextLength();
+    text.textContent = "W";
+    wWidth = text.getComputedTextLength();
+    text.textContent = originalContent;
+    if (bangWidth === wWidth) {
+        return bangWidth;
+    } else {
+        return 0;
+    }
+}
+function update_text_for_elements(elements) {
+    // In order to render quickly in the browser, you want to do one pass of
+    // reading attributes, and one pass of mutating attributes. See
+    // https://web.dev/avoid-large-complex-layouts-and-layout-thrashing/ for details.
+
+    // Fall back to inefficient calculation, if we're variable-width font.
+    // TODO This should be optimized somehow too.
+    if (known_font_width === 0) {
+        for (var i = 0; i < elements.length; i++) {
+            update_text(elements[i]);
+        }
+        return;
+    }
+
+    var textElemNewAttributes = [];
+    for (var i = 0; i < elements.length; i++) {
+        var e = elements[i];
+        var r = find_child(e, "rect");
+        var t = find_child(e, "text");
+        var w = parseFloat(r.attributes.width.value) * frames.attributes.width.value / 100 - 3;
+        var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+        var newX = format_percent((parseFloat(r.attributes.x.value) + (100 * 3 / frames.attributes.width.value)));
+
+        // Smaller than this size won't fit anything
+        if (w < 2 * known_font_width) {
+            textElemNewAttributes.push([newX, ""]);
+            continue;
+        }
+
+        // Fit in full text width
+        if (txt.length * known_font_width < w) {
+            textElemNewAttributes.push([newX, txt]);
+            continue;
+        }
+
+        var substringLength = Math.floor(w / known_font_width) - 2;
+        if (truncate_text_right) {
+            // Truncate the right side of the text.
+            textElemNewAttributes.push([newX, txt.substring(0, substringLength) + ".."]);
+            continue;
+        } else {
+            // Truncate the left side of the text.
+            textElemNewAttributes.push([newX, ".." + txt.substring(txt.length - substringLength, txt.length)]);
+            continue;
+        }
+    }
+
+    console.assert(textElemNewAttributes.length === elements.length, "Resize failed, please file a bug at https://github.com/jonhoo/inferno/");
+
+    // Now that we know new textContent, set it all in one go so we don't refresh a bazillion times.
+    for (var i = 0; i < elements.length; i++) {
+        var e = elements[i];
+        var values = textElemNewAttributes[i];
+        var t = find_child(e, "text");
+        t.attributes.x.value = values[0];
+        t.textContent = values[1];
+    }
+}
+
+function update_text(e) {
+    var r = find_child(e, "rect");
+    var t = find_child(e, "text");
+    var w = parseFloat(r.attributes.width.value) * frames.attributes.width.value / 100 - 3;
+    var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+    t.attributes.x.value = format_percent((parseFloat(r.attributes.x.value) + (100 * 3 / frames.attributes.width.value)));
+
+    // Smaller than this size won't fit anything
+    if (w < 2 * fontsize * fontwidth) {
+        t.textContent = "";
+        return;
+    }
+    t.textContent = txt;
+    // Fit in full text width
+    if (t.getComputedTextLength() < w)
+        return;
+    if (truncate_text_right) {
+        // Truncate the right side of the text.
+        for (var x = txt.length - 2; x > 0; x--) {
+            if (t.getSubStringLength(0, x + 2) <= w) {
+                t.textContent = txt.substring(0, x) + "..";
+                return;
+            }
+        }
+    } else {
+        // Truncate the left side of the text.
+        for (var x = 2; x < txt.length; x++) {
+            if (t.getSubStringLength(x - 2, txt.length) <= w) {
+                t.textContent = ".." + txt.substring(x, txt.length);
+                return;
+            }
+        }
+    }
+    t.textContent = "";
+}
+// zoom
+function zoom_reset(e) {
+    if (e.tagName == "rect") {
+        e.attributes.x.value = format_percent(100 * parseInt(e.attributes["fg:x"].value) / total_samples);
+        e.attributes.width.value = format_percent(100 * parseInt(e.attributes["fg:w"].value) / total_samples);
+    }
+    if (e.childNodes == undefined) return;
+    for(var i = 0, c = e.childNodes; i < c.length; i++) {
+        zoom_reset(c[i]);
+    }
+}
+function zoom_child(e, x, zoomed_width_samples) {
+    if (e.tagName == "text") {
+        var parent_x = parseFloat(find_child(e.parentNode, "rect[x]").attributes.x.value);
+        e.attributes.x.value = format_percent(parent_x + (100 * 3 / frames.attributes.width.value));
+    } else if (e.tagName == "rect") {
+        e.attributes.x.value = format_percent(100 * (parseInt(e.attributes["fg:x"].value) - x) / zoomed_width_samples);
+        e.attributes.width.value = format_percent(100 * parseInt(e.attributes["fg:w"].value) / zoomed_width_samples);
+    }
+    if (e.childNodes == undefined) return;
+    for(var i = 0, c = e.childNodes; i < c.length; i++) {
+        zoom_child(c[i], x, zoomed_width_samples);
+    }
+}
+function zoom_parent(e) {
+    if (e.attributes) {
+        if (e.attributes.x != undefined) {
+            e.attributes.x.value = "0.0%";
+        }
+        if (e.attributes.width != undefined) {
+            e.attributes.width.value = "100.0%";
+        }
+    }
+    if (e.childNodes == undefined) return;
+    for(var i = 0, c = e.childNodes; i < c.length; i++) {
+        zoom_parent(c[i]);
+    }
+}
+function zoom(node) {
+    var attr = find_child(node, "rect").attributes;
+    var width = parseInt(attr["fg:w"].value);
+    var xmin = parseInt(attr["fg:x"].value);
+    var xmax = xmin + width;
+    var ymin = parseFloat(attr.y.value);
+    unzoombtn.classList.remove("hide");
+    var el = frames.children;
+    var to_update_text = [];
+    for (var i = 0; i < el.length; i++) {
+        var e = el[i];
+        var a = find_child(e, "rect").attributes;
+        var ex = parseInt(a["fg:x"].value);
+        var ew = parseInt(a["fg:w"].value);
+        // Is it an ancestor
+        if (!inverted) {
+            var upstack = parseFloat(a.y.value) > ymin;
+        } else {
+            var upstack = parseFloat(a.y.value) < ymin;
+        }
+        if (upstack) {
+            // Direct ancestor
+            if (ex <= xmin && (ex+ew) >= xmax) {
+                e.classList.add("parent");
+                zoom_parent(e);
+                to_update_text.push(e);
+            }
+            // not in current path
+            else
+                e.classList.add("hide");
+        }
+        // Children maybe
+        else {
+            // no common path
+            if (ex < xmin || ex >= xmax) {
+                e.classList.add("hide");
+            }
+            else {
+                zoom_child(e, xmin, width);
+                to_update_text.push(e);
+            }
+        }
+    }
+    update_text_for_elements(to_update_text);
+}
+function unzoom() {
+    unzoombtn.classList.add("hide");
+    var el = frames.children;
+    for(var i = 0; i < el.length; i++) {
+        el[i].classList.remove("parent");
+        el[i].classList.remove("hide");
+        zoom_reset(el[i]);
+    }
+    update_text_for_elements(el);
+}
+// search
+function reset_search() {
+    var el = document.querySelectorAll("#frames rect");
+    for (var i = 0; i < el.length; i++) {
+        orig_load(el[i], "fill")
+    }
+    var params = get_params();
+    delete params.s;
+    history.replaceState(null, null, parse_params(params));
+}
+function search_prompt() {
+    if (!searching) {
+        var term = prompt("Enter a search term (regexp " +
+            "allowed, eg: ^ext4_)", "");
+        if (term != null) {
+            search(term)
+        }
+    } else {
+        reset_search();
+        searching = 0;
+        searchbtn.classList.remove("show");
+        searchbtn.firstChild.nodeValue = "Search"
+        matchedtxt.classList.add("hide");
+        matchedtxt.firstChild.nodeValue = ""
+    }
+}
+function search(term) {
+    var re = new RegExp(term);
+    var el = frames.children;
+    var matches = new Object();
+    var maxwidth = 0;
+    for (var i = 0; i < el.length; i++) {
+        var e = el[i];
+        // Skip over frames which are either not visible, or below the zoomed-to frame
+        if (e.classList.contains("hide") || e.classList.contains("parent")) {
+            continue;
+        }
+        var func = g_to_func(e);
+        var rect = find_child(e, "rect");
+        if (func == null || rect == null)
+            continue;
+        // Save max width. Only works as we have a root frame
+        var w = parseInt(rect.attributes["fg:w"].value);
+        if (w > maxwidth)
+            maxwidth = w;
+        if (func.match(re)) {
+            // highlight
+            var x = parseInt(rect.attributes["fg:x"].value);
+            orig_save(rect, "fill");
+            rect.attributes.fill.value = searchcolor;
+            // remember matches
+            if (matches[x] == undefined) {
+                matches[x] = w;
+            } else {
+                if (w > matches[x]) {
+                    // overwrite with parent
+                    matches[x] = w;
+                }
+            }
+            searching = 1;
+        }
+    }
+    if (!searching)
+        return;
+    var params = get_params();
+    params.s = term;
+    history.replaceState(null, null, parse_params(params));
+
+    searchbtn.classList.add("show");
+    searchbtn.firstChild.nodeValue = "Reset Search";
+    // calculate percent matched, excluding vertical overlap
+    var count = 0;
+    var lastx = -1;
+    var lastw = 0;
+    var keys = Array();
+    for (k in matches) {
+        if (matches.hasOwnProperty(k))
+            keys.push(k);
+    }
+    // sort the matched frames by their x location
+    // ascending, then width descending
+    keys.sort(function(a, b){
+        return a - b;
+    });
+    // Step through frames saving only the biggest bottom-up frames
+    // thanks to the sort order. This relies on the tree property
+    // where children are always smaller than their parents.
+    for (var k in keys) {
+        var x = parseInt(keys[k]);
+        var w = matches[keys[k]];
+        if (x >= lastx + lastw) {
+            count += w;
+            lastx = x;
+            lastw = w;
+        }
+    }
+    // display matched percent
+    matchedtxt.classList.remove("hide");
+    var pct = 100 * count / maxwidth;
+    if (pct != 100) pct = pct.toFixed(1);
+    matchedtxt.firstChild.nodeValue = "Matched: " + pct + "%";
+}
+function format_percent(n) {
+    return n.toFixed(4) + "%";
+}
+]]></script><rect x="0" y="0" width="100%" height="506" fill="url(#background)"/><text id="title" fill="rgb(0,0,0)" x="50.0000%" y="24.00">py-spy record -o output1 -f flamegraph --pid 873907</text><text id="details" fill="rgb(0,0,0)" x="10" y="40.00"> </text><text id="unzoom" class="hide" fill="rgb(0,0,0)" x="10" y="24.00">Reset Zoom</text><text id="search" fill="rgb(0,0,0)" x="1190" y="24.00">Search</text><text id="matched" fill="rgb(0,0,0)" x="1190" y="495.00"> </text><svg id="frames" x="10" width="1180" total_samples="264"><g><title>__init__ (yaml/nodes.py:33) (1 samples, 0.38%)</title><rect x="27.6515%" y="324" width="0.3788%" height="15" fill="rgb(227,0,7)" fg:x="73" fg:w="1"/><text x="27.9015%" y="334.50"></text></g><g><title>ascend_resolver (yaml/resolver.py:115) (1 samples, 0.38%)</title><rect x="28.0303%" y="324" width="0.3788%" height="15" fill="rgb(217,0,24)" fg:x="74" fg:w="1"/><text x="28.2803%" y="334.50"></text></g><g><title>descend_resolver (yaml/resolver.py:92) (1 samples, 0.38%)</title><rect x="28.4091%" y="324" width="0.3788%" height="15" fill="rgb(221,193,54)" fg:x="75" fg:w="1"/><text x="28.6591%" y="334.50"></text></g><g><title>resolve (yaml/resolver.py:144) (2 samples, 0.76%)</title><rect x="28.7879%" y="324" width="0.7576%" height="15" fill="rgb(248,212,6)" fg:x="76" fg:w="2"/><text x="29.0379%" y="334.50"></text></g><g><title>resolve (yaml/resolver.py:150) (7 samples, 2.65%)</title><rect x="29.5455%" y="324" width="2.6515%" height="15" fill="rgb(208,68,35)" fg:x="78" fg:w="7"/><text x="29.7955%" y="334.50">re..</text></g><g><title>resolve (yaml/resolver.py:151) (2 samples, 0.76%)</title><rect x="32.1970%" y="324" width="0.7576%" height="15" fill="rgb(232,128,0)" fg:x="85" fg:w="2"/><text x="32.4470%" y="334.50"></text></g><g><title>get_single_data (yaml/constructor.py:49) (86 samples, 32.58%)</title><rect x="0.7576%" y="308" width="32.5758%" height="15" fill="rgb(207,160,47)" fg:x="2" fg:w="86"/><text x="1.0076%" y="318.50">get_single_data (yaml/constructor.py:49)</text></g><g><title>resolve (yaml/resolver.py:154) (1 samples, 0.38%)</title><rect x="32.9545%" y="324" width="0.3788%" height="15" fill="rgb(228,23,34)" fg:x="87" fg:w="1"/><text x="33.2045%" y="334.50"></text></g><g><title>flatten_mapping (yaml/constructor.py:183) (2 samples, 0.76%)</title><rect x="33.3333%" y="372" width="0.7576%" height="15" fill="rgb(218,30,26)" fg:x="88" fg:w="2"/><text x="33.5833%" y="382.50"></text></g><g><title>construct_mapping (yaml/constructor.py:217) (3 samples, 1.14%)</title><rect x="33.3333%" y="356" width="1.1364%" height="15" fill="rgb(220,122,19)" fg:x="88" fg:w="3"/><text x="33.5833%" y="366.50"></text></g><g><title>flatten_mapping (yaml/constructor.py:211) (1 samples, 0.38%)</title><rect x="34.0909%" y="372" width="0.3788%" height="15" fill="rgb(250,228,42)" fg:x="90" fg:w="1"/><text x="34.3409%" y="382.50"></text></g><g><title>construct_object (yaml/constructor.py:100) (1 samples, 0.38%)</title><rect x="35.2273%" y="388" width="0.3788%" height="15" fill="rgb(240,193,28)" fg:x="93" fg:w="1"/><text x="35.4773%" y="398.50"></text></g><g><title>construct_yaml_str (yaml/constructor.py:403) (1 samples, 0.38%)</title><rect x="35.2273%" y="404" width="0.3788%" height="15" fill="rgb(216,20,37)" fg:x="93" fg:w="1"/><text x="35.4773%" y="414.50"></text></g><g><title>construct_object (yaml/constructor.py:103) (1 samples, 0.38%)</title><rect x="35.6061%" y="388" width="0.3788%" height="15" fill="rgb(206,188,39)" fg:x="94" fg:w="1"/><text x="35.8561%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:68) (1 samples, 0.38%)</title><rect x="35.9848%" y="388" width="0.3788%" height="15" fill="rgb(217,207,13)" fg:x="95" fg:w="1"/><text x="36.2348%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:76) (2 samples, 0.76%)</title><rect x="36.3636%" y="388" width="0.7576%" height="15" fill="rgb(231,73,38)" fg:x="96" fg:w="2"/><text x="36.6136%" y="398.50"></text></g><g><title>construct_mapping (yaml/constructor.py:139) (8 samples, 3.03%)</title><rect x="34.4697%" y="372" width="3.0303%" height="15" fill="rgb(225,20,46)" fg:x="91" fg:w="8"/><text x="34.7197%" y="382.50">con..</text></g><g><title>construct_object (yaml/constructor.py:79) (1 samples, 0.38%)</title><rect x="37.1212%" y="388" width="0.3788%" height="15" fill="rgb(210,31,41)" fg:x="98" fg:w="1"/><text x="37.3712%" y="398.50"></text></g><g><title>construct_mapping (yaml/constructor.py:140) (1 samples, 0.38%)</title><rect x="37.5000%" y="372" width="0.3788%" height="15" fill="rgb(221,200,47)" fg:x="99" fg:w="1"/><text x="37.7500%" y="382.50"></text></g><g><title>__instancecheck__ (&lt;frozen abc&gt;:117) (1 samples, 0.38%)</title><rect x="37.5000%" y="388" width="0.3788%" height="15" fill="rgb(226,26,5)" fg:x="99" fg:w="1"/><text x="37.7500%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:100) (3 samples, 1.14%)</title><rect x="37.8788%" y="388" width="1.1364%" height="15" fill="rgb(249,33,26)" fg:x="100" fg:w="3"/><text x="38.1288%" y="398.50"></text></g><g><title>construct_yaml_str (yaml/constructor.py:403) (2 samples, 0.76%)</title><rect x="38.2576%" y="404" width="0.7576%" height="15" fill="rgb(235,183,28)" fg:x="101" fg:w="2"/><text x="38.5076%" y="414.50"></text></g><g><title>construct_scalar (yaml/constructor.py:178) (2 samples, 0.76%)</title><rect x="38.2576%" y="420" width="0.7576%" height="15" fill="rgb(221,5,38)" fg:x="101" fg:w="2"/><text x="38.5076%" y="430.50"></text></g><g><title>construct_object (yaml/constructor.py:103) (1 samples, 0.38%)</title><rect x="39.0152%" y="388" width="0.3788%" height="15" fill="rgb(247,18,42)" fg:x="103" fg:w="1"/><text x="39.2652%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:112) (1 samples, 0.38%)</title><rect x="39.3939%" y="388" width="0.3788%" height="15" fill="rgb(241,131,45)" fg:x="104" fg:w="1"/><text x="39.6439%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:68) (1 samples, 0.38%)</title><rect x="39.7727%" y="388" width="0.3788%" height="15" fill="rgb(249,31,29)" fg:x="105" fg:w="1"/><text x="40.0227%" y="398.50"></text></g><g><title>construct_yaml_map (yaml/constructor.py:413) (19 samples, 7.20%)</title><rect x="33.3333%" y="340" width="7.1970%" height="15" fill="rgb(225,111,53)" fg:x="88" fg:w="19"/><text x="33.5833%" y="350.50">construct_..</text></g><g><title>construct_mapping (yaml/constructor.py:218) (16 samples, 6.06%)</title><rect x="34.4697%" y="356" width="6.0606%" height="15" fill="rgb(238,160,17)" fg:x="91" fg:w="16"/><text x="34.7197%" y="366.50">construc..</text></g><g><title>construct_mapping (yaml/constructor.py:143) (7 samples, 2.65%)</title><rect x="37.8788%" y="372" width="2.6515%" height="15" fill="rgb(214,148,48)" fg:x="100" fg:w="7"/><text x="38.1288%" y="382.50">co..</text></g><g><title>construct_object (yaml/constructor.py:80) (1 samples, 0.38%)</title><rect x="40.1515%" y="388" width="0.3788%" height="15" fill="rgb(232,36,49)" fg:x="106" fg:w="1"/><text x="40.4015%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:105) (1 samples, 0.38%)</title><rect x="40.5303%" y="388" width="0.3788%" height="15" fill="rgb(209,103,24)" fg:x="107" fg:w="1"/><text x="40.7803%" y="398.50"></text></g><g><title>construct_yaml_map (yaml/constructor.py:410) (1 samples, 0.38%)</title><rect x="40.5303%" y="404" width="0.3788%" height="15" fill="rgb(229,88,8)" fg:x="107" fg:w="1"/><text x="40.7803%" y="414.50"></text></g><g><title>from_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:104) (109 samples, 41.29%)</title><rect x="0.0000%" y="260" width="41.2879%" height="15" fill="rgb(213,181,19)" fg:x="0" fg:w="109"/><text x="0.2500%" y="270.50">from_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:1..</text></g><g><title>_load_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:21) (109 samples, 41.29%)</title><rect x="0.0000%" y="276" width="41.2879%" height="15" fill="rgb(254,191,54)" fg:x="0" fg:w="109"/><text x="0.2500%" y="286.50">_load_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:..</text></g><g><title>load (yaml/__init__.py:81) (109 samples, 41.29%)</title><rect x="0.0000%" y="292" width="41.2879%" height="15" fill="rgb(241,83,37)" fg:x="0" fg:w="109"/><text x="0.2500%" y="302.50">load (yaml/__init__.py:81)</text></g><g><title>get_single_data (yaml/constructor.py:51) (21 samples, 7.95%)</title><rect x="33.3333%" y="308" width="7.9545%" height="15" fill="rgb(233,36,39)" fg:x="88" fg:w="21"/><text x="33.5833%" y="318.50">get_single_..</text></g><g><title>construct_document (yaml/constructor.py:60) (21 samples, 7.95%)</title><rect x="33.3333%" y="324" width="7.9545%" height="15" fill="rgb(226,3,54)" fg:x="88" fg:w="21"/><text x="33.5833%" y="334.50">construct_d..</text></g><g><title>construct_yaml_seq (yaml/constructor.py:408) (2 samples, 0.76%)</title><rect x="40.5303%" y="340" width="0.7576%" height="15" fill="rgb(245,192,40)" fg:x="107" fg:w="2"/><text x="40.7803%" y="350.50"></text></g><g><title>construct_sequence (yaml/constructor.py:129) (2 samples, 0.76%)</title><rect x="40.5303%" y="356" width="0.7576%" height="15" fill="rgb(238,167,29)" fg:x="107" fg:w="2"/><text x="40.7803%" y="366.50"></text></g><g><title>&lt;listcomp&gt; (yaml/constructor.py:129) (2 samples, 0.76%)</title><rect x="40.5303%" y="372" width="0.7576%" height="15" fill="rgb(232,182,51)" fg:x="107" fg:w="2"/><text x="40.7803%" y="382.50"></text></g><g><title>construct_object (yaml/constructor.py:73) (1 samples, 0.38%)</title><rect x="40.9091%" y="388" width="0.3788%" height="15" fill="rgb(231,60,39)" fg:x="108" fg:w="1"/><text x="41.1591%" y="398.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:210) (8 samples, 3.03%)</title><rect x="41.2879%" y="372" width="3.0303%" height="15" fill="rgb(208,69,12)" fg:x="109" fg:w="8"/><text x="41.5379%" y="382.50">_de..</text></g><g><title>from_serialized_value (history_wb/domain/tree/data_path.py:364) (9 samples, 3.41%)</title><rect x="41.2879%" y="356" width="3.4091%" height="15" fill="rgb(235,93,37)" fg:x="109" fg:w="9"/><text x="41.5379%" y="366.50">fro..</text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:222) (1 samples, 0.38%)</title><rect x="44.3182%" y="372" width="0.3788%" height="15" fill="rgb(213,116,39)" fg:x="117" fg:w="1"/><text x="44.5682%" y="382.50"></text></g><g><title>__init__ (&lt;string&gt;:2) (1 samples, 0.38%)</title><rect x="44.3182%" y="388" width="0.3788%" height="15" fill="rgb(222,207,29)" fg:x="117" fg:w="1"/><text x="44.5682%" y="398.50"></text></g><g><title>from_serialized_value (history_wb/domain/tree/data_path.py:546) (1 samples, 0.38%)</title><rect x="44.6970%" y="356" width="0.3788%" height="15" fill="rgb(206,96,30)" fg:x="118" fg:w="1"/><text x="44.9470%" y="366.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:222) (1 samples, 0.38%)</title><rect x="44.6970%" y="372" width="0.3788%" height="15" fill="rgb(218,138,4)" fg:x="118" fg:w="1"/><text x="44.9470%" y="382.50"></text></g><g><title>__init__ (&lt;string&gt;:4) (1 samples, 0.38%)</title><rect x="44.6970%" y="388" width="0.3788%" height="15" fill="rgb(250,191,14)" fg:x="118" fg:w="1"/><text x="44.9470%" y="398.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:215) (1 samples, 0.38%)</title><rect x="45.0758%" y="420" width="0.3788%" height="15" fill="rgb(239,60,40)" fg:x="119" fg:w="1"/><text x="45.3258%" y="430.50"></text></g><g><title>__call__ (enum.py:714) (1 samples, 0.38%)</title><rect x="45.0758%" y="436" width="0.3788%" height="15" fill="rgb(206,27,48)" fg:x="119" fg:w="1"/><text x="45.3258%" y="446.50"></text></g><g><title>__new__ (enum.py:1105) (1 samples, 0.38%)</title><rect x="45.0758%" y="452" width="0.3788%" height="15" fill="rgb(225,35,8)" fg:x="119" fg:w="1"/><text x="45.3258%" y="462.50"></text></g><g><title>_compute_for_paths (history_wb/application/actions/diffs/create_document_diffs.py:229) (121 samples, 45.83%)</title><rect x="0.0000%" y="196" width="45.8333%" height="15" fill="rgb(250,213,24)" fg:x="0" fg:w="121"/><text x="0.2500%" y="206.50">_compute_for_paths (history_wb/application/actions/diffs/create_document_di..</text></g><g><title>_load_snapshot (history_wb/application/actions/diffs/create_document_diffs.py:244) (121 samples, 45.83%)</title><rect x="0.0000%" y="212" width="45.8333%" height="15" fill="rgb(247,123,22)" fg:x="0" fg:w="121"/><text x="0.2500%" y="222.50">_load_snapshot (history_wb/application/actions/diffs/create_document_diffs...</text></g><g><title>execute (history_wb/application/actions/snapshots/create_document_snapshot_commit.py:76) (121 samples, 45.83%)</title><rect x="0.0000%" y="228" width="45.8333%" height="15" fill="rgb(231,138,38)" fg:x="0" fg:w="121"/><text x="0.2500%" y="238.50">execute (history_wb/application/actions/snapshots/create_document_snapshot_..</text></g><g><title>from_yaml (history_wb/infrastructure/persistence/snapshot_yaml_deserializer.py:14) (121 samples, 45.83%)</title><rect x="0.0000%" y="244" width="45.8333%" height="15" fill="rgb(231,145,46)" fg:x="0" fg:w="121"/><text x="0.2500%" y="254.50">from_yaml (history_wb/infrastructure/persistence/snapshot_yaml_deserializer..</text></g><g><title>from_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:105) (12 samples, 4.55%)</title><rect x="41.2879%" y="260" width="4.5455%" height="15" fill="rgb(251,118,11)" fg:x="109" fg:w="12"/><text x="41.5379%" y="270.50">from_..</text></g><g><title>_from_data (history_wb/infrastructure/persistence/snapshot_yaml.py:128) (12 samples, 4.55%)</title><rect x="41.2879%" y="276" width="4.5455%" height="15" fill="rgb(217,147,25)" fg:x="109" fg:w="12"/><text x="41.5379%" y="286.50">_from..</text></g><g><title>_deserialize_properties (history_wb/infrastructure/persistence/snapshot_yaml.py:185) (12 samples, 4.55%)</title><rect x="41.2879%" y="292" width="4.5455%" height="15" fill="rgb(247,81,37)" fg:x="109" fg:w="12"/><text x="41.5379%" y="302.50">_dese..</text></g><g><title>&lt;dictcomp&gt; (history_wb/infrastructure/persistence/snapshot_yaml.py:185) (12 samples, 4.55%)</title><rect x="41.2879%" y="308" width="4.5455%" height="15" fill="rgb(209,12,38)" fg:x="109" fg:w="12"/><text x="41.5379%" y="318.50">&lt;dict..</text></g><g><title>from_serialized (history_wb/domain/tree/property.py:71) (12 samples, 4.55%)</title><rect x="41.2879%" y="324" width="4.5455%" height="15" fill="rgb(227,1,9)" fg:x="109" fg:w="12"/><text x="41.5379%" y="334.50">from_..</text></g><g><title>data_path_from_serialized (history_wb/domain/tree/data_path.py:832) (12 samples, 4.55%)</title><rect x="41.2879%" y="340" width="4.5455%" height="15" fill="rgb(248,47,43)" fg:x="109" fg:w="12"/><text x="41.5379%" y="350.50">data_..</text></g><g><title>from_serialized_value (history_wb/domain/tree/data_path.py:739) (2 samples, 0.76%)</title><rect x="45.0758%" y="356" width="0.7576%" height="15" fill="rgb(221,10,30)" fg:x="119" fg:w="2"/><text x="45.3258%" y="366.50"></text></g><g><title>&lt;listcomp&gt; (history_wb/domain/tree/data_path.py:739) (2 samples, 0.76%)</title><rect x="45.0758%" y="372" width="0.7576%" height="15" fill="rgb(210,229,1)" fg:x="119" fg:w="2"/><text x="45.3258%" y="382.50"></text></g><g><title>data_path_from_serialized (history_wb/domain/tree/data_path.py:832) (2 samples, 0.76%)</title><rect x="45.0758%" y="388" width="0.7576%" height="15" fill="rgb(222,148,37)" fg:x="119" fg:w="2"/><text x="45.3258%" y="398.50"></text></g><g><title>from_serialized_value (history_wb/domain/tree/data_path.py:623) (2 samples, 0.76%)</title><rect x="45.0758%" y="404" width="0.7576%" height="15" fill="rgb(234,67,33)" fg:x="119" fg:w="2"/><text x="45.3258%" y="414.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:222) (1 samples, 0.38%)</title><rect x="45.4545%" y="420" width="0.3788%" height="15" fill="rgb(247,98,35)" fg:x="120" fg:w="1"/><text x="45.7045%" y="430.50"></text></g><g><title>__init__ (&lt;string&gt;:5) (1 samples, 0.38%)</title><rect x="45.4545%" y="436" width="0.3788%" height="15" fill="rgb(247,138,52)" fg:x="120" fg:w="1"/><text x="45.7045%" y="446.50"></text></g><g><title>execute (history_wb/application/actions/snapshots/create_document_snapshot_commit.py:63) (1 samples, 0.38%)</title><rect x="45.8333%" y="228" width="0.3788%" height="15" fill="rgb(213,79,30)" fg:x="121" fg:w="1"/><text x="46.0833%" y="238.50"></text></g><g><title>file_exists (history_wb/domain/git/git_service.py:175) (1 samples, 0.38%)</title><rect x="45.8333%" y="244" width="0.3788%" height="15" fill="rgb(246,177,23)" fg:x="121" fg:w="1"/><text x="46.0833%" y="254.50"></text></g><g><title>file_exists (history_wb/infrastructure/git/git_port_adapter.py:832) (1 samples, 0.38%)</title><rect x="45.8333%" y="260" width="0.3788%" height="15" fill="rgb(230,62,27)" fg:x="121" fg:w="1"/><text x="46.0833%" y="270.50"></text></g><g><title>_run_git (history_wb/infrastructure/git/git_port_adapter.py:87) (1 samples, 0.38%)</title><rect x="45.8333%" y="276" width="0.3788%" height="15" fill="rgb(216,154,8)" fg:x="121" fg:w="1"/><text x="46.0833%" y="286.50"></text></g><g><title>run (subprocess.py:548) (1 samples, 0.38%)</title><rect x="45.8333%" y="292" width="0.3788%" height="15" fill="rgb(244,35,45)" fg:x="121" fg:w="1"/><text x="46.0833%" y="302.50"></text></g><g><title>__init__ (subprocess.py:1026) (1 samples, 0.38%)</title><rect x="45.8333%" y="308" width="0.3788%" height="15" fill="rgb(251,115,12)" fg:x="121" fg:w="1"/><text x="46.0833%" y="318.50"></text></g><g><title>_execute_child (subprocess.py:1914) (1 samples, 0.38%)</title><rect x="45.8333%" y="324" width="0.3788%" height="15" fill="rgb(240,54,50)" fg:x="121" fg:w="1"/><text x="46.0833%" y="334.50"></text></g><g><title>__init__ (yaml/nodes.py:29) (1 samples, 0.38%)</title><rect x="67.8030%" y="324" width="0.3788%" height="15" fill="rgb(233,84,52)" fg:x="179" fg:w="1"/><text x="68.0530%" y="334.50"></text></g><g><title>__init__ (yaml/nodes.py:33) (1 samples, 0.38%)</title><rect x="68.1818%" y="324" width="0.3788%" height="15" fill="rgb(207,117,47)" fg:x="180" fg:w="1"/><text x="68.4318%" y="334.50"></text></g><g><title>resolve (yaml/resolver.py:148) (3 samples, 1.14%)</title><rect x="68.5606%" y="324" width="1.1364%" height="15" fill="rgb(249,43,39)" fg:x="181" fg:w="3"/><text x="68.8106%" y="334.50"></text></g><g><title>resolve (yaml/resolver.py:150) (14 samples, 5.30%)</title><rect x="69.6970%" y="324" width="5.3030%" height="15" fill="rgb(209,38,44)" fg:x="184" fg:w="14"/><text x="69.9470%" y="334.50">resolv..</text></g><g><title>get_single_data (yaml/constructor.py:49) (73 samples, 27.65%)</title><rect x="47.7273%" y="308" width="27.6515%" height="15" fill="rgb(236,212,23)" fg:x="126" fg:w="73"/><text x="47.9773%" y="318.50">get_single_data (yaml/constructor.py:49)</text></g><g><title>resolve (yaml/resolver.py:151) (1 samples, 0.38%)</title><rect x="75.0000%" y="324" width="0.3788%" height="15" fill="rgb(242,79,21)" fg:x="198" fg:w="1"/><text x="75.2500%" y="334.50"></text></g><g><title>construct_mapping (yaml/constructor.py:217) (2 samples, 0.76%)</title><rect x="75.3788%" y="356" width="0.7576%" height="15" fill="rgb(211,96,35)" fg:x="199" fg:w="2"/><text x="75.6288%" y="366.50"></text></g><g><title>flatten_mapping (yaml/constructor.py:183) (1 samples, 0.38%)</title><rect x="75.7576%" y="372" width="0.3788%" height="15" fill="rgb(253,215,40)" fg:x="200" fg:w="1"/><text x="76.0076%" y="382.50"></text></g><g><title>construct_scalar (yaml/constructor.py:173) (2 samples, 0.76%)</title><rect x="77.2727%" y="420" width="0.7576%" height="15" fill="rgb(211,81,21)" fg:x="204" fg:w="2"/><text x="77.5227%" y="430.50"></text></g><g><title>construct_object (yaml/constructor.py:100) (31 samples, 11.74%)</title><rect x="77.2727%" y="388" width="11.7424%" height="15" fill="rgb(208,190,38)" fg:x="204" fg:w="31"/><text x="77.5227%" y="398.50">construct_object ..</text></g><g><title>construct_yaml_str (yaml/constructor.py:403) (31 samples, 11.74%)</title><rect x="77.2727%" y="404" width="11.7424%" height="15" fill="rgb(235,213,38)" fg:x="204" fg:w="31"/><text x="77.5227%" y="414.50">construct_yaml_st..</text></g><g><title>construct_scalar (yaml/constructor.py:178) (29 samples, 10.98%)</title><rect x="78.0303%" y="420" width="10.9848%" height="15" fill="rgb(237,122,38)" fg:x="206" fg:w="29"/><text x="78.2803%" y="430.50">construct_scalar..</text></g><g><title>construct_object (yaml/constructor.py:68) (1 samples, 0.38%)</title><rect x="89.0152%" y="388" width="0.3788%" height="15" fill="rgb(244,218,35)" fg:x="235" fg:w="1"/><text x="89.2652%" y="398.50"></text></g><g><title>construct_mapping (yaml/constructor.py:139) (35 samples, 13.26%)</title><rect x="76.5152%" y="372" width="13.2576%" height="15" fill="rgb(240,68,47)" fg:x="202" fg:w="35"/><text x="76.7652%" y="382.50">construct_mapping (y..</text></g><g><title>construct_object (yaml/constructor.py:79) (1 samples, 0.38%)</title><rect x="89.3939%" y="388" width="0.3788%" height="15" fill="rgb(210,16,53)" fg:x="236" fg:w="1"/><text x="89.6439%" y="398.50"></text></g><g><title>construct_mapping (yaml/constructor.py:140) (1 samples, 0.38%)</title><rect x="89.7727%" y="372" width="0.3788%" height="15" fill="rgb(235,124,12)" fg:x="237" fg:w="1"/><text x="90.0227%" y="382.50"></text></g><g><title>__instancecheck__ (&lt;frozen abc&gt;:117) (1 samples, 0.38%)</title><rect x="89.7727%" y="388" width="0.3788%" height="15" fill="rgb(224,169,11)" fg:x="237" fg:w="1"/><text x="90.0227%" y="398.50"></text></g><g><title>construct_mapping (yaml/constructor.py:141) (1 samples, 0.38%)</title><rect x="90.1515%" y="372" width="0.3788%" height="15" fill="rgb(250,166,2)" fg:x="238" fg:w="1"/><text x="90.4015%" y="382.50"></text></g><g><title>construct_object (yaml/constructor.py:100) (2 samples, 0.76%)</title><rect x="90.5303%" y="388" width="0.7576%" height="15" fill="rgb(242,216,29)" fg:x="239" fg:w="2"/><text x="90.7803%" y="398.50"></text></g><g><title>construct_yaml_str (yaml/constructor.py:403) (1 samples, 0.38%)</title><rect x="90.9091%" y="404" width="0.3788%" height="15" fill="rgb(230,116,27)" fg:x="240" fg:w="1"/><text x="91.1591%" y="414.50"></text></g><g><title>construct_scalar (yaml/constructor.py:178) (1 samples, 0.38%)</title><rect x="90.9091%" y="420" width="0.3788%" height="15" fill="rgb(228,99,48)" fg:x="240" fg:w="1"/><text x="91.1591%" y="430.50"></text></g><g><title>construct_scalar (yaml/constructor.py:122) (1 samples, 0.38%)</title><rect x="90.9091%" y="436" width="0.3788%" height="15" fill="rgb(253,11,6)" fg:x="240" fg:w="1"/><text x="91.1591%" y="446.50"></text></g><g><title>construct_object (yaml/constructor.py:103) (1 samples, 0.38%)</title><rect x="91.2879%" y="388" width="0.3788%" height="15" fill="rgb(247,143,39)" fg:x="241" fg:w="1"/><text x="91.5379%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:113) (1 samples, 0.38%)</title><rect x="91.6667%" y="388" width="0.3788%" height="15" fill="rgb(236,97,10)" fg:x="242" fg:w="1"/><text x="91.9167%" y="398.50"></text></g><g><title>construct_object (yaml/constructor.py:67) (1 samples, 0.38%)</title><rect x="92.0455%" y="388" width="0.3788%" height="15" fill="rgb(233,208,19)" fg:x="243" fg:w="1"/><text x="92.2955%" y="398.50"></text></g><g><title>construct_yaml_map (yaml/constructor.py:413) (46 samples, 17.42%)</title><rect x="75.3788%" y="340" width="17.4242%" height="15" fill="rgb(216,164,2)" fg:x="199" fg:w="46"/><text x="75.6288%" y="350.50">construct_yaml_map (yaml/co..</text></g><g><title>construct_mapping (yaml/constructor.py:218) (44 samples, 16.67%)</title><rect x="76.1364%" y="356" width="16.6667%" height="15" fill="rgb(220,129,5)" fg:x="201" fg:w="44"/><text x="76.3864%" y="366.50">construct_mapping (yaml/co..</text></g><g><title>construct_mapping (yaml/constructor.py:143) (6 samples, 2.27%)</title><rect x="90.5303%" y="372" width="2.2727%" height="15" fill="rgb(242,17,10)" fg:x="239" fg:w="6"/><text x="90.7803%" y="382.50">c..</text></g><g><title>construct_object (yaml/constructor.py:68) (1 samples, 0.38%)</title><rect x="92.4242%" y="388" width="0.3788%" height="15" fill="rgb(242,107,0)" fg:x="244" fg:w="1"/><text x="92.6742%" y="398.50"></text></g><g><title>construct_yaml_map (yaml/constructor.py:414) (1 samples, 0.38%)</title><rect x="92.8030%" y="340" width="0.3788%" height="15" fill="rgb(251,28,31)" fg:x="245" fg:w="1"/><text x="93.0530%" y="350.50"></text></g><g><title>from_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:104) (125 samples, 47.35%)</title><rect x="46.2121%" y="260" width="47.3485%" height="15" fill="rgb(233,223,10)" fg:x="122" fg:w="125"/><text x="46.4621%" y="270.50">from_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:104)</text></g><g><title>_load_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:21) (125 samples, 47.35%)</title><rect x="46.2121%" y="276" width="47.3485%" height="15" fill="rgb(215,21,27)" fg:x="122" fg:w="125"/><text x="46.4621%" y="286.50">_load_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:21)</text></g><g><title>load (yaml/__init__.py:81) (125 samples, 47.35%)</title><rect x="46.2121%" y="292" width="47.3485%" height="15" fill="rgb(232,23,21)" fg:x="122" fg:w="125"/><text x="46.4621%" y="302.50">load (yaml/__init__.py:81)</text></g><g><title>get_single_data (yaml/constructor.py:51) (48 samples, 18.18%)</title><rect x="75.3788%" y="308" width="18.1818%" height="15" fill="rgb(244,5,23)" fg:x="199" fg:w="48"/><text x="75.6288%" y="318.50">get_single_data (yaml/constr..</text></g><g><title>construct_document (yaml/constructor.py:60) (48 samples, 18.18%)</title><rect x="75.3788%" y="324" width="18.1818%" height="15" fill="rgb(226,81,46)" fg:x="199" fg:w="48"/><text x="75.6288%" y="334.50">construct_document (yaml/con..</text></g><g><title>construct_yaml_seq (yaml/constructor.py:408) (1 samples, 0.38%)</title><rect x="93.1818%" y="340" width="0.3788%" height="15" fill="rgb(247,70,30)" fg:x="246" fg:w="1"/><text x="93.4318%" y="350.50"></text></g><g><title>construct_sequence (yaml/constructor.py:129) (1 samples, 0.38%)</title><rect x="93.1818%" y="356" width="0.3788%" height="15" fill="rgb(212,68,19)" fg:x="246" fg:w="1"/><text x="93.4318%" y="366.50"></text></g><g><title>&lt;listcomp&gt; (yaml/constructor.py:129) (1 samples, 0.38%)</title><rect x="93.1818%" y="372" width="0.3788%" height="15" fill="rgb(240,187,13)" fg:x="246" fg:w="1"/><text x="93.4318%" y="382.50"></text></g><g><title>construct_object (yaml/constructor.py:111) (1 samples, 0.38%)</title><rect x="93.1818%" y="388" width="0.3788%" height="15" fill="rgb(223,113,26)" fg:x="246" fg:w="1"/><text x="93.4318%" y="398.50"></text></g><g><title>data_path_from_serialized (history_wb/domain/tree/data_path.py:828) (1 samples, 0.38%)</title><rect x="93.5606%" y="340" width="0.3788%" height="15" fill="rgb(206,192,2)" fg:x="247" fg:w="1"/><text x="93.8106%" y="350.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:210) (1 samples, 0.38%)</title><rect x="93.9394%" y="372" width="0.3788%" height="15" fill="rgb(241,108,4)" fg:x="248" fg:w="1"/><text x="94.1894%" y="382.50"></text></g><g><title>from_serialized_value (history_wb/domain/tree/data_path.py:364) (2 samples, 0.76%)</title><rect x="93.9394%" y="356" width="0.7576%" height="15" fill="rgb(247,173,49)" fg:x="248" fg:w="2"/><text x="94.1894%" y="366.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:211) (1 samples, 0.38%)</title><rect x="94.3182%" y="372" width="0.3788%" height="15" fill="rgb(224,114,35)" fg:x="249" fg:w="1"/><text x="94.5682%" y="382.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:222) (1 samples, 0.38%)</title><rect x="94.6970%" y="420" width="0.3788%" height="15" fill="rgb(245,159,27)" fg:x="250" fg:w="1"/><text x="94.9470%" y="430.50"></text></g><g><title>__init__ (&lt;string&gt;:6) (1 samples, 0.38%)</title><rect x="94.6970%" y="436" width="0.3788%" height="15" fill="rgb(245,172,44)" fg:x="250" fg:w="1"/><text x="94.9470%" y="446.50"></text></g><g><title>_from_data (history_wb/infrastructure/persistence/snapshot_yaml.py:128) (5 samples, 1.89%)</title><rect x="93.5606%" y="276" width="1.8939%" height="15" fill="rgb(236,23,11)" fg:x="247" fg:w="5"/><text x="93.8106%" y="286.50">_..</text></g><g><title>_deserialize_properties (history_wb/infrastructure/persistence/snapshot_yaml.py:185) (5 samples, 1.89%)</title><rect x="93.5606%" y="292" width="1.8939%" height="15" fill="rgb(205,117,38)" fg:x="247" fg:w="5"/><text x="93.8106%" y="302.50">_..</text></g><g><title>&lt;dictcomp&gt; (history_wb/infrastructure/persistence/snapshot_yaml.py:185) (5 samples, 1.89%)</title><rect x="93.5606%" y="308" width="1.8939%" height="15" fill="rgb(237,72,25)" fg:x="247" fg:w="5"/><text x="93.8106%" y="318.50">&lt;..</text></g><g><title>from_serialized (history_wb/domain/tree/property.py:71) (5 samples, 1.89%)</title><rect x="93.5606%" y="324" width="1.8939%" height="15" fill="rgb(244,70,9)" fg:x="247" fg:w="5"/><text x="93.8106%" y="334.50">f..</text></g><g><title>data_path_from_serialized (history_wb/domain/tree/data_path.py:832) (4 samples, 1.52%)</title><rect x="93.9394%" y="340" width="1.5152%" height="15" fill="rgb(217,125,39)" fg:x="248" fg:w="4"/><text x="94.1894%" y="350.50"></text></g><g><title>from_serialized_value (history_wb/domain/tree/data_path.py:739) (2 samples, 0.76%)</title><rect x="94.6970%" y="356" width="0.7576%" height="15" fill="rgb(235,36,10)" fg:x="250" fg:w="2"/><text x="94.9470%" y="366.50"></text></g><g><title>&lt;listcomp&gt; (history_wb/domain/tree/data_path.py:739) (2 samples, 0.76%)</title><rect x="94.6970%" y="372" width="0.7576%" height="15" fill="rgb(251,123,47)" fg:x="250" fg:w="2"/><text x="94.9470%" y="382.50"></text></g><g><title>data_path_from_serialized (history_wb/domain/tree/data_path.py:832) (2 samples, 0.76%)</title><rect x="94.6970%" y="388" width="0.7576%" height="15" fill="rgb(221,13,13)" fg:x="250" fg:w="2"/><text x="94.9470%" y="398.50"></text></g><g><title>from_serialized_value (history_wb/domain/tree/data_path.py:623) (2 samples, 0.76%)</title><rect x="94.6970%" y="404" width="0.7576%" height="15" fill="rgb(238,131,9)" fg:x="250" fg:w="2"/><text x="94.9470%" y="414.50"></text></g><g><title>_deserialize_path_entries (history_wb/domain/tree/data_path.py:225) (1 samples, 0.38%)</title><rect x="95.0758%" y="420" width="0.3788%" height="15" fill="rgb(211,50,8)" fg:x="251" fg:w="1"/><text x="95.3258%" y="430.50"></text></g><g><title>_compute_for_paths (history_wb/application/actions/diffs/create_document_diffs.py:230) (132 samples, 50.00%)</title><rect x="45.8333%" y="196" width="50.0000%" height="15" fill="rgb(245,182,24)" fg:x="121" fg:w="132"/><text x="46.0833%" y="206.50">_compute_for_paths (history_wb/application/actions/diffs/create_document_diffs.py:..</text></g><g><title>_load_snapshot (history_wb/application/actions/diffs/create_document_diffs.py:244) (132 samples, 50.00%)</title><rect x="45.8333%" y="212" width="50.0000%" height="15" fill="rgb(242,14,37)" fg:x="121" fg:w="132"/><text x="46.0833%" y="222.50">_load_snapshot (history_wb/application/actions/diffs/create_document_diffs.py:244)</text></g><g><title>execute (history_wb/application/actions/snapshots/create_document_snapshot_commit.py:76) (131 samples, 49.62%)</title><rect x="46.2121%" y="228" width="49.6212%" height="15" fill="rgb(246,228,12)" fg:x="122" fg:w="131"/><text x="46.4621%" y="238.50">execute (history_wb/application/actions/snapshots/create_document_snapshot_commit...</text></g><g><title>from_yaml (history_wb/infrastructure/persistence/snapshot_yaml_deserializer.py:14) (131 samples, 49.62%)</title><rect x="46.2121%" y="244" width="49.6212%" height="15" fill="rgb(213,55,15)" fg:x="122" fg:w="131"/><text x="46.4621%" y="254.50">from_yaml (history_wb/infrastructure/persistence/snapshot_yaml_deserializer.py:14)</text></g><g><title>from_yaml (history_wb/infrastructure/persistence/snapshot_yaml.py:105) (6 samples, 2.27%)</title><rect x="93.5606%" y="260" width="2.2727%" height="15" fill="rgb(209,9,3)" fg:x="247" fg:w="6"/><text x="93.8106%" y="270.50">f..</text></g><g><title>_from_data (history_wb/infrastructure/persistence/snapshot_yaml.py:133) (1 samples, 0.38%)</title><rect x="95.4545%" y="276" width="0.3788%" height="15" fill="rgb(230,59,30)" fg:x="252" fg:w="1"/><text x="95.7045%" y="286.50"></text></g><g><title>__init__ (&lt;string&gt;:3) (1 samples, 0.38%)</title><rect x="96.2121%" y="340" width="0.3788%" height="15" fill="rgb(209,121,21)" fg:x="254" fg:w="1"/><text x="96.4621%" y="350.50"></text></g><g><title>_flatten_data_path (history_wb/domain/diff/models.py:158) (1 samples, 0.38%)</title><rect x="96.5909%" y="388" width="0.3788%" height="15" fill="rgb(220,109,13)" fg:x="255" fg:w="1"/><text x="96.8409%" y="398.50"></text></g><g><title>_build_path_diffs (history_wb/domain/diff/models.py:316) (2 samples, 0.76%)</title><rect x="96.5909%" y="372" width="0.7576%" height="15" fill="rgb(232,18,1)" fg:x="255" fg:w="2"/><text x="96.8409%" y="382.50"></text></g><g><title>_flatten_data_path (history_wb/domain/diff/models.py:185) (1 samples, 0.38%)</title><rect x="96.9697%" y="388" width="0.3788%" height="15" fill="rgb(215,41,42)" fg:x="256" fg:w="1"/><text x="97.2197%" y="398.50"></text></g><g><title>_build_path_diffs (history_wb/domain/diff/models.py:318) (1 samples, 0.38%)</title><rect x="97.3485%" y="372" width="0.3788%" height="15" fill="rgb(224,123,36)" fg:x="257" fg:w="1"/><text x="97.5985%" y="382.50"></text></g><g><title>_path_sort_key (history_wb/domain/diff/models.py:233) (1 samples, 0.38%)</title><rect x="97.3485%" y="388" width="0.3788%" height="15" fill="rgb(240,125,3)" fg:x="257" fg:w="1"/><text x="97.5985%" y="398.50"></text></g><g><title>_split_path_for_sort (history_wb/domain/diff/models.py:262) (1 samples, 0.38%)</title><rect x="97.3485%" y="404" width="0.3788%" height="15" fill="rgb(205,98,50)" fg:x="257" fg:w="1"/><text x="97.5985%" y="414.50"></text></g><g><title>__init__ (&lt;string&gt;:5) (1 samples, 0.38%)</title><rect x="98.1061%" y="404" width="0.3788%" height="15" fill="rgb(205,185,37)" fg:x="259" fg:w="1"/><text x="98.3561%" y="414.50"></text></g><g><title>_path_values_equal (history_wb/domain/diff/models.py:146) (1 samples, 0.38%)</title><rect x="98.4848%" y="452" width="0.3788%" height="15" fill="rgb(238,207,15)" fg:x="260" fg:w="1"/><text x="98.7348%" y="462.50"></text></g><g><title>all (264 samples, 100%)</title><rect x="0.0000%" y="52" width="100.0000%" height="15" fill="rgb(213,199,42)" fg:x="0" fg:w="264"/><text x="0.2500%" y="62.50"></text></g><g><title>_on_item_clicked (history_wb/ui/views/history/history_list.py:86) (264 samples, 100.00%)</title><rect x="0.0000%" y="68" width="100.0000%" height="15" fill="rgb(235,201,11)" fg:x="0" fg:w="264"/><text x="0.2500%" y="78.50">_on_item_clicked (history_wb/ui/views/history/history_list.py:86)</text></g><g><title>_on_user_history_selection_requested (history_wb/ui/views/history/panel.py:116) (264 samples, 100.00%)</title><rect x="0.0000%" y="84" width="100.0000%" height="15" fill="rgb(207,46,11)" fg:x="0" fg:w="264"/><text x="0.2500%" y="94.50">_on_user_history_selection_requested (history_wb/ui/views/history/panel.py:116)</text></g><g><title>select_history_item (history_wb/ui/presenters/diff_presenter.py:165) (264 samples, 100.00%)</title><rect x="0.0000%" y="100" width="100.0000%" height="15" fill="rgb(241,35,35)" fg:x="0" fg:w="264"/><text x="0.2500%" y="110.50">select_history_item (history_wb/ui/presenters/diff_presenter.py:165)</text></g><g><title>_on_commit_selected (history_wb/ui/presenters/diff_presenter.py:241) (264 samples, 100.00%)</title><rect x="0.0000%" y="116" width="100.0000%" height="15" fill="rgb(243,32,47)" fg:x="0" fg:w="264"/><text x="0.2500%" y="126.50">_on_commit_selected (history_wb/ui/presenters/diff_presenter.py:241)</text></g><g><title>load_commit (history_wb/ui/presenters/document_diff/diff_loader.py:48) (264 samples, 100.00%)</title><rect x="0.0000%" y="132" width="100.0000%" height="15" fill="rgb(247,202,23)" fg:x="0" fg:w="264"/><text x="0.2500%" y="142.50">load_commit (history_wb/ui/presenters/document_diff/diff_loader.py:48)</text></g><g><title>_load_diffs (history_wb/ui/presenters/document_diff/diff_loader.py:63) (264 samples, 100.00%)</title><rect x="0.0000%" y="148" width="100.0000%" height="15" fill="rgb(219,102,11)" fg:x="0" fg:w="264"/><text x="0.2500%" y="158.50">_load_diffs (history_wb/ui/presenters/document_diff/diff_loader.py:63)</text></g><g><title>execute (history_wb/application/actions/diffs/create_document_diffs.py:51) (264 samples, 100.00%)</title><rect x="0.0000%" y="164" width="100.0000%" height="15" fill="rgb(243,110,44)" fg:x="0" fg:w="264"/><text x="0.2500%" y="174.50">execute (history_wb/application/actions/diffs/create_document_diffs.py:51)</text></g><g><title>_compute_commit_diffs (history_wb/application/actions/diffs/create_document_diffs.py:66) (264 samples, 100.00%)</title><rect x="0.0000%" y="180" width="100.0000%" height="15" fill="rgb(222,74,54)" fg:x="0" fg:w="264"/><text x="0.2500%" y="190.50">_compute_commit_diffs (history_wb/application/actions/diffs/create_document_diffs.py:66)</text></g><g><title>_compute_for_paths (history_wb/application/actions/diffs/create_document_diffs.py:232) (11 samples, 4.17%)</title><rect x="95.8333%" y="196" width="4.1667%" height="15" fill="rgb(216,99,12)" fg:x="253" fg:w="11"/><text x="96.0833%" y="206.50">_comp..</text></g><g><title>_build_document_diff_result (history_wb/application/actions/diffs/create_document_diffs.py:417) (11 samples, 4.17%)</title><rect x="95.8333%" y="212" width="4.1667%" height="15" fill="rgb(226,22,26)" fg:x="253" fg:w="11"/><text x="96.0833%" y="222.50">_buil..</text></g><g><title>_compute_diff_result (history_wb/application/actions/diffs/create_document_diffs.py:354) (11 samples, 4.17%)</title><rect x="95.8333%" y="228" width="4.1667%" height="15" fill="rgb(217,163,10)" fg:x="253" fg:w="11"/><text x="96.0833%" y="238.50">_comp..</text></g><g><title>execute (history_wb/application/actions/diffs/create_diff.py:40) (11 samples, 4.17%)</title><rect x="95.8333%" y="244" width="4.1667%" height="15" fill="rgb(213,25,53)" fg:x="253" fg:w="11"/><text x="96.0833%" y="254.50">execu..</text></g><g><title>compute_diff (history_wb/domain/diff/engine.py:141) (11 samples, 4.17%)</title><rect x="95.8333%" y="260" width="4.1667%" height="15" fill="rgb(252,105,26)" fg:x="253" fg:w="11"/><text x="96.0833%" y="270.50">compu..</text></g><g><title>compare_snapshots (history_wb/domain/diff/comparator.py:604) (11 samples, 4.17%)</title><rect x="95.8333%" y="276" width="4.1667%" height="15" fill="rgb(220,39,43)" fg:x="253" fg:w="11"/><text x="96.0833%" y="286.50">compa..</text></g><g><title>_collect_old_pass_diffs (history_wb/domain/diff/comparator.py:405) (11 samples, 4.17%)</title><rect x="95.8333%" y="292" width="4.1667%" height="15" fill="rgb(229,68,48)" fg:x="253" fg:w="11"/><text x="96.0833%" y="302.50">_coll..</text></g><g><title>_compare_node_pair (history_wb/domain/diff/comparator.py:318) (11 samples, 4.17%)</title><rect x="95.8333%" y="308" width="4.1667%" height="15" fill="rgb(252,8,32)" fg:x="253" fg:w="11"/><text x="96.0833%" y="318.50">_comp..</text></g><g><title>compare_properties (history_wb/domain/diff/comparator.py:687) (11 samples, 4.17%)</title><rect x="95.8333%" y="324" width="4.1667%" height="15" fill="rgb(223,20,43)" fg:x="253" fg:w="11"/><text x="96.0833%" y="334.50">compa..</text></g><g><title>__init__ (&lt;string&gt;:7) (9 samples, 3.41%)</title><rect x="96.5909%" y="340" width="3.4091%" height="15" fill="rgb(229,81,49)" fg:x="255" fg:w="9"/><text x="96.8409%" y="350.50">__i..</text></g><g><title>__post_init__ (history_wb/domain/diff/models.py:309) (9 samples, 3.41%)</title><rect x="96.5909%" y="356" width="3.4091%" height="15" fill="rgb(236,28,36)" fg:x="255" fg:w="9"/><text x="96.8409%" y="366.50">__p..</text></g><g><title>_build_path_diffs (history_wb/domain/diff/models.py:319) (6 samples, 2.27%)</title><rect x="97.7273%" y="372" width="2.2727%" height="15" fill="rgb(249,185,26)" fg:x="258" fg:w="6"/><text x="97.9773%" y="382.50">_..</text></g><g><title>&lt;listcomp&gt; (history_wb/domain/diff/models.py:320) (6 samples, 2.27%)</title><rect x="97.7273%" y="388" width="2.2727%" height="15" fill="rgb(249,174,33)" fg:x="258" fg:w="6"/><text x="97.9773%" y="398.50">&lt;..</text></g><g><title>__init__ (&lt;string&gt;:7) (4 samples, 1.52%)</title><rect x="98.4848%" y="404" width="1.5152%" height="15" fill="rgb(233,201,37)" fg:x="260" fg:w="4"/><text x="98.7348%" y="414.50"></text></g><g><title>__post_init__ (history_wb/domain/diff/models.py:77) (4 samples, 1.52%)</title><rect x="98.4848%" y="420" width="1.5152%" height="15" fill="rgb(221,78,26)" fg:x="260" fg:w="4"/><text x="98.7348%" y="430.50"></text></g><g><title>_calc_value_state (history_wb/domain/diff/models.py:109) (4 samples, 1.52%)</title><rect x="98.4848%" y="436" width="1.5152%" height="15" fill="rgb(250,127,30)" fg:x="260" fg:w="4"/><text x="98.7348%" y="446.50"></text></g><g><title>_path_values_equal (history_wb/domain/diff/models.py:154) (3 samples, 1.14%)</title><rect x="98.8636%" y="452" width="1.1364%" height="15" fill="rgb(230,49,44)" fg:x="261" fg:w="3"/><text x="99.1136%" y="462.50"></text></g><g><title>float_values_equal (history_wb/utils.py:183) (3 samples, 1.14%)</title><rect x="98.8636%" y="468" width="1.1364%" height="15" fill="rgb(229,67,23)" fg:x="261" fg:w="3"/><text x="99.1136%" y="478.50"></text></g></svg></svg>
