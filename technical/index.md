@@ -67,6 +67,12 @@ Technical information of interest to Contributors.
 
 ## See Also
 
+- [Addon Academy](https://github.com/FreeCAD/Addon-Academy) — Comprehensive guides for developing, publishing, and maintaining FreeCAD addons
+
+- [Source Documentation (SourceDoc)](https://github.com/FreeCAD/SourceDoc) — Doxygen-generated C++ API reference (based on FreeCAD 0.20)
+
+- [Ondsel Lens Documentation](https://github.com/FreeCAD/lens-docs) — Documentation for the Ondsel Lens PDM system
+
 - [Wiki Developer Hub](https://wiki.freecad.org/Developer_hub)
 
 - [Compiling](https://wiki.freecad.org/Developer_hub#Compiling_FreeCAD)

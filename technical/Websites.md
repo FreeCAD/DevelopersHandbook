@@ -104,8 +104,39 @@ assets of the FreeCAD project.
 
 ### [Crowdin][Page-Crowdin]
 
-Translation platform used for the FreeCAD  
+Translation platform used for the FreeCAD
 app and homepage as well as some addons.
+
+<br/>
+
+## Developer Resources
+
+The following resources are specifically
+aimed at FreeCAD developers.
+
+### [Addon Academy][Repo-AddonAcademy]
+
+Guides and examples for developing,
+publishing, and maintaining FreeCAD addons.
+
+The site is built using [Jekyll]
+and written in simple Markdown.
+
+<br/>
+
+### [Source Documentation][Repo-SourceDoc]
+
+Doxygen-generated C++ API reference
+for the FreeCAD source code.
+
+<br/>
+
+### [Ondsel Lens Documentation][Repo-LensDocs]
+
+Documentation for Ondsel Lens, a free/libre
+product data management system for FreeCAD.
+
+The site is built using [Hugo].
 
 <br/>
 
@@ -118,6 +149,9 @@ app and homepage as well as some addons.
 [Repo-Homepage]: https://github.com/FreeCAD/FreeCAD-Homepage
 [Repo-Wiki]: https://github.com/Reqrefusion/FreeCAD-Documentation-Project
 [Repo-FPA]: https://github.com/FreeCAD/FPA
+[Repo-AddonAcademy]: https://github.com/FreeCAD/Addon-Academy
+[Repo-SourceDoc]: https://github.com/FreeCAD/SourceDoc
+[Repo-LensDocs]: https://github.com/FreeCAD/lens-docs
 
 [Page-Handbook]: https://freecad.github.io/DevelopersHandbook
 [Page-Homepage]: https://freecad.org
@@ -133,6 +167,7 @@ app and homepage as well as some addons.
 [WordPress]: https://wordpress.org
 [MediaWiki]: https://mediawiki.org
 [Jekyll]: https://jekyllrb.com
+[Hugo]: https://gohugo.io
 [jQuery]: https://jquery.com
 [phpBB]: https://www.phpbb.com
 [PHP]: https://www.php.net

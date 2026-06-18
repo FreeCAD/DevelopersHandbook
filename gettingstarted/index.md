@@ -116,6 +116,10 @@ The Visual Studio Installer may be used to install Visual Studio Community 2022 
 The GitHub issues tracker contains a 'Good First Issue' tag. Filtering by this tag will show issues that are well suited for new contributors.
 Try to find an issue that seems like an obvious win. If your issue seems unclear or complex, and you've given it a good shot, consider asking for help on Discord or the Forum before investing too much time (see below).
 
+### Developing Addons and Workbenches
+
+If you are interested in creating addons or workbenches for FreeCAD, the [Addon Academy](https://github.com/FreeCAD/Addon-Academy) provides comprehensive guides covering the full addon lifecycle — from project creation and scaffolding with Cookiecutter, through development and testing, to publishing via the Addon Manager and long-term maintenance. It also covers important topics like licensing, dependency management, and code structuring.
+
 Please note: While existing contributors try their best to be helpful, open source projects attract many first-time contributors, many of whom may not stick around for long.
 As such, existing contributors have limited time to help all newcomers. Please don't be offended if your questions go unanswered. Your contributions are still appreciated.
 
