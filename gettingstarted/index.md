@@ -38,7 +38,7 @@ One of the easiest ways of creating a standalone FreeCAD build environment with 
 - Windows (PowerShell): `iwr -useb https://pixi.sh/install.ps1 | iex`
 - Linux/macOS: `curl -fsSL https://pixi.sh/install.sh | bash`
 
-2. Clone the FreeCAD source code (if you haven't already) and navigate into the repository directory. If planning to contribute, consider [forking FreeCAD first](#setting-up-for-development). 
+2. Clone the FreeCAD source code (if you haven't already) and navigate into the repository directory. If planning to contribute, consider [forking FreeCAD first](#setting-up-for-development).
     ```bash
     git clone --recurse-submodules https://github.com/FreeCAD/FreeCAD.git
     cd FreeCAD
