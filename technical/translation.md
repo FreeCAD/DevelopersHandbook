@@ -262,6 +262,24 @@ If for any reason you need to manually set the name of the command's menu item o
 action->setText(QCoreApplication::translate("MyCommandClass", "Some text to be translated"));
 ```
 
+##### Python commands
+
+For python based commands, the context MUST be equal to the Command's Name.
+
+```python
+class CmdDoAThing:
+    def GetResources(self) -> dict[str, str]:
+        return {
+            "Pixmap": ":/icons/DoAThing.svg"),
+            "MenuText": QT_TRANSLATE_NOOP("MyWorkbench_DoAThing", "Do a thing"),
+            "ToolTip": QT_TRANSLATE_NOOP("MyWorkbench_DoAThing", "A longer explanation of doing a thing"),
+        }
+
+Gui.addCommand("MyWorkbench_DoAThing", CmdDoAThing())
+#               --------------------
+# "MyWorkbench_DoAThing" is the name of the command and it must be used as context for translation too in this example.
+```
+
 ## Translating plurals
 
 Many languages have more complex pluralization rules than English. To support this, you can write strings that are designed for pluralization, including in English, by specifying a parameter that indicates how many of a thing there are. The translation system will dynamically select the correct translation (assuming translators wrote one), even for English. For example:
